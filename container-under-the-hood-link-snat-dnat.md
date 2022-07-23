@@ -771,9 +771,8 @@ https://www.edureka.co/community/65179/do-docker-containers-have-their-own-kerne
 ## Good doc
 
 - https://argus-sec.com/docker-networking-behind-the-scenes/
-- <!-- they use vagrant! as here: https://github.com/scoulomb/misc-notes/blob/master/lab-env/kubernetes-distribution.md  -->
 - https://medium.com/techlog/diving-into-linux-networking-and-docker-bridge-veth-and-iptables-a05eb27b1e72
-- <!-- they use vagrant! as here: https://github.com/scoulomb/misc-notes/blob/master/lab-env/others.md#use-vagrant-vm  -->
+- <!-- they use vagrant as here: https://github.com/scoulomb/misc-notes/blob/master/lab-env/others.md#use-vagrant-vm  -->
 
 ## Links concept
 
