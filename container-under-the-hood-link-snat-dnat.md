@@ -24,6 +24,43 @@ We had seen in it in this post: https://github.com/scoulomb/misc-notes/blob/mast
 
 ### Let's explore Network namespace
 
+#### Root and ls command (Self) namespace
+
+````
+scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~$ sudo ls -l /proc/1/ns
+total 0
+lrwxrwxrwx 1 root root 0 juil. 22 15:41 cgroup -> 'cgroup:[4026531835]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 ipc -> 'ipc:[4026531839]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:41 mnt -> 'mnt:[4026531840]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 net -> 'net:[4026532008]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:41 pid -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 pid_for_children -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 time -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 time_for_children -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 user -> 'user:[4026531837]'
+lrwxrwxrwx 1 root root 0 juil. 22 15:48 uts -> 'uts:[4026531838]'
+scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~$ sudo ls -l /proc/self/ns
+total 0
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 cgroup -> 'cgroup:[4026531835]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 ipc -> 'ipc:[4026531839]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 mnt -> 'mnt:[4026531840]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 net -> 'net:[4026532008]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 pid -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 pid_for_children -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 time -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 time_for_children -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 user -> 'user:[4026531837]'
+lrwxrwxrwx 1 root root 0 juil. 24 00:00 uts -> 'uts:[4026531838]'
+scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~$ sudo ls -l /proc/1/ns | awk '{print $11}' > 1.ns
+scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~$ sudo ls -l /proc/self/ns | awk '{print $11}' > self.ns
+scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~$ diff self.ns 1.ns
+scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~$ 
+````
+
+They both share same namespace.
+
+<!-- those command were run after, but laptop in standby some same namespace, could be interesting to check full shut down impact -->
+
 #### Flask (host network)
 
 ````
@@ -66,7 +103,7 @@ lrwxrwxrwx 1 root root 0 juil. 22 15:48 user -> 'user:[4026531837]'
 lrwxrwxrwx 1 root root 0 juil. 22 15:48 uts -> 'uts:[4026531838]'
 ````
 
-But we can see `net` namespace is the same ! `'net:[4026532008]'`.
+But we can see `net` namespace is the same : `'net:[4026532008]'`.
 
 We can see here other process using same network namespace
 
@@ -734,8 +771,9 @@ https://www.edureka.co/community/65179/do-docker-containers-have-their-own-kerne
 ## Good doc
 
 - https://argus-sec.com/docker-networking-behind-the-scenes/
+- <!-- they use vagrant! as here: https://github.com/scoulomb/misc-notes/blob/master/lab-env/kubernetes-distribution.md  -->
 - https://medium.com/techlog/diving-into-linux-networking-and-docker-bridge-veth-and-iptables-a05eb27b1e72
-
+- <!-- they use vagrant! as here: https://github.com/scoulomb/misc-notes/blob/master/lab-env/others.md#use-vagrant-vm  -->
 
 ## Links concept
 
@@ -747,11 +785,13 @@ https://www.edureka.co/community/65179/do-docker-containers-have-their-own-kerne
 
 ## Next steps could be 
 
-- https://medium.com/techlog/diving-into-linux-networking-and-docker-bridge-veth-and-iptables-a05eb27b1e72
+- https://medium.com/techlog/diving-into-linux-networking-and-docker-bridge-
+-and-iptables-a05eb27b1e72
 <!-- optional -->
 - Explore more "Solution is to use Docker host gateway which route to host."
 <!-- suffit for now -->
 
 - Give a definition of Docker
-
+<!-- Optional JM: check more veth?: searc for "But each networks namespaces is attached to a veth:"-->
 <!-- ok ccl -->
+<!-- new update OK -->
