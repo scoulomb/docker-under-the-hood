@@ -785,8 +785,7 @@ https://www.edureka.co/community/65179/do-docker-containers-have-their-own-kerne
 
 ## Next steps could be 
 
-- https://medium.com/techlog/diving-into-linux-networking-and-docker-bridge-
--and-iptables-a05eb27b1e72
+- https://medium.com/techlog/diving-into-linux-networking-and-docker-bridge-veth-and-iptables-a05eb27b1e72
 <!-- optional -->
 - Explore more "Solution is to use Docker host gateway which route to host."
 <!-- suffit for now -->
