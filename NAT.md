@@ -20,18 +20,44 @@ See [container under the hood](container-under-the-hood-link-snat-dnat.md).
 
 ## Firewall (example of Azure firewall)
 
-### DNAT
-
 AZ900 book, p213 (similar to https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-deploy-portal-policy#create-a-default-route without [hub and spoke](https://github.com/scoulomb/myPublicCloud/blob/master/Azure/Networking/basic.md#hub-spoke-network-topology)).
 
-Both Outbound and Inbound traffic to go through firewall via route
+Both **Outbound and Inbound traffic to go through firewall via route table** (AZ900, p218,fig 4.32, it is an UDR: https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClD6CAK&lang=fr%E2%80%A9).
 <!-- p217, this will ensure that the firewall will handle all the network traffic to the jumpbox VM and all traffic from server subnet -->
+
+### Firewall rules
+
+See
+- https://petri.com/the-three-different-types-of-rules-that-are-in-the-azure-firewall/
+- https://docs.microsoft.com/en-us/azure/firewall/policy-rule-sets
+
+#### DNAT
+
+See https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-dnat
 
 For Inbound traffic (to connect via remote desktop to Jumpbox VM), we setup a DNAT rule
 https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-dnat-policy
 
 p219: NAT rule conllection is DNAT, see SNAT in [SNAT below section](#snat)
 
+From https://docs.microsoft.com/en-us/azure/firewall/policy-rule-sets
+> DNAT rules allow or deny inbound traffic through the firewall public IP address(es). You can use a DNAT rule when you want a public IP address to be translated into a private IP address. The Azure Firewall public IP addresses can be used to listen to inbound traffic from the Internet, filter the traffic and translate this traffic to internal resources in Azur
+
+#### Network rules collection 
+
+From https://docs.microsoft.com/en-us/azure/firewall/policy-rule-sets
+> Network rules allow or deny **inbound, outbound, and east-west traffic** based on the network layer (L3) and transport layer (L4).
+You can use a network rule when you want to filter traffic based on IP addresses, any ports, and any protocols.
+
+From  https://docs.microsoft.com/en-us/azure/architecture/framework/security/design-network-flow
+> East-west traffic refers to traffic between or within data centers
+
+#### Application rules collection 
+
+> Application rules allow or deny **inbound, outbound, and east-west traffic based** on the application layer (L7). You can use an application rule when you want to filter traffic based on fully qualified domain names (FQDNs) and HTTP/HTTPS protocols.
+
+From https://docs.microsoft.com/en-us/azure/firewall/policy-rule-sets
+To allow application or particular domain 
 
 <!-- az900, p213, Azure firewall concluded -->
 
@@ -39,7 +65,7 @@ p219: NAT rule conllection is DNAT, see SNAT in [SNAT below section](#snat)
 
 Quoting doc about SNAT private IP address ranges: https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/firewall/snat-private-range.md
 
-> Azure Firewall provides automatic SNAT for all outbound traffic to public IP addresses. By default, Azure Firewall doesn't SNAT with Network rules when the destination IP address is in a private IP address range per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) or shared address space per [IANA RFC 6598](https://tools.ietf.org/html/rfc6598). Application rules are always applied using a [transparent proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) whatever the destination IP address.
+> Azure Firewall provides automatic SNAT **for all outbound traffic to public IP addresses**. By default, Azure Firewall doesn't SNAT with Network rules when the destination IP address is in a private IP address range per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) or shared address space per [IANA RFC 6598](https://tools.ietf.org/html/rfc6598). Application rules are always applied using a [transparent proxy](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) whatever the destination IP address.
 
 > This logic works well when you route traffic directly to the Internet. However, if you've enabled [forced tunneling](forced-tunneling.md), Internet-bound traffic is SNATed to one of the firewall private IP addresses in AzureFirewallSubnet, hiding the source from your on-premises firewall.
 
@@ -100,6 +126,24 @@ From https://www.ietf.org/archive/id/draft-mrw-nat66-00.html
 From https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_nat/configuration/xe-16-10/nat-xe-16-10-book/iadnat-asr1k-nptv6.html
 > The NPTv6 support on ASR1k/CSR1k/ISR4k feature supports IPv6-to-IPv6 Network Prefix Translation (NPTv6) which enables a router to translate an IPv6 packet header to IPv6 packet header and vice versa. The IPv6-to-IPv6 Network Prefix Translation (NPTv6) provides a mechanism to translate an inside IPv6 source address prefix to outside IPv6 source address prefix in IPv6 packet header and vice-versa. A router that implements an NPTv6 prefix translation function is referred to as an NPTv6 Translator. 
 
+## NSG vs Azure firewll
+
+From https://docs.microsoft.com/en-us/azure/firewall/firewall-faq. AZ900 p208
+
+> The Azure Firewall service complements network security group functionality. Together, they provide better "defense-in-depth" network security. Network security groups provide distributed network layer traffic filtering to limit traffic to resources **within virtual networks** in each subscription. Azure Firewall is a fully stateful, centralized network firewall as-a-service, which provides network- and application-level protection across different subscriptions and virtual networks.
+
+
+We can combine with k8s network policy/calico: https://github.com/scoulomb/myk8s/blob/master/Security/3-3-network-policy-AddingDenyAllPolicy.md#network-policy
+
+So VM deployed in subnet. Subnet inside a VNET. Firewall, JumpServer in p125 have same VNET but different subnet (figure, 4-29).
+Route table associated to subnet (can be off different VNET).
+Then traffic flow through firewall and can apply firewall processing.
+
+NSG rules allow to allow traffic into a subnet (in a VNET) from an address space of another VNET (AZ900, nsg, p210).
+
+Subnet and VM... (even NSG:https://docs.microsoft.com/en-us/azure/virtual-network/manage-network-security-group) part of resource group attached to subscription, subscription inside mgmt group (p38).
+See https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#understand-scope
+
 
 ## Other examples
 
@@ -109,4 +153,4 @@ We have seen good example of NAT here
 - Azure Firewall can do SNAT/DNAT (see AZ900)
 - SNAT/DNAT at k8s service level: https://github.com/scoulomb/myk8s/blob/master/Services/service_deep_dive.md#nat
 
-<!-- ok ccl, SNAT CCL -->
+<!-- ok ccl, SNAT CCL, book az900 ccl and book did not mention SNAT, AZ900 OK re-ccl, and do not dive stop -->
