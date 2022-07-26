@@ -30,6 +30,10 @@ Both Outbound and Inbound traffic to go through firewall via route
 For Inbound traffic (to connect via remote desktop to Jumpbox VM), we setup a DNAT rule
 https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-dnat-policy
 
+p219: NAT rule conllection is DNAT, see SNAT in [SNAT below section](#snat)
+
+
+<!-- az900, p213, Azure firewall concluded -->
 
 ### SNAT 
 
@@ -49,12 +53,51 @@ Quoting doc about SNAT private IP address ranges: https://github.com/MicrosoftDo
 Note Firewall usually do SNAT ([palo alto](https://networkinterview.com/nat-configuration-nat-types-palo-alto/), cisco, [Fortinet](https://docs.fortinet.com/document/fortigate/6.2.0/cookbook/898655/static-snat)).
 But also F5: https://support.f5.com/csp/article/K47945399, which also even offers SNAT pool (many to many NAT type: https://networkinterview.com/nat-configuration-nat-types-palo-alto/ )
 
-Transparent SNAT: ESB/appli targets external/provider ip, Routing rule to F5 or Firewall and firewall/f5 change source ip (private ip to public). Provider sees public IP (transparent proxy)
+**Transparent SNAT**: 
+ESB/appli targets external/provider ip -> L4 FW (us) Routing rule to F5 or Firewall and firewall/f5 change source ip (private ip to public ip via SNAT pool) -> FW (ext provider) -> SVC provider (provider sees public IP)
+
+L7 firewall (should also allow NAT)T: https://serverfault.com/questions/792572/what-does-a-layer-3-4-firewall-do-that-a-layer-7-does-not
+
+See also F5 SNAT:
+- https://support.f5.com/csp/article/K47945399
+    - Standard SNAT: many to one (https://networkinterview.com/nat-configuration-nat-types-palo-alto/)
+    - Automap SNAT: many to many
+    - SNAT pools: many to many
+- SNAT pool: https://support.f5.com/csp/article/K47945399
+
 
 <!--
-Explicit SNAT: ESB targets f5 vip (private ip), and F5 has  pool member to provider/external IP, provider see F5 public IP -
+**Explicit SNAT**:
+ESB/appli targets F5 vip (private ip) -> and F5 has pool member to provider/external IP  -> provider see F5 public IP.
 Except if firewall renatting F5 IP - In that case no big added value (for removal) to move to transparent
 -->
+
+We can also rely on a treansparent proxy for web caching, it relies on WCCP: https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol
+Trasmparent proxy can also
+- Hide from customer complexity of infra (modify source source IP) => NAT
+    - https://www.stux6.net/unix/linux/proxy-transparent-linux-squid
+- Performs IP whitlesting to external
+There is overlapp between firewall and proxy: https://waytolearnx.com/2018/09/difference-entre-proxy-et-firewall.html
+
+Even big ip offers WCCP: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/13.html
+
+Sometimes those proxy makes also certificate shaddowing.
+
+<!-- not sfr box nat rule in ipv4 become firewall in ipv6 ! -->
+
+<!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links --> 
+
+### In IPV6 how can I add my internal IPs?
+
+Quoting:
+> IPv6 was originally designed to work without NAT. That all changed around 2010 with the introduction of NAT66 and NPT66. 
+
+From https://www.ietf.org/archive/id/draft-mrw-nat66-00.html
+> This document describes a stateless, transport-agnostic IPv6-to-IPv6 Network Address Translation (NAT66) function that provides the address independence benefit associated with IPv4-to-IPv4 NAT (NAT44) while minimizing, but not completely eliminating, the problems associated with NAT44. 
+
+From https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_nat/configuration/xe-16-10/nat-xe-16-10-book/iadnat-asr1k-nptv6.html
+> The NPTv6 support on ASR1k/CSR1k/ISR4k feature supports IPv6-to-IPv6 Network Prefix Translation (NPTv6) which enables a router to translate an IPv6 packet header to IPv6 packet header and vice versa. The IPv6-to-IPv6 Network Prefix Translation (NPTv6) provides a mechanism to translate an inside IPv6 source address prefix to outside IPv6 source address prefix in IPv6 packet header and vice-versa. A router that implements an NPTv6 prefix translation function is referred to as an NPTv6 Translator. 
+
 
 ## Other examples
 
@@ -64,4 +107,4 @@ We have seen good example of NAT here
 - Azure Firewall can do SNAT/DNAT (see AZ900)
 - SNAT/DNAT at k8s service level: https://github.com/scoulomb/myk8s/blob/master/Services/service_deep_dive.md#nat
 
-<!-- ok ccl -->
+<!-- ok ccl, SNAT CCL -->
