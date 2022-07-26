@@ -74,10 +74,12 @@ Except if firewall renatting F5 IP - In that case no big added value (for remova
 
 We can also rely on a treansparent proxy for web caching, it relies on WCCP: https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol
 Trasmparent proxy can also
-- Hide from customer complexity of infra (modify source source IP) => NAT
+- Hide from customer complexity of infra (modify source source IP) => SNAT
     - https://www.stux6.net/unix/linux/proxy-transparent-linux-squid
 - Performs IP whitlesting to external
 There is overlapp between firewall and proxy: https://waytolearnx.com/2018/09/difference-entre-proxy-et-firewall.html
+See https://github.com/scoulomb/misc-notes/tree/master/replicate-k8s-ingress-locally-with-compose#squid-proxy-firewall-open 
+<!-- [Link 1]: ~~ SNAT 1A ~~ [replicate-k8s-ingress-locally-with-compose] -->
 
 Even big ip offers WCCP: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/13.html
 
@@ -85,7 +87,7 @@ Sometimes those proxy makes also certificate shaddowing.
 
 <!-- not sfr box nat rule in ipv4 become firewall in ipv6 ! -->
 
-<!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links --> 
+<!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links [Link 2]: ~~ SNAT 1A ~~ [Certificate] --> 
 
 ### In IPV6 how can I add my internal IPs?
 
