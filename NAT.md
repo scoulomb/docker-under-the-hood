@@ -82,7 +82,7 @@ But also F5: https://support.f5.com/csp/article/K47945399, which also even offer
 **Transparent SNAT**: 
 ESB/appli targets external/provider ip -> L4 FW (us) Routing rule to F5 or Firewall and firewall/f5 change source ip (private ip to public ip via SNAT pool) -> FW (ext provider) -> SVC provider (provider sees public IP)
 
-L7 firewall (should also allow NAT)T: https://serverfault.com/questions/792572/what-does-a-layer-3-4-firewall-do-that-a-layer-7-does-not
+L7 firewall (should also allow NAT): https://serverfault.com/questions/792572/what-does-a-layer-3-4-firewall-do-that-a-layer-7-does-not
 
 See also F5 SNAT:
 - https://support.f5.com/csp/article/K47945399
@@ -111,9 +111,16 @@ Even big ip offers WCCP: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/ma
 
 Sometimes those proxy makes also certificate shaddowing.
 
-<!-- not sfr box nat rule in ipv4 become firewall in ipv6 ! -->
+<!-- not sfr box dnat rule in ipv4 become firewall in ipv6 ! -->
 
 <!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links [Link 2]: ~~ SNAT 1A ~~ [Certificate] --> 
+
+### SNAT without a firewall
+
+See https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections.
+
+Also this doc confirms port are used to do SNAT.This is port we would see here in proxy protoccol in receiver: https://cloud.google.com/load-balancing/docs/tcp/setting-up-tcp?hl=fr
+<!-- See private_script: Links-mig-auto-cloud/README.md#proxy-protocol-activation-for-inbound-links -->
 
 ### In IPV6 how can I add my internal IPs?
 
