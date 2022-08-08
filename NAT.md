@@ -98,7 +98,7 @@ ESB/appli targets F5 vip (private ip) -> and F5 has pool member to provider/exte
 Except if firewall renatting F5 IP - In that case no big added value (for removal) to move to transparent
 -->
 
-We can also rely on a treansparent proxy for web caching, it relies on WCCP: https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol
+We can also rely on a transparent proxy for web caching, it relies on WCCP: https://en.wikipedia.org/wiki/Web_Cache_Communication_Protocol
 Trasmparent proxy can also
 - Hide from customer complexity of infra (modify source source IP) => SNAT
     - https://www.stux6.net/unix/linux/proxy-transparent-linux-squid
@@ -114,6 +114,9 @@ Sometimes those proxy makes also certificate shaddowing.
 <!-- not sfr box dnat rule in ipv4 become firewall in ipv6 ! -->
 
 <!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links [Link 2]: ~~ SNAT 1A ~~ [Certificate] --> 
+
+
+See [(S)NAT Tanenbaum Appendix](./NAT-tanenbaum-appendix/README.md).
 
 ### SNAT without a firewall
 

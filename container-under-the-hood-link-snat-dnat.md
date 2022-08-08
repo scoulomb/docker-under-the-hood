@@ -183,7 +183,7 @@ This will create 3 containers:
 - Flask: host network
 - Apache: custom network. It is the Docker compose `custom bridge` created by default by Compose which is different from Docker `default` bridge. We explained this in details here:  https://github.com/open-denon-heos/remote-control#default-setup-explanation-in-docker
 
-    >  - By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
+    > - By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
     > - Compose default behavior override Docker default behavior (`default` Bridge).
 
 - Python attached to same network as Apache.
@@ -242,7 +242,7 @@ And Docker which have veth in same network, meaning they use same network bridge
 See picture and artcile here: https://argus-sec.com/docker-networking-behind-the-scenes/
 
 
-![docker com](docker-com.png)
+![docker com](media/docker-com.png)
 
 In schema/article they use `default bridge` (docker0), here for our demo we use `custom/user-defined bridge` created by default by Compose.
 
@@ -306,6 +306,8 @@ root@32bdd3e24faa:/# curl 172.17.0.1:5000
 ````
 
 It has same IP as `docker0 gateway/default bridge/sudo docker inspect bridge` but is a different concept: https://megamorf.gitlab.io/2020/09/19/access-native-services-on-docker-host-via-host-docker-internal/ 
+What is used in open denon heos UI.
+
 
 ##### Evidences 
 
@@ -479,7 +481,7 @@ We have a veth “tunnel” (a bi-directional connection between each container 
 
 See schema in https://argus-sec.com/docker-networking-behind-the-scenes/ 
 
-![docker com](docker-com.png)
+![docker com](media/docker-com.png)
 
 #### Docker and kernel networking
 
@@ -580,16 +582,17 @@ scoulomb@scoulomb-HP-Pavilion-TS-Sleekbook-14:~/heos/open-denon-heos/remote-cont
 It is like 
 - host machine acts as a traffic from internet,
 - Docker bridge network as router 
-- and Docker contaner as machine in the LAN.
+- and Docker container as machine in the LAN.
 
 We can see  NAT config (`<-------`) 
 
-- POSTROUTING — a new MASQUERADE target was added (it will will direct traffic from docker IP (172.20.0.3) to interface IP/docker network bridge IP, here 172.20.0.3, if use dokcer default it would be 172.17.0.X), then it will SNAR to an IP of interface: https://unix.stackexchange.com/questions/21967/difference-between-snat-and-masquerade
+- POSTROUTING — a new MASQUERADE target was added (it will direct traffic from docker IP (172.20.0.3) to interface IP/docker network bridge IP, here docker IP is `172.20.0.3`, if use docker default it would be `172.17.0.X`), then it will SNAT to an IP of interface: https://unix.stackexchange.com/questions/21967/difference-between-snat-and-masquerade
+I suspect source IP and destination IP to be same as use veth, which then is plugged to bridge network? (assumption)
 - DOCKER — a new DNAT (destination NAT) target. DNAT is commonly used to publish a service from internal network to an external IP.
 
 So steps are, quoting: https://argus-sec.com/docker-networking-behind-the-scenes/
 
-(I adapt step from original doc, where I use custom defaut network created by compose and oringal doc use default network.)
+(I adapt step from original doc, where I use custom defaut network created by compose and original doc use default network.)
 
 1. The http GET request went up from the application layer to the transport layer (TCP request).
 2. The http destination IP is localhost (the DNS resolver will interpret it as 127.0.0.1). The source IP is also localhost, and therefore the request is sent on the loopback interface.
@@ -612,7 +615,7 @@ Serving HTTP on :: port 8000 (http://[::]:8000/) ...
 #### Host network
 
 
-We have both contaier and host sharing same netowrk namespace thus we can do 
+We have both container and host sharing same network namespace thus we can do 
 
 
 ````
@@ -793,3 +796,5 @@ https://www.edureka.co/community/65179/do-docker-containers-have-their-own-kerne
 <!-- Optional JM: check more veth?: searc for "But each networks namespaces is attached to a veth:"-->
 <!-- ok ccl -->
 <!-- new update OK -->
+
+<!-- reviewed iptable snat juge OK stop and link heos link was/is ok, no recheck, STOP OK YES -->
