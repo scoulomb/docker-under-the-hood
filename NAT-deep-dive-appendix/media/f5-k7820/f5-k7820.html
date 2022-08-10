@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" id="ng-app" data-ng-app="compass" data-ng-controller="MainController" class="ng-scope" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">.truste_cursor_pointer {cursor: pointer;}.truste_border_none {border: none;}</style><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><script src="f5-k7820_files/utag.js" type="text/javascript" async=""></script><script type="text/javascript" src="f5-k7820_files/1.txt"></script><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="hPgTZKT8uAXeZfFdG4SC3pkDsFxYqOEyH55C-X3qLu4">
+
+    <title data-ng-bind-html="pageTitle" class="ng-binding">Overview of SNAT features</title>
+    <!-- base href="https://support.f5.com/csp/" -->
+
+    <link href="f5-k7820_files/bootstrap.min.css" rel="stylesheet">
+    <link href="f5-k7820_files/index.css" rel="stylesheet">
+<link href="f5-k7820_files/print.css" rel="stylesheet" media="print">
+    <!-- replaces //static.cloud.coveo.com/searchui/v2.6459/css/CoveoFullSearch.css -->
+    <link href="f5-k7820_files/coveoFullSearch-v2.6459.css" rel="stylesheet">
+    <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+    <!--[if lte IE 8]>
+    <script>
+        window.location.href = window.location.protocol + "//" + window.location.host + "/csp/unsupported.html";
+    </script>
+    <![endif]-->
+
+    <!-- ngRepeat: item in openGraphItems --><meta data-ng-repeat="item in openGraphItems" property="og:type" content="website" class="ng-scope"><!-- end ngRepeat: item in openGraphItems --><meta data-ng-repeat="item in openGraphItems" property="og:url" content="https://support.f5.com/csp/article/K7820" class="ng-scope"><!-- end ngRepeat: item in openGraphItems --><meta data-ng-repeat="item in openGraphItems" property="og:description" content="Overview of SNAT features" class="ng-scope"><!-- end ngRepeat: item in openGraphItems --><meta data-ng-repeat="item in openGraphItems" property="og:title" content="Overview of SNAT features" class="ng-scope"><!-- end ngRepeat: item in openGraphItems -->
+<style type="text/css">.at-icon{fill:#fff;border:0}.at-icon-wrapper{display:inline-block;overflow:hidden}a .at-icon-wrapper{cursor:pointer}.at-rounded,.at-rounded-element .at-icon-wrapper{border-radius:12%}.at-circular,.at-circular-element .at-icon-wrapper{border-radius:50%}.addthis_32x32_style .at-icon{width:2pc;height:2pc}.addthis_24x24_style .at-icon{width:24px;height:24px}.addthis_20x20_style .at-icon{width:20px;height:20px}.addthis_16x16_style .at-icon{width:1pc;height:1pc}#at16lb{display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:1001;background-color:#000;opacity:.001}#at_complete,#at_error,#at_share,#at_success{position:static!important}.at15dn{display:none}#at15s,#at16p,#at16p form input,#at16p label,#at16p textarea,#at_share .at_item{font-family:arial,helvetica,tahoma,verdana,sans-serif!important;font-size:9pt!important;outline-style:none;outline-width:0;line-height:1em}* html #at15s.mmborder{position:absolute!important}#at15s.mmborder{position:fixed!important;width:250px!important}#at15s{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);float:none;line-height:1em;margin:0;overflow:visible;padding:5px;text-align:left;position:absolute}#at15s a,#at15s span{outline:0;direction:ltr;text-transform:none}#at15s .at-label{margin-left:5px}#at15s .at-icon-wrapper{width:1pc;height:1pc;vertical-align:middle}#at15s .at-icon{width:1pc;height:1pc}.at4-icon{display:inline-block;background-repeat:no-repeat;background-position:top left;margin:0;overflow:hidden;cursor:pointer}.addthis_16x16_style .at4-icon,.addthis_default_style .at4-icon,.at4-icon,.at-16x16{width:1pc;height:1pc;line-height:1pc;background-size:1pc!important}.addthis_32x32_style .at4-icon,.at-32x32{width:2pc;height:2pc;line-height:2pc;background-size:2pc!important}.addthis_24x24_style .at4-icon,.at-24x24{width:24px;height:24px;line-height:24px;background-size:24px!important}.addthis_20x20_style .at4-icon,.at-20x20{width:20px;height:20px;line-height:20px;background-size:20px!important}.at4-icon.circular,.circular .at4-icon,.circular.aticon{border-radius:50%}.at4-icon.rounded,.rounded .at4-icon{border-radius:4px}.at4-icon-left{float:left}#at15s .at4-icon{text-indent:20px;padding:0;overflow:visible;white-space:nowrap;background-size:1pc;width:1pc;height:1pc;background-position:top left;display:inline-block;line-height:1pc}.addthis_vertical_style .at4-icon,.at4-follow-container .at4-icon{margin-right:5px}html>body #at15s{width:250px!important}#at15s.atm{background:none!important;padding:0!important;width:10pc!important}#at15s_inner{background:#fff;border:1px solid #fff;margin:0}#at15s_head{position:relative;background:#f2f2f2;padding:4px;cursor:default;border-bottom:1px solid #e5e5e5}.at15s_head_success{background:#cafd99!important;border-bottom:1px solid #a9d582!important}.at15s_head_success a,.at15s_head_success span{color:#000!important;text-decoration:none}#at15s_brand,#at15sptx,#at16_brand{position:absolute}#at15s_brand{top:4px;right:4px}.at15s_brandx{right:20px!important}a#at15sptx{top:4px;right:4px;text-decoration:none;color:#4c4c4c;font-weight:700}#at15sptx:hover{text-decoration:underline}#at16_brand{top:5px;right:30px;cursor:default}#at_hover{padding:4px}#at_hover .at_item,#at_share .at_item{background:#fff!important;float:left!important;color:#4c4c4c!important}#at_share .at_item .at-icon-wrapper{margin-right:5px}#at_hover .at_bold{font-weight:700;color:#000!important}#at_hover .at_item{width:7pc!important;padding:2px 3px!important;margin:1px;text-decoration:none!important}#at_hover .at_item.athov,#at_hover .at_item:focus,#at_hover .at_item:hover{margin:0!important}#at_hover .at_item.athov,#at_hover .at_item:focus,#at_hover .at_item:hover,#at_share .at_item.athov,#at_share .at_item:hover{background:#f2f2f2!important;border:1px solid #e5e5e5;color:#000!important;text-decoration:none}.ipad #at_hover .at_item:focus{background:#fff!important;border:1px solid #fff}.at15t{display:block!important;height:1pc!important;line-height:1pc!important;padding-left:20px!important;background-position:0 0;text-align:left}.addthis_button,.at15t{cursor:pointer}.addthis_toolbox a.at300b,.addthis_toolbox a.at300m{width:auto}.addthis_toolbox a{margin-bottom:5px;line-height:initial}.addthis_toolbox.addthis_vertical_style{width:200px}.addthis_button_facebook_like .fb_iframe_widget{line-height:100%}.addthis_button_facebook_like iframe.fb_iframe_widget_lift{max-width:none}.addthis_toolbox a.addthis_button_counter,.addthis_toolbox a.addthis_button_facebook_like,.addthis_toolbox a.addthis_button_facebook_send,.addthis_toolbox a.addthis_button_facebook_share,.addthis_toolbox a.addthis_button_foursquare,.addthis_toolbox a.addthis_button_google_plusone,.addthis_toolbox a.addthis_button_linkedin_counter,.addthis_toolbox a.addthis_button_pinterest_pinit,.addthis_toolbox a.addthis_button_stumbleupon_badge,.addthis_toolbox a.addthis_button_tweet{display:inline-block}.at-share-tbx-element .google_plusone_iframe_widget>span>div{vertical-align:top!important}.addthis_toolbox span.addthis_follow_label{display:none}.addthis_toolbox.addthis_vertical_style span.addthis_follow_label{display:block;white-space:nowrap}.addthis_toolbox.addthis_vertical_style a{display:block}.addthis_toolbox.addthis_vertical_style.addthis_32x32_style a{line-height:2pc;height:2pc}.addthis_toolbox.addthis_vertical_style .at300bs{margin-right:4px;float:left}.addthis_toolbox.addthis_20x20_style span{line-height:20px}.addthis_toolbox.addthis_32x32_style span{line-height:2pc}.addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact,.addthis_toolbox.addthis_pill_combo_style a{float:left}.addthis_toolbox.addthis_pill_combo_style a.addthis_button_tweet{margin-top:-2px}.addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact{margin-right:4px}.addthis_default_style .addthis_separator{margin:0 5px;display:inline}div.atclear{clear:both}.addthis_default_style .addthis_separator,.addthis_default_style .at4-icon,.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300bs,.addthis_default_style .at300m{float:left}.at300b img,.at300bo img{border:0}a.at300b .at4-icon,a.at300m .at4-icon{display:block}.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300m{padding:0 2px}.at300b,.at300bo,.at300bs,.at300m{cursor:pointer}.addthis_button_facebook_like.at300b:hover,.addthis_button_facebook_like.at300bs:hover,.addthis_button_facebook_send.at300b:hover,.addthis_button_facebook_send.at300bs:hover{opacity:1}.addthis_20x20_style .at15t,.addthis_20x20_style .at300bs{overflow:hidden;display:block;height:20px!important;width:20px!important;line-height:20px!important}.addthis_32x32_style .at15t,.addthis_32x32_style .at300bs{overflow:hidden;display:block;height:2pc!important;width:2pc!important;line-height:2pc!important}.at300bs{overflow:hidden;display:block;background-position:0 0;height:1pc;width:1pc;line-height:1pc!important}.addthis_default_style .at15t_compact,.addthis_default_style .at15t_expanded{margin-right:4px}#at_share .at_item{width:123px!important;padding:4px;margin-right:2px;border:1px solid #fff}#at16p{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);z-index:10000001;position:absolute;top:50%;left:50%;width:300px;padding:10px;margin:0 auto;margin-top:-185px;margin-left:-155px;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#5e5e5e}#at_share{margin:0;padding:0}#at16pt{position:relative;background:#f2f2f2;height:13px;padding:5px 10px}#at16pt a,#at16pt h4{font-weight:700}#at16pt h4{display:inline;margin:0;padding:0;font-size:9pt;color:#4c4c4c;cursor:default}#at16pt a{position:absolute;top:5px;right:10px;color:#4c4c4c;text-decoration:none;padding:2px}#at15sptx:focus,#at16pt a:focus{outline:thin dotted}#at15s #at16pf a{top:1px}#_atssh{width:1px!important;height:1px!important;border:0!important}.atm{width:10pc!important;padding:0;margin:0;line-height:9pt;letter-spacing:normal;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#444;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);padding:4px}.atm-f{text-align:right;border-top:1px solid #ddd;padding:5px 8px}.atm-i{background:#fff;border:1px solid #d5d6d6;padding:0;margin:0;box-shadow:1px 1px 5px rgba(0,0,0,.15)}.atm-s{margin:0!important;padding:0!important}.atm-s a:focus{border:transparent;outline:0;transition:none}#at_hover.atm-s a,.atm-s a{display:block;text-decoration:none;padding:4px 10px;color:#235dab!important;font-weight:400;font-style:normal;transition:none}#at_hover.atm-s .at_bold{color:#235dab!important}#at_hover.atm-s a:hover,.atm-s a:hover{background:#2095f0;text-decoration:none;color:#fff!important}#at_hover.atm-s .at_bold{font-weight:700}#at_hover.atm-s a:hover .at_bold{color:#fff!important}.atm-s a .at-label{vertical-align:middle;margin-left:5px;direction:ltr}.at_PinItButton{display:block;width:40px;height:20px;padding:0;margin:0;background-image:url(//s7.addthis.com/static/t00/pinit00.png);background-repeat:no-repeat}.at_PinItButton:hover{background-position:0 -20px}.addthis_toolbox .addthis_button_pinterest_pinit{position:relative}.at-share-tbx-element .fb_iframe_widget span{vertical-align:baseline!important}#at16pf{height:auto;text-align:right;padding:4px 8px}.at-privacy-info{position:absolute;left:7px;bottom:7px;cursor:pointer;text-decoration:none;font-family:helvetica,arial,sans-serif;font-size:10px;line-height:9pt;letter-spacing:.2px;color:#666}.at-privacy-info:hover{color:#000}.body .wsb-social-share .wsb-social-share-button-vert{padding-top:0;padding-bottom:0}.body .wsb-social-share.addthis_counter_style .addthis_button_tweet.wsb-social-share-button{padding-top:40px}.body .wsb-social-share.addthis_counter_style .addthis_button_google_plusone.wsb-social-share-button{padding-top:0}.body .wsb-social-share.addthis_counter_style .addthis_button_facebook_like.wsb-social-share-button{padding-top:21px}@media print{#at4-follow,#at4-share,#at4-thankyou,#at4-whatsnext,#at4m-mobile,#at15s,.at4,.at4-recommended{display:none!important}}@media screen and (max-width:400px){.at4win{width:100%}}@media screen and (max-height:700px) and (max-width:400px){.at4-thankyou-inner .at4-recommended-container{height:122px;overflow:hidden}.at4-thankyou-inner .at4-recommended .at4-recommended-item:first-child{border-bottom:1px solid #c5c5c5}}</style><style type="text/css">.at-branding-logo{font-family:helvetica,arial,sans-serif;text-decoration:none;font-size:10px;display:inline-block;margin:2px 0;letter-spacing:.2px}.at-branding-logo .at-branding-icon{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////+GlNUkcc1QAAAB1JREFUeNpiYIQDBjQmAwMmkwEM0JnY1WIxFyDAABGeAFEudiZsAAAAAElFTkSuQmCC")}.at-branding-logo .at-branding-icon,.at-branding-logo .at-privacy-icon{display:inline-block;height:10px;width:10px;margin-left:4px;margin-right:3px;margin-bottom:-1px;background-repeat:no-repeat}.at-branding-logo .at-privacy-icon{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAMAAABR24SMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhQTFRF8fr9ot/xXcfn2/P5AKva////////AKTWodjhjAAAAAd0Uk5T////////ABpLA0YAAAA6SURBVHjaJMzBDQAwCAJAQaj7b9xifV0kUKJ9ciWxlzWEWI5gMF65KUTv0VKkjVeTerqE/x7+9BVgAEXbAWI8QDcfAAAAAElFTkSuQmCC")}.at-branding-logo span{text-decoration:none}.at-branding-logo .at-branding-addthis,.at-branding-logo .at-branding-powered-by{color:#666}.at-branding-logo .at-branding-addthis:hover{color:#333}.at-cv-with-image .at-branding-addthis,.at-cv-with-image .at-branding-addthis:hover{color:#fff}a.at-branding-logo:visited{color:initial}.at-branding-info{display:inline-block;padding:0 5px;color:#666;border:1px solid #666;border-radius:50%;font-size:10px;line-height:9pt;opacity:.7;transition:all .3s ease;text-decoration:none}.at-branding-info span{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.at-branding-info:before{content:'i';font-family:Times New Roman}.at-branding-info:hover{color:#0780df;border-color:#0780df}</style><script async="" src="f5-k7820_files/notice" id="truste_0.32807136163022244"></script><script async="" src="f5-k7820_files/embed.js"></script><script async="" type="text/javascript" src="f5-k7820_files/utag.sync.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_f5.myf5_240" src="f5-k7820_files/utag.240.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_f5.myf5_242" src="f5-k7820_files/utag.242.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_f5.myf5_244" src="f5-k7820_files/utag.244.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_f5.myf5_246" src="f5-k7820_files/utag.246.js"></script><script async="" src="f5-k7820_files/gpx-util.js"></script><script async="" src="f5-k7820_files/aptrinsic.js"></script><link rel="stylesheet" type="text/css" href="f5-k7820_files/style.css"></head>
+<body class="newstyles">
+    <div class="container-fluid">
+        <csp-header class="ng-isolate-scope"><div class="csp-header">
+    <div class="sidebar">
+        <div id="mobile-nav-main" class="mobile-nav-container">
+            <span class="mobile-nav-header"><a href="#">Knowledge Centers</a></span>
+            <ul>
+                <li><a data-ui-sref="knowledgeCenterSecurityAll" href="https://support.f5.com/csp/knowledge-center/security">Security</a></li>
+                <li><a data-ui-sref="knowledgeCenterCloudAll" href="https://support.f5.com/csp/knowledge-center/cloud">Virtualization and Cloud</a></li>
+                <li><a data-ui-sref="knowledgeCenterSoftwareAll" href="https://support.f5.com/csp/knowledge-center/software">Software</a></li>
+                <li><a data-ui-sref="knowledgeCenterHardwareAll" href="https://support.f5.com/csp/knowledge-center/hardware">Hardware</a></li>
+            </ul>
+
+            <span class="mobile-nav-header"><a href="#">Resources</a></span>
+            <ul>
+                <li><a target="_blank" data-ng-href="https://downloads.f5.com" href="https://downloads.f5.com/">Downloads</a></li>
+                <li><a data-ng-href="https://www.f5.com/services/certification" target="_blank" href="https://www.f5.com/services/certification">F5 Certification</a></li>
+                <li><a target="_blank" data-ng-href="https://ihealth.f5.com" href="https://ihealth.f5.com/">iHealth</a></li>
+                <li><a target="_blank" data-ng-href="https://account.f5.com/learnf5" href="https://account.f5.com/learnf5">LearnF5</a></li>
+                <li><a target="_blank" data-ng-href="https://community.f5.com" href="https://community.f5.com/">DevCentral</a></li>
+                <li><a data-ui-sref="bugTracker" href="https://support.f5.com/csp/bug-tracker">Bug Tracker</a></li>
+                <li><a target="_blank" data-ng-href="https://secure.f5.com" href="https://secure.f5.com/">Licensing</a></li>
+                <li><a href="https://docs.nginx.com/" target="_blank">NGINX Documentation</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row corp-header">
+        <div class="col-md-3 sidebar-toggle">
+            <button class="button lines-button x" data-ng-click="toggleMobileNav()" data-ng-class="{'closed': mobileNav.showCloseButton}">
+                <span class="lines"></span>
+            </button>
+        </div>
+
+        <div class="container corp-menu">
+            <ul>
+                <li>
+                    <a target="_blank" data-ng-href="https://www.f5.com" href="https://www.f5.com/">F5.com</a>
+                </li>
+                <li>
+                    <a target="_blank" data-ng-href="https://community.f5.com" href="https://community.f5.com/">DevCentral</a>
+                </li>
+                <li>
+                    <a target="_blank" data-ng-href="https://partnercentral.f5.com" href="https://partnercentral.f5.com/">Partners</a>
+                </li>
+                <li>
+                    <a data-ng-href="https://my.f5.com/manage/s/" target="_blank" href="https://my.f5.com/manage/s/">MyF5</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row pageHeader">
+        <div class="container stat">
+            <div class="col-xs-12 stat">
+                <a target="_blank" data-ng-href="https://www.f5.com" href="https://www.f5.com/">
+                    <img class="logo" src="f5-k7820_files/logo.svg" alt="F5" title="F5" width="45" height="41" border="0">
+                </a>
+                <a data-ui-sref="home" href="https://support.f5.com/csp/home">
+                    <img class="logo support" src="f5-k7820_files/support-logo.svg" title="AskF5 home" alt="AskF5 home" border="0">
+                </a>
+                <ul id="AskF5MainMenu" class="askf5-main-menu" data-ng-mouseover="mouseMove.count = mouseMove.count + 1">
+                    <li>
+                        <a href="#">Knowledge Centers
+                            <span class="indicator"><span class="arrow-up"></span></span>
+                        </a>
+
+                        <div class="askf5-menu-panel" id="KnowledgeCentersSubmenu" data-ng-click="hideNav()">
+                            <div class="container">
+                                <ul class="submenu col-sm-12">
+                                    <li class="forth">
+                                        <span class="a-mm-h">Security</span>
+                                        <ul>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP AFM'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20AFM">BIG-IP AFM</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP APM'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM">BIG-IP APM</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP ASM'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20ASM">BIG-IP ASM</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'F5 App Protect', module: 'F5 DDoS Hybrid Defender'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/F5%20App%20Protect?module=F5%20DDoS%20Hybrid%20Defender">F5 DDoS Hybrid Defender</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'F5 Silverline', module: 'F5 Silverline DDoS Protection'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/F5%20Silverline?module=F5%20Silverline%20DDoS%20Protection">F5 Silverline DDoS Protection</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'F5 Silverline', module: 'F5 Silverline Web Application Firewall'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/F5%20Silverline?module=F5%20Silverline%20Web%20Application%20Firewall">F5 Silverline Web App Firewall</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'F5 App Protect', module: 'F5 SSL Orchestrator'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/F5%20App%20Protect?module=F5%20SSL%20Orchestrator">F5 SSL Orchestrator</a></li>
+                                        </ul>
+                                        <span class="seemore"><a data-ui-sref="knowledgeCenterSecurityAll" title="See all Security Knowledge Centers" href="https://support.f5.com/csp/knowledge-center/security">See all</a></span>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="forth">
+                                        <span class="a-mm-h">Virtualization and Cloud</span>
+                                        <ul>
+                                            <li><a data-ui-sref="knowledgeCenterCloud({productId: 'Amazon Web Services', cloudId: 'Public Cloud'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/cloud/Public%20Cloud/Amazon%20Web%20Services">Amazon Web Services</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP Cloud Edition'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20Cloud%20Edition">BIG-IP Cloud Edition</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'F5 Cloud Services' })" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/F5%20Cloud%20Services">F5 Cloud Services</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterCloud({productId: 'F5 Silverline DDoS Protection', cloudId: 'F5 SaaS'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/cloud/F5%20SaaS/F5%20Silverline%20DDoS%20Protection">F5 Silverline DDoS Protection</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterCloud({productId: 'F5 Silverline Web Application Firewall', cloudId: 'F5 SaaS'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/cloud/F5%20SaaS/F5%20Silverline%20Web%20Application%20Firewall">F5 Silverline Web App Firewall</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterCloud({productId: 'Google Cloud', cloudId: 'Public Cloud'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/cloud/Public%20Cloud/Google%20Cloud">Google Cloud</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterCloud({productId: 'Microsoft Azure', cloudId: 'Public Cloud'})" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/cloud/Public%20Cloud/Microsoft%20Azure">Microsoft Azure</a></li>
+                                        </ul>
+                                        <span class="seemore"><a data-ui-sref="knowledgeCenterCloudAll" data-link-type="Nav: Mega" title="See all Virtualization and Cloud Knowledge Centers" href="https://support.f5.com/csp/knowledge-center/cloud">See all</a></span>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="forth">
+                                        <span class="a-mm-h">Software</span>
+                                        <ul>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP APM'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM">BIG-IP APM</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP ASM'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20ASM">BIG-IP ASM</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP GTM'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20GTM">BIG-IP GTM/DNS</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IP', module: 'BIG-IP LTM'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20LTM">BIG-IP LTM</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'BIG-IQ', module: 'BIG-IQ Centralized Management'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management">BIG-IQ Centralized Management</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'NGINX Products', module: 'NGINX Controller'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/NGINX%20Products?module=NGINX%20Controller">NGINX Controller</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterSoftware({productId: 'NGINX Products', module: 'NGINX Plus'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/software/NGINX%20Products?module=NGINX%20Plus">NGINX Plus</a></li>
+                                        </ul>
+                                        <span class="seemore"><a data-ui-sref="knowledgeCenterSoftwareAll" data-link-type="Nav: Mega" title="See all Software Knowledge Centers" href="https://support.f5.com/csp/knowledge-center/software">See all</a></span>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="forth">
+                                        <span class="a-mm-h">Hardware</span>
+                                        <ul>
+                                            <li><a data-ui-sref="knowledgeCenterHardware({productId: 'BIG-IP i2000 Series', platformId: 'BIG-IP Platforms'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i2000%20Series">BIG-IP i2000 Series</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterHardware({productId: 'BIG-IP i4000 Series', platformId: 'BIG-IP Platforms'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i4000%20Series">BIG-IP i4000 Series</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterHardware({productId: 'BIG-IP i5000 Series', platformId: 'BIG-IP Platforms'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i5000%20Series">BIG-IP i5000 Series</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterHardware({productId: 'BIG-IP i7000 Series', platformId: 'BIG-IP Platforms'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i7000%20Series">BIG-IP i7000 Series</a></li>
+                                            <li><a data-ui-sref="knowledgeCenterHardware({productId: 'BIG-IP i10000 Series', platformId: 'BIG-IP Platforms'})" data-ui-sref-opts="{inherit : false}" data-link-type="Nav: Mega" href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i10000%20Series">BIG-IP i10000 Series</a></li>
+                                        </ul>
+                                        <span class="seemore"><a data-ui-sref="knowledgeCenterHardwareAll" title="See all Hardware Knowledge Centers" href="https://support.f5.com/csp/knowledge-center/hardware">See all</a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Resources
+                            <span class="indicator"><span class="arrow-up"></span></span>
+                        </a>
+
+                        <div class="askf5-menu-panel" id="ResourcesSubmenu">
+                            <div class="container">
+                                <ul class="submenu col-sm-12">
+                                    <li class="forth">
+                                        <span class="a-mm-h">Downloads</span>
+                                        <ul>
+                                            <li><a data-ng-href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v17.x" target="_blank" data-link-type="Nav: Mega" href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v17.x">BIG-IP 17.x</a></li>
+                                            <li><a data-ng-href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v16.x" target="_blank" data-link-type="Nav: Mega" href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v16.x">BIG-IP 16.x</a></li>
+                                            <li><a data-ng-href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v15.x" target="_blank" data-link-type="Nav: Mega" href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v15.x">BIG-IP 15.x</a></li>
+                                            <li><a data-ng-href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v14.x" target="_blank" data-link-type="Nav: Mega" href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v14.x">BIG-IP 14.x</a></li>
+                                            <li><a data-ng-href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IQ&amp;pro=big-iq_CM" target="_blank" data-link-type="Nav: Mega" href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IQ&amp;pro=big-iq_CM">BIG-IQ</a></li>
+                                        </ul>
+                                        <span class="seemore"><a data-ng-href="https://downloads.f5.com/esd/productlines.jsp" target="_blank" data-link-type="Nav: Mega" title="See all Downloads" href="https://downloads.f5.com/esd/productlines.jsp">See all</a></span>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class="forth">
+                                        <a href="https://www.f5.com/services/certification" class="a-mm-h" target="_blank" data-link-type="Nav: Mega">F5 Certification</a>
+                                        <ul>
+                                            <li>
+                                                <p>Advance your career with F5 Certification</p>
+                                            </li>
+                                        </ul>
+
+                                        <a class="a-mm-h" target="_blank" data-link-type="Nav: Mega" data-ng-href="https://ihealth.f5.com" href="https://ihealth.f5.com/">iHealth</a>
+                                        <ul>
+                                            <li>
+                                                <p>Verify the proper operation of your
+                                                    <span class="nowrap">BIG-IP</span> or BIG-IQ system</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+                                    <li class="forth">
+                                        <a class="a-mm-h" target="_blank" data-link-type="Nav: Mega" data-ng-href="https://account.f5.com/learnf5" href="https://account.f5.com/learnf5">LearnF5</a>
+                                        <ul>
+                                            <li>
+                                                <p>Get up to speed with free self-paced courses</p>
+                                            </li>
+                                        </ul>
+
+                                        <a class="a-mm-h" target="_blank" data-link-type="Nav: Mega" data-ng-href="https://community.f5.com" href="https://community.f5.com/">DevCentral</a>
+                                        <ul>
+                                            <li>
+                                                <p>Join the community of 300,000+ technical peers</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+                                    <li class="forth">
+                                        <a data-ui-sref="bugTracker" class="a-mm-h" data-link-type="Nav: Mega" href="https://support.f5.com/csp/bug-tracker">Bug Tracker</a>
+                                        <ul>
+                                            <li>
+                                                <p>Search the Bug Tracker</p>
+                                            </li>
+                                        </ul>
+
+                                        <a class="a-mm-h" target="_blank" data-link-type="Nav: Mega" data-ng-href="https://secure.f5.com" href="https://secure.f5.com/">Licensing</a>
+                                        <ul>
+                                            <li>
+                                                <p>Activate an F5 product registration key</p>
+                                            </li>
+                                        </ul>
+
+                                        <a href="https://docs.nginx.com/" class="a-mm-h" target="_blank" data-link-type="Nav: Mega">NGINX Documentation</a>
+                                        <ul>
+                                            <li>
+                                                <p>Product manuals and release notes</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="topLinks">
+                    <div class="log">
+                        <!-- ngIf: model.isLoggedIn -->
+
+                        <!-- ngIf: !model.isLoggedIn --><span data-ng-if="!model.isLoggedIn" class="ng-scope">
+                            <a data-ng-href="https://login.f5.com/resource/registerEmail.jsp" target="_blank" data-link-type="Nav: Utility-sign up" href="https://login.f5.com/resource/registerEmail.jsp">Sign Up</a> |
+                            <a id="openLoginModal" data-ng-click="openLoginModal()" data-link-type="Nav: Utility-login">Sign In</a> |
+                        </span><!-- end ngIf: !model.isLoggedIn -->
+
+                        <a id="mySupportLink" data-ui-sref="mySupport.home" href="https://support.f5.com/csp/my-support/home">My Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="FederatedSearch" class="row support-header">
+        <div class="container">
+            <div id="blue-banner">
+                <div id="coveo-searchbox" data-pipeline="askf5-federatedsearch" class="CoveoSearchInterface Coveostate CoveoComponentState CoveoComponentOptions CoveoQueryController coveo-after-initialization CoveoDebug" style="display: block;">
+                    <div class="CoveoSearchbox" data-enable-omnibox="true" data-enable-search-as-you-type="false" data-search-as-you-type-delay="3000" data-trigger-query-on-clear="false" data-placeholder="Search AskF5">
+                    <div class="CoveoOmnibox coveo-query-syntax-disabled magic-box" role="combobox" aria-expanded="false" aria-haspopup="listbox"><div class="magic-box-input"><div class="magic-box-underlay"><span class="magic-box-highlight-container"><span data-id="start" data-success="true"><span data-id="Any" data-success="true" data-value=""></span></span></span><span class="magic-box-ghost-text"></span></div><input spellcheck="false" form="coveo-dummy-form" role="combobox" autocomplete="off" aria-autocomplete="list" title="How can we help you? Type a query and press Enter to search." aria-label="Search AskF5" placeholder="Search AskF5"><div class="magic-box-clear coveo-accessible-button" role="button" aria-label="Clear" tabindex="-1" aria-hidden="true"><div class="magic-box-icon"><svg focusable="false" enable-background="new 0 0 13 13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" class="magic-box-clear-svg"><g fill="currentColor"><path d="m7.881 6.501 4.834-4.834c.38-.38.38-1.001 0-1.381s-1.001-.38-1.381 0l-4.834 4.834-4.834-4.835c-.38-.38-1.001-.38-1.381 0s-.38 1.001 0 1.381l4.834 4.834-4.834 4.834c-.38.38-.38 1.001 0 1.381s1.001.38 1.381 0l4.834-4.834 4.834 4.834c.38.38 1.001.38 1.381 0s .38-1.001 0-1.381z"></path></g></svg></div></div></div><div class="magic-box-suggestions"></div></div><a class="CoveoSearchButton coveo-accessible-button" role="button" aria-label="Search" tabindex="0"><span class="coveo-search-button"><svg focusable="false" enable-background="new 0 0 20 20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="coveo-search-button-svg"><g fill="currentColor"><path class="coveo-magnifier-circle-svg" d="m8.368 16.736c-4.614 0-8.368-3.754-8.368-8.368s3.754-8.368 8.368-8.368 8.368 3.754 8.368 8.368-3.754 8.368-8.368 8.368m0-14.161c-3.195 0-5.793 2.599-5.793 5.793s2.599 5.793 5.793 5.793 5.793-2.599 5.793-5.793-2.599-5.793-5.793-5.793"></path><path d="m18.713 20c-.329 0-.659-.126-.91-.377l-4.552-4.551c-.503-.503-.503-1.318 0-1.82.503-.503 1.318-.503 1.82 0l4.552 4.551c.503.503.503 1.318 0 1.82-.252.251-.581.377-.91.377"></path></g></svg></span><span class="coveo-search-button-loading"><svg focusable="false" enable-background="new 0 0 18 18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" class="coveo-search-button-loading-svg"><g fill="currentColor"><path d="m16.76 8.051c-.448 0-.855-.303-.969-.757-.78-3.117-3.573-5.294-6.791-5.294s-6.01 2.177-6.79 5.294c-.134.537-.679.861-1.213.727-.536-.134-.861-.677-.728-1.212 1.004-4.009 4.594-6.809 8.731-6.809 4.138 0 7.728 2.8 8.73 6.809.135.536-.191 1.079-.727 1.213-.081.02-.162.029-.243.029z"></path><path d="m9 18c-4.238 0-7.943-3.007-8.809-7.149-.113-.541.234-1.071.774-1.184.541-.112 1.071.232 1.184.773.674 3.222 3.555 5.56 6.851 5.56s6.178-2.338 6.852-5.56c.113-.539.634-.892 1.184-.773.54.112.887.643.773 1.184-.866 4.142-4.57 7.149-8.809 7.149z"></path></g></svg></span></a></div>
+                <div aria-live="polite" class="coveo-visible-to-screen-reader-only"></div></div>
+
+                <span class="search-tips">
+                    <a data-ui-sref="article({articleId: 'K98133564'})" target="_blank" href="https://support.f5.com/csp/article/K98133564">Search tips <span class="icon-1x-no-position icon-new-window" data-icon="new-window"></span></a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</csp-header>
+        <csp-service-message class="ng-isolate-scope"><!-- ngIf: ApplicationConfiguration.enableShowXHRRequestError && serviceErrors.showServiceUnavailable --></csp-service-message>
+        <csp-alerts notification-service="notificationService" class="ng-isolate-scope"><div class="row alerts carousel-fade" data-ng-hide="alerts.length === 0 || hideMe" style="">
+    <div class="container">
+        <div class="col-sm-12" id="alertsCarousel">
+            <div uib-carousel="" data-interval="carouselOptions.interval" data-no-wrap="carouselOptions.noWrap" active="alert.active" class="ng-isolate-scope carousel"><div class="carousel-inner" ng-transclude="">
+                <!-- ngRepeat: alert in alerts --><div uib-slide="" ng-repeat="alert in alerts" index="$index" class="ng-scope ng-isolate-scope item active" style=""><div class="text-center" ng-transclude="">
+                    <p class="alert-item ng-scope">
+                        <img data-ng-src="https://cdn.f5.com/websites/support/assets/images/alert-icon.svg" class="icon" src="f5-k7820_files/alert-icon.svg">
+                        <span class="date ng-binding">Aug 03, 2022</span>
+                        <span data-ng-bind-html="getTrustedContent(alert.alert)" class="ng-binding">For details about recent vulnerabilities, refer to 
+<a href="https://support.f5.com/csp/article/K14649763" rel="nofollow">K14649763: Overview of F5 vulnerabilities (August 2022)</a>.</span>
+                    </p>                    
+                </div>
+</div><!-- end ngRepeat: alert in alerts --><div uib-slide="" ng-repeat="alert in alerts" index="$index" class="ng-scope ng-isolate-scope item" style=""><div class="text-center" ng-transclude="">
+                    <p class="alert-item ng-scope">
+                        <img data-ng-src="https://cdn.f5.com/websites/support/assets/images/alert-icon.svg" class="icon" src="f5-k7820_files/alert-icon.svg">
+                        <span class="date ng-binding">May 26, 2022</span>
+                        <span data-ng-bind-html="getTrustedContent(alert.alert)" class="ng-binding">F5 has videos to help you upgrade or update your BIG-IP systems. Watch the 
+<a href="https://www.youtube.com/playlist?list=PLDhImkjf0UJzbpVxRw8s2utuIh-guNs62" rel="nofollow">Update and upgrade the BIG-IP system playlist</a>.</span>
+                    </p>                    
+                </div>
+</div><!-- end ngRepeat: alert in alerts -->
+            </div>
+<a role="button" href="" class="left carousel-control" ng-click="prev()" ng-class="{ disabled: isPrevDisabled() }" ng-show="slides.length &gt; 1" style="">
+  <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+  <span class="sr-only">previous</span>
+</a>
+<a role="button" href="" class="right carousel-control" ng-click="next()" ng-class="{ disabled: isNextDisabled() }" ng-show="slides.length &gt; 1" style="">
+  <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+  <span class="sr-only">next</span>
+</a>
+<ol class="carousel-indicators" ng-show="slides.length &gt; 1" style="">
+  <!-- ngRepeat: slide in slides | orderBy:indexOfSlide track by $index --><li ng-repeat="slide in slides | orderBy:indexOfSlide track by $index" ng-class="{ active: isActive(slide) }" ng-click="select(slide)" class="ng-scope active" style="">
+    <span class="sr-only ng-binding">slide 1 of 2<!-- ngIf: isActive(slide) --><span ng-if="isActive(slide)" class="ng-scope" style="">, currently active</span><!-- end ngIf: isActive(slide) --></span>
+  </li><!-- end ngRepeat: slide in slides | orderBy:indexOfSlide track by $index --><li ng-repeat="slide in slides | orderBy:indexOfSlide track by $index" ng-class="{ active: isActive(slide) }" ng-click="select(slide)" class="ng-scope" style="">
+    <span class="sr-only ng-binding">slide 2 of 2<!-- ngIf: isActive(slide) --></span>
+  </li><!-- end ngRepeat: slide in slides | orderBy:indexOfSlide track by $index -->
+</ol>
+</div>
+        </div>
+    </div>
+</div>
+</csp-alerts>
+    </div>
+
+    <!-- uiView: main --><div class="container ng-scope" data-ui-view="main"><csp-bread-crumbs class="ng-scope ng-isolate-scope"><div class="col-md-12">
+    <div class="row csp-bread-crumbs">
+        <div class="col-md-12">
+            <ul id="breadCrumbs">
+                <!-- ngRepeat: state in statePath --><li data-ng-repeat="state in statePath" class="ng-scope">
+                    <!-- ngIf: !state.noLink --><a ng-if="!state.noLink" ui-state="state.stateName" ui-state-params="state.stateParams" ui-state-opts="{inherit: false}" class="ng-binding ng-scope" href="https://support.f5.com/csp/home">AskF5 Home</a><!-- end ngIf: !state.noLink -->
+                    <!-- ngIf: state.noLink -->
+                </li><!-- end ngRepeat: state in statePath --><li data-ng-repeat="state in statePath" class="ng-scope" style="">
+                    <!-- ngIf: !state.noLink -->
+                    <!-- ngIf: state.noLink --><span ng-if="state.noLink" class="ng-binding ng-scope">K7820</span><!-- end ngIf: state.noLink -->
+                </li><!-- end ngRepeat: state in statePath -->
+            </ul>
+        </div>
+    </div>
+</div></csp-bread-crumbs>
+
+<div class="col-md-10 middlecontent article-container ng-scope" id="articleContainer">
+    <!-- ngIf: ApplicationConfiguration.enableGainsightPx && ApplicationConfiguration.enableGainsightContentFeedback -->
+    <csp-spinner visible="loadComplete" class="ng-isolate-scope"><!-- ngIf: !visible --></csp-spinner>
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <h2 data-ng-bind-html="getArticleTitle()" class="ng-binding">K7820: Overview of SNAT features</h2>
+        </div>
+    </div>
+
+    <csp-article-type article="article" class="ng-isolate-scope"><div class="row csp-article-type">
+    <div class="col-sm-6">
+        <h5 class="non-diagnostic" style="">Non-Diagnostic</h5>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="article-actions right">
+            <button id="printArticle" class="glyphicon glyphicon-print" title="Print article" data-ng-click="printArticle()">
+            </button>
+
+            <button id="favoriteArticle" class="icon-1x-no-position icon-favorited" title="Save to My Support" data-ng-class="{'faved' : isFavorited}" data-ng-click="toggleFavoriteArticle()">
+            </button>
+
+            <span class="addthis_toolbox addthis_default_style">
+                <a id="shareArticle" class="addthis_button_compact" href="#">
+                    <span class="icon-1x-no-position icon-share"></span>
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+</csp-article-type>
+    <csp-article-version article="article" class="ng-isolate-scope"><div class="row csp-article-version">
+    <div class="col-md-12">
+        <section class="container-fluid well article-version">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="date-container ng-binding">
+                        <b>Original Publication Date</b>: Sep 22, 2015
+                        <!-- ngIf: !isDateMatch(article.firstPublishedDateEpoch, article.lastPublishedDateEpoch) --><span data-ng-if="!isDateMatch(article.firstPublishedDateEpoch, article.lastPublishedDateEpoch)" class="ng-binding ng-scope">
+                            <br>
+                            <b>Updated Date</b>: Oct 23, 2020
+                        </span><!-- end ngIf: !isDateMatch(article.firstPublishedDateEpoch, article.lastPublishedDateEpoch) -->
+                    </p>
+                </div>
+                <!-- ngIf: hasAppliesTo --><div class="col-sm-6 ng-scope" data-ng-if="hasAppliesTo" style="">
+                    <div class="dropdown vs right" data-uib-dropdown="" data-is-open="expanded">
+                        <a data-toggle="dropdown" data-uib-dropdown-toggle="" aria-expanded="false" class="dropdown-toggle" aria-haspopup="true">
+                            <span class="caret larger"></span>
+                            Applies to (see versions):
+                        </a>
+                        <ul class="dropdown-menu" data-uib-dropdown-menu="">
+                            <!-- ngRepeat: product in appliesTo --><li class="dropdown-header ng-binding ng-scope" data-ng-repeat="product in appliesTo">
+                                <b>Product</b>: BIG-IP, BIG-IP AAM, BIG-IP AFM, BIG-IP APM, BIG-IP ASM, BIG-IP Link Controller, BIG-IP LTM, BIG-IP PEM
+                                <ul>
+                                    <li class="ng-binding">16.X.X, 15.X.X, 14.X.X, 13.X.X, 12.X.X, 11.X.X, 10.X.X</li>
+                                </ul>
+                            </li><!-- end ngRepeat: product in appliesTo --><li class="dropdown-header ng-binding ng-scope" data-ng-repeat="product in appliesTo">
+                                <b>Product</b>: Legacy Products, BIG-IP WebAccelerator, BIG-IP WOM, BIG-IP PSM, BIG-IP Edge Gateway
+                                <ul>
+                                    <li class="ng-binding">16.X.X, 15.X.X, 14.X.X, 13.X.X, 12.X.X, 11.X.X, 10.X.X</li>
+                                </ul>
+                            </li><!-- end ngRepeat: product in appliesTo -->
+                        </ul>
+                    </div>
+                </div><!-- end ngIf: hasAppliesTo -->
+            </div>
+        </section>
+    </div>
+</div></csp-article-version>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div data-ng-show="!!disclaimerText" class="ng-hide">
+                <h4 class="article-status ng-binding"></h4>
+            </div>
+            <!-- ngRepeat: section in article.content --><div data-ng-repeat="section in article.content" class="ng-scope" style="">
+                <!-- ngIf: showSectionTitle(section.title) --><h4 data-ng-bind-html="section.title" data-ng-if="showSectionTitle(section.title)" class="ng-binding ng-scope">Topic</h4><!-- end ngIf: showSectionTitle(section.title) -->
+                <div class="article-content ng-binding" data-ng-bind-html="getTrustedContent(section.value)"><ul>
+	<li><a href="https://support.f5.com/csp/article/K7820#overview">Overview</a></li>
+	<li><a href="https://support.f5.com/csp/article/K7820#types">Types of SNATs</a></li>
+	<li><a href="https://support.f5.com/csp/article/K7820#standard">Standard SNATs</a></li>
+	<li><a href="https://support.f5.com/csp/article/K7820#intelligent">Intelligent SNATs</a></li>
+	<li><a href="https://support.f5.com/csp/article/K7820#exhaustion">SNAT port exhaustion</a></li>
+	<li><a href="https://support.f5.com/csp/article/K7820#bp">SNAT uses and best practices</a></li>
+</ul>
+
+<p><span class="sectiontitle"><a name="overview"></a>Overview</span></p>
+
+<p>A Secure Network Address Translation (SNAT) is an object that maps 
+the source client IP address in a request to a translation address 
+defined on the BIG-IP device. When the BIG-IP system receives a request 
+from a client, and if the client IP address in the request is defined in
+ the origin address list for the SNAT, the BIG-IP system translates the 
+source IP address of the incoming packet to the SNAT address.</p>
+
+<p>A SNAT can be used by itself to pass traffic that is not destined for
+ a virtual server. For example, you can use a SNAT object to pass 
+certain traffic (such as DNS requests) from an internal network to an 
+external network where your DNS server resides.</p>
+
+<p>A SNAT can also be used in conjunction with a virtual server 
+and&nbsp;destination address of a NAT (displayed as NAT address in the 
+Configuration utility) to translate the source IP address of an incoming
+ connection. (With no SNAT configured, no source address translation 
+takes place). In this case, the SNAT objects match&nbsp;traffic after 
+the traffic has already matched a virtual server or NAT and, therefore, 
+translates the source address upon egress to the server side, unless 
+that traffic is already subjected to SNATs that are applied to the 
+virtual server.</p>
+
+<p>For example, when the BIG-IP system receives a new connection from source IP address <strong>192.168.20.1</strong> to destination IP address <strong>192.168.10.1</strong>, the virtual server or NAT listener on&nbsp;<strong>192.168.10.1</strong>&nbsp;accepts the connection, and upon egress to the server side, the SNAT listener&nbsp;<strong>192.168.20.0/24</strong>&nbsp;processes the connection and translates the source address to the <strong>Translation</strong>
+ address that is configured on the SNAT object. If there is a source 
+address translation configured on the virtual server, this address is 
+used instead rather than the SNAT object. Continuing with the example, 
+the system translates&nbsp;<strong>192.168.20.1</strong> to <strong>172.16.20.1</strong>.
+ As a result of this behavior, you can configure a single SNAT object to
+ translate traffic from all virtual servers destined to the next hop on 
+the server side, as opposed to configuring the <strong>Source Address Translation</strong>
+ property on every virtual server. In this scenario, when you want to 
+bypass the SNAT for a specific virtual server (which has a pool 
+configured) and&nbsp;allow the client address on the server side, you 
+can&nbsp;disable the associated pool setting <strong>Allow SNAT</strong>.</p>
+
+<p>You can also use a SNAT to ensure that response traffic is returned 
+through the BIG-IP system without requiring other outbound non-load 
+balanced traffic to also route through the BIG-IP system, and without 
+requiring any changes in the router or server's configuration. SNAT is 
+also a critical component in one-armed configurations, preventing the 
+server from responding directly to the client.</p>
+
+<p>A SNAT works in the following manner:</p>
+
+<ol>
+	<li>The BIG-IP system receives a request directly from a client or from
+ virtual server traffic and verifies whether that source IP address is 
+defined in the origin address list for the SNAT.</li>
+	<li>If the client's IP address is defined in the origin address list 
+for the SNAT, the BIG-IP system translates the source IP address to the 
+translation address defined in the SNAT.</li>
+	<li>The BIG-IP system then sends the client request to the pool member or other destination.</li>
+</ol>
+
+<p><span class="sectiontitle"><a name="types"></a>Types of SNATs</span></p>
+
+<p>Standard SNATs and intelligent SNATs are illustrated in the following sections:</p>
+
+<p><span class="subsectiontitle"><a name="standard"></a>Standard SNATs</span></p>
+
+<p>The following three examples illustrate three types of standard SNATs:</p>
+
+<p><strong>A SNAT in which you specify a specific translation address</strong></p>
+
+<p>One way to create a SNAT is to directly map one or more original IP 
+address to a specific translation address that you choose. For the SNAT 
+origin address, you can specify&nbsp;host addresses, network addresses, 
+or a wildcard that matches all addresses. For example, the following <strong>tmsh </strong>command translates the address of connections that originate from the address 10.10.10.1 to the translation address 172.16.0.1:</p>
+
+<p><span class="code">create /ltm snat /Common/test_snat origins add { 10.10.10.1/32 } &nbsp; translation 172.16.0.1</span></p>
+
+<p><span class="note"><strong>Note</strong>: Ensure that you specify the
+ route domain ID on the origin and translation address when translating 
+addresses for specific route domains. For example: <strong>10.10.10.1%5/32</strong>.</span></p>
+
+<p><span class="note"><strong>Note</strong>: For more information about SNATs and SNAT pools, refer to <a href="https://support.f5.com/csp/article/K47945399" target="_self">K47945399: Create basic SNATs and SNAT pools</a>.</span></p>
+
+<p><span class="subsectiontitle">Automap SNAT</span></p>
+
+<p>Of the available SNAT options, SNAT automap is often preferred 
+because it is simple to configure and maintain, and helps conserve IP 
+addresses by using the BIG-IP system's existing self IP addresses.</p>
+
+<p>When the BIG-IP system processes connections from the origin IP 
+addresses matching a SNAT automap definition, it chooses a translation 
+address from the available self IP addresses. Floating self IP addresses
+ on the egress&nbsp;VLAN&nbsp;are preferred to support seamless 
+failover. If multiple floating self IP addresses are configured on the 
+VLAN, the BIG-IP system translates the address of client connections by 
+alternating through a pool of all floating self IPs on the VLAN.</p>
+
+<p><span class="note"><strong>Note</strong>: The SNAT automap feature 
+may not use the intended translation address if a floating self IP is 
+not available on the egress VLAN, or the floating self IP address was 
+originally a static self IP address. For more information, refer to <a href="https://support.f5.com/csp/article/K7336">K7336: The SNAT Automap and self IP address selection</a>.</span></p>
+
+<p>For example, the following <strong>tmsh </strong>command translates 
+the address of connections that originate from the address 10.10.10.1 to
+ one of the system's self IP addresses:</p>
+
+<p><span class="code">create /ltm snat /Common/test_snat automap origins add { 10.10.10.1/32 }</span></p>
+
+<p>The following <strong>tmsh </strong>command translates addresses of the network range 10.10.0.0/16:</p>
+
+<p><span class="code">create /ltm snat /Common/test_snat automap origins add { 10.10.0.0/16 }</span></p>
+
+<p><span class="subsectiontitle">SNAT pools</span></p>
+
+<p>A SNAT pool represents a pool of translation addresses that you 
+configure on the BIG-IP system. The original IP address is then mapped 
+to the entire translation pool, called a SNAT pool. For example, the 
+following <strong>tmsh </strong>command contains the translation addresses 172.16.0.1 and 172.16.0.2:</p>
+
+<p><span class="code">create /ltm snatpool /Common/my_snatpool members add { 172.16.0.1 172.16.0.2 }</span></p>
+
+<p>After you create the SNAT pool, you must associate it with a SNAT object. For example, the following <strong>tmsh </strong>command
+ translates the address of connections that originate from the address 
+10.10.10.1 to one of the IP addresses in the SNAT pool:</p>
+
+<p><span class="code">create /ltm snat /Common/test_snatpool origins add { 10.10.10.1/32 { } } snatpool my_snatpool</span></p>
+
+<p><span class="warning"><strong>Important</strong>: When using a SNAT 
+pool with IP addresses from the egress VLAN (the VLAN for which the 
+packet exits in the BIG-IP system) and non-egress VLAN networks, the 
+egress VLAN network address is given higher priority. For example, 
+egress VLAN <strong>external&nbsp;</strong>has a self IP of 
+172.16.0.254/24, and SNAT pool member addresses of 172.16.0.1/24 and 
+10.1.1.1/24. The BIG-IP system prefers the egress VLAN SNAT pool member 
+address 172.16.0.1&nbsp;and continues to use the same address until it 
+becomes unavailable.</span></p>
+
+<p><span class="note"><strong>Note</strong>: The BIG-IP system load balances SNAT pool connections between members using the <strong>least connections</strong> algorithm.</span></p>
+
+<p><span class="note"><strong>Note</strong>: For more information about SNATs and SNAT pools, refer to <a href="https://support.f5.com/csp/article/K47945399" target="_self">K47945399: Create basic SNATs and SNAT pools</a>.</span></p>
+
+<p><span class="subsectiontitle"><a name="intelligent"></a>Intelligent SNATs</span></p>
+
+<p>An intelligent SNAT is the mapping of one or more original client IP 
+address to a translation address. However, you implement this type of 
+SNAT mapping within an iRule. An intelligent SNAT allows the BIG-IP 
+system to base its selection of a translation address on any piece of 
+packet data that you specify. This piece of data could be the original 
+client IP address, or it could be another piece of data in the packet, 
+such as a server port or an HTTP cookie.</p>
+
+<p>To configure an intelligent SNAT, you must complete the following tasks:</p>
+
+<ul>
+	<li>Determine the type of packet data that the BIG-IP system uses as a 
+basis for selecting a translation address, such as the server port.</li>
+	<li>Create the SNAT or SNAT pools that the BIG-IP system uses to select a translation address.</li>
+	<li>Assign the iRule as a resource to the virtual server.</li>
+</ul>
+
+<p>The following two examples illustrate mapping original client IP addresses to a translation address using an iRule:</p>
+
+<p><strong>Example 1</strong></p>
+
+<p>If you want the BIG-IP system to base its selection of a translation 
+address on the destination port, you would first create a data group 
+that contains the destination ports, and then create the iRule that 
+applies the SNAT translation address to connections using a port 
+specified in the data group. After you have created the data group and 
+SNAT, you must assign the iRule as a resource to the virtual server. The
+ following <strong>tmsh</strong>&nbsp;command&nbsp;creates a data group called <strong>Ports</strong>, containing ports 80, 81, and 8080:</p>
+
+<p><span class="code">create /ltm data-group internal Ports type string records add { 80 81 8080 }</span></p>
+
+<p>After you create the data group, create the iRule that applies the 
+SNAT translation address to connections using ports from the Ports data 
+group. The following iRule examples apply the SNAT translation address 
+of 172.16.0.1 to connections using ports from the Ports data group:</p>
+
+<ol>
+	<li>Create the iRule using <strong>tmsh </strong>by entering the following command:
+
+	<p><span class="code">create /ltm rule Ports_Snat_iRule</span></p>
+	</li>
+	<li>Place a stanza similar to the following between the opening and closing braces:
+	<p><span class="example2">when CLIENT_ACCEPTED {<br>
+	if { [class match [TCP::local_port] equals Ports]} {<br>
+	snat 172.16.0.1<br>
+	}<br>
+	}</span></p>
+	</li>
+	<li>After the system confirms the changes, press ESC to quit interactive mode, then enter <strong>:wq</strong>.</li>
+	<li>Select <strong>y</strong>&nbsp;to save changes.</li>
+	<li>Apply the iRule to the virtual server using the following command syntax:
+	<p><span class="code">modify /ltm virtual ftp_vs rules { Port_Snat_iRule }</span></p>
+	</li>
+	<li>Save the configuration by entering the following command:
+	<p><span class="code">save /sys config partitions all</span></p>
+	</li>
+</ol>
+
+<p><strong>Example 2</strong></p>
+
+<p>If you want the BIG-IP system to base its selection of a translation 
+address on the client/source IP address and the destination port, and 
+then forward unchanged traffic that does not match this criteria, you 
+would first create two data groups that contain the client/source IP 
+addresses and destination ports respectively, and then create the iRule 
+that would apply the SNAT translation address.</p>
+
+<p>The following <strong>tmsh</strong> command creates a data group called <strong>Hosts</strong>, which contains IP addresses 10.10.10.1, 10.10.10.2, and 10.10.10.3:</p>
+
+<p><span class="code">create /ltm data-group Hosts type ip records add { 10.10.10.1 10.10.10.2 10.10.10.3 }</span></p>
+
+<p>The following <strong>tmsh</strong> command&nbsp;creates a data group called <strong>Ports</strong>, which contains ports 80 and 8080:</p>
+
+<p><span class="example2">create /ltm data-group Ports type string records add { 80 8080 }</span></p>
+
+<p>After you create the data groups, create the iRule that applies the 
+SNAT translation address to connections using IP addresses and ports 
+from the Hosts and Ports data groups, and forward all other connections.
+ The following iRule example apply the SNAT translation address of 
+172.16.0.1 to connections using IP addresses and ports from the Hosts 
+and Ports data groups, and forward all other connections:</p>
+
+<ol>
+	<li>To create the iRule using tmsh, enter the following command:
+	<p><span class="code">create /ltm rule Hosts_Ports_Snat_iRule</span></p>
+	</li>
+	<li>Place a stanza similar to the following between the opening and closing braces:
+	<p><span class="example2">when CLIENT_ACCEPTED {</span></p>
+
+	<p style="margin-left:40px"><span class="example2">if { [class match [IP::client_addr] equals Hosts]} {<br>
+	if { [class match [TCP::local_port] equals Ports]} {<br>
+	snat 172.16.0.1<br>
+	} else {<br>
+	forward<br>
+	}<br>
+	}<br>
+	}</span></p>
+	</li>
+	<li>After the system confirms the changes, press ESC to quit interactive mode, then enter <strong>:wq</strong>.</li>
+	<li>Select <strong>y </strong>to save changes.</li>
+	<li>Apply the iRule to the virtual server using the following command syntax:
+	<p><span class="code">modify /ltm virtual ftp_vs rules { Hosts_Ports_Snat_iRule }</span></p>
+	</li>
+	<li>Save the configuration by entering the following command:
+	<p><span class="code">save /sys config partitions all</span></p>
+	</li>
+</ol>
+
+<p><span class="sectiontitle"><a name="exhaustion"></a>SNAT port exhaustion</span></p>
+
+<p>Port exhaustion or collisions may occur under heavy usage or special 
+client traffic patterns. As a result, connections that cannot be 
+translated due to lack of available ports on a given translation address
+ may be dropped.</p>
+
+<p>When a SNAT is configured on the BIG-IP system (either by itself or 
+in conjunction with a virtual server), the source address of each 
+connection is translated to a configured SNAT address, and the source 
+port is mapped to a port currently available for that address. By 
+default, the BIG-IP system attempts to preserve the source port, but if 
+the port is already in use on the selected translation address, the 
+system also translates the source port.</p>
+
+<p><span class="note"><strong>Note</strong>: Starting in BIG-IP 10.0.0, 
+it is possible to control, on a per-virtual-server basis, whether the 
+system should preserve the client's source port. For more information, 
+refer to <a href="https://support.f5.com/csp/article/K11003">K11003: Configuring source port preservation for virtual servers</a>.</span></p>
+
+<p>Each SNAT address, like any IP address, has only 65535 ports 
+available. This is a limit of the TCP and User Datagram Protocol (UDP) 
+protocols, since they use a 16-bit unsigned integer (thus ranging from 0
+ to 65535) to specify the source and destination ports. However, each 
+SNAT address can potentially process more than 65535 concurrent 
+connections, as long as each socket pair is unique. A socket pair is 
+defined by a 4-tuple structure consisting of the following elements:</p>
+
+<ul>
+	<li>Source IP address</li>
+	<li>Source port</li>
+	<li>Destination IP address</li>
+	<li>Destination port</li>
+</ul>
+
+<p>For example, a given SNAT address can continue to use the same source
+ port as long as the remote socket is unique, thus allowing the SNAT 
+address to process more than 65535 concurrent connections.</p>
+
+<p>For example:</p>
+
+<p><span class="example2">SNAT address and port Remote socket<br>
+10.1.1.1:1234 -------------&gt; 10.1.1.200:80<br>
+10.1.1.1:1234 -------------&gt; 10.1.1.201:80<br>
+10.1.1.1:1234 -------------&gt; 10.1.1.200:8080<br>
+10.1.1.1:1234 -------------&gt; 10.1.1.201:8080</span></p>
+
+<p><span class="note"><strong>Note</strong>: When SNAT is used in 
+conjunction with a virtual server that load balances connections to a 
+pool, the remote socket is the IP address and port of the chosen pool 
+member. Therefore, assuming a certain SNAT address is configured on only
+ one virtual server, the SNAT address is able to process approximately 
+65535 concurrent connections for each pool member in the pool (each 
+unique remote socket).</span></p>
+
+<p>While the uniqueness of remote sockets depends entirely on your 
+specific configuration and traffic, for simplicity you should think of 
+65535 concurrent connections as the maximum capacity for any given SNAT 
+address. If you think more than 65535 connections may require 
+translation, you should configure more SNAT addresses (for example, 
+using a SNAT pool).</p>
+
+<p>You may be able to determine when SNAT port exhaustion is occurring 
+by reviewing the system log files. When port exhaustion occurs, error 
+messages that appear similar to the following examples are logged to the
+ <strong>/var/log/ltm</strong> file:</p>
+
+<p><span class="example2">01010201:2: Inet port exhaustion on 10.1.21.26 to 172.28.21.71:53 (proto 17)<br>
+01010201:2: Inet port exhaustion on 10.10.10.211 to 172.28.21.123:80 (proto 6)</span></p>
+
+<p><span class="note"><strong>Note</strong>: The previous error messages
+ are not specific to SNAT port exhaustion&nbsp;and may be logged 
+whenever the Traffic Management Microkernel (TMM) detects port 
+exhaustion for a traffic management object.</span></p>
+
+<p>Beginning in BIG-IP 12.0.0, the system issues an early warning when 
+it detects that the pool of available service ports is nearing 
+exhaustion. For more information about configuring the port exhaustion 
+message threshold, refer to <a href="https://support.f5.com/csp/article/K63275550">K63275550: Modifying the BIG-IP system's ephemeral port exhaustion warning</a>.</p>
+
+<p>You can monitor the number of concurrent connections going through the SNAT by running the <strong>tmsh show /ltm snat</strong> command, or in the Configuration utility, choose one of the following methods:</p>
+
+<p><span class="subsubsectiontitle">BIG-IP 12.0.0 and later</span></p>
+
+<ol>
+	<li>Log in to the Configuration utility.</li>
+	<li>Go to <strong>Statistics &gt; Module Statistics &gt; Local Traffic</strong>.</li>
+	<li>For <strong>Statistics Type,&nbsp;</strong>select&nbsp;<strong>SNATs</strong>,<strong> SNAT Pools</strong>,<strong> </strong>or <strong>SNAT Translations</strong>.</li>
+</ol>
+
+<p><span class="subsubsectiontitle">BIG-IP 11.0 and earlier</span></p>
+
+<ul>
+	<li>Go to <strong>Overview </strong>&gt; <strong>Statistics</strong> &gt;<strong> Local Traffic</strong> &gt;<strong> Statistics Type </strong>and select <strong>SNATs</strong>.</li>
+</ul>
+
+<p>For information about mitigating SNAT port exhaustion, refer to <a href="https://support.f5.com/csp/article/K7820#usingsnatpools">Using SNAT pools or SNAT automap to prevent port collisions</a> in the SNAT uses and the following best practices section.</p>
+
+<p><span class="sectiontitle"><a name="bp"></a>SNAT uses and best practices</span></p>
+
+<p>When planning for SNAT traffic, you must consider the following factors:</p>
+
+<ul>
+	<li>Number of concurrent connections</li>
+	<li>Connection reuse</li>
+	<li>TCP/UDP idle timeout</li>
+</ul>
+
+<p>To maximize the availability of the ephemeral SNAT ports, limit the 
+amount of time that a TCP/UDP port is held in an idle state by reducing 
+the SNAT timeout value to the smallest interval possible for the traffic
+ that the SNAT supports. For example, HTTP traffic does not require a 
+long timeout since HTTP uses short-lived, active connections. A 
+60-second TCP idle timeout is more than ample for general HTTP traffic. 
+If the SNAT supports FTP traffic, the timeout value must take into 
+account the data flowing over both the control and data channels: the 
+control channel may go idle while data is being sent on the data 
+channel, so the SNAT timeout should reflect the transfer time of the 
+longest expected data download. In general, a 120 to 300-second TCP idle
+ timeout is more than sufficient for FTP traffic.</p>
+
+<p><strong>Judicious use</strong></p>
+
+<p>Enable SNAT only where necessary, to preserve available source IP addresses and ports.</p>
+
+<p><strong>Allowing internal hosts to access external devices through the BIG-IP system</strong></p>
+
+<p>If you have internal hosts that are configured to route to the BIG-IP
+ system, and the hosts require access external devices through the 
+BIG-IP system, you can create a SNAT. For example, you can create a SNAT
+ object on the BIG-IP system to pass certain administrative traffic such
+ as DNS or SNMP from an internal network to an external network. The 
+SNAT translates the source IP address of the packet to the SNAT address 
+so that the external device routes the reply packet back to the BIG-IP 
+system.</p>
+
+<p><strong>Connecting to a virtual server with a pool member that is on the same IP subnet as the client</strong></p>
+
+<p>If you want to load balance requests to nodes that are on the same 
+network as the clients, you must configure a SNAT on the BIG-IP system 
+so that connections and responses are passed through the BIG-IP system. 
+This is commonly referred to as a one-armed configuration.</p>
+
+<p><span class="subsectiontitle"><a name="usingsnatpools"></a>Using SNAT pools or SNAT automap to prevent port collisions</span></p>
+
+<p>SNATs have a limit of 65535 ports. SNAT connections can fail if a 
+large number of client's requests are traversing the SNAT. To mitigate 
+port collisions, create SNAT pools or use SNAT automap with an 
+appropriate number of self IP addresses on the VLAN to support the 
+expected level of concurrent connections using SNAT.</p>
+
+<p><strong>SNAT demotes PVA acceleration</strong></p>
+
+<p>A SNAT demotes Packet Velocity ASIC (PVA) acceleration on systems 
+that are equipped with a PVA chip. When a SNAT is associated with a 
+virtual server, the virtual server is demoted to partial PVA 
+acceleration.</p>
+
+<p><strong>SNATs do not preserve the client address</strong></p>
+
+<p>When the BIG-IP system translates the source IP address of the 
+incoming packet to the SNAT address, the web server sees the request as 
+originating from the SNAT address, not the original client IP address. 
+If the web server is required to log connections using the original 
+client IP address, SNAT address translation prevents this.</p>
+
+<p><strong>SNATs only forward TCP and UDP traffic</strong></p>
+
+<p>By default, SNATs forward only TCP and UDP traffic. Other IP traffic,
+ such as Internet Control Message Protocol (ICMP), is dropped. You can 
+configure SNATs to forward any IP packets by modifying the SNAT Packet 
+Forwarding setting. For information, refer to <a href="https://support.f5.com/csp/article/K3760">K3760: Configuring SNATs to forward any IP protocols</a>.</p>
+
+<p><strong>SNAT automap and redundant BIG-IP systems</strong></p>
+
+<p>If you decide to use SNAT automap on a BIG-IP high availability (HA) 
+pair, ensure that at least one floating self IP address exists on each 
+egress VLAN. This ensures traffic translates to the same translation 
+address (the floating self IP address) regardless of which unit is 
+currently active.</p>
+
+<p><strong>SNAT automap idle timeout</strong></p>
+
+<p>SNAT automap objects have a non-configurable idle timeout value. If 
+you need to implement a SNAT with a configurable idle timeout, create a 
+SNAT with a defined translation IP address or a SNAT pool, and then set 
+the desired idle timeout for the translation addresses. You can specify a
+ timeout value in seconds or use the keyword&nbsp;<strong>Indefinite</strong>. For more information, refer to <a href="https://support.f5.com/csp/article/K6017">K6017: The BIG-IP SNAT automap idle timeout value is not configurable</a>.</p>
+</div>
+            </div><!-- end ngRepeat: section in article.content --><div data-ng-repeat="section in article.content" class="ng-scope">
+                <!-- ngIf: showSectionTitle(section.title) --><h4 data-ng-bind-html="section.title" data-ng-if="showSectionTitle(section.title)" class="ng-binding ng-scope">Supplemental Information</h4><!-- end ngIf: showSectionTitle(section.title) -->
+                <div class="article-content ng-binding" data-ng-bind-html="getTrustedContent(section.value)"><ul>
+	<li>The <em><strong>BIG-IP Local Traffic Manager: Implementations</strong></em> manual
+
+<p><span class="note"><strong>Note</strong>: For information about how to locate F5 product manuals, refer to <a href="https://support.f5.com/csp/article/K98133564">K98133564: Tips for searching AskF5 and finding product documentation</a>.</span></p>	</li>
+	<li><a href="https://support.f5.com/csp/article/K4832">K4832: Overview of PVA Acceleration </a></li>
+	<li><a href="https://support.f5.com/csp/article/K4816">K4816: Using the X-Forwarded-For HTTP header to preserve the original client IP address for traffic being translated by a SNAT</a></li>
+	<li><a href="https://support.f5.com/csp/article/K9038">K9038: The order of precedence for local traffic object listeners</a></li>
+	<li><a href="https://support.f5.com/csp/article/K05528125">K05528125:&nbsp;SNAT Pool load balancing behavior</a></li>
+</ul>
+</div>
+            </div><!-- end ngRepeat: section in article.content -->
+            <!-- ngIf: articleType.id === 'supportsolution' -->
+            <span id="startSurveyModal" data-ng-click="startSurveyModal()"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 printonly applies-to-print-only">
+            <p>Applies to:</p>
+
+            <!-- ngRepeat: product in appliesToForPrint --><p data-ng-repeat="product in appliesToForPrint" class="ng-scope" style="">
+                <span class="ng-binding">
+                    <b>Product</b>: BIG-IP, BIG-IP AAM, BIG-IP AFM, BIG-IP APM, BIG-IP ASM, BIG-IP Link Controller, BIG-IP LTM, BIG-IP PEM
+                </span>
+                <br>
+                <span class="ng-binding">16.X.X, 15.X.X, 14.X.X, 13.X.X, 12.X.X, 11.X.X, 10.X.X</span>
+            </p><!-- end ngRepeat: product in appliesToForPrint --><p data-ng-repeat="product in appliesToForPrint" class="ng-scope">
+                <span class="ng-binding">
+                    <b>Product</b>: Legacy Products, BIG-IP WebAccelerator, BIG-IP WOM, BIG-IP PSM, BIG-IP Edge Gateway
+                </span>
+                <br>
+                <span class="ng-binding">16.X.X, 15.X.X, 14.X.X, 13.X.X, 12.X.X, 11.X.X, 10.X.X</span>
+            </p><!-- end ngRepeat: product in appliesToForPrint -->
+        </div>
+    </div>
+
+    <div class="row feedback" id="feedback">
+        <!-- ngIf: !ApplicationConfiguration.enableGainsightArticleFeedback && !ApplicationConfiguration.enableMedallia -->
+        <!-- ngIf: ApplicationConfiguration.enableGainsightPx && ApplicationConfiguration.enableGainsightArticleFeedback -->
+        <!-- ngIf: ApplicationConfiguration.enableMedallia --><div data-ng-show="loadComplete" data-ng-if="ApplicationConfiguration.enableMedallia" class="col-sm-12 col-lg-12 ng-scope" id="medallia_inline_survey" style="">
+        </div><!-- end ngIf: ApplicationConfiguration.enableMedallia -->
+    </div>
+</div>
+
+<div class="col-md-2 sidebar-content ng-scope">
+    <div class="row">
+        <csp-tasks hide-request-for-support="true" class="ng-isolate-scope"><div class="col-12-sm">
+    <div data-ng-class="{ 'position-at-top' : taskFloat }" class="sidebar-links slideup fixme">
+        <h3>Quick Tasks</h3>
+        <ul>
+            <li><a id="TaskAskF5Channel" target="_blank" data-link-type="Nav: Secondary" data-ng-href="https://www.youtube.com/c/AskF5" href="https://www.youtube.com/c/AskF5">AskF5 YouTube Channel</a></li>
+            <li><a id="TaskListiHealthLink" target="_blank" data-link-type="Nav: Secondary" data-ng-href="https://ihealth.f5.com" href="https://ihealth.f5.com/">Diagnose your system with iHealth</a></li>
+            <li><a id="TaskListCreateSRLink" data-ui-sref="mySupport.createServiceRequest" data-link-type="Nav: Secondary" href="https://support.f5.com/csp/my-support/service-request">Create service request</a></li>
+            <li><a id="TaskListMySupportLink" data-ui-sref="mySupport.home" data-link-type="Nav: Secondary" href="https://support.f5.com/csp/my-support/home">Manage service requests</a></li>
+            <li><a id="TaskListFindSerialNumberLink" data-ui-sref="article({ articleId: 'K917' })" data-link-type="Nav: Secondary" href="https://support.f5.com/csp/article/K917">Find serial number</a></li>
+            <li class="bug-database-link-container"><span class="bug-database-link"></span><a id="TaskListF5BugTrackerLink" data-ui-sref="bugTracker" data-link-type="Nav: Secondary" href="https://support.f5.com/csp/bug-tracker">Search Bug Tracker</a></li>
+            <li><span class="RSS-link"><a id="TaskListNewArticlesLink" data-ui-sref="newArticles" data-link-type="Nav: Secondary" href="https://support.f5.com/csp/new-updated-articles">New and updated articles</a></span></li>
+            <li><a id="TaskListSubscribeLink" href="https://interact.f5.com/Customer-Preference-Center.html" target="_blank" data-link-type="Nav: Secondary"><span class="icon-1x icon-mail" title="Subscribe to updates"></span>Subscribe
+                to mailing lists</a></li>
+            <li><a id="TaskListContactSupportLink" target="_blank" data-link-type="Nav: Secondary" data-ng-href="https://www.f5.com/company/contact/regional-offices#product-support" href="https://www.f5.com/company/contact/regional-offices#product-support">Contact Support</a></li>
+            <!-- ngIf: !hideRequestForSupport && ApplicationConfiguration.enableVERegistration -->
+            <!-- ngIf: currentState === 'home' && !ApplicationConfiguration.enableVERegistration && ApplicationConfiguration.enableTakeTour -->
+        </ul>
+    </div>
+</div>
+</csp-tasks>
+    </div>
+</div>
+</div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <csp-prefooter data-ng-show="hasPrefooter" class="ng-isolate-scope ng-hide"><div class="content-fluid pre-footer">
+    <div class="blocks-container">
+        <div class="block">
+            <h3>Support Programs</h3>
+
+            <p>Regionally located support centers enable F5 to provide 
+support in a number of languages through native-speaking support 
+engineers.</p>
+            <a class="btn" data-ng-href="https://www.f5.com/services/support/support-offerings" target="_blank" href="https://www.f5.com/services/support/support-offerings">See more
+                <span class="icon-1x-no-position icon-new-window" data-icon="new-window"></span>
+            </a>
+        </div>
+        <div class="block">
+            <h3>Contact Support</h3>
+
+            <p>North America: 1-888-882-7535 or 1-855-834-0367<br>Outside North America: 800-11-275-435</p>
+            <a class="btn" target="_blank" data-ng-href="https://www.f5.com/company/contact/regional-offices#product-support" href="https://www.f5.com/company/contact/regional-offices#product-support">Local Support Numbers
+                <span class="icon-1x-no-position icon-new-window" data-icon="new-window"></span>
+            </a>
+        </div>
+        <div class="block">
+            <h3>Feedback and Help</h3>
+
+            <p>Have questions, suggestions, or just want to get something off your chest? Let us know.</p>
+            <a class="btn" data-ng-click="leaveFeedback()">Leave feedback</a>
+        </div>
+    </div>
+</div>
+</csp-prefooter>
+        </div>
+
+        <div class="row">
+            <csp-footer csp-version="currentCSPVersion" class="ng-isolate-scope"><div id="footer" class="footer">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row top-row-container">
+                <div class="col-xs-12 col-md-6">
+                    <div class="contact-container">
+                        <h4 class="contact-header">Have a question?</h4>
+                        <div>
+                            <span class="spacer">|</span><a data-ng-href="https://www.f5.com/company/contact" target="_blank" href="https://www.f5.com/company/contact">Support and Sales &gt;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="social-container">
+                        <h4 class="social-link-header">Follow Us</h4>
+                        <div>
+                            <ul class="social-links">
+                                <li><a href="https://twitter.com/f5" target="_blank">
+                                    <svg class="svg-icon svg-n-twitter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                        <path class="svg-fill" d="M95 23.3s-3.5 5.4-9.2 9C87 57.3 67.8 85 33.3 85 16 85 5 77 5 77s13.6 2.7 27.3-7.2C18.3 69 15 57.5 15 57.5s3.8 1 8.4-.3c-15.6-3.7-15-17.6-15-17.6s4 2.2 8.5 2.2C2.6 31.4 11 18 11 18s12.7 17.2 38 18.7C45.8 17.3 69 8.4 81 20.5c6.2-1 12-4.3 12-4.3s-2 6.6-8.3 9.8c5-.3 10.5-2.7 10.5-2.7z"></path>
+                                    </svg>
+                                </a></li>
+                                <li><a href="https://www.linkedin.com/company/f5" target="_blank">
+                                    <svg class="svg-icon svg-n-linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.99 22.131"><defs><style>.link-cls-1{fill:none}</style><clipPath id="link-clip-path"><path id="Path_131" data-name="Path 131" class="link-cls-1" d="M1403.535-522.583h-18.741a1.605 1.605 0 0 0-1.624 1.583v18.96a1.605 1.605 0 0 0 1.624 1.585h18.741a1.606 1.606 0 0 0 1.625-1.585V-521a1.606 1.606 0 0 0-1.625-1.583zm-13.7 18.526h-3.321v-9.993h3.321zm-1.661-11.358h-.022a1.719 1.719 0 0 1-1.835-1.726 1.733 1.733 0 0 1 1.879-1.726 1.726 1.726 0 0 1 1.857 1.726 1.733 1.733 0 0 1-1.878 1.725zm13.637 11.358h-3.322v-5.343c0-1.343-.48-2.259-1.682-2.259a1.819 1.819 0 0 0-1.7 1.215 2.28 2.28 0 0 0-.109.81v5.581h-3.321s.043-9.056 0-9.993H1395v1.414a3.3 3.3 0 0 1 2.993-1.65c2.185 0 3.824 1.429 3.824 4.5v5.731z" transform="translate(-1383.17 522.583)"></path></clipPath><clipPath id="link-clip-path-2"><path id="Path_130" data-name="Path 130" class="link-cls-1" d="M0-117.436h1619.358V-750H0z" transform="translate(0 750)"></path></clipPath></defs><g id="Icon_LinkedIn" clip-path="url(#link-clip-path)"><g id="Group_241" data-name="Group 241" transform="translate(-1166.587 -191.807)" clip-path="url(#link-clip-path-2)"><path id="Path_129" data-name="Path 129" d="M1378.17-497.019h30.43v-30.564h-30.43z" transform="translate(-215.8 715.174)" fill="#fff"></path></g></g></svg>
+                                </a></li>
+                                <li><a href="https://www.facebook.com/f5incorporated" target="_blank">
+                                    <svg class="svg-icon svg-n-facebook" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 100">
+                                        <path class="svg-fill" d="M45,95H27.3V53.9H12.5v-16h14.8V26.1c0-6.7,2.1-12,6.3-15.8C37.5,6.8,42.7,5,49.3,5c3.7,0,8.1,0.2,13.2,0.6v14.3h-9.3 c-5.5,0-8.3,2.3-8.3,7v11h16.9l-2.2,16H45V95z"></path>
+                                    </svg>
+                                </a></li>
+                                <li><a href="https://www.youtube.com/user/f5networksinc" target="_blank">
+                                    <svg class="svg-icon svg-n-youtube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.516 23" height="23px">
+                                        <path class="svg-fill" data-name="Union 1" d="M4.299 22.998a4.3 4.3 0 0 1-4.3-4.3v-3.45a4.3 4.3 0 0 1 4.3-4.3h14.919a4.3 4.3 0 0 1 4.3 4.3v3.45a4.3 4.3 0 0 1-4.3 4.3zm12.5-8.075a1.682 1.682 0 0 0-.506 1.261v2.674a1.9 1.9 0 0 0 .461 1.35 1.643 1.643 0 0 0 1.258.489 1.773 1.773 0 0 0 1.335-.461 1.912 1.912 0 0 0 .447-1.379v-.305h-1.229v.271a1.289 1.289 0 0 1-.117.679.493.493 0 0 1-.412.153.447.447 0 0 1-.406-.181 1.3 1.3 0 0 1-.116-.651v-1.125h2.275v-1.514a1.785 1.785 0 0 0-.438-1.3 1.669 1.669 0 0 0-1.255-.449 1.793 1.793 0 0 0-1.297.488zM7.95 19.558a1.284 1.284 0 0 0 .21.8.743.743 0 0 0 .622.268 1.432 1.432 0 0 0 .691-.19 2.692 2.692 0 0 0 .688-.55v.651h1.186v-5.954h-1.186v4.515a1.614 1.614 0 0 1-.372.32.667.667 0 0 1-.331.124.294.294 0 0 1-.244-.092.524.524 0 0 1-.072-.305v-4.562H7.95zm6.006.924a1.408 1.408 0 0 0 .622.13.994.994 0 0 0 .809-.337 1.5 1.5 0 0 0 .28-.97v-3.307a1.777 1.777 0 0 0-.3-1.111 1.034 1.034 0 0 0-.864-.38 1.159 1.159 0 0 0-.546.141 1.862 1.862 0 0 0-.51.414v-2.6h-1.2v8.067h1.2v-.455a1.5 1.5 0 0 0 .509.408zM3.315 13.639h1.384v6.9h1.343v-6.9H7.43v-1.172H3.315zm10.558 5.977a.979.979 0 0 1-.282-.213v-3.705a.86.86 0 0 1 .244-.184.6.6 0 0 1 .25-.058.468.468 0 0 1 .375.155.716.716 0 0 1 .124.458v3.075a.636.636 0 0 1-.1.409.378.378 0 0 1-.319.127.7.7 0 0 1-.292-.065zm3.786-2.839v-.6a.884.884 0 0 1 .123-.533.48.48 0 0 1 .406-.164.455.455 0 0 1 .394.164.853.853 0 0 1 .127.533v.6zm-8.06-8.223a1.735 1.735 0 0 1-.527-1.327v-3.4a1.494 1.494 0 0 1 .541-1.212 2.192 2.192 0 0 1 1.454-.452 1.979 1.979 0 0 1 1.365.475 1.581 1.581 0 0 1 .527 1.226v3.389a1.711 1.711 0 0 1-.519 1.318 2.038 2.038 0 0 1-1.434.478 1.97 1.97 0 0 1-1.407-.495zm1.006-5.125a.443.443 0 0 0-.153.348v3.574a.571.571 0 0 0 .144.415.53.53 0 0 0 .408.15.6.6 0 0 0 .429-.15.537.537 0 0 0 .164-.415V3.778a.428.428 0 0 0-.164-.348.675.675 0 0 0-.429-.13.6.6 0 0 0-.396.13zm3.677 5.254a1.388 1.388 0 0 1-.234-.875V2.33h1.336v5.027a.537.537 0 0 0 .089.334.316.316 0 0 0 .27.107.8.8 0 0 0 .375-.138 1.822 1.822 0 0 0 .412-.354V2.33h1.338v6.555h-1.336V8.16a2.851 2.851 0 0 1-.772.61 1.675 1.675 0 0 1-.774.21.84.84 0 0 1-.702-.296zm-8.58.2V5.364L3.911-.002h1.517l.979 3.553h.1l.928-3.553h1.532l-1.754 5.2v3.687z" fill="#fff"></path></svg>
+                                </a></li>
+                                <li><a target="_blank" data-ng-href="https://community.f5.com" href="https://community.f5.com/">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 73.5 91.2" style="enable-background:new 0 0 73.5 91.2;" xml:space="preserve">
+                                        <rect x="38.5" y="60.2" transform="matrix(0.7069 -0.7073 0.7073 0.7069 -29.9503 55.4366)" class="st0" width="26.9" height="7.3"></rect>
+                                        <rect x="14.4" y="36.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -19.9366 31.2914)" class="st0" width="26.9" height="7.3"></rect>
+                                        <rect x="24" y="50.4" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -37.0522 38.2788)" class="st0" width="7.4" height="26.9"></rect>
+                                        <rect x="9.1" y="17.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -8.0682 21.9832)" class="st0" width="26.9" height="7.3"></rect>
+                                        <rect x="33.3" y="41.3" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -18.1193 46.2018)" class="st0" width="26.9" height="7.3"></rect>
+                                        <rect x="43" y="7.3" transform="matrix(0.7069 -0.7073 0.7073 0.7069 -0.9586 39.1301)" class="st0" width="7.4" height="26.9"></rect>
+                                    </svg>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr class="footer-divider">
+        </div>
+        <div class="col-md-12">
+            <div class="row footer-links">
+                <div class="col-sm-3 col-md-3">
+                    <h4>About F5</h4>
+                    <ul>
+                        <li><a data-ng-href="https://www.f5.com/company" target="_blank" data-link-type="footer" href="https://www.f5.com/company">Corporate Information</a>
+                        </li>
+                        <li><a data-ng-href="https://www.f5.com/company/news" target="_blank" data-link-type="footer" href="https://www.f5.com/company/news">Newsroom</a>
+                        </li>
+                        <li><a data-ng-href="https://www.f5.com/company/investor-relations" target="_blank" data-link-type="footer" href="https://www.f5.com/company/investor-relations">Investor Relations</a>
+                        </li>
+                        <li><a data-ng-href="https://www.f5.com/company/careers" target="_blank" data-link-type="footer" href="https://www.f5.com/company/careers">Careers</a>
+                        </li>
+                        <li><a data-ui-sref="about" data-link-type="footer" href="https://support.f5.com/csp/about">About AskF5</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 col-md-3">
+                    <h4>Education</h4>
+                    <ul>
+                        <li><a data-ng-href="https://www.f5.com/services/training" target="_blank" data-link-type="footer" href="https://www.f5.com/services/training">Training</a>
+                        </li>
+                        <li><a data-ng-href="https://www.f5.com/services/certification" target="_blank" data-link-type="footer" href="https://www.f5.com/services/certification">Certification</a>
+                        </li>
+                        <li><a target="_blank" data-link-type="footer" data-ng-href="https://account.f5.com/learnf5" href="https://account.f5.com/learnf5">LearnF5</a>
+                        </li>
+                        <li><a data-ng-href="https://www.f5.com/services/training/free-training-courses" target="_blank" data-link-type="footer" href="https://www.f5.com/services/training/free-training-courses">Free Online Training</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 col-md-3">
+                    <h4>F5 sites</h4>
+                    <ul>
+                        <li><a target="_blank" data-link-type="footer" data-ng-href="https://www.f5.com" href="https://www.f5.com/">F5.com</a>
+                        </li>
+                        <li><a target="_blank" data-link-type="footer" data-ng-href="https://community.f5.com" href="https://community.f5.com/">DevCentral</a>
+                        </li>
+                        <li><a data-ui-sref="home" data-link-type="footer" href="https://support.f5.com/csp/home">Support Portal</a>
+                        </li>
+                        <li><a target="_blank" data-link-type="footer" data-ng-href="https://partnercentral.f5.com" href="https://partnercentral.f5.com/">Partner Central</a>
+                        </li>
+                        <li><a data-ng-href="https://www.f5.com/labs" target="_blank" data-link-type="footer" href="https://www.f5.com/labs">F5 Labs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3 col-md-3">
+                    <h4>Support Tasks</h4>
+                    <ul>
+                        <li><a data-ng-href="https://www.f5.com/services/support/support-offerings/support-policies" target="_blank" data-link-type="footer" href="https://www.f5.com/services/support/support-offerings/support-policies">Read Support Policies</a>
+                        </li>
+                        <li><a data-ui-sref="mySupport.createServiceRequest" data-link-type="footer" href="https://support.f5.com/csp/my-support/service-request">Create Service Request </a>
+                        </li>
+                        <li><a data-ng-click="leaveFeedback()">Leave feedback [+]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="copyright-container">
+                <p>
+                    © <span class="ng-binding">2022</span> F5, Inc. All rights reserved.
+                </p>
+                <p>
+                    <a data-ng-href="https://www.f5.com/company/policies/trademarks" target="_blank" data-link-type="footer" href="https://www.f5.com/company/policies/trademarks">Trademarks</a> |
+                    <a data-ng-href="https://www.f5.com/company/policies" target="_blank" data-link-type="footer" href="https://www.f5.com/company/policies">Policies</a> |
+                    <a data-ng-href="https://www.f5.com/company/policies/privacy-policy" target="_blank" data-link-type="footer" href="https://www.f5.com/company/policies/privacy-policy">Privacy</a> |
+                    <a data-ng-href="https://www.f5.com/company/policies/F5-California-privacy-summary" target="_blank" data-link-type="footer" href="https://www.f5.com/company/policies/F5-California-privacy-summary">California Privacy</a> |
+                    <a data-ng-href="https://www.f5.com/company/policies/privacy-notice#no-sell" target="_blank" data-link-type="footer" href="https://www.f5.com/company/policies/privacy-notice#no-sell">Do Not Sell My Personal Information</a> |
+                    <span id="teconsent" consent="0,1,2" aria-label="Open Cookie Preferences Modal" role="complementary"><script src="f5-k7820_files/v1.7-9751" async="async" crossorigin="" importance="high"></script><a role="link" id="icon-id012070811052064467" tabindex="0" aria-haspopup="true" aria-label="Cookie Preferences" class="truste_cursor_pointer" lang="en">Cookie Preferences</a></span>
+                </p>
+                <p class="revision ng-binding">
+                    rev: 1.5.543.7109
+                </p>
+            </div>
+        </div>
+    </div>
+    <csp-scroll-to-top class="ng-isolate-scope"><a data-ng-click="scrollToTop()" class="scrollToTop" title="Return to top" style="display: inline;">Scroll To Top</a>
+</csp-scroll-to-top>
+</div>
+</csp-footer>
+        </div>
+    </div>
+
+    <!-- ngRepeat: notification in notifications -->
+
+    <script src="f5-k7820_files/vendor.js" type="text/javascript"></script>
+<script src="f5-k7820_files/config.js" type="text/javascript"></script>
+<script src="f5-k7820_files/index.tpl.js" type="text/javascript"></script>
+<script src="f5-k7820_files/index.js" type="text/javascript"></script>
+
+    
+
+
+    
+
+
+    <script src="f5-k7820_files/addthis_widget.js" type="text/javascript"></script><div style="visibility: hidden; height: 1px; width: 1px; position: absolute; top: -9999px; z-index: 100000;" id="_atssh"><iframe id="_atssh115" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; top: 0px; z-index: 100000; border: 0px none; left: 0px;" src="https://s7.addthis.com/static/sh.c7f897d92405181bbe1705e3.html#rand=0.3684928237581899&amp;iit=1660229275288&amp;tmr=load%3D1660229275248%26core%3D1660229275256%26main%3D1660229275287%26ifr%3D1660229275291&amp;cb=0&amp;cdn=0&amp;md=0&amp;kw=&amp;ab=-&amp;dh=support.f5.com&amp;dr=&amp;du=https%3A%2F%2Fsupport.f5.com%2Fcsp%2Farticle%2FK7820&amp;href=https%3A%2F%2Fsupport.f5.com%2Fcsp%2Farticle%2FK7820&amp;dt=&amp;dbg=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;jsl=1&amp;prod=undefined&amp;lng=en&amp;ogt=&amp;pc=men&amp;pub=&amp;ssl=1&amp;sid=62f5169b3fc09719&amp;srf=0.01&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=&amp;csi=undefined&amp;rev=v8.1.0a-wp&amp;ct=1&amp;xld=1&amp;xd=1"></iframe></div><style id="service-icons-0"></style>
+    <!-- replaces //static.cloud.coveo.com/searchui/v2.6459/js/templates/templates.js -->
+    <script src="f5-k7820_files/coveoTemplates-v2.6459.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var root = document.body;
+            Coveo.$$(root).on('querySuccess', function (e, args) {
+                setTimeout(function () {
+                    var quickyicon = document.querySelectorAll("#custom-quick-icon-youtube img[title]");
+                    for (var i = 0; i < quickyicon.length; i++) {
+                        quickyicon[i].removeAttribute("title");
+                    }
+
+                    var clr_all_filter_link = document.querySelector(".coveo-breadcrumb-clear-all");
+                    if (clr_all_filter_link) {
+                        clr_all_filter_link.addEventListener("keydown", enterkeyFnc);
+                    }
+
+                    function enterkeyFnc(e) {
+                        if (e.keyCode == 13) {
+                            clr_all_filter_link.click();
+                        }
+                    }
+                }, 1000);
+            });
+
+            Coveo.$$(root).on("newResultsDisplayed", function (e, args) {
+                for (var i = 0; i < e.target.lastChild.children.length; i++) {
+                    var quickviewicon = Coveo.$('.CoveoQuickview');
+                    if (quickviewicon) {
+                        for (var j = 0; j < quickviewicon.length; j++) {
+                            quickviewicon[j].addEventListener("keyup", function (e) {
+                                if (e.keyCode === 13 && e.currentTarget) {
+                                    e.currentTarget.click();
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <div id="consent_blackbar" style="position:fixed;top:0;width:100%;z-index:1000"></div>
+
+
+<script type="text/javascript" async="" src="f5-k7820_files/generic1660073559714.js" charset="UTF-8"></script><iframe style="display: none;" name="trustarc_notice" id="trustarcNoticeFrame" title="Trustarc Cross-Domain Consent Frame" src="f5-k7820_files/get.html"></iframe><div class="apt-guide-overlay-top" style="display: none; visibility: hidden;"></div><div class="apt-guide-overlay-bottom" style="display: none; visibility: hidden;"></div><div class="apt-guide-overlay-left" style="display: none; visibility: hidden;"></div><div class="apt-guide-overlay-right" style="display: none; visibility: hidden;"></div></body></html>

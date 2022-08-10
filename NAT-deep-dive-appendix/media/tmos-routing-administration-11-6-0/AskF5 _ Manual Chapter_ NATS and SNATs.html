@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<!-- saved from url=(0110)https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/128687871147784" async=""></script><script async="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/fbevents.js.download"></script><script async="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/uwt.js.download"></script><script type="text/javascript" async="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/insight.min.js.download"></script><script src="https://d1htpt0i4k7m8x.cloudfront.net/js/engagementTimer.minified.js"></script><script async="true" type="text/javascript" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/tc.min.js.download"></script><script type="text/javascript" async="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/ga.js.download"></script><script type="text/javascript" async="async" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/s42011503844445"></script>
+    <!-- Google Tag Manager -->
+<script src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/utag.js.download" type="text/javascript" async=""></script><script async="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/gtm.js.download"></script><script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-PPZPQ6');</script>
+<!-- End Google Tag Manager -->
+    
+
+
+
+<title>AskF5 | Manual Chapter: NATS and SNATs</title>
+
+    
+
+    
+    <meta name="robots">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content=", NATs and SNATs, about, comparison, NATs, defined, for inbound connections, inbound connections, and NATs, connections, for outbound connections, outbound connections, creating, SNATs, and SNATs, OneConnect feature, SNAT types, SNAT pools&gt;, SNAT translation, SNAT automap feature, SNAT pools, and VLANs, VLANs, source network address translation, enabling, source IP addresses, translating, IP addresses, SNAT pool">
+    
+    <meta name="template" content="manualchapterpage">
+
+    
+    <meta name="doc_type" content="Manual">
+    <meta name="original_date" content="2014-08-25">
+    <meta name="updated_date" content="2019-03-21">
+    
+        
+            <meta name="product" content="BIG-IP AAM">
+            
+                <meta content="11.6.5" name="BIG-IP AAM">
+            
+                <meta content="11.6.4" name="BIG-IP AAM">
+            
+                <meta content="11.6.3" name="BIG-IP AAM">
+            
+                <meta content="11.6.2" name="BIG-IP AAM">
+            
+                <meta content="11.6.1" name="BIG-IP AAM">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP APM">
+            
+                <meta content="11.6.5" name="BIG-IP APM">
+            
+                <meta content="11.6.4" name="BIG-IP APM">
+            
+                <meta content="11.6.3" name="BIG-IP APM">
+            
+                <meta content="11.6.2" name="BIG-IP APM">
+            
+                <meta content="11.6.1" name="BIG-IP APM">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP GTM">
+            
+                <meta content="11.6.5" name="BIG-IP GTM">
+            
+                <meta content="11.6.4" name="BIG-IP GTM">
+            
+                <meta content="11.6.3" name="BIG-IP GTM">
+            
+                <meta content="11.6.2" name="BIG-IP GTM">
+            
+                <meta content="11.6.1" name="BIG-IP GTM">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP Analytics">
+            
+                <meta content="11.6.5" name="BIG-IP Analytics">
+            
+                <meta content="11.6.4" name="BIG-IP Analytics">
+            
+                <meta content="11.6.3" name="BIG-IP Analytics">
+            
+                <meta content="11.6.2" name="BIG-IP Analytics">
+            
+                <meta content="11.6.1" name="BIG-IP Analytics">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP Link Controller">
+            
+                <meta content="11.6.5" name="BIG-IP Link Controller">
+            
+                <meta content="11.6.4" name="BIG-IP Link Controller">
+            
+                <meta content="11.6.3" name="BIG-IP Link Controller">
+            
+                <meta content="11.6.2" name="BIG-IP Link Controller">
+            
+                <meta content="11.6.1" name="BIG-IP Link Controller">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP LTM">
+            
+                <meta content="11.6.5" name="BIG-IP LTM">
+            
+                <meta content="11.6.4" name="BIG-IP LTM">
+            
+                <meta content="11.6.3" name="BIG-IP LTM">
+            
+                <meta content="11.6.2" name="BIG-IP LTM">
+            
+                <meta content="11.6.1" name="BIG-IP LTM">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP PEM">
+            
+                <meta content="11.6.5" name="BIG-IP PEM">
+            
+                <meta content="11.6.4" name="BIG-IP PEM">
+            
+                <meta content="11.6.3" name="BIG-IP PEM">
+            
+                <meta content="11.6.2" name="BIG-IP PEM">
+            
+                <meta content="11.6.1" name="BIG-IP PEM">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP AFM">
+            
+                <meta content="11.6.5" name="BIG-IP AFM">
+            
+                <meta content="11.6.4" name="BIG-IP AFM">
+            
+                <meta content="11.6.3" name="BIG-IP AFM">
+            
+                <meta content="11.6.2" name="BIG-IP AFM">
+            
+                <meta content="11.6.1" name="BIG-IP AFM">
+            
+        
+    
+        
+            <meta name="product" content="BIG-IP ASM">
+            
+                <meta content="11.6.5" name="BIG-IP ASM">
+            
+                <meta content="11.6.4" name="BIG-IP ASM">
+            
+                <meta content="11.6.3" name="BIG-IP ASM">
+            
+                <meta content="11.6.2" name="BIG-IP ASM">
+            
+                <meta content="11.6.1" name="BIG-IP ASM">
+            
+        
+    
+    <meta name="lifecycle" content="release">
+    <meta name="archived" content="Archived Documents excluded">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <script>var wperf = window.performance ? window.performance : {}; wperf.mark("PreResources");</script>
+    
+
+    
+
+    
+<link rel="stylesheet" href="./AskF5 _ Manual Chapter_ NATS and SNATs_files/clientlib-base.ebce0491d60ea3773ca3d19ff3a6066f.css" type="text/css">
+
+
+
+
+<script type="text/javascript">
+    wperf.mark("clientlib-css-pcx-done");
+</script>
+
+
+<link href="https://consent.trustarc.com/" rel="preconnect" crossorigin="">
+
+    
+    
+    
+
+    
+    
+
+
+    <script>wperf.mark("headlibRenderer-done");</script>
+
+    <!--/* Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://techdocs.f5.com/etc.clientlibs/base/clientlibs/base-resources/resources/logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://techdocs.f5.com/etc/designs/pcx/techdocs/images/favicon.ico">
+    <link rel="manifest" href="https://techdocs.f5.com/etc.clientlibs/base/clientlibs/base-resources/resources/site.webmanifest">
+    <link rel="mask-icon" href="https://techdocs.f5.com/etc.clientlibs/base/clientlibs/base-resources/resources/logos/safari-pinned-tab.svg" color="#e21d38">
+
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'application': 'askF5',
+    'platform': 'C'
+  });
+</script>
+<meta http-equiv="origin-trial" content="A9wkrvp9y21k30U9lU7MJMjBj4USjLrGwV+Z8zO3J3ZBH139DOnCv3XLK2Ii40S94HG1SZ/Zeg2GSHOD3wlWngYAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjYxMjk5MTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+
+    <body>
+    <!-- Tealium Universal Tag -->
+    <script type="text/javascript">
+      (function(a,b,c,d) {
+          a='//mktg.tags.f5.com/basic/prod/utag.js';
+          b=document;c='script';d=b.createElement(c);d.src=a;
+          d.type='text/java'+c;d.async=true;
+          a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+    </script>    
+    
+    <div>
+        <div class="u01-header">
+
+
+<div class="u01-header">
+
+    <div class="corp-header">
+        <div class="sidebar-toggle">
+            <span class="button lines-button x">
+                <span class="lines"></span>
+            </span>
+        </div>
+        <div class="container corp-menu">
+            <ul>
+            
+                <li>
+                    <a href="https://f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                        F5.com
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://support.f5.com/csp/home" target="_blank" class="internalLink" rel="noreferrer">
+                        Support
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://devcentral.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                        Community
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://partners.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                        Partners
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://f5.com/myf5" target="_blank" class="internalLink" rel="noreferrer">
+                        MYF5
+                    </a>
+                </li>
+            
+            </ul>
+        </div>
+    </div>
+
+    <div class="nav-header">
+        <div class="container mobile--relative">
+            <div class="logos">
+                <a href="https://f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                    <img class="logo" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/logo.svg" width="45" height="42" alt="F5 Networks" border="0">
+                </a>
+                <a href="https://support.f5.com/" rel="noreferrer" class="internalLink">
+                    <img class="logo support" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/support-logo.svg" width="110" height="44" alt="F5 Support home" border="0">
+                </a>
+            </div>
+
+            <div class="nav-menu">
+                
+                    <ul>
+                        <li>
+                            <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html#" class="nav-link currentURL">
+                                Knowledge Centers
+                            </a>
+                            <div class="menu-panel hide-menu">
+
+                                
+                                    
+                                        <div class="col">
+                                            <h4>
+                                                <a href="https://support.f5.com/csp/knowledge-center/security" class="internalLink" rel="noreferrer">
+                                                    Security
+                                                </a>
+                                            </h4>
+
+                                            <ul>
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/F5%20App%20Protect?module=F5%20DDoS%20Hybrid%20Defender" class="internalLink" rel="noreferrer">
+                                                        F5 DDoS Hybrid Defender
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/F5%20App%20Protect?module=F5%20SSL%20Orchestrator" class="internalLink" rel="noreferrer">
+                                                        F5 SSL Orchestrator
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20ASM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP ASM
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20AFM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP AFM
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP APM
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/F5%20Silverline?module=F5%20Silverline%20Web%20Application%20Firewall" class="internalLink" rel="noreferrer">
+                                                        F5 Silverline Web App Firewall
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/F5%20Silverline?module=F5%20Silverline%20DDoS%20Protection" class="internalLink" rel="noreferrer">
+                                                        F5 Silverline DDoS Protection
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="see-all-item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/security" title="See all Security Knowledge Centers" class="internalLink" rel="noreferrer">
+                                                        See All
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    
+
+                                    
+                                
+                                    
+                                        <div class="col">
+                                            <h4>
+                                                <a href="https://support.f5.com/csp/knowledge-center/cloud" class="internalLink" rel="noreferrer">
+                                                    Virtualization and Cloud
+                                                </a>
+                                            </h4>
+
+                                            <ul>
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20Cloud%20Edition" class="internalLink" rel="noreferrer">
+                                                        BIG-IP Cloud Edition
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/cloud/F5%20SaaS/F5%20Silverline%20Web%20Application%20Firewall" class="internalLink" rel="noreferrer">
+                                                        F5 Silverline Web App Firewall
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/cloud/F5%20SaaS/F5%20Silverline%20DDoS%20Protection" class="internalLink" rel="noreferrer">
+                                                        F5 Silverline DDoS Protection
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/cloud/Public%20Cloud/Amazon%20Web%20Services" class="internalLink" rel="noreferrer">
+                                                        Amazon Web Services
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/cloud/Public%20Cloud/Microsoft%20Azure" class="internalLink" rel="noreferrer">
+                                                        Microsoft Azure
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/cloud/Public%20Cloud/Google%20Cloud" class="internalLink" rel="noreferrer">
+                                                        Google Cloud
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="see-all-item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/cloud" title="See all Virtualization and Cloud Knowledge Centers" class="internalLink" rel="noreferrer">
+                                                        See All
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    
+
+                                    
+                                
+                                    
+                                        <div class="col">
+                                            <h4>
+                                                <a href="https://support.f5.com/csp/knowledge-center/software" class="internalLink" rel="noreferrer">
+                                                    Software
+                                                </a>
+                                            </h4>
+
+                                            <ul>
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP" class="internalLink" rel="noreferrer">
+                                                        BIG-IP
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20LTM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP LTM
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20GTM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP GTM/DNS
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20ASM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP ASM
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM" class="internalLink" rel="noreferrer">
+                                                        BIG-IP APM
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IQ" class="internalLink" rel="noreferrer">
+                                                        BIG-IQ
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management" class="internalLink" rel="noreferrer">
+                                                        BIG-IQ Centralized Management
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software/F5%20iWorkflow" class="internalLink" rel="noreferrer">
+                                                        F5 iWorkflow
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="see-all-item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/software" title="See all Software Knowledge Centers" class="internalLink" rel="noreferrer">
+                                                        See All
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    
+
+                                    
+                                
+                                    
+                                        <div class="col">
+                                            <h4>
+                                                <a href="https://support.f5.com/csp/knowledge-center/hardware" class="internalLink" rel="noreferrer">
+                                                    Hardware
+                                                </a>
+                                            </h4>
+
+                                            <ul>
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i2000%20Series" class="internalLink" rel="noreferrer">
+                                                        BIG-IP i2000 Series
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i4000%20Series" class="internalLink" rel="noreferrer">
+                                                        BIG-IP i4000 Series
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i5000%20Series" class="internalLink" rel="noreferrer">
+                                                        BIG-IP i5000 Series
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i7000%20Series" class="internalLink" rel="noreferrer">
+                                                        BIG-IP i7000 Series
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/hardware/BIG-IP%20Platforms/BIG-IP%20i10000%20Series" class="internalLink" rel="noreferrer">
+                                                        BIG-IP i10000 Series
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="see-all-item">
+                                                    <a href="https://support.f5.com/csp/knowledge-center/hardware" title="See all Hardware Knowledge Centers" class="internalLink" rel="noreferrer">
+                                                        See All
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    
+
+                                    
+                                
+                            </div>
+                        </li>
+                    </ul>
+                
+                    <ul>
+                        <li>
+                            <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html#" class="nav-link currentURL">
+                                Resources
+                            </a>
+                            <div class="menu-panel hide-menu">
+
+                                
+                                    
+                                        <div class="col">
+                                            <h4>
+                                                <a href="https://downloads.f5.com/esd/productlines.jsp" target="_blank" class="internalLink" rel="noreferrer">
+                                                    Downloads
+                                                </a>
+                                            </h4>
+
+                                            <ul>
+                                                <li class="item">
+                                                    <a href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v14.x" class="internalLink" rel="noreferrer">
+                                                        BIG-IP 14.x
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v13.x" class="internalLink" rel="noreferrer">
+                                                        BIG-IP 13.x
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v12.x" class="internalLink" rel="noreferrer">
+                                                        BIG-IP 12.x
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&amp;pro=big-ip_v11.x" class="internalLink" rel="noreferrer">
+                                                        BIG-IP 11.x
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="item">
+                                                    <a href="https://downloads.f5.com/esd/product.jsp?sw=BIG-IQ&amp;pro=big-iq_CM" class="internalLink" rel="noreferrer">
+                                                        BIG-IQ
+                                                    </a>
+                                                </li>
+                                            
+                                                <li class="see-all-item">
+                                                    <a href="https://downloads.f5.com/esd/productlines.jsp" target="_blank" title="See all Downloads" class="internalLink" rel="noreferrer">
+                                                        See all
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    
+
+                                    
+                                
+                                    
+
+                                    
+                                        <div class="col">
+                                            <div>
+                                                <a href="https://secure.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                                    Licensing
+                                                </a>
+                                                <p class="">Activate F5 product registration key</p>
+                                            
+                                                <a href="https://ihealth.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                                    Ihealth
+                                                </a>
+                                                <p class="">Verify the proper operation of your BIG-IP system</p>
+                                            </div>
+                                        </div>
+                                    
+                                
+                                    
+
+                                    
+                                        <div class="col">
+                                            <div>
+                                                <a href="https://university.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                                    F5 University
+                                                </a>
+                                                <p class="">Get up to speed with free self-paced courses</p>
+                                            
+                                                <a href="https://devcentral.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                                    Devcentral
+                                                </a>
+                                                <p class="">Join the community of 300,000+ technical peers</p>
+                                            </div>
+                                        </div>
+                                    
+                                
+                                    
+
+                                    
+                                        <div class="col">
+                                            <div>
+                                                <a href="https://f5.com/education/certification" target="_blank" class="internalLink" rel="noreferrer">
+                                                    F5 Certification
+                                                </a>
+                                                <p class="">Advance your career with F5 Certification</p>
+                                            
+                                                <a href="https://support.f5.com/csp/tech-documents" class="internalLink" rel="noreferrer">
+                                                    Product Manuals
+                                                </a>
+                                                <p class="">Product Manuals and Release notes</p>
+                                            </div>
+                                        </div>
+                                    
+                                
+                            </div>
+                        </li>
+                    </ul>
+                
+            </div>
+            <div class="support-menu" data-currpage="/content/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7" data-domain=".f5.com">
+                
+                    <a href="https://support.f5.com/csp/my-support/home" rel="noreferrer" class="internalLink">
+                        My Support
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+    </div>
+    
+
+
+
+    <!--
+Overwriting the inherited dita/content/'body.html'
+-->
+
+
+<main>
+
+    
+    
+    <section>
+        
+            <div>
+                <div class="cmp cmp-breadcrumb container">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item ">
+        <a href="https://techdocs.f5.com/kb/en-us.html">
+            AskF5 Home
+        </a>
+    </li>
+
+    <li class="breadcrumb-item ">
+        <a href="https://support.f5.com/csp/#/knowledge-center/software" rel="noreferrer" class="internalLink">
+            Knowledge Centers
+        </a>
+    </li>
+
+    <li class="breadcrumb-item ">
+        <a href="https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20LTM" rel="noreferrer" class="internalLink">
+            BIG-IP LTM
+        </a>
+    </li>
+
+    <li class="breadcrumb-item ">
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0.html">
+            BIG-IP TMOS: Routing Administration 
+        </a>
+    </li>
+
+    <li class="breadcrumb-item active">
+        
+            NATS and SNATs
+        
+    </li>
+</ol>
+
+    
+</div>
+
+            </div>
+            <div class="container">
+                <div class="pdfAttach parsys pdf-attach">
+</div>
+
+            </div>
+        
+        <div class="container title-wrapper">
+            <div class="document-title">
+
+
+<span>
+    <font size="4" class="red">
+        <b>Manual Chapter</b> :
+    </font>
+</span>
+
+<span>
+   <font size="4">
+        NATS and SNATs
+    </font>
+</span>
+</div>
+
+            <div class="add-version add-version-new">
+
+<div class="add-version versionMappings">
+    <!--googleoff: all-->
+    <div class="versionsDisplayBox">
+        <h2>Applies To:</h2>
+        <span id="expandList">
+            <span class="version-display">Show</span> Versions
+            <img src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/expandversions.gif" alt="Show Versions" border="0">
+        </span>
+        <div id="hideBtn">
+            
+                
+                    <h3>
+                        BIG-IP AAM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP APM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP GTM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP Analytics
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP Link Controller
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP LTM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP PEM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP AFM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+                
+                    <h3>
+                        BIG-IP ASM
+                    </h3>
+                    <ul>
+                        <li>
+                            <span>
+                                11.6.5<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.4<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.3<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.2<span class="version-separator">,</span>
+                            </span>
+                        
+                            <span>
+                                11.6.1
+                            </span>
+                        </li>
+                    </ul>
+                
+            
+        </div>
+    </div>
+    <!--googleon: all-->
+</div></div>
+
+        </div>
+        <div class="container">
+            <div class="doc-icon document-icon">
+
+
+    <img class="doc-icon" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/icon-m.gif" border="0" alt="Manual Chapter" align="absmiddle">
+
+
+
+</div>
+
+        </div>
+        <div class="container">
+            
+
+
+            
+        </div>
+        <div class="container">
+            <div class="document-navigation">
+
+<div align="center" class="doc-nav">
+    
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0.html">
+            Table of Contents
+        </a>
+        <span class="divider"> | </span>
+    
+
+    
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/6.html">
+            &lt;&lt; Previous Chapter
+        </a>
+    
+
+    <span class="divider"> | </span>
+
+    
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/8.html">
+            Next Chapter &gt;&gt;
+        </a>
+    
+</div>
+
+
+
+
+
+</div>
+
+        </div>
+    </section>
+
+
+    <div class="manual-chapter container">
+        <div class="row">
+            
+        <div class="root responsivegrid col-md-8">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    
+    
+</div>
+</div>
+
+        </div>
+        
+    </div>
+
+    <div>
+        <div class="pageContent parsys container"><div class="cmp cmp-text section">
+
+
+
+
+    <div class="nested0" id="conceptId">
+<a name="conceptId">
+<!-- --></a>
+ 
+
+
+ 
+<div>
+ 
+</div>
+
+
+<div class="nested1" id="unique_640921923" xml:lang="en">
+<a name="unique_640921923">
+<!-- --></a>
+ 
+<h2 class="topictitle2">Introduction to NATs and SNATs</h2>
+
+
+ 
+<div>
+  
+<p>You can configure the BIG-IP system to translation IP addresses in packets
+   that pass through the system. You can configure objects for both network address translation
+   (NATs) and source network address translation (SNATs).</p>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested1" id="referenceId" xml:lang="en">
+<a name="referenceId">
+<!-- --></a>
+  
+<h2 class="topictitle2">Comparison of NATs and SNATs</h2>
+
+
+
+  
+<div>
+<p> A SNAT is similar to a NAT, except for the differences listed in this
+    table.</p>
+
+
+
+<div class="tablenoborder">
+<table border="1" cellpadding="4" cellspacing="0" frame="border" rules="all" summary="">
+        
+<thead align="left">
+          
+<tr>
+            
+<th class="cellrowborder" id="d20007e133" valign="top">NATs</th>
+
+            <th class="cellrowborder" id="d20007e136" valign="top">SNATs</th>
+
+          
+</tr>
+
+        
+</thead>
+
+        
+<tbody>
+          
+<tr>
+            
+<td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">You can map only one original address to a translation address.</td>
+
+            <td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">You can map multiple original addresses to a single translation address. You can
+              even map all node addresses on your network to a single public IP address, in a single
+              SNAT object.</td>
+
+          
+</tr>
+
+          
+<tr>
+            
+<td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">All ports on the internal node are open.</td>
+
+            <td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">By default, SNATs support UDP and TCP only. This makes a SNAT more secure than a
+              NAT.</td>
+
+          
+</tr>
+
+          
+<tr>
+            
+<td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">Local Traffic Manager does not track NAT
+              connections.</td>
+
+            <td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">Local Traffic Manager tracks SNAT connections, which, in turn, allows SNATs and
+              virtual servers to use the same public IP addresses.</td>
+
+          
+</tr>
+
+          
+<tr>
+            
+<td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">You must explicitly enable a NAT on the internal VLAN where the internal node’s
+              traffic arrives on the BIG-IP system.</td>
+
+            <td class="cellrowborder" headers="d20007e133 d20007e136 " valign="top">By default, a SNAT that you create is enabled on all VLANs.</td>
+
+          
+</tr>
+
+        
+</tbody>
+
+      
+</table>
+
+</div>
+
+  
+</div>
+
+
+</div>
+
+<div class="nested1" id="unique_447431318" xml:lang="en">
+<a name="unique_447431318">
+<!-- --></a>
+ 
+<h2 class="topictitle2">About NATs</h2>
+
+
+ 
+<div>
+<p>In some cases, you might want to allow a client on an external network to send a request directly
+   to a specific internal node (thus bypassing the normal load balancing server selection). To send
+   a request directly to an internal server, a client normally needs to know the internal node’s IP
+   address, which is typically a private class IP address. Because private class IP addresses are
+   non-routable, you can instead create a network translation address (NAT). A <dfn class="term">NAT</dfn> is a
+   feature of BIG-IP Local Traffic Managerthat provides a routable IP
+   address that an external node can use to send traffic to, or receive traffic from, an internal
+   node.</p>
+
+  
+<p>More specifically, a NAT is an address translation object that instructs Local Traffic Manager
+    (LTM) to translate one IP address in a packet header to another IP
+   address. A NAT consists of a one-to-one mapping of a public IP address to an internal private
+   class IP address.</p>
+
+  
+<p>You can use a NAT in two different ways:</p>
+
+  
+<dl>
+
+    
+<dt class="dlterm">To translate a private class destination address to a public address</dt>
+
+    
+<dd>When an external node sends traffic to the public IP address defined in a NAT, Local Traffic Manager automatically translates that destination address to the associated private class IP address, which represents a specific node on the internal network. This translation is hidden from the external node that sent the traffic.</dd>
+
+
+
+    
+<dt class="dlterm">To translate a private class source address to a public address</dt>
+
+    
+<dd>You can also use a NAT to translate an internal node’s private class source IP address to a public IP address. This translation is hidden from the external node that receives the traffic.</dd>
+
+
+  
+</dl>
+
+  
+<p>To summarize, a NAT provides a routable address for sending packets to or from a node that has a private class IP address.</p>
+
+  
+<p>When you create a NAT, you can map only one private class IP address to a specific public IP address. That is, a NAT always represents a one-to-one mapping between a private class IP address and a public IP address. If you want to map more than one private class IP address (that is, multiple internal nodes) to a single public IP address, you can create a SNAT instead.</p>
+
+  
+<div class="note">
+<span class="notetitle">Note:</span> NATs do not support port translation, and are not appropriate for protocols that embed IP addresses in the packet, such as FTP, NT Domain, or CORBA IIOP.</div>
+
+  
+<div class="tip">
+<span class="tiptitle">Tip:</span> When you use a NAT to provide access to an internal node, all ports on that internal node are open. To mitigate this security risk, consider using a SNAT instead.</div>
+
+  
+<p>Local Traffic Manager can apply a NAT to either an inbound or an outbound connection.</p>
+
+ 
+</div>
+
+
+<div class="nested2" id="unique_242117543" xml:lang="en">
+<a name="unique_242117543">
+<!-- --></a>
+ 
+<h3 class="topictitle3">NATs for inbound connections</h3>
+
+
+ 
+<div>
+  
+<p>With respect to NATs, an <dfn class="term">inbound</dfn> connection is a connection that is initiated by a
+      node on an external network, and comes into the BIG-IP system to a node
+      on the internal network.</p>
+
+  
+<div class="section">
+<h4 class="sectiontitle">Without a NAT</h4>
+
+   
+<p>Normally, traffic coming into the BIG-IP system is load balanced to a server in a pool, based on the load balancing method configured for that pool, in the following way:</p>
+
+   
+<ul>
+    
+<li>A client on an external network typically sends traffic to a virtual server on the BIG-IP system. The destination IP address in this case is the virtual server address.</li>
+
+    
+<li>Upon receiving a packet, the virtual server typically translates that destination IP address to the IP address of a pool member, for the purpose of load balancing that packet.</li>
+
+    
+<li>The pool member then sends its response back through the BIG-IP system, using a route
+          specified in the server node’s routing table (ideally, a floating IP address assigned to
+          an internal VLAN). On receiving the response, Local Traffic Manager
+          then performs the reverse translation; that is, the system translates the pool member’s
+          actual source address to the virtual server address. This results in the source address in
+          the response to the client being the virtual server address, which is the source address
+          that the client expects to see.</li>
+
+   
+</ul>
+
+   
+<p>This typical load balancing scenario ensures that for load balanced traffic, the client system never sees the internal private class IP address of an internal node.</p>
+
+  
+</div>
+
+  
+<div class="section">
+<h4 class="sectiontitle">With a NAT</h4>
+
+   
+<p>If the client system wants to bypass the load balancing mechanism to send packets directly to a specific node on the internal network, the client needs a routable IP address to use to send packets to that server node.</p>
+
+   
+<p>A NAT solves this problem by providing a routable address that a client can use to make a request to an internal server directly. In this way, a NAT performs the same type of address translation that a virtual server performs when load balancing connections to pool members. In the case of a NAT, however, no load balancing occurs, because the client is sending a request to a specific node. The NAT translates the public destination IP address in the request to the private class IP address of the internal node.</p>
+
+   
+<p>When the server node sends the response, Local Traffic Manager performs the reverse translation, in the same way that a virtual server behaves.</p>
+
+   
+<div class="note">
+<span class="notetitle">Note:</span> Local Traffic Manager does not track NAT connections. Therefore, the public IP address that you define in a NAT cannot be the same address as a virtual address or SNAT address.</div>
+
+
+   
+<p>For example, suppose a node on the internal network (such as a load balancing server) has a private class IP
+     address of <kbd class="userinput">172.16.20.3</kbd>. You can create a NAT designed to translate a
+     public destination address of your choice (such as <kbd class="userinput">207.10.1.103</kbd>) to the
+     private class address <kbd class="userinput">172.16.20.3</kbd>. Consequently, whenever a node on the
+     external network initiates a connection to the address <kbd class="userinput">207.10.1.103</kbd>,
+     Local Traffic Manager translates that public destination address to the private class address
+      <kbd class="userinput">172.16.20.3</kbd>.</p>
+
+    
+<div class="fignone">
+     
+<img alt="address translation that occurs for an inbound connection" height="181" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/nat_incoming_connection.jpg" width="450">
+    <span class="figcap">Sample NAT for an inbound connection</span>
+</div>
+
+   
+<p>In this example, the NAT provides a routable address for an external node to initiate a connection to an internal node.</p>
+
+    
+<p>When you create a NAT, you must define two settings: NAT Address and Origin Address. In our
+    example:</p>
+
+    
+<ul>
+     
+<li>The NAT address is <kbd class="userinput">207.10.1.103</kbd>, and the origin address is
+       <kbd class="userinput">172.16.20.3</kbd>.</li>
+
+     
+<li>The connection is an inbound connection, meaning that the connection is being initiated from the external network, through the BIG-IP system, to the internal network.</li>
+
+     
+<li>Local Traffic Manager translates the NAT address to the origin address.</li>
+
+     
+<li>The NAT address and the origin address are destination addresses.</li>
+
+    
+</ul>
+
+
+  
+</div>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_968531955" xml:lang="en">
+<a name="unique_968531955">
+<!-- --></a>
+ 
+<h3 class="topictitle3">NATs for outbound connections</h3>
+
+
+ 
+<div>
+  
+<p>The previous section summarized how a BIG-IP system normally load
+      balances incoming traffic, and translates the source IP address in a response back to the
+      virtual address.</p>
+
+  
+<p>Sometimes, however, an internal node needs to initiate a connection, rather than simply respond
+   to a request. When a node on an internal network initiates a connection, the connection is
+   considered to be an <dfn class="term">outbound</dfn> connection. In this case, because the outgoing packets
+   do not represent a response to a load-balanced request, the packets do not pass through a virtual
+   server, and therefore the system does not perform the usual source IP address translation.</p>
+
+  
+<p>Without a NAT, the source IP address is a non-routable address. With a NAT, however, Local Traffic Manager translates the internal node’s private class IP
+      address to a public IP address, to which the external node can then route its response.</p>
+
+
+   
+<p>For example, suppose an internal node (such as a mail server) has a private class IP address
+      of <kbd class="userinput">172.16.20.1</kbd>. You can create a NAT designed to translate the private
+      class address <kbd class="userinput">172.16.20.1</kbd> to a public source address of your choice
+      (such as <kbd class="userinput">207.10.1.101</kbd>). Consequently, whenever the internal node
+        <kbd class="userinput">172.16.20.1</kbd> initiates a connection destined for a node on the
+      external network, the system translates that source address of
+        <kbd class="userinput">172.16.20.1</kbd> to its public address
+        (<kbd class="userinput">207.10.1.101</kbd>).</p>
+
+
+    
+<div class="fignone">
+      
+<img alt="Address translation that occurs for an outbound connection" height="181" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/nat_outgoing_connection.jpg" width="450">
+    <span class="figcap">Sample NAT for an outbound connection</span>
+</div>
+
+
+
+  
+<p>In this example, the NAT provides a way for an internal node to initiate a connection to a node on an external network, without showing a private class IP address as the source address.</p>
+
+  
+<p>A NAT has two settings; <span class="uicontrol">NAT Address</span> and <span class="uicontrol">Origin
+    Address</span>. In this example:</p>
+
+  
+<ul>
+   
+<li>The NAT address is <kbd class="userinput">207.10.1.101</kbd>, and the origin address is
+     <kbd class="userinput">172.16.20.1</kbd>.</li>
+
+   
+<li>The connection is an outbound connection, meaning that the connection is being initiated from the internal network, through Local Traffic Manager, to the external network.</li>
+
+   
+<li>Local Traffic Manager translates the origin address to the NAT address.</li>
+
+   
+<li>The origin address and the NAT address are source addresses.</li>
+
+  
+</ul>
+
+  
+<p>A NAT always represents a one-to-one mapping between a public address and a private class address. However, if you would like to map multiple internal nodes to a single public address, you can use a secure network translation address (SNAT) instead of a NAT. You can use SNATs for outbound connections only.</p>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="taskId" xml:lang="en">
+<a name="taskId">
+<!-- --></a>
+    
+<h3 class="topictitle3">Creating a NAT</h3>
+
+
+    
+<div>
+        
+<div class="section">
+         
+<p>You enable network address translation (NAT) so that the BIG-IP system can translate one IP address to another.</p>
+
+        
+</div>
+
+        
+<ol>
+<li class="stepexpand">
+                
+<span>On the Main tab, click <span class="menucascade"><span class="uicontrol">Local Traffic</span> &gt; <span class="uicontrol">Address Translation</span> &gt; <span class="uicontrol">NAT List</span></span>.</span>
+                 This displays a list of NATs on the system.
+            </li>
+
+<li class="stepexpand">
+                
+<span>Click the <span class="uicontrol">Create</span> button.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>In the <span class="uicontrol">Name</span> field, type a name for the NAT.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>In the <span class="uicontrol">NAT Address</span> field, type the IP address that you
+                    want to use as the translation address, that is, the address to which you want
+                    to translate the origin address.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>In the <span class="uicontrol">Origin Address</span>field, type the IP address of the
+                    node that you want traffic to reach when the BIG-IP system applies the NAT
+                    address.</span>
+            
+</li>
+
+<li class="stepexpand">
+               
+<span>Configure the remaining settings or retain the default values.</span>
+           
+</li>
+
+</ol>
+
+        
+<div class="section">After you perform this task, the NAT appears in the list of NATs on the
+            system.</div>
+
+    
+</div>
+
+
+</div>
+
+</div>
+
+<div class="nested1" id="unique_1421195908" xml:lang="en">
+<a name="unique_1421195908">
+<!-- --></a>
+ 
+<h2 class="topictitle2">About SNATs</h2>
+
+
+ 
+<div>
+  
+<p>When you need to ensure that server responses always return through the BIG-IP system, or when you want to hide the source addresses of server-initiated requests
+   from external devices, you can implement a SNAT.</p>
+
+  
+<p>A <dfn class="term">secure network address translation (SNAT)</dfn> is a BIG-IP Local
+    Traffic Manager feature that translates the source IP address within a connection to a
+   BIG-IP system IP address that you define. The destination node then uses that new source address
+   as its destination address when responding to the request.</p>
+
+  
+<p>For inbound connections, that is, connections initiated by a client node, SNATs ensure that server nodes always send responses back through the BIG-IP system, when the server’s default route would not normally do so. Because a SNAT causes the server to send the response back through the BIG-IP system, the client sees that the response came from the address to which the client sent the request, and consequently accepts the response.</p>
+
+  
+<p>For outbound connections, that is, connections initiated by a server node, SNATs ensure that the internal IP address of the server node remains hidden to an external host when the server initiates a connection to that host.</p>
+
+  
+<div class="important">
+<span class="importanttitle">Important:</span> F5 recommends that before implementing a SNAT, you understand NATs.</div>
+
+ 
+</div>
+
+
+<div class="nested2" id="unique_153855906" xml:lang="en">
+<a name="unique_153855906">
+<!-- --></a>
+ 
+<h3 class="topictitle3">SNATs for client-initiated (inbound) connections</h3>
+
+
+ 
+<div>
+  
+<p>In the most common client-server network configuration, the Local Traffic
+    Manager standard address translation mechanism ensures that server responses return to the
+   client through the BIG-IP system, thereby reversing the original
+   destination IP address translation. This typical network configuration is as follows:</p>
+
+  
+<ul>
+   
+<li>The server nodes are on the same subnet as the BIG-IP system.</li>
+
+   
+<li>The client nodes are on a different subnet from the server nodes.</li>
+
+   
+<li>The BIG-IP system is the default gateway for the server subnet.</li>
+
+  
+</ul>
+
+  
+<p>However, there are atypical network configurations in which the standard BIG-IP system address translation sequence by itself does not ensure that server responses use the required return path. Examples of these atypical configurations are:</p>
+
+  
+<dl>
+
+    
+<dt class="dlterm">When clients and servers are on the same network</dt>
+
+    
+<dd>If you want to load balance requests to server nodes that are on the same network as the
+     client nodes, you can create a SNAT so that server responses are sent back through the virtual
+     server, rather than directly from the server node to the client node. Otherwise, problems can
+     occur such as the client rejecting the response because the source of the response does not
+     match the destination of the request. Known as <dfn class="term">virtual server bounceback</dfn>, this
+     SNAT configuration causes the source of the response to match the destination of the request,
+     thus ensuring that the client node accepts the response. You can use this kind of configuration
+     when you want to load balance requests from web servers to application servers on the same
+     network.</dd>
+
+
+
+    
+<dt class="dlterm">When the default gateway of the server node is not the BIG-IP system</dt>
+
+    
+<dd>For various reasons, the server node’s default route cannot always be defined to be a route
+     back through the BIG-IP system. Again, this can cause problems such as the client rejecting the
+     response because the source of the response does not match the destination of the request. The
+     solution is to create a SNAT. When Local Traffic Manager then translates the client node’s
+     source IP address in the request to the SNAT address, this causes the server node to use that
+     SNAT address as its destination address when sending the response. This, in turn, forces the
+     response to return to the client node through the BIG-IP system rather than through the server
+     node’s default gateway.</dd>
+
+
+
+    
+<dt class="dlterm">When using the OneConnect feature</dt>
+
+    
+<dd>Local Traffic Manager OneConnect feature allows client requests to
+     re-use idle server-side connections. Without a SNAT, the source IP address in the server-side
+     connection remains the address of the client node that initially established the connection,
+     regardless of which other client nodes re-use the connection. Although this is not an issue for
+     traffic routing, you might find it confusing when examining various types of system output. A
+     SNAT solves this problem.</dd>
+
+
+  
+</dl>
+
+  
+<div class="note">
+<span class="notetitle">Note:</span> Using a SNAT for inbound connections can impact the availability of ephemeral ports. This can lead to the SNAT being unable to process additional connections until some source ports become available.</div>
+
+  
+<p>This image shows a typical problem for client-initiated connections when Local Traffic Manager is not defined as the server’s default gateway, and you have not configured a SNAT for inbound traffic.</p>
+
+  
+<div class="fignone">
+   
+<img alt="Client rejects response due to non-matching destination and source IP addresses" height="280" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/without_inbound_snat.png" width="500">
+  <span class="figcap">Client rejects response due to non-matching destination and source IP addresses</span>
+</div>
+
+
+  
+<p>To prevent these problems, you can configure an inbound SNAT. An <dfn class="term">inbound SNAT</dfn>
+   translates the original client source IP address in a request to a BIG-IP system virtual server
+   or BIG-IP system self IP address, forcing subsequent server response to return directly to Local
+   Traffic Manager. When an inbound SNAT is configured on the system, Local Traffic Manager
+   translates not only the destination IP address in the request (using the standard address
+   translation mechanism), but also the source IP address in the request (using a SNAT).</p>
+
+  
+<p>The figure below shows that by configuring a SNAT, you ensure that the response returns through
+   the BIG-IP system instead of through the default gateway, thus ensuring that the client can
+   accept the server response.</p>
+
+  
+<div class="fignone">
+   
+<img alt="Client accepts response due to matching destination and source IP addresses" height="297" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/with_inbound_snat.png" width="500">
+  <span class="figcap">Client accepts response due to matching destination and source IP addresses</span>
+</div>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_131307661" xml:lang="en">
+<a name="unique_131307661">
+<!-- --></a>
+ 
+<h3 class="topictitle3">SNATs for server-initiated (outbound) connections</h3>
+
+
+ 
+<div>
+  
+<p>When an internal server initiates a connection to an external host, a SNAT can translate the private, source IP addresses of one or more servers within the outgoing connection to a single, publicly-routable address. The external destination host can then use this public address as a destination address when sending the response. In this way, the private class IP addresses of the internal nodes remain hidden from the external host.</p>
+
+  
+<p>More specifically, a SNAT for an outgoing connection works in the following way:</p>
+
+  
+<ol>
+   
+<li>Local Traffic Manager receives a packet from an original IP address
+    (that is, an internal server with a private IP address) and checks to see if that source address
+    is defined in a SNAT.</li>
+
+   
+<li>If the original IP address is defined in a SNAT, Local Traffic Manager changes that source IP address to the translation address defined in the SNAT.</li>
+
+   
+<li>Local Traffic Manager then sends the packet, with the SNAT translation address as the source address, to the destination host.</li>
+
+  
+</ol>
+
+  
+<p>In this example of an outgoing SNAT, Local Traffic Manager causes three internal nodes, with the IP addresses <kbd class="userinput">172.16.20.4</kbd>, <kbd class="userinput">172.16.20.5</kbd>, and <kbd class="userinput">172.16.20.6</kbd>, to advertise the public IP address <kbd class="userinput">207.10.1.102</kbd> as the source IP address in the three outgoing connections.</p>
+
+  
+<div class="fignone">
+   
+<img alt="Sample SNAT for multiple outgoing connections" height="181" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/snat.jpg" width="450">
+  <span class="figcap">Sample SNAT for multiple outgoing connections</span>
+</div>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_631216950" xml:lang="en">
+<a name="unique_631216950">
+<!-- --></a>
+ 
+<h3 class="topictitle3">SNAT types</h3>
+
+
+ 
+<div>
+  
+<p>The types of SNATs you can create are:</p>
+
+  
+<dl>
+
+    
+<dt class="dlterm">Standard SNAT</dt>
+
+    
+<dd>A standard SNAT is an object you create, using the BIG-IP Configuration utility, that specifies the
+     mapping of one or more original IP addresses to a translation address. For this type of SNAT,
+     the criteria that the BIG-IP system uses to decide when to apply the
+     translation address is based strictly on the original IP address. That is, if a packet arrives
+     from the original IP address that you specified in the SNAT, then the BIG-IP system
+     translates that address to the specified translation address. There are three types of standard
+     SNATs that you can create: <ul>
+      
+<li>A SNAT in which you specify a specific translation address</li>
+
+      
+<li>A SNAT that uses the automap feature</li>
+
+      
+<li>A SNAT in which you specify a SNAT pool as your translation address</li>
+
+     
+</ul>
+
+</dd>
+
+
+
+    
+<dt class="dlterm">SNAT pool assigned as a virtual server resource</dt>
+
+    
+<dd>This type of SNAT consists of just a SNAT pool that you directly assign as a resource to a virtual server. When you implement this type of SNAT, you create a SNAT pool only; you do not need to create a SNAT object or an iRule.</dd>
+
+
+
+    
+<dt class="dlterm">Intelligent SNAT</dt>
+
+    
+<dd>Like a standard SNAT, an intelligent SNAT is the mapping of one or more original IP addresses to a translation address. However, you implement this type of SNAT mapping within an iRule instead of by creating a SNAT object. For this type of SNAT, the criteria that Local Traffic Manager uses to decide when to apply a translation address is based on any piece of data you specify within the iRule, such as an HTTP cookie or a server port.</dd>
+
+
+  
+</dl>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_1503583585" xml:lang="en">
+<a name="unique_1503583585">
+<!-- --></a>
+ 
+<h3 class="topictitle3">About translation addresses</h3>
+
+
+ 
+<div>
+  
+<p>You can specify the translation addresses that you want to map to your original IP addresses. A translation address can be in these three forms:</p>
+
+  
+<dl>
+
+    
+<dt class="dlterm">An IP Address</dt>
+
+    
+<dd>When creating a SNAT, you can specify a particular IP address that you want the SNAT to use as a translation address.</dd>
+
+
+
+    
+<dt class="dlterm">A SNAT pool</dt>
+
+    
+<dd>Specifying this value allows you to specify an existing SNAT pool to which you want to map your original IP address.</dd>
+
+
+
+    
+<dt class="dlterm">SNAT automap</dt>
+
+    
+<dd>Similar to a SNAT pool, the SNAT automap feature allows you to map one or more original IP
+     addresses to a pool of translation addresses. With the SNAT automap feature, you do not need to
+     create the pool. Instead, Local Traffic Manager effectively creates a pool
+     for you, using self IP addresses as the translation addresses for the pool.</dd>
+
+
+  
+</dl>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_2042279961" xml:lang="en">
+<a name="unique_2042279961">
+<!-- --></a>
+ 
+<h3 class="topictitle3">Original IP addresses</h3>
+
+
+ 
+<div>
+  
+<p>You can specify the original IP addresses that you want to map to translation addresses. You can specify one IP address or multiple IP addresses.</p>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_1101194389" xml:lang="en">
+<a name="unique_1101194389">
+<!-- --></a>
+ 
+<h3 class="topictitle3">VLAN traffic</h3>
+
+
+ 
+<div>
+  
+<p>You can specify one or more VLANs to which you want the SNAT to apply.</p>
+
+ 
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_1826534519" xml:lang="en">
+<a name="unique_1826534519">
+<!-- --></a>
+    
+<h3 class="topictitle3">Creating a SNAT</h3>
+
+
+    
+<div>
+        
+<div class="section">A <dfn class="term">secure network address translation (SNAT)</dfn> is a BIG-IP feature that translates the source IP address within a connection to a
+            BIG-IP system IP address that you define. The destination node then uses that new source
+            address as its destination address when responding to the request. </div>
+
+        
+<ol>
+<li class="stepexpand">
+                
+<span>On the Main tab, click <span class="menucascade"><span class="uicontrol">Local Traffic</span> &gt; <span class="uicontrol">Address Translation</span></span>.</span>
+                 The <span class="uicontrol">SNAT List</span> screen displays a list of existing
+                    SNATs.
+            </li>
+
+<li class="stepexpand">
+                
+<span>Click <span class="uicontrol">Create</span>.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>Name the new SNAT.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>From the <span class="uicontrol">Translation</span> list, select a translation type to
+                    use.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>From the <span class="uicontrol">VLAN / Tunnel Traffic</span> list, select
+                        <span class="uicontrol">Enabled on</span>.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>For the <span class="uicontrol">VLAN / Tunnel List</span> setting, in the
+                        <span class="uicontrol">Available</span> field, select
+                        <span class="uicontrol">external</span> and <span class="uicontrol">internal</span>, and
+                    using the Move button, transfer the VLANs to the <span class="uicontrol">Selected</span>
+                    field.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>From the <span class="uicontrol">Auto Last Hop</span> list, select a value or retain the default value, <span class="uicontrol">Default</span>.</span>
+                 Selecting <span class="uicontrol">Default</span> causes the BIG-IP system to behave
+                    according to the value of the system-wide <span class="uicontrol">Auto Last Hop</span>
+                    setting, rather than enabling <span class="uicontrol">Auto Last Hop</span> for this SNAT
+                    only.
+            </li>
+
+<li class="stepexpand">
+                
+<span>Click the <span class="uicontrol">Finished</span> button.</span>
+            
+</li>
+
+</ol>
+
+        
+<div class="section">After you perform this task, the SNAT appears in the list of SNATs on the system</div>
+
+        
+<div class="section">You must assign the SNAT to a virtual server.</div>
+
+    
+</div>
+
+
+</div>
+
+<div class="nested2" id="unique_857180076" xml:lang="en">
+<a name="unique_857180076">
+<!-- --></a>
+    
+<h3 class="topictitle3">Creating a SNAT pool</h3>
+
+
+    
+<div>
+        
+<div class="section">You create a SNAT pool on the BIG-IP system to identify IP
+            addresses that you want the BIG-IP system to use as a SNAT translation address.<div class="note">
+<span class="notetitle">Note:</span> In a device service clustering configuration, you perform this task on
+                only one device in the device group. You will later synchronize this configuration
+                to the other devices in the device group.</div>
+
+</div>
+
+        
+<ol>
+<li class="stepexpand">
+                
+<span>On the Main tab, click <span class="menucascade"><span class="uicontrol">Local Traffic</span> &gt; <span class="uicontrol">Address Translation</span> &gt; <span class="uicontrol">SNAT Pool List</span></span>.</span>
+                 The SNAT Pool List screen displays a list of existing
+                    SNATs.
+            </li>
+
+<li class="stepexpand">
+                
+<span>Click <span class="uicontrol">Create</span>.</span>
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>In the <span class="uicontrol">Name</span> field, type a name for the SNAT pool.</span>
+                 An example of a name is <kbd class="userinput">snat-pool-1</kbd>.
+            </li>
+
+<li class="stepexpand">
+                    
+<span>For the <span class="uicontrol">Member List</span> setting:</span>
+                    
+<ol type="a">
+                        
+<li class="substepexpand">
+                            
+<span>In the <span class="uicontrol">IP Address</span> field, type an IP address.</span>
+                             The BIG-IP system uses this address as a SNAT translation address.
+                                <div class="important">
+<span class="importanttitle">Important:</span> This address must NOT be on a
+                                directly-connected network.</div>
+
+                        
+</li>
+
+                        
+<li class="substepexpand">
+                            
+<span>Click <span class="uicontrol">Add</span>.</span>
+                        
+</li>
+
+                        
+<li class="substepexpand">
+                            
+<span>Repeat these steps for each IP address that you want to include in
+                            the SNAT pool.</span>
+                        
+</li>
+
+                    
+</ol>
+
+            
+</li>
+
+<li class="stepexpand">
+                
+<span>Click the <span class="uicontrol">Finished</span> button.</span>
+            
+</li>
+
+</ol>
+
+        
+<div class="section">After you perform this task, a SNAT pool resides on the BIG-IP system.</div>
+
+        
+<div class="section">To enable the SNAT pool, you must assign the SNAT pool to a SNAT object, or specify
+            the SNAT pool within an iRule.</div>
+
+    
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+    
+
+</div>
+
+</div>
+
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="document-navigation">
+
+<div align="center" class="doc-nav">
+    
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0.html">
+            Table of Contents
+        </a>
+        <span class="divider"> | </span>
+    
+
+    
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/6.html">
+            &lt;&lt; Previous Chapter
+        </a>
+    
+
+    <span class="divider"> | </span>
+
+    
+        <a href="https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/8.html">
+            Next Chapter &gt;&gt;
+        </a>
+    
+</div>
+
+
+
+
+
+</div>
+
+        </div>
+    </section>
+
+</main>
+
+    <div class="footer--wrapper">
+        <div class="u02-footer">
+
+
+<div class="u02-footer">
+
+    <div>
+        <div class="container">
+            <div class="clear">
+                <div class="contact-block">
+                    <h4>Have a Question?</h4>
+                    <a href="https://www.f5.com/company/contact" target="_blank" class="support-link internalLink">
+                        Support and Sales <span class="support-arrow">&gt;</span>
+                    </a>
+                </div>
+                <div class="social-block">
+                    <div class="shift-right">
+                        <h4>Follow Us</h4>
+                        <div class="footer-icons">
+                            <a href="https://twitter.com/f5networks" target="_blank" title="twitter" class="twitter externalLink" rel="noreferrer">
+                                <img class="social-icons" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/twitter.svg" alt="twitter" border="0">
+                            </a>
+                        
+                            <a href="https://www.linkedin.com/companies/f5-networks" target="_blank" title="linkedin" class="linkedin externalLink" rel="noreferrer">
+                                <img class="social-icons" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/linkedin.svg" alt="linkedin" border="0">
+                            </a>
+                        
+                            <a href="https://www.facebook.com/f5networksinc" target="_blank" title="facebook" class="facebook externalLink" rel="noreferrer">
+                                <img class="social-icons" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/facebook.svg" alt="facebook" border="0">
+                            </a>
+                        
+                            <a href="https://www.youtube.com/f5networksinc" target="_blank" title="youtube" class="youtube externalLink" rel="noreferrer">
+                                <img class="social-icons" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/youtube.svg" alt="youtube" border="0">
+                            </a>
+                        
+                            <a href="https://devcentral.f5.com/" target="_blank" title="dc-icon" class="dc-icon internalLink" rel="noreferrer">
+                                <img class="social-icons" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/dc-icon.svg" alt="dc-icon" border="0">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-links">
+                
+                    <div class="footer-col">
+                        <h4>About F5</h4>
+                        <ul>
+                            <li>
+                                <a href="https://f5.com/about-us" target="_blank" class="internalLink" rel="noreferrer">
+                                    Corporate Information
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://f5.com/about-us/news" target="_blank" class="internalLink" rel="noreferrer">
+                                    Newsroom
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://f5.com/about-us/investor-relations" target="_blank" class="internalLink" rel="noreferrer">
+                                    Investor Relations
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://f5.com/careers" target="_blank" class="internalLink" rel="noreferrer">
+                                    Careers
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://support.f5.com/csp/about" target="_blank" class="internalLink" rel="noreferrer">
+                                    About AskF5
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="footer-col">
+                        <h4>Education</h4>
+                        <ul>
+                            <li>
+                                <a href="https://f5.com/education/training" target="_blank" class="internalLink" rel="noreferrer">
+                                    Training
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://f5.com/education/certification" target="_blank" class="internalLink" rel="noreferrer">
+                                    Certification
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://university.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                    F5 University
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://f5.com/education/training/free-courses" target="_blank" class="internalLink" rel="noreferrer">
+                                    Free Online Training
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="footer-col">
+                        <h4>F5 Sites</h4>
+                        <ul>
+                            <li>
+                                <a href="https://f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                    F5.com
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://devcentral.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                    DevCentral
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://support.f5.com/csp/home" target="_blank" class="internalLink" rel="noreferrer">
+                                    Support Portal
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://partners.f5.com/" target="_blank" class="internalLink" rel="noreferrer">
+                                    Partner Central
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://www.f5.com/labs" target="_blank" class="internalLink">
+                                    F5 Labs
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="footer-col">
+                        <h4>Support Tasks</h4>
+                        <ul>
+                            <li>
+                                <a href="https://f5.com/support/support-policies" target="_blank" class="internalLink" rel="noreferrer">
+                                    Read Support Policies
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://support.f5.com/csp/my-support/service-request" target="_blank" class="internalLink" rel="noreferrer">
+                                    Create Service Request
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://support.f5.com/csp/siteFeedback" target="_blank" class="internalLink" rel="noreferrer">
+                                    Leave feedback [+]
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                
+            </div>
+
+            <div class="copyright">
+                <p>
+                    ©2021 F5 Networks, Inc. All rights reserved.
+                </p>
+                
+                    <a href="https://f5.com/about-us/policies/trademarks" target="_blank" class="bottomLink internalLink" rel="noreferrer">
+                        Trademarks
+                    </a>
+                
+                    <a href="https://f5.com/about-us/policies" target="_blank" class="bottomLink internalLink" rel="noreferrer">
+                        Policies
+                    </a>
+                
+                    <a href="https://f5.com/about-us/policies/privacy-policy" target="_blank" class="bottomLink internalLink" rel="noreferrer">
+                        Privacy
+                    </a>
+                
+                    <a href="https://www.f5.com/company/policies/F5-California-privacy-summary" target="_blank" class="bottomLink internalLink">
+                        California Privacy
+                    </a>
+                
+                    <a href="https://www.f5.com/company/policies/privacy-notice#no-sell" target="_blank" class="bottomLink internalLink">
+                        Do Not Sell My Personal Information
+                    </a>
+                
+                
+                    <span id="teconsent"></span>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="consent_blackbar"></div>
+</div>
+
+    </div>
+    
+    
+    
+
+
+    
+<script src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/clientlib-base.6f6d4680f1230f77460ded273b901faa.js.download"></script>
+
+
+
+
+<script type="text/javascript">
+    wperf.mark("clientlib-js-pcx-done");
+</script>
+
+    
+
+
+    
+
+    
+
+    
+
+
+<script type="text/javascript" id="">(function(c){function g(c,a){var b=c.innerHeight||(a.documentElement?a.documentElement.clientHeight:a.body.clientHeight)||a.body.clientHeight;var e=a.body;var d=a.documentElement;e=a.height||f(f(e.scrollHeight,d.scrollHeight),f(e.offsetHeight,d.offsetHeight),f(e.clientHeight,d.clientHeight));c=c.pageYOffset||(a.documentElement?a.documentElement.scrollTop:a.body.scrollTop)||a.body.scrollTop;b=e-(b+c);return b=b/e*100}dataLayer=window.dataLayer||[];var d=0,f=Math.max;window.onscroll=function(){for(var b=
+100-g(window,document),a=c.length;a;)a--,b>=c[a]&&(currentMilestone=c[a],currentMilestone>d&&(d=currentMilestone,a=c[a].toString()+"%",dataLayer.push({event:"scroll-tracking-milestone","milestone-value":a})),a=0)};for(var h=100-g(window,document),b=c.length;b;)if(b--,h>=c[b]){currentMilestone=c[b];if(currentMilestone>d)for(d=currentMilestone;b;){var k=c[b].toString()+"%";dataLayer.push({event:"scroll-tracking-milestone","milestone-value":k});b--}b=0}})([0,10,20,30,40,50,60,70,80,90,100]);</script><script type="text/javascript" id="">var __dispatched__={},__i__=self.postMessage&&setInterval(function(){if(self.PrivacyManagerAPI&&__i__){var b={PrivacyManagerAPI:{action:"getConsentDecision",timestamp:(new Date).getTime(),self:self.location.host}};self.top.postMessage(JSON.stringify(b),"*");__i__=clearInterval(__i__)}},50);
+self.addEventListener("message",function(b,a){try{if(b.data&&(a=JSON.parse(b.data))&&(a=a.PrivacyManagerAPI)&&a.capabilities&&"getConsentDecision"==a.action){var c=self.PrivacyManagerAPI.callApi("getGDPRConsentDecision",self.location.host).consentDecision;c&&c.forEach(function(a){__dispatched__[a]||(self.dataLayer&&self.dataLayer.push({event:"GDPR Pref Allows "+a}),__dispatched__[a]=1)})}}catch(d){}});</script><script type="text/javascript" id="">(function(){var a=new Date;a.setTime(a.getTime()+1E4);a=a.toUTCString();var b=document.domain.split(".").reverse().splice(0,2).reverse().join(".");document.cookie="dpi_utmVals\x3d;expires\x3d"+a+";domain\x3d"+b+";path\x3d/";document.cookie="cookieOrigName\x3d;expires\x3d"+a+";domain\x3d"+b+";path\x3d/"})();</script><script type="text/javascript" id="">(function(){if(window.jQuery)jQuery('a.btn-default[href*\x3d"seaintsol"]').on("click.gtm",function(a){a.stopImmediatePropagation();a.preventDefault();a=jQuery(this);var b=a.attr("rel"),c=/width=(\d+);/,d=/height=(\d+);/;ga("mainsite.linker:decorate",a);~b.indexOf("shadowbox")&&Shadowbox.open({content:a.attr("href"),player:"iframe",width:c.exec(b)[1],height:d.exec(b)[1]})})})();</script><script type="text/javascript" id="">var filetypes=/\.(zip|exe|pdf|doc.*|xls.*|ppt.*|mp3)$/i,imagetypes=/\.(jpg|jpeg|png|gif|svg*)$/i;
+document.querySelectorAll("a[href]").forEach(function(a){var b=a.getAttribute("href"),f=a.pathname,d=a.hostname,c=window.location.pathname,g=document.location.hostname,e=/[.]/.exec(b)?/[^.]+$/.exec(b):void 0;a.classList.contains("btn")&&a.addEventListener("click",function(){dataLayer.push({event:"button-click","link-href":b})});a.classList.contains("a-mm")&&a.addEventListener("click",function(){dataLayer.push({event:"nav-click","link-href":b})});a.classList.contains("a-mm-h")&&a.addEventListener("click",
+function(){dataLayer.push({event:"nav-click-header","link-href":b})});a.classList.contains("a-mm-f")&&a.addEventListener("click",function(){dataLayer.push({event:"nav-click-footer","link-href":b})});a.classList.contains("a-mm-a")&&a.addEventListener("click",function(){dataLayer.push({event:"nav-click-all","link-href":b})});a.classList.contains("a-breadcrumb")&&a.addEventListener("click",function(){dataLayer.push({event:"breadcrumb-click","link-href":b})});b.match("^.*/mode/pdf$")&&a.addEventListener("click",
+function(){dataLayer.push({event:"create-pdf","link-href":b})});b.match(/^https?:/i)&&!b.match(/f5\.com/)?(a.classList.add("externalLink"),a.addEventListener("click",function(a){dataLayer.push({event:"external-link","link-href":b,page:c})})):a.classList.contains("make-vidbox")||a.classList.contains("fancybox-media")?(a.classList.add("videoLink"),a.addEventListener("click",function(){dataLayer.push({event:"open-video","video-link":b.match(/[^\/]+$/)})})):b.match(/^mailto:/i)?(a.classList.add("emailLink"),
+a.addEventListener("click",function(){dataLayer.push({event:"send-email",mailto:b.replace(/^mailto:/i,"")})})):b.match(filetypes)?(a.classList.add(e[0]),a.addEventListener("click",function(){dataLayer.push({event:"download-asset","asset-name":b.replace(/^.*\/\/[^\/]+/,"")})})):b.match(imagetypes)?(a.classList.add(e[0]),a.addEventListener("click",function(){dataLayer.push({event:"view-image","image-name":b.replace(/^.*\/\/[^\/]+/,"")})})):d!=g&&~d.indexOf("f5.com")?(a.classList.add("internalLink"),
+a.addEventListener("click",function(a){dataLayer.push({event:"internal-link","link-href":b,page:c})})):f==c&&(0<b.indexOf("#")?a.classList.add("anchorLink"):a.classList.add("currentURL"))});</script><script type="text/javascript" id="">(function(){function w(){if("top"==d){var b=[1,.9,.8,.7,.6,.5,.4,.3,.2,.1];f=k(b);return b}if("middle"==d)return b=[.1,.1,.2,.4,.8,.8,.4,.2,.1,.1],f=k(b),b;if("bottom"==d)return b=[.1,.2,.3,.4,.5,.6,.7,.8,.9,1],f=k(b),b;if("even"==d)return b=[1,1,1,1,1,1,1,1,1,1],f=k(b),b}function k(b){for(var a=b.length,c=0;a--;)c+=b[a];return c}var d="even",x="GTM",q=25E3,y=5,l=[.1,.25,.7,.9],z=["minimally engaged","normally engaged","actively engaged","extremely engaged"],A=2E3;dataLayer=window.dataLayer||[];var m=
+Math.max,g=[0,0,0,0,0,0,0,0,0,0],f=5.5,B=w(),r=-1,n=0,p="Not Engaged",e,h,t=h=0,u=0,v=0;window.onblur=function(b){r=-1;e=0};window.addEventListener("scroll",function(b){var a=window;b=a.innerHeight||(document.documentElement?document.documentElement.clientHeight:document.body.clientHeight)||document.body.clientHeight;var c=document.body;var d=document.documentElement;c=document.height||m(m(c.scrollHeight,d.scrollHeight),m(c.offsetHeight,d.offsetHeight),m(c.clientHeight,d.clientHeight));a=a.pageYOffset||
+(document.documentElement?document.documentElement.scrollTop:document.body.scrollTop)||document.body.scrollTop;b=c-(b+a);b=b/c*100;c=(100-b)/10;a=10;for(h=(new Date).getTime();a--;)if(b=a,Math.floor(c)==b){if(r==b){if(e+=Math.abs(h-t),e>=A){u+=e;c=g[a]+e;g[a]=c>q?q:g[a]+Math.abs(h-t);c=g.length;for(a=0;c--;)a+=g[c]*B[c];c=q/y*f;n=1<a/c?1:a/c;a:{for(a=l.length;a--;)if(n>l[a]&&v<l[a]){p=z[a];v=l[a];a=!0;break a}a=!1}if(a&&(a=Math.round(u/1E3),"undefined"!==typeof n&&"undefined"!==typeof p&&"undefined"!==
+typeof a&&0<n&&0!=p.length&&0<a))switch(x){case "GTM":dataLayer.push({event:"engagement","engagement-value":p,"total-time-in-milestones":a})}e=0}}else e=0;r=b;t=h;break}})})();</script><script type="text/javascript" id="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/F5_Visitor_JS.js.download"></script><script type="text/javascript" id="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/F5_Analytics_Supportdomain.js.download"></script><iframe height="0" width="0" style="display: none; visibility: hidden;" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/activityi.html"></iframe><iframe sandbox="allow-scripts allow-same-origin" title="Adobe ID Syncing iFrame" id="destination_publishing_iframe_f5networks_0" name="destination_publishing_iframe_f5networks_0_name" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/dest5.html" style="display: none; width: 0px; height: 0px;" class="aamIframeLoaded"></iframe><div style="display: none; visibility: hidden;"><script>/*
+ MIT
+*/
+(function(c){function d(){var a;if(a=document.querySelector(".mktoErrorMsg")){var e=a.textContent||a.innerText;a=document.querySelector("input.mktoInvalid, .mktoInvalid input");window.dataLayer.push({event:"mkto-form-error",mktoFormErrorMessage:e,"gtm.element":a,"gtm.elementClasses":a&&a.className||"","gtm.elementId":a&&a.id||"","gtm.elementName":a&&a.name||"","gtm.elementTarget":a&&a.target||""})}}c&&(c.whenReady(function(a){window.dataLayer.push({event:"mkto-form-ready",mktoFormId:a.getId(),mktoFormSubmittable:a.submittable(),
+mktoFormAllFieldsFilled:a.allFieldsFilled(),mktoFormValues:a.getValues()});a.onValidate(function(a){window.dataLayer.push({event:"mkto-form-validate",mktoFormValid:a});setTimeout(d,0)});a.onSubmit(function(a){var b=a.getFormElem().find('button[type\x3d"submit"]');window.dataLayer.push({event:"mkto-form-submit",mktoFormId:a.getId(),mktoFormSubmittable:a.submittable(),mktoFormAllFieldsFilled:a.allFieldsFilled(),mktoFormValues:a.getValues(),mktoFormButton:{classes:b.attr("class"),text:b.text(),type:"submit"}})});
+a.onSuccess(function(a,b){window.dataLayer.push({event:"mkto-form-success",submitStatus:"success",mktoFormValues:a,mktoFormFollowUpUrl:b})})}),c.whenRendered(function(a){window.dataLayer.push({event:"mkto-form-rendered",mktoFormId:a.getId(),mktoFormSubmittable:a.submittable(),mktoFormAllFieldsFilled:a.allFieldsFilled(),mktoFormValues:a.getValues()})}))})(window.MktoForms2);</script></div><div style="display: none; visibility: hidden;"><iframe style="position:absolute; visibility:hidden; width:1px; height:1px;" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/saved_resource.html" u21znz4wr=""></iframe></div>
+
+<script type="text/javascript" id="">(function(){var a=window,b=document,c=b.createElement("script");c.setAttribute("async","true");c.setAttribute("type","text/javascript");c.setAttribute("src","//c1.rfihub.net/js/tc.min.js");b=b.getElementsByTagName("script")[0];b.parentNode.insertBefore(c,b);"function"!==typeof a._rfi&&(a._rfi=function(){a._rfi.commands=a._rfi.commands||[];a._rfi.commands.push(arguments)});_rfi("setArgs","ver","9");_rfi("setArgs","rb","33374");_rfi("setArgs","ca","20790133");_rfi("setArgs","_o","33374");_rfi("setArgs",
+"_t","20790133");_rfi("track")})();</script>
+<noscript>
+  <iframe src="//20790133p.rfihub.com/ca.html?rb=33374&amp;ca=20790133&amp;_o=33374&amp;_t=20790133&amp;ra=1451178520" style="display:none;padding:0;margin:0" width="0" height="0">
+</iframe>
+</noscript>
+<script type="text/javascript" id="">(function(d,g,u,n){function z(a){return/^[\],:{}\s]*$/.test(a.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g,""))?a:!1}function q(a){return a&&a.replace&&a.replace(A,"").replace(B,"")}function p(a){return a&&a.replace&&a.replace(A,"").replace(B,"").replace(G,"$1")}function m(a){for(var b=r.length;b--;)d[r[b]]&&d[r[b]].push&&d[r[b]].push(a)}function w(a){var b;if(b=a&&a.push)a.push=function(){for(var f=
+arguments,e=y.length;e--;)y[e].apply(a,f);return b.apply(a,arguments)}}function v(a){var b=[];if("string"!==typeof a)return b;a&&a.replace(/\w+/g,function(a){-1===a.indexOf("$")&&b.push(a)});return b}function h(a){var b={};do C(b,H(a,I),!1);while((a=a.parentNode)&&1===a.nodeType);var f;a={};for(f in b)a[f.substr(5)]=z(b[f])?(new Function("","return "+b[f]))():J.test(b[f])?eval(b[f]):b[f];return a}function c(a,b,f,e){a.addEventListener?a.addEventListener(b,f,!!e):a.attachEvent&&a.attachEvent(b,function(b){f.call(this,
+b,a)})}function K(a){var b=null;return function(){var f=this,e=arguments;b&&(clearTimeout(b),b=null);return b=setTimeout(function(){a.apply(f,e);b=null},20)}}function H(a,b){for(var f=(a=a.attributes)&&a.length,e={};f--;)if(!b||a[f].name===b||b&&b.test&&b.test(a[f].name))e[a[f].name]=a[f].value;return e}function C(a,b,f){for(var e in b)L.call(b,e)&&b[e]!==n&&(a[e]=f?b[e]:a[e]||b[e])}function k(){var a=k.a.length;if(!k.b){for(k.b=!0;a--;)k.a[a]&&k.a[a].apply(this,arguments);k.a.length=0}}function D(a){k.b?
+a&&a.call(g):a&&a.call&&k.a.push(a)}function M(a,b){var f=a&&a.form?a.form:a;f=f.getAttribute("name")||f.getAttribute("id");var e=a&&a.getAttribute?a.getAttribute("name")||a.getAttribute("id"):null;if(!b){var t=a&&a.tagName&&a.tagName.toLowerCase();b=a&&a.type?a.type:t;var c="select"==t;t="input"==t&&N.test(b);b={f:c,n:t,type:b};if(b.f){var h=a.options[a.selectedIndex];var d=h.label;h=h.value||null}else if("checkbox"==b.type||"radio"==b.type)d=a.checked?a.value||"on":null,h=a.checked?"on":"off";b=
+{d:h,e:d,g:b}}return{"gtm.formName":f||null,"gtm.fieldName":e||null,"gtm.fieldType":b.g.type||null,"gtm.fieldValue":b.d||"","gtm.fieldValueLabel":b.e||""}}function O(a,b){b=P.test(b&&b.tagName)||Q.test(b&&b.tagName);a=R.test(a);return b&&a}function S(a,b,f,e,t){a=a||d.event;var c=a.target||a.srcElement,h=a.eventPhase===T.NONE||a.target===a.currentTarget;b&&1==b.nodeType||(b=c);if(e||h){var l={event:"gtm.autoSenseEvent","gtm.eventType":f||a.type,"gtm.eventObject":a||null,"gtm.eventTarget":c||null,
+"gtm.elementTarget":c||null,"gtm.element":b||null,"gtm.elementId":b.getAttribute("id")||null,"gtm.elementClasses":b.getAttribute("class")||b.className||null};O(f||a.type,b)&&C(l,M(b,t));m(l);U&&E&&setTimeout(function(){l["gtm.element"]=l["gtm.elementTarget"]=l["gtm.eventTarget"]=l["gtm.eventObject"]=null},E)}}function V(a){var b;if(g.querySelectorAll)for(a=g.querySelectorAll(a),b=a.length;b--;)if(a[b]===this)return!0;return!1}function F(a){if(a&&a.call)return"function";if(a&&0<=a.length&&a.push)return"array";
+if(a&&a.toLowerCase)return"string";if(a&&a.toFixed)return"number";if(a&&a.hasOwnProperty)return"object"}var r=["dataLayer"],B=/^\s\s*/g,A=/\s*\s$/g,G=/(\s)\s*/g,y=[];y.push(function(){for(var a,b,f=arguments.length;f--;)if(a=arguments[f],b=a["gtm.element"],"gtm.element"in a){var e;if(e=b&&1===b.nodeType){var c=e=b,d=[],g=null,l=null,k=null,m=void 0;do{g=g||p(c.getAttribute("alt")||c.getAttribute("title"));l||((l=c)&&/^(select)$/i.test(l.tagName)&&(l=l.options[l.selectedIndex]),l=p(l.innerText||l.textContent));
+if(c&&c.getAttribute&&-1===(c.getAttribute("id")||"").indexOf("$")&&c.id){d[0]="#"+c.id;break}if(c&&c.getAttribute&&-1===(m=c.getAttribute("name")||"").indexOf("$")&&m){d[0]=c.tagName+(d[0]||"")+"[name\x3d"+m+"]";break}!d[1]&&c&&c.className&&c!==e&&(k=v(c.className).join("."),d[1]=k.length?c.tagName+"."+k:null);d[2]=d[2]||c.tagName}while((c=c.parentNode)&&1===c.nodeType);e={h:q(d.join(" ")),c:g,text:l}}a["gtm.elementSelector"]=e.h;a["gtm.elementDescriptor"]=e.c;a["gtm.elementText"]=e.text;a["gtm.dataset"]=
+h(b)}});var L=Object.prototype.hasOwnProperty,I=/^data-/,J=/^(null|undefined|[0-9]+(\.[0-9]+)?|true|false)$/;k.b=!(!g.body||!g.getElementsByTagName("body"));k.a=[];c(d,"load",k);c(g,"DOMContentLoaded",k);(function(a,b){var c=!1;b&&b.call&&(a.onload=a.onreadystatechange=function(f){var e=a.readyState;(c||e&&!/loaded|complete/.test(e))&&4!==e||(c=!0,a.onload=a.onreadystatechange=null,b.apply(a,arguments))})})(g,k);var Q=/^form$/i,P=/^(input|textarea|select)$/i,N=/^(checkbox|radio|hidden)$/i,R=/^(change|focus(in|out)?|blur)$/i,
+T={NONE:0,j:1,k:2,i:3},E=750,U=!~g.cookie.indexOf("allow_memory_leak\x3dtrue");(function(){for(var a=r.length,b;a--;)b=r[a],d[b]=d[b]||[],w(d[b])})();c(d,"onbeforeunload",function(){m({event:"gtm.autoSenseEvent","gtm.eventType":"unloading"})});D(function(){var a=K(S);c(g.body,"click",a,!0);c(g.body,"click",a,!1)});d.autosense={intercept:y,reprocess:function(a){var b=d[r[0]],c;for(c=0;c<b.length;c++)a.call(b,b[c])},matchSelector:function(a,b){return(a&&(a.matches||a.matchesSelector||a.mozMatchesSelector||
+a.webkitMatchesSelector||a.o||a.msMatchesSelector)||V).call(a,b)},assimilate:function(a,b){D(function(c){var e=F(a);if("object"==e)m(a);else if("function"==e)if(e=a.apply(d,arguments),"object"==F(e))m(e);else throw Error("assimilated functions must return an object, resistence is futile");else"string"==e&&(e={},e[a]=b,m(e))})},p:{m:q,l:p}}})(window,document,null,void 0);
+(function(){function d(d){for(var c=x=m.length;c--;){if(d>=m[c]&&c==x-1)return w[c+1];if(d<m[c]&&d>=m[c-1]||d<=m[c]&&0==c)return w[c]}}function g(d,c,g){"view"==d&&dataLayer.push({event:"viewport","viewport-range":c,orientation:g});"orientation"==d&&dataLayer.push({event:"orientation","viewport-range":c,orientation:g})}function u(d,c,g){d.addEventListener?d.addEventListener(c,g):d.attachEvent&&d.attachEvent("on"+c,g)}var n=Math.max(document.documentElement.clientWidth,window.innerWidth||0),z=Math.max(document.documentElement.clientHeight,
+window.innerHeight||0),q=null,p=null,m=[480,768,992,1200],w=["xs","wm","sm","md","lg"];q=n>z?"landscape":"portrait";p=d(n);dataLayer.push({"viewport-range":p,orientation:q});var v;u(window,"resize",function(){v&&window.clearTimeout(v);v=window.setTimeout(function(){var h=Math.max(document.documentElement.clientWidth,window.innerWidth||0),c=Math.max(document.documentElement.clientHeight,window.innerHeight||0);c=h>c?"landscape":"portrait";h=d(h);h!=p&&g("view",h,c);c!=q&&g("orientation",h,c);p=h;q=
+c},100)})})();(function(){function d(d){var g={event:"tracking-ready"};d&&(g.F5Id=d);dataLayer.push(g)}var g=google_tag_manager["GTM-PPZPQ6"].macro(21);if(g)d(g);else var u=5,n=window.setInterval(function(){if(u){u--;if(f5JS=google_tag_manager["GTM-PPZPQ6"].macro(22))window.clearInterval(n),d(f5JS),document.cookie="f5_uuid\x3d"+f5JS+";domain\x3df5.com;path\x3d/;";!window.F5ID||window.F5ID.error||window.F5ID.userid||(window.clearInterval(n),d())}else window.clearInterval(n),d()},20)})();</script><script type="text/javascript" id="">(function(){var b=document.createElement("script");b.src="//d1htpt0i4k7m8x.cloudfront.net/js/engagementTimer.minified.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();(function(){var b={platform:"gtm"},a=setInterval(function(){var c=window._apEngage||void 0;c&&(clearInterval(a),c(b))},200);setTimeout(function(){clearInterval(a)},2E3)})();</script><script type="text/javascript" id="">_linkedin_partner_id="8162";window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script><script type="text/javascript" id="">(function(){var b=document.getElementsByTagName("script")[0],a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";b.parentNode.insertBefore(a,b)})();</script>
+
+<noscript>
+
+<img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=8162&amp;fmt=gif">
+
+</noscript><script type="text/javascript" id="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/up_loader.1.1.0.js.download"></script><script type="text/javascript" id="">!function(d,e,f,a,b,c){d.twq||(a=d.twq=function(){a.exe?a.exe.apply(a,arguments):a.queue.push(arguments)},a.version="1.1",a.queue=[],b=e.createElement(f),b.async=!0,b.src="//static.ads-twitter.com/uwt.js",c=e.getElementsByTagName(f)[0],c.parentNode.insertBefore(b,c))}(window,document,"script");twq("init","nzagg");twq("track","PageView");</script><script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","128687871147784");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=128687871147784&amp;ev=PageView&amp;noscript=1"></noscript><img src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/1435" width="1" height="1" border="0" style="display: none" u21znz4wr=""><script type="text/javascript" id="" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/bizible.js.download"></script>
+
+        <script type="text/javascript" id="">ttd_dom_ready(function(){if("function"===typeof TTDUniversalPixelApi){var a=new TTDUniversalPixelApi;a.init("aqjrlce",["xvznsfq"],"https://insight.adsrvr.org/track/up")}});</script><iframe id="universal_pixel_xvznsfq" height="0" width="0" style="display:none;" src="./AskF5 _ Manual Chapter_ NATS and SNATs_files/up.html" title="TTD Universal Pixel"></iframe></body></html>

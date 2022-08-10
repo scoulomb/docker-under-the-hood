@@ -4,14 +4,19 @@
 
 https://networkinterview.com/snat-vs-dnat/
 
-SNAT i.e. Source Network Address Translation as the name implies involves the translation of source IP address. Thus it allows the internal host to connect with the internet by translating its private IP address to public IP address. (normal internet browsing)
-
-DNAT i.e. Destination Network Address Translation is used by an external host to initiate connection with a private network. So, it translates the public IP address of an external host to the private IP of internal Host. (if hosting a webserver @home, SFR box v8 => http://192.168.1.1/network/nat)
+- SNAT i.e. Source Network Address Translation as the name implies involves the translation of source IP address. Thus it allows the internal host to connect with the internet by translating its private IP address to public IP address. (normal internet browsing)
+- DNAT i.e. Destination Network Address Translation is used by an external host to initiate connection with a private network. So, it translates the public IP address of an external host to the private IP of internal Host. (if hosting a webserver @home, SFR box v8 => http://192.168.1.1/network/nat)
 
 Also check
 
 - https://networkinterview.com/nat-type-1-vs-2-vs-3-detailed-comparison/ (note link with [NAS](#other-examples), for UPNP discovery of port and ps4)
 - https://networkinterview.com/nat-configuration-nat-types-palo-alto/
+
+## SNAT deep dive 
+
+See [NAT Deep-dive Appendix](NAT-deep-dive-appendix/README.md).
+
+Below we will review some other examples.
 
 ## Example of Docker iptables
 
@@ -84,13 +89,7 @@ ESB/appli targets external/provider ip -> L4 FW (us) Routing rule to F5 or Firew
 
 L7 firewall (should also allow NAT): https://serverfault.com/questions/792572/what-does-a-layer-3-4-firewall-do-that-a-layer-7-does-not
 
-See also F5 SNAT:
-- https://support.f5.com/csp/article/K47945399
-    - Standard SNAT: many to one (https://networkinterview.com/nat-configuration-nat-types-palo-alto/)
-    - Automap SNAT: many to many
-    - SNAT pools: many to many
-- SNAT pool: https://support.f5.com/csp/article/K47945399
-
+[Router and firewall can also provide NAT](NAT-deep-dive-appendix/README.md#type-of-snat)
 
 <!--
 **Explicit SNAT**:
@@ -116,8 +115,6 @@ Sometimes those proxy makes also certificate shaddowing.
 <!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links [Link 2]: ~~ SNAT 1A ~~ [Certificate] --> 
 
 
-See [(S)NAT Tanenbaum Appendix](./NAT-tanenbaum-appendix/README.md).
-
 ### SNAT without a firewall
 
 See https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections.
@@ -136,7 +133,7 @@ From https://www.ietf.org/archive/id/draft-mrw-nat66-00.html
 From https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_nat/configuration/xe-16-10/nat-xe-16-10-book/iadnat-asr1k-nptv6.html
 > The NPTv6 support on ASR1k/CSR1k/ISR4k feature supports IPv6-to-IPv6 Network Prefix Translation (NPTv6) which enables a router to translate an IPv6 packet header to IPv6 packet header and vice versa. The IPv6-to-IPv6 Network Prefix Translation (NPTv6) provides a mechanism to translate an inside IPv6 source address prefix to outside IPv6 source address prefix in IPv6 packet header and vice-versa. A router that implements an NPTv6 prefix translation function is referred to as an NPTv6 Translator. 
 
-## NSG vs Azure firewll
+## Azure NSG vs Azure firewall
 
 From https://docs.microsoft.com/en-us/azure/firewall/firewall-faq. AZ900 p208
 
@@ -159,8 +156,7 @@ See https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/ove
 
 We have seen good example of NAT here
 - NAT/upnp in access provider box (for NAS access): https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/README.md
-- [Docker natting](/container-under-the-hood-link-snat-dnat.md)
-- Azure Firewall can do SNAT/DNAT (see AZ900)
 - SNAT/DNAT at k8s service level: https://github.com/scoulomb/myk8s/blob/master/Services/service_deep_dive.md#nat
 
 <!-- ok ccl, SNAT CCL, book az900 ccl and book did not mention SNAT, AZ900 OK re-ccl, and do not dive stop -->
+<!-- clear re-ccl consistent OK -->

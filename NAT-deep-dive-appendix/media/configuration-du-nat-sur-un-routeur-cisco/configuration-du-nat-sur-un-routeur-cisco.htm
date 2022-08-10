@@ -1,0 +1,3254 @@
+<!DOCTYPE html>
+<!--[if !IE]>
+	<html class="no-js non-ie" lang="fr-FR"> <![endif]-->
+<!--[if IE 7 ]>
+	<html class="no-js ie7" lang="fr-FR"> <![endif]-->
+<!--[if IE 8 ]>
+	<html class="no-js ie8" lang="fr-FR"> <![endif]-->
+<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="fr-FR"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="fr-FR"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script id="twitter-wjs" src="configuration-du-nat-sur-un-routeur-cisco_files/widgets.js"></script><script async="" src="configuration-du-nat-sur-un-routeur-cisco_files/f.txt"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7008200140952107",
+          enable_page_level_ads: true
+     });
+</script>		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Configuration du NAT sur un routeur Cisco | CISCOMADESIMPLE.BE</title>
+
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="https://www.ciscomadesimple.be/xmlrpc.php">
+
+		<title>Configuration du NAT sur un routeur Cisco – CISCOMADESIMPLE.BE</title>
+<meta name="robots" content="max-image-preview:large">
+<!-- Jetpack Site Verification Tags -->
+<link rel="dns-prefetch" href="https://secure.gravatar.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://widgets.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://0.gravatar.com/">
+<link rel="dns-prefetch" href="https://1.gravatar.com/">
+<link rel="dns-prefetch" href="https://2.gravatar.com/">
+<link rel="dns-prefetch" href="https://jetpack.wordpress.com/">
+<link rel="dns-prefetch" href="https://public-api.wordpress.com/">
+<link rel="alternate" type="application/rss+xml" title="CISCOMADESIMPLE.BE » Flux" href="https://www.ciscomadesimple.be/feed/">
+<link rel="alternate" type="application/rss+xml" title="CISCOMADESIMPLE.BE » Flux des commentaires" href="https://www.ciscomadesimple.be/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="CISCOMADESIMPLE.BE » Configuration du NAT sur un routeur Cisco Flux des commentaires" href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.ciscomadesimple.be\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.4"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="configuration-du-nat-sur-un-routeur-cisco_files/wp-emoji-release.min.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="configuration-du-nat-sur-un-routeur-cisco_files/style.min.css" type="text/css" media="all">
+<style id="wp-block-library-inline-css" type="text/css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="mediaelement-css" href="configuration-du-nat-sur-un-routeur-cisco_files/mediaelementplayer-legacy.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-mediaelement-css" href="configuration-du-nat-sur-un-routeur-cisco_files/wp-mediaelement.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="acx_smw_widget_style-css" href="configuration-du-nat-sur-un-routeur-cisco_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_stylesheet-css" href="configuration-du-nat-sur-un-routeur-cisco_files/front_end_style.css" type="text/css" media="all">
+<link rel="stylesheet" id="dashicons-css" href="configuration-du-nat-sur-un-routeur-cisco_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_desktop_style-css" href="configuration-du-nat-sur-un-routeur-cisco_files/desktop_style.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-style-css" href="configuration-du-nat-sur-un-routeur-cisco_files/style_003.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-media-queries-css" href="configuration-du-nat-sur-un-routeur-cisco_files/responsive.css" type="text/css" media="all">
+<link rel="stylesheet" id="pro-css-css" href="configuration-du-nat-sur-un-routeur-cisco_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="fontAwesome-css" href="configuration-du-nat-sur-un-routeur-cisco_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-pro-skin-css" href="configuration-du-nat-sur-un-routeur-cisco_files/darkblue.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="configuration-du-nat-sur-un-routeur-cisco_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="configuration-du-nat-sur-un-routeur-cisco_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/responsive-modernizr.min.js" id="modernizr-js"></script>
+<link rel="https://api.w.org/" href="https://www.ciscomadesimple.be/wp-json/"><link rel="alternate" type="application/json" href="https://www.ciscomadesimple.be/wp-json/wp/v2/posts/866"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.ciscomadesimple.be/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.ciscomadesimple.be/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/">
+<link rel="shortlink" href="https://wp.me/pBbKi-dY">
+<link rel="alternate" type="application/json+oembed" href="https://www.ciscomadesimple.be/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ciscomadesimple.be%2F2013%2F04%2F06%2Fconfiguration-du-nat-sur-un-routeur-cisco%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.ciscomadesimple.be/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.ciscomadesimple.be%2F2013%2F04%2F06%2Fconfiguration-du-nat-sur-un-routeur-cisco%2F&amp;format=xml">
+
+
+
+<!-- Starting Styles For Social Media Icon From Acurax International www.acurax.com -->
+<style type="text/css">
+#acx_social_widget img 
+{
+width: 32px; 
+}
+#acx_social_widget 
+{
+min-width:0px; 
+position: static; 
+}
+</style>
+<!-- Ending Styles For Social Media Icon From Acurax International www.acurax.com -->
+
+
+
+			<link rel="alternate" type="application/rss+xml" title="Fil RSS des forums" href="https://www.ciscomadesimple.be/wp-content/plugins/mingle-forum/feed.php?topic=all">                        <style type="text/css">
+              @media screen {
+                    .printfriendly {
+                       position: relative;
+                        z-index: 1000;
+                     margin: 
+                        0px 0px 0px 0px                     ;
+                  }
+                  .printfriendly a, .printfriendly a:link, .printfriendly a:visited, .printfriendly a:hover, .printfriendly a:active {
+                       font-weight: 600;
+                      cursor: pointer;
+                       text-decoration: none;
+                     border: none;
+                      -webkit-box-shadow: none;
+                      -moz-box-shadow: none;
+                     box-shadow: none;
+                      outline:none;
+                        font-size: 14px !important;
+                        color: #55750C !important;
+                   }
+                  .printfriendly.pf-alignleft {
+                      float: left
+                    }
+                  .printfriendly.pf-alignright {
+                     float: right;
+                  }
+                  .printfriendly.pf-aligncenter {
+                        display: flex;
+                     align-items: center;
+                       justify-content: center;
+                   }
+              }
+          }
+
+         @media print {
+             .printfriendly {
+                   display: none;
+             }
+          }
+
+         .pf-button-img {
+               border: none;
+              -webkit-box-shadow: none; 
+             -moz-box-shadow: none; 
+                box-shadow: none; 
+             padding: 0; 
+               margin: 0;
+             display: inline; 
+              vertical-align: middle;
+            }
+          
+           img.pf-button-img + .pf-button-text {
+              margin-left: 6px;
+          }
+        </style>
+
+        <style type="text/css" id="pf-excerpt-styles">
+          .pf-button.pf-button-excerpt {
+              display: none;
+           }
+        </style>
+                <style type="text/css">img#wpstats{display:none}</style>
+		<script>
+		jQuery(document).ready(function(){
+		var copyright_text = "";
+		var cyberchimps_link = "";
+		var siteurl = "https://www.ciscomadesimple.be"; 
+		if(copyright_text == "")
+		{
+			jQuery(".copyright #copyright_link").text(" "+"Default copyright text");
+		}
+		else{ 
+			jQuery(".copyright #copyright_link").text(" "+copyright_text);
+		}
+		jQuery(".copyright #copyright_link").attr('href',siteurl);
+		if(cyberchimps_link == 1)
+		{
+			jQuery(".powered").css("display","block");
+		}
+		else{
+			jQuery(".powered").css("display","none");
+		}
+		});
+	</script>
+<!-- We need this for debugging -->
+<!-- Responsive Pro 1.0.2.9 -->
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #668fa2; }
+</style>
+	
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Configuration du NAT sur un routeur Cisco">
+<meta property="og:url" content="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/">
+<meta property="og:description" content="Quand il s’agit d’interconnecter un réseau privé (que ce soit d’entreprise ou particulier), en IPv4, il est pratiquement impossible de se passer du NAT. Voici donc une configurati…">
+<meta property="article:published_time" content="2013-04-06T16:20:51+00:00">
+<meta property="article:modified_time" content="2019-08-03T13:57:31+00:00">
+<meta property="og:site_name" content="CISCOMADESIMPLE.BE">
+<meta property="og:image" content="https://www.ciscomadesimple.be/wp-content/uploads/2013/04/nat.png">
+<meta property="og:image:width" content="661">
+<meta property="og:image:height" content="299">
+<meta property="og:image:alt" content="">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:text:title" content="Configuration du NAT sur un routeur Cisco">
+<meta name="twitter:image" content="https://www.ciscomadesimple.be/wp-content/uploads/2013/04/nat.png?w=640">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- End Jetpack Open Graph Tags -->
+	<style type="text/css" id="customizer_styles">
+				body {
+		 font-family: Arial, Helvetica, sans-serif;
+		 font-size: 14px;
+				}
+
+				h1, h2, h3, h4, h5, h6, .widget-title h3 {
+		 color: #5e5e5e;
+		 font-family: Arial, Helvetica, sans-serif;
+				}
+
+				input[type='reset'], input[type='button'], input[type='submit'] {
+		 font-family: Arial, Helvetica, sans-serif;
+				}
+
+			</style>
+<style type="text/css" id="wp-custom-css">.google-auto-placed {
+	height:0 !important
+}</style><!-- Custom CSS Styles -->
+<style type="text/css" media="screen">
+.site-description {
+color: #555555;
+}
+.site-name {
+font-size: 40px;
+}
+
+#container {
+max-width: 1200px !important;
+}
+
+</style>
+	<script src="configuration-du-nat-sur-un-routeur-cisco_files/a"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="configuration-du-nat-sur-un-routeur-cisco_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="configuration-du-nat-sur-un-routeur-cisco_files/services.min.css"><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><script charset="utf-8" src="configuration-du-nat-sur-un-routeur-cisco_files/moment~timeline.0077362cedfc3f5894ac8f9171c2dfd9.js"></script><script charset="utf-8" src="configuration-du-nat-sur-un-routeur-cisco_files/timeline.55e8262747461cf415fb59f1ac3ec11e.js"></script></head>
+
+<body class="post-template-default single single-post postid-866 single-format-standard custom-background">
+
+
+<div id="container" class="hfeed">
+	<div class="skip-container cf">
+		<a class="skip-link screen-reader-text focusable" href="#content">↓ passer au contenu principal</a>
+	</div><!-- .skip-container -->
+	<div id="header">
+
+		
+		
+		
+		
+			<div id="logo">
+				<a href="https://www.ciscomadesimple.be/"><img src="configuration-du-nat-sur-un-routeur-cisco_files/cropped-cropped-logo-cmsbe-012.png" alt="CISCOMADESIMPLE.BE" width="674" height="100"></a>
+			</div><!-- end of #logo -->
+
+		
+		
+				<div class="main-nav"><div id="responsive_current_menu_item">Configuration du NAT sur un routeur Cisco</div><ul class="menu"><li><a href="https://www.ciscomadesimple.be/">Accueil</a></li><li class="page_item page-item-285 page_item_has_children"><a href="https://www.ciscomadesimple.be/articles-2/">Articles</a><ul class="children"><li class="page_item page-item-151"><a href="https://www.ciscomadesimple.be/articles-2/cisco-cie/">Technologies Cisco</a></li><li class="page_item page-item-202"><a href="https://www.ciscomadesimple.be/articles-2/articles-reseaux-generalistes/">Technologies réseaux</a></li><li class="page_item page-item-1262"><a href="https://www.ciscomadesimple.be/articles-2/routing/">Routing</a></li><li class="page_item page-item-1259"><a href="https://www.ciscomadesimple.be/articles-2/switching/">Switching</a></li><li class="page_item page-item-231"><a href="https://www.ciscomadesimple.be/articles-2/gns3/">GNS3</a></li></ul></li><li class="page_item page-item-1411 page_item_has_children"><a href="https://www.ciscomadesimple.be/certifications/">Certifications</a><ul class="children"><li class="page_item page-item-1414"><a href="https://www.ciscomadesimple.be/certifications/ccent-icnd1/">CCENT – ICND1</a></li><li class="page_item page-item-1416"><a href="https://www.ciscomadesimple.be/certifications/ccna-icnd2/">CCNA – ICND2</a></li><li class="page_item page-item-1418 page_item_has_children"><a href="https://www.ciscomadesimple.be/certifications/ccnp-rs/">CCNP R&amp;S</a><ul class="children"><li class="page_item page-item-1420"><a href="https://www.ciscomadesimple.be/certifications/ccnp-rs/ccnp-route/">CCNP Route</a></li><li class="page_item page-item-1422"><a href="https://www.ciscomadesimple.be/certifications/ccnp-rs/ccnp-switch/">CCNP Switch</a></li><li class="page_item page-item-1424"><a href="https://www.ciscomadesimple.be/certifications/ccnp-rs/ccnp-tshoot/">CCNP Tshoot</a></li></ul></li></ul></li><li class="page_item page-item-600"><a href="https://www.ciscomadesimple.be/fiches-recapitulatives/">Fiches récapitulatives</a></li><li class="page_item page-item-786"><a href="https://www.ciscomadesimple.be/videos/">Vidéos</a></li><li class="page_item page-item-941"><a href="https://www.ciscomadesimple.be/ressources/">Ressources</a></li><li class="page_item page-item-2"><a href="https://www.ciscomadesimple.be/a-propos/">À propos</a></li></ul><a id="responsive_menu_button"></a></div>
+		
+		
+	</div><!-- end of #header -->
+
+	<div id="wrapper" class="clearfix">
+
+<div id="content" class="grid col-620">
+
+	<div class="breadcrumb-list" xmlns:v="http://rdf.data-vocabulary.org/#"><span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="https://www.ciscomadesimple.be/">Accueil</a></span> <span class="chevron">›</span> <span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="https://www.ciscomadesimple.be/category/certifications/">Certifications</a></span> <span class="chevron">›</span> <span class="breadcrumb" typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="https://www.ciscomadesimple.be/category/certifications/ccent_icnd1/">CCENT - ICND1</a></span> <span class="chevron">›</span> <span class="breadcrumb-current">Configuration du NAT sur un routeur Cisco</span></div>
+	
+		
+						<div id="post-866" class="post-866 post type-post status-publish format-standard hentry category-ccent_icnd1 category-certifications category-cisco category-cisco_practice category-routing-cisco tag-cisco tag-dynamique tag-ip-nat-inside tag-ip-nat-outside tag-nat tag-overload tag-pat tag-statique tag-translation">
+				
+				
+	<h1 class="entry-title post-title">Configuration du NAT sur un routeur Cisco</h1>
+
+<div class="post-meta">
+	<span class="posted-on-meta"><i class="fa fa-calendar" aria-hidden="true"></i><span class="meta-prep meta-prep-author posted">Posted on </span><a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/" title="18:20" rel="bookmark"><span class="timestamp updated">6 avril 2013</span></a></span><span class="author-link byline"> by <span class="author vcard"><a class="url fn n" href="https://www.ciscomadesimple.be/author/admin/" title="Afficher tous les articles par Steve De Jongh" rel="author"> <span class="author-gravtar"> <img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_002.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_004.jpeg 2x" class="avatar avatar-32 photo grav-hashed" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-0" width="32" height="32"> </span>Steve De Jongh</a></span></span></div><!-- end of .post-meta -->
+
+				<div class="post-entry">
+										<div class="pf-content"><p>Quand il s’agit d’interconnecter un
+ réseau privé (que ce soit d’entreprise ou particulier), en IPv4, il est
+ pratiquement impossible de se passer du NAT. Voici donc une 
+configuration qui reprend l’essentiel des trois principaux types de NAT 
+que l’on peut configurer, à savoir:</p>
+<ul>
+<li><span style="line-height: 16px;">Le NAT statique</span></li>
+<li>Le NAT dynamique avec pool d’adresses</li>
+<li>Le NAT dynamique avec surcharge (NAT overload, aussi connu sous le nom de PAT)</li>
+</ul>
+<h2><span id="more-866"></span></h2>
+<h2>Topologie du labo</h2>
+<p><img loading="lazy" class="aligncenter size-full wp-image-867" alt="nat" src="configuration-du-nat-sur-un-routeur-cisco_files/nat.png" srcset="configuration-du-nat-sur-un-routeur-cisco_files/nat.png 661w, configuration-du-nat-sur-un-routeur-cisco_files/nat-300x135.png 300w, configuration-du-nat-sur-un-routeur-cisco_files/nat-250x113.png 250w" sizes="(max-width: 661px) 100vw, 661px" width="661" height="299"></p>
+<p>Le labo est divisé en deux parties, le côté privé (réseau de 
+l’entreprise) et le côté publique (le FAI et Internet). le routeur ISP 
+(qui représente le FAI), n’a aucune connaissance des réseaux privés de 
+l’entreprise et ne peut donc rien router à destination des réseaux 
+192.168.x.x. (comme défini dans la <a title="RFC1918" href="http://tools.ietf.org/html/rfc1918" target="_blank" rel="noopener noreferrer">RFC1918</a>).
+ Ces adresses sont réservées pour l’utilisation dans les réseaux privés.
+ Il en va de même pour toutes les adresses faisant parties des plages 
+suivantes:</p>
+<ul>
+<li><span style="line-height: 16px;">10.0.0.0/8 (de 10.0.0.0 à 10.255.255.255)</span></li>
+<li>172.16.0.0/12 (de 172.16.0.0 à 172.31.255.255)</li>
+<li>192.168.0.0/16 (de 192.168.0.0 à 192.168.255.255)</li>
+</ul>
+<p>Dés lors, nous allons configurer le NAT afin de permettre un accès à 
+Internet (simulé par l’adresse 8.8.8.8/32 configurée sur une interface 
+loopback de ISP):</p>
+<ul>
+<li><span style="line-height: 16px;">Le réseau 192.168.0.0/24 utilisera du NAT dynamique avec surcharge.</span></li>
+<li>Le réseau 192.168.1.0/24 utilisera du NAT avec pool d’adresse.</li>
+<li>La machine 192.168.1.100 sera accessible depuis le réseau publique grâce à une configuration de NAT statique.</li>
+</ul>
+<h2></h2>
+<h2>Configuration de la topologie de base</h2>
+<h3>Sur ISP:</h3>
+<p>Configuration de l’interface loopback</p>
+<pre>ISP#conf t
+ISP(config)#int l0
+ISP(config-if)#ip address 8.8.8.8 255.255.255.255
+ISP(config-if)#exit</pre>
+<p>Configuration de la liaison sérielle vers R1</p>
+<pre>ISP(config)#int s0/0
+ISP(config-if)#no shut
+ISP(config-if)#ip address 80.79.100.1 255.255.255.252
+ISP(config-if)#exit</pre>
+<p>Configuration de la route vers le pool d’adresses publique</p>
+<pre>ISP(config)#ip route 201.49.10.16 255.255.255.240 serial 0/0</pre>
+<h3>Sur R1</h3>
+<p>Configuration de l’interface sérielle vers ISP</p>
+<pre>R1#conf t
+R1(config)#int s0/0
+R1(config-if)#ip address 80.79.100.2 255.255.255.252
+R1(config-if)#no shut
+R1(config-if)#exit</pre>
+<p>Configuration de l’interface du LAN1</p>
+<pre>R1(config)#int fa0/0
+R1(config-if)#ip address 192.168.0.1 255.255.255.0
+R1(config-if)#no shut
+R1(config-if)#exit</pre>
+<p>Configuration de l’interface du LAN2</p>
+<pre>R1(config)#int fa0/1
+R1(config-if)#ip address 192.168.1.1 255.255.255.0
+R1(config-if)#no shut
+R1(config-if)#exit</pre>
+<p>Configuration de la route par défaut</p>
+<pre>R1(config)#ip route 0.0.0.0 0.0.0.0 serial 0/0</pre>
+<p>Pour le moment il est possible d’effectuer les tests suivants:</p>
+<ul>
+<li><span style="line-height: 16px;">Effectuer un ping depuis chaque PC vers R1</span></li>
+<li>Effectuer un ping entre les PCs de LAN différent</li>
+<li>Effectuer un ping depuis R1 vers 8.8.8.8</li>
+</ul>
+<h3>Test de C1 à R1</h3>
+<pre>VPCS[1]&gt; ping 192.168.0.1
+192.168.0.1 icmp_seq=1 ttl=255 time=70.000 ms
+192.168.0.1 icmp_seq=2 ttl=255 time=54.000 ms
+192.168.0.1 icmp_seq=3 ttl=255 time=67.000 ms
+192.168.0.1 icmp_seq=4 ttl=255 time=65.000 ms
+192.168.0.1 icmp_seq=5 ttl=255 time=63.000 ms</pre>
+<h3>Test de C1 à C2</h3>
+<pre>VPCS[1]&gt; ping 192.168.1.10
+192.168.1.10 icmp_seq=1 ttl=63 time=31.000 ms
+192.168.1.10 icmp_seq=2 ttl=63 time=16.000 ms
+192.168.1.10 icmp_seq=3 ttl=63 time=32.000 ms
+192.168.1.10 icmp_seq=4 ttl=63 time=32.000 ms
+192.168.1.10 icmp_seq=5 ttl=63 time=32.000 ms</pre>
+<h3>Test de R1 à 8.8.8.8</h3>
+<pre>R1#ping 8.8.8.8
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/29/112 ms</pre>
+<p>Par contre impossible par exemple pour C1 de communiquer avec 8.8.8.8</p>
+<pre>VPCS[1]&gt; ping 8.8.8.8
+ 8.8.8.8 icmp_seq=1 timeout
+ 8.8.8.8 icmp_seq=2 timeout
+ 8.8.8.8 icmp_seq=3 timeout
+ 8.8.8.8 icmp_seq=4 timeout
+ 8.8.8.8 icmp_seq=5 timeout</pre>
+<h2></h2>
+<h2>Configuration commune à tout type de NAT</h2>
+<p>La première chose à faire lorsque l’on configure du NAT,&nbsp;quel 
+qu’en&nbsp;soit le type, c’est d’indiquer au routeur où se situe le 
+réseau privé et où se situe le réseau publique.</p>
+<p>Le NAT ne prend effet que lorsque qu’un paquet est routé d’une 
+interface «&nbsp;inside&nbsp;» (côté privé) vers une interface 
+«&nbsp;outside&nbsp;» (côté publique) et vice-versa.</p>
+<p>Dans notre cas, les interfaces Fa0/0 et Fa0/1 sont du côté privé et 
+seront déclarées comme «&nbsp;inside&nbsp;», l’interface S0/0 par 
+contre, étant du côté publique, sera configurée comme 
+«&nbsp;outside&nbsp;».</p>
+<pre>R1(config)#int fa0/0
+R1(config-if)#<span style="color: #ff0000;"><strong>ip nat inside</strong></span>
+R1(config-if)#exit
+R1(config)#int fa0/1
+R1(config-if)#<span style="color: #ff0000;"><strong>ip nat inside</strong></span>
+R1(config-if)#exit
+R1(config)#int s0/0
+R1(config-if)#<span style="color: #ff0000;"><strong>ip nat outside</strong></span>
+R1(config-if)#exit</pre>
+<h2></h2>
+<h2>Configuration du NAT statique pour C3</h2>
+<p>Ce que nous allons configurer ici c’est une translation statique dans
+ la table de translation NAT, ce qu’on appelle vulgairement sur du 
+matériel domestique «&nbsp;ouvrir un port&nbsp;». Nous allons 
+explicitement indiquer au routeur que ce qui arrive sur son interface 
+publique (S0/0) et dont l’adresse destination est 201.49.10.30 (une des 
+adresse du pool publique) doit être redirigé vers 192.168.1.100.</p>
+<p>Du point de vue du routeur cela revient à modifier l’adresse IP 
+destionation dans l’en-tête IPv4 avant de router le paquet. Cela 
+signifie aussi que si C3 envoi un paquet vers internet, à la sortie de 
+S0/0 de R1 l’adresse source (192.168.1.100) sera remplacée par l’adresse
+ indiquée dans la translation, soit 201.49.10.30.</p>
+<pre>R1(config)#ip nat inside source static 192.168.1.100 201.49.10.30</pre>
+<p>La table de translations NAT doit mainentant ressembler à ceci:</p>
+<pre>R1#show ip nat translations
+Pro Inside global Inside local Outside local Outside global
+--- 201.49.10.30  192.168.1.100 ---          ---
+R1#</pre>
+<p>A présent C3 doit pouvoir communiquer avec le réseau publique</p>
+<pre>VPCS[3]&gt; ping 8.8.8.8
+8.8.8.8 icmp_seq=1 ttl=254 time=119.000 ms
+8.8.8.8 icmp_seq=2 ttl=254 time=102.000 ms
+8.8.8.8 icmp_seq=3 ttl=254 time=75.000 ms
+8.8.8.8 icmp_seq=4 ttl=254 time=117.000 ms
+8.8.8.8 icmp_seq=5 ttl=254 time=116.000 ms</pre>
+<p>Chaque paquet a donc été translaté, preuve en est la table de translations juste après l’émission de ces pings:</p>
+<pre>R1#show ip nat translations
+Pro Inside global Inside local Outside local Outside global
+icmp 201.49.10.30:33598 192.168.1.100:33598 8.8.8.8:33598 8.8.8.8:33598
+icmp 201.49.10.30:33854 192.168.1.100:33854 8.8.8.8:33854 8.8.8.8:33854
+icmp 201.49.10.30:34366 192.168.1.100:34366 8.8.8.8:34366 8.8.8.8:34366
+icmp 201.49.10.30:34622 192.168.1.100:34622 8.8.8.8:34622 8.8.8.8:34622
+icmp 201.49.10.30:34878 192.168.1.100:34878 8.8.8.8:34878 8.8.8.8:34878
+--- 201.49.10.30 192.168.1.100 --- ---
+R1#</pre>
+<p>On peut observer le résultat de la translation du côté de ISP aussi à
+ l’aide de la commande «&nbsp;debug ip packet&nbsp;» qui va afficher le 
+détail de chaque paquet IP traité par le routeur (Attention, dans un 
+environnement réel cette commande peut gravement saturer le routeur).</p>
+<pre>ISP#debug ip packet
+
+*Mar 1 02:22:49.491: IP: tableid=0, s=201.49.10.30 (Serial0/0), d=8.8.8.8 (Loopback0), routed via RIB
+
+*Mar 1 02:22:49.491: IP: <span style="color: #ff0000;"><strong>s=201.49.10.30</strong></span> (Serial0/0), d=8.8.8.8, len 92, rcvd 4
+
+<em id="__mceDel"><em id="__mceDel">*Mar 1 02:22:49.495: IP: tableid=0, s=8.8.8.8 (local), d=201.49.10.30 (Serial0/0), routed via FIB
+
+</em></em><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel">*Mar 1 02:22:49.495: IP: s=8.8.8.8 (local), d=201.49.10.30 (Serial0/0), len 92, sending</em></em></em></em></pre>
+<h2></h2>
+<h2><em id="__mceDel"><em id="__mceDel"><em id="__mceDel"><em id="__mceDel">Configuration du NAT avec pool d’adresses<br>
+</em></em></em></em></h2>
+<p>Pour l’instant seul C3 a accès au réseau publique, nous allons 
+maintenant configurer un autre type de NAT pour le réseau 192.168.1.0/24
+ (à l’exception de C3).</p>
+<p>Ici, au lieu de configurer une translation statique, nous allons 
+donner au routeur une plage d’adresses publiques (un pool d’adresse) 
+dans laquelle il peut piocher pour créer dynamiquement les translations.</p>
+<p>Tout d’abord créons le pool d’adresses</p>
+<pre>R1(config)#ip nat pool POOL-NAT-LAN2 201.49.10.17 201.49.10.30 netmask 255.255.255.240</pre>
+<p>Ici on crée donc une plage d’adresse nommée POOL-NAT-LAN2 allant de 201.49.10.17 à 201.49.10.30.</p>
+<p>Il nous faut ensuite définir quelles adresses IP sources seront 
+susceptibles d’êtres translatées … pour cela il faut créer une ACL.</p>
+<pre>R1(config)#access-list 1 deny 192.168.1.100
+R1(config)#access-list 1 permit 192.168.1.0 0.0.0.255</pre>
+<p>On autorise donc à être translatées les adresses ip du réseau 
+192.168.1.0/24 sauf 192.168.1.100 (pour laquelle on a déjà une 
+translation statique).</p>
+<p>Il ne reste plus qu’à configurer le NAT en lui même</p>
+<pre>R1(config)#ip nat inside source list 1 pool POOL-NAT-LAN2</pre>
+<p>On instruit donc ici le routeur de créer dynamiquement une 
+translation pour les paquets arrivant sur une interface 
+«&nbsp;inside&nbsp;» routés par une interface «&nbsp;outside&nbsp;» dont
+ l’adresse IP source correspond à l’ACL 1 et de remplacer l’IP source 
+par une de celles comprises dans le pool POOL-NAT-LAN2.</p>
+<p>Attention, si il y a plus de machine dans le réseau privé que 
+d’adresses publiques disponibles, il faut alors rajouter le mot clé 
+«&nbsp;overload&nbsp;» à la commande:</p>
+<pre>R1(config)#ip nat inside source list 1 pool POOL-NAT-LAN2 <strong>overload</strong></pre>
+<p>Ceci permet de «&nbsp;partager&nbsp;» les adresses publiques en 
+translatant également les numéros de ports dans l’entête de la couche 
+transport (méthode communément&nbsp;appelée PAT).</p>
+<p>A présent C2 (et les autres machines qui seraient dans le réseau 192.168.1.0/24) peuvent communiquer avec l’extérieur.</p>
+<pre>VPCS[2]&gt; ping 8.8.8.8
+8.8.8.8 icmp_seq=1 ttl=254 time=111.000 ms
+8.8.8.8 icmp_seq=2 ttl=254 time=97.000 ms
+8.8.8.8 icmp_seq=3 ttl=254 time=143.000 ms
+8.8.8.8 icmp_seq=4 ttl=254 time=131.000 ms
+8.8.8.8 icmp_seq=5 ttl=254 time=99.000 ms</pre>
+<p>La table de translation de R1 a maintenant une nouvelle entrée crée 
+dynamiquement, mais qui réserve l’adresse publique pour C2 (tant que 
+l’on ne purge pas la table NAT).</p>
+<pre>R1#sh ip nat trans
+Pro Inside global Inside local Outside local Outside global
+--- 201.49.10.17 192.168.1.10 --- ---
+--- 201.49.10.30 192.168.1.100 --- ---
+R1#</pre>
+<h2>Configuration du NAT dynamique avec surcharge (sans pool)</h2>
+<p>Il reste encore à configurer R2 pour que le réseau 192.168.0.0/24 
+puisse accéder à l’extérieur. Pour cela nous allons configurer le 
+troisième type de NAT, à savoir du NAT dynamique avec surcharge 
+(overload) en utilisant l’adresse publique configurée sur l’interface 
+S0/0 de R1.</p>
+<p>Notez que c’est la configuration la plus courante dans un réseau 
+modeste (par exemple dans un réseau domestique). Cette méthode ne 
+requiert pas d’obtenir de nouvelles adresses publiques auprès du 
+provider.</p>
+<p>Nous devons cette fois aussi identifier les adresses sources à faire passer par le NAT, donc nous créons une nouvelle ACL.</p>
+<pre>R1(config)#access-list 2 permit 192.168.0.0 0.0.0.255</pre>
+<p>Il ne reste plus qu’à configurer le NAT.</p>
+<pre>R1(config)#ip nat inside source list 2 interface serial 0/0 overload</pre>
+<p>Nous disons ici au routeur de translater les paquets provenant des 
+adresses décrites dans l’ACL 2 (192.168.0.0/24) et de remplacer 
+l’adresse IP source par celle configurée sur l’interface Serial 0/0 en 
+la surchargeant pour permettre à plus d’une machine de communiquer avec 
+l’extérieur (PAT).</p>
+<p>C1 (ainsi que toute machine de ce réseau) peut communiquer avec l’extérieur désormais</p>
+<pre>VPCS[1]&gt; ping 8.8.8.8
+8.8.8.8 icmp_seq=1 ttl=254 time=132.000 ms
+8.8.8.8 icmp_seq=2 ttl=254 time=130.000 ms
+8.8.8.8 icmp_seq=3 ttl=254 time=127.000 ms
+8.8.8.8 icmp_seq=4 ttl=254 time=112.000 ms
+8.8.8.8 icmp_seq=5 ttl=254 time=125.000 ms</pre>
+<p>Le «&nbsp;debug ip packets&nbsp;» sur ISP donne le résultat suivant</p>
+<pre>ISP#
+*Mar 1 03:11:46.195: IP: tableid=0, <strong>s=80.79.100.2</strong> (Serial0/0), d=8.8.8.8 (Loopback0), routed via RIB
+*Mar 1 03:11:46.195: IP: <strong>s=80.79.100.2</strong> (Serial0/0), d=8.8.8.8, len 92, rcvd 4
+*Mar 1 03:11:46.199: IP: tableid=0, s=8.8.8.8 (local), d=80.79.100.2 (Serial0/0), routed via FIB
+*Mar 1 03:11:46.199: IP: s=8.8.8.8 (local), d=80.79.100.2 (Serial0/0), len 92, sending</pre>
+<p>On voit là que c’est bien l’adresse de S0/0 qui est utilise pour remplacer l’IP source du paquet.</p>
+<p>&nbsp;</p>
+<div class="printfriendly pf-button pf-button-content pf-alignleft"><a href="#" rel="nofollow" onclick="window.print(); return false;" title="Printer Friendly, PDF &amp; Email"><img class="pf-button-img" src="configuration-du-nat-sur-un-routeur-cisco_files/printfriendly-pdf-button-nobg.png" alt="Print Friendly, PDF &amp; Email" style="width: 112px;height: 24px;"></a></div></div><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Partager&nbsp;:</h3><div class="sd-content"><ul data-sharing-events-added="true"><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-866" class="share-facebook sd-button share-icon" href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/?share=facebook&amp;nb=1" target="_blank" title="Cliquez pour partager sur Facebook"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-866" class="share-twitter sd-button share-icon" href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/?share=twitter&amp;nb=1" target="_blank" title="Cliquez pour partager sur Twitter"><span>Twitter</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-866" class="share-linkedin sd-button share-icon" href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/?share=linkedin&amp;nb=1" target="_blank" title="Cliquez pour partager sur LinkedIn"><span>LinkedIn</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded" id="like-post-wrapper-8863290-866-62f515aae6ce2" data-src="https://widgets.wp.com/likes/#blog_id=8863290&amp;post_id=866&amp;origin=www.ciscomadesimple.be&amp;obj_id=8863290-866-62f515aae6ce2" data-name="like-post-frame-8863290-866-62f515aae6ce2" data-title="Aimer ou rebloguer"><h3 class="sd-title">WordPress:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px;"><span class="button"><span>J’aime</span></span> <span class="loading">chargement…</span></div><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+									</div>
+				<!-- end of .post-entry -->
+
+				<div class="navigation">
+					<div class="previous">‹ <a href="https://www.ciscomadesimple.be/2013/03/30/frame-relay-au-travers-dun-tunnel-gre/" rel="prev">Frame-Relay au travers d’un tunnel GRE</a></div>
+					<div class="next"><a href="https://www.ciscomadesimple.be/2013/04/08/configuration_dhcp/" rel="next">Configuration DHCP sur un routeur Cisco</a> ›</div>
+				</div>
+				<!-- end of .navigation -->
+
+				
+
+	<div class="post-data">
+						<span class="cat-links">
+					Posted in <a href="https://www.ciscomadesimple.be/category/certifications/ccent_icnd1/">CCENT - ICND1</a>, <a href="https://www.ciscomadesimple.be/category/certifications/">Certifications</a>, <a href="https://www.ciscomadesimple.be/category/cisco/">Cisco</a>, <a href="https://www.ciscomadesimple.be/category/cisco/cisco_practice/">La pratique</a>, <a href="https://www.ciscomadesimple.be/category/cisco/routing-cisco/">Routing</a>				</span>
+					<br>
+						<span class="taglinks">
+					Tags: <a href="https://www.ciscomadesimple.be/tag/cisco/" rel="tag">Cisco</a>, <a href="https://www.ciscomadesimple.be/tag/dynamique/" rel="tag">dynamique</a>, <a href="https://www.ciscomadesimple.be/tag/ip-nat-inside/" rel="tag">ip nat inside</a>, <a href="https://www.ciscomadesimple.be/tag/ip-nat-outside/" rel="tag">ip nat outside</a>, <a href="https://www.ciscomadesimple.be/tag/nat/" rel="tag">NAT</a>, <a href="https://www.ciscomadesimple.be/tag/overload/" rel="tag">overload</a>, <a href="https://www.ciscomadesimple.be/tag/pat/" rel="tag">pat</a>, <a href="https://www.ciscomadesimple.be/tag/statique/" rel="tag">statique</a>, <a href="https://www.ciscomadesimple.be/tag/translation/" rel="tag">translation</a>				</span>
+					<br>
+									
+				</div><!-- end of .post-data -->
+
+
+
+							</div><!-- end of #post-866 -->
+			
+						
+	<h6 id="comments">
+		72 commentaires sur “<span>Configuration du NAT sur un routeur Cisco</span>”	</h6>
+
+	
+	<ol class="commentlist">
+				<li class="comment even thread-even depth-1 parent" id="comment-844">
+				<div id="div-comment-844" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/5c4b0236dde5f3359c45da87b64e4a30_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/5c4b0236dde5f3359c45da87b64e4a30.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-5c4b0236dde5f3359c45da87b64e4a30-0" width="60" height="60">			<cite class="fn">Frédéric (Strasbourg)</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-844">8 avril 2013 à 11:41</a>		</div>
+
+		<p>Bonjour,</p>
+<p>Grand fan de CiscoMadeSimple, je vais commencer par vous remercier pour votre boulot avant de râler… <img draggable="false" role="img" class="emoji" alt="🙂" src="configuration-du-nat-sur-un-routeur-cisco_files/1f642.svg"></p>
+<p>C’était juste pour dire que «&nbsp;translation&nbsp;» en anglais veut
+ simplement dire «&nbsp;traduction&nbsp;». On parle de «&nbsp;traduction
+ d’adresses&nbsp;» et non de «&nbsp;translation d’adresses&nbsp;». Mais 
+bon, je dis moi aussi «&nbsp;translation&nbsp;» <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg"></p>
+<p>Et comme je suis toujours aussi fan de votre site, je termine en vous souhaitant bonne continuation ! <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg"></p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent" id="comment-845">
+				<div id="div-comment-845" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-1" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-845">8 avril 2013 à 12:15</a>		</div>
+
+		<p>Merci pour ce commentaire, avoir une réaction sur un article est toujours agréable.<br>
+Ceci dit… les traductions littérales ne sont pas toujours ce qu’il y a 
+de mieux. Traduire une adresse n’a pas de sens ici. On parle d’IPv4 des 
+deux côtés. Ce serait comme parler de traduction du français au 
+français. C’est pour cela que j’utilise le terme translation… qui 
+représente un glissement … ou un décallage entre  les adresses publiques
+ et privées.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment even depth-3" id="comment-846">
+				<div id="div-comment-846" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/5c4b0236dde5f3359c45da87b64e4a30_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/5c4b0236dde5f3359c45da87b64e4a30.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-5c4b0236dde5f3359c45da87b64e4a30-1" width="60" height="60">			<cite class="fn">Frédéric (Strasbourg)</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-846">8 avril 2013 à 14:36</a>		</div>
+
+		<p>Bonjour Steve.</p>
+<p>Le terme «&nbsp;translation d’adresse&nbsp;» est connu de tous, donc 
+pas de risque de ne pas comprendre votre article. Ils sont tous clairs 
+et instructifs. J’ai commencé par me monter un RackLack puis, après la 
+lecture de «&nbsp;Créer son labo Cisco personnel&nbsp;», j’ai vidé eBay 
+de quelques bonnes affaires… <img draggable="false" role="img" class="emoji" alt="🙂" src="configuration-du-nat-sur-un-routeur-cisco_files/1f642.svg"></p>
+<p>Pour la translation, ça a du sens pour passer de 192.168.0.x à 
+10.0.0.x par exemple. Ou de 192.168.0.10-20 à 192.168.0.30-40. Mais dans
+ le NAT, on n’a pas un simple «&nbsp;glissement&nbsp;», mais un ensemble
+ d’IPs qui sont «&nbsp;transformées&nbsp;» en une seule IP publique, par
+ exemple.</p>
+<p>Certes, c’est de l’IPv4, mais on traduit un IPv4 externe en IPv4 
+interne, pour que chaque réseau comprenne. Internet n’a pas connaissance
+ de 192.168.x.x, il faut donc lui traduire ça.</p>
+<p>Bref, clairement pas grave. Mais j’en avais discuté avec un 
+traducteur qui travaille sur de nombreux livres et projets autour de 
+Linux. Il me l’avait expliqué bien mieux que je suis en train de le 
+faire ! <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg"></p>
+<p>Merci pour votre article. Clair et assez complet pour avoir envie de mettre les mains dans IOS !</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-848">
+				<div id="div-comment-848" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/accab6b025e77a65fc05dd5a7a85cb41.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/accab6b025e77a65fc05dd5a7a85cb41_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-accab6b025e77a65fc05dd5a7a85cb41-0" width="60" height="60">			<cite class="fn">Raizo62</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-848">10 avril 2013 à 14:58</a>		</div>
+
+		<p>Bonjour</p>
+<p>Je pense qu’il y a une petite erreur d’adresse IP dans la 
+configuration du nat statique pour C3 dans R1 : «&nbsp;ip nat inside …. 
+201.49.100.30&nbsp;». Je suppose qu’il s’agit plutôt de 
+«&nbsp;201.49.10.30&nbsp;».</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-849">
+				<div id="div-comment-849" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-2" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-849">10 avril 2013 à 16:37</a>		</div>
+
+		<p>Exact, une faute de frappe ou une touche restée coller. C’est corrigé. Merci!</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-ibinda odd alt depth-3 parent" id="comment-1083">
+				<div id="div-comment-1083" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-6444b601eefd9725d391bc86e198e948-0" width="60" height="60">			<cite class="fn">ibinda</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1083">27 décembre 2013 à 19:36</a>		</div>
+
+		<p>Bonjour,</p>
+<p>J’essaie de confugurer un NAT sur packet tracer,<br>
+pourras-tu m’aider?</p>
+<p>y-a -t-il un moyen de joindre un fichier?</p>
+<p>voila la conf de mon router master;</p>
+<p>R-MASTER#show running-config<br>
+Building configuration…</p>
+<p>Current configuration : 1201 bytes<br>
+!<br>
+version 12.4<br>
+no service timestamps log datetime msec<br>
+no service timestamps debug datetime msec<br>
+no service password-encryption<br>
+!<br>
+hostname R-MASTER<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+ip dhcp pool LAN2<br>
+ network 192.168.10.128 255.255.255.192<br>
+ default-router 192.168.10.190<br>
+ip dhcp pool LAN3<br>
+ network 192.168.10.64 255.255.255.192<br>
+ default-router 192.168.10.126<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+spanning-tree mode pvst<br>
+!<br>
+!<br>
+!<br>
+!<br>
+interface FastEthernet0/0<br>
+ no ip address<br>
+ ip helper-address 193.10.10.15<br>
+ ip nat inside<br>
+ ip virtual-reassembly<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/0.11<br>
+ encapsulation dot1Q 11<br>
+ ip address 10.10.11.254 255.255.255.0<br>
+ ip nat inside<br>
+!<br>
+interface FastEthernet0/0.12<br>
+ encapsulation dot1Q 12<br>
+ ip address 10.10.12.254 255.255.255.0<br>
+ ip nat inside<br>
+!<br>
+interface FastEthernet0/1<br>
+ ip address 193.10.10.15 255.255.255.0<br>
+ ip nat outside<br>
+ ip virtual-reassembly<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+router ospf 1<br>
+ log-adjacency-changes<br>
+ network 10.10.11.0 0.0.0.255 area 0<br>
+ network 193.10.10.0 0.0.0.255 area 0<br>
+!<br>
+ip nat inside source list 1 interface FastEthernet0/1 overload<br>
+ip classless<br>
+!<br>
+!<br>
+access-list 1 permit any<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+line con 0<br>
+!<br>
+line aux 0<br>
+!<br>
+line vty 0 4<br>
+ login<br>
+!<br>
+!end,</p>
+<p>sur ce même routeur lorsque j’effectue un ping ailleurs sur un autre équipement,<br>
+il est ok le ping mais je ne vois rien passer sur le routeur à partir de la commande show ip nat translations,</p>
+<p>quelqu’un pourrait m’aider?<br>
+comment on peut joindre une imange sur le site?</p>
+<p>Cdt,</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-4 parent" id="comment-1085">
+				<div id="div-comment-1085" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-3" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1085">27 décembre 2013 à 20:44</a>		</div>
+
+		<p>A priori le problème ne vient pas du NAT, je penche plutôt pour un 
+problème de routage. Je ne connais pas ta topologie, mais OSPF n’est 
+déjà pas activé pour toutes les interfaces côté LAN. La Fa0/0.12 manque …
+ donc impossible déjà de former une adjacence de ce côté là (je ne sais 
+pas si il y a un routeur ou autre).</p>
+<p>Le fait que le routeur ne génère pas de translation, c’est tout à 
+fait normal, puisque si tu veux envoyer un ping vers une machine côté 
+publique le routeur utilisera son interface publique pour le faire.</p>
+<p>Si tu veux le forcer à le faire depuis le réseau interne =&gt; ping <ip destination=""> source interface <nom de="" l'interface="" inside=""></nom></ip></p>
+<p>Pour insérer une image, tu peux simplement l’uploader qque part et 
+coller le lien dans le commentaire .. ou alors mieux … passe par le 
+forum. Il y a la possibilité d’intégrer images etc (du moment qu’elles 
+sont accessible qque part).</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-ibinda odd alt depth-5 parent" id="comment-1087">
+				<div id="div-comment-1087" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-6444b601eefd9725d391bc86e198e948-1" width="60" height="60">			<cite class="fn">ibinda</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1087">27 décembre 2013 à 22:46</a>		</div>
+
+		<p>Bonsoir,</p>
+<p>côté routage je pense que qu’il n ‘ y a pas de pb,<br>
+Pour la nat j’ai essayé d’appliquer vos explications<br>
+,<br>
+j’ai pu uploader l’image,</p>
+<p><a href="http://sendbox.fr/pro/1wy2zspsb5z8/essaie_NAT_TP_regroupement.pkt.html" rel="nofollow ugc">http://sendbox.fr/pro/1wy2zspsb5z8/essaie_NAT_TP_regroupement.pkt.html</a></p>
+<p>en attendant de vous lire,</p>
+<p>cdt,</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-admin bypostauthor even depth-5" id="comment-1088">
+				<div id="div-comment-1088" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-4" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1088">28 décembre 2013 à 00:48</a>		</div>
+
+		<p>La config marche correctement … le problème vient du fait que dans 
+le «&nbsp;cloud&nbsp;» auquel est raccordé le routeur qui fait le NAT, 
+il n’y a pas d’hôte joignable… c’est juste une interface …<br>
+Toute fois en testant depuis un des PC un ping vers 193.10.10.50 … il 
+n’y a bien sur pas de réponse, mais les translations apparaissent bien 
+dans la table nat. A noter qu’il faut vérifier très vite, dans 
+PacketTracer, les translations ICMP ne durent que quelques secondes.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-851">
+				<div id="div-comment-851" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4bcf5881eff891f688f3f58a43be71c8_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4bcf5881eff891f688f3f58a43be71c8.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4bcf5881eff891f688f3f58a43be71c8-0" width="60" height="60">			<cite class="fn"><a href="http://machkourilarbi.wordpress.com/" rel="external nofollow ugc" class="url">machkourilarbi</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-851">16 avril 2013 à 01:23</a>		</div>
+
+		<p>Article clair qui a le mérite de donner envie de lire de bout en bout !</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-854">
+				<div id="div-comment-854" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4efc21b79d851fc0a1466a35b6780c74.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4efc21b79d851fc0a1466a35b6780c74_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4efc21b79d851fc0a1466a35b6780c74-0" width="60" height="60">			<cite class="fn">chan</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-854">3 mai 2013 à 21:14</a>		</div>
+
+		<p>bonjour, </p>
+<p>merci pour cette article, mais je me pose la question. Quelle 
+configuration je dois appliquer, si j ‘ai plusieurs sous-réseaux du au 
+VLAN  que j’ai créé .<br>
+sachant, que je veux  mettre en place du NAT dynamqiue overload ( PAT ) vu que mon FAI, me fournit qu’une seule adresse publique</p>
+<p>j’attends vos propositions.</p>
+<p>cordialement,</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-855">
+				<div id="div-comment-855" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-5" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-855">3 mai 2013 à 21:27</a>		</div>
+
+		<p>C’est le cas sans doute le plus simple:</p>
+<ul>
+<li>définir les interfaces inside et outside</li>
+<li>créer une access-list standard reprennant une règle «&nbsp;permit&nbsp;» pour chaucun des réseaux</li>
+<li>Appliquer la règle nat du type: ip nat inside source list <em>n°ACL</em> interface <em>intSortie</em> overload</li>
+</ul>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-937">
+				<div id="div-comment-937" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f6312e75ee42e60ed03b1de5051ca5-0" width="60" height="60">			<cite class="fn">Miyondre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-937">16 août 2013 à 23:11</a>		</div>
+
+		<p>Bonsoir Steve</p>
+<p>Svp Est ce que vous pouvez me donner un exemple d’un routage inter 
+vlan d’un commutateur de niveau 3, pour interconnecter 7 sous Rx 
+différents?</p>
+<p>J’en ai énormement besoin. Merci d’avance pour votre aide.</p>
+<p>Cordialement;</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-938">
+				<div id="div-comment-938" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-6" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-938">17 août 2013 à 00:07</a>		</div>
+
+		<p>Alors pour le routage inter-vlan entre 7 sous-réseaux avec un MLS (MultiLayer Switch) comme un 3550 ou 3560 par exemple il faut:</p>
+<ul>
+<li>Activer le routage IPv4</li>
+<li>Créer les 7 vlans</li>
+<li>Créer 7 interfaces VLAN et leur attribuer une adresse dans le sous-réseau en question</li>
+<li>Placer les interfaces physiques dans les différents VLANS ou alors configurer des trunks vers d’autres switches</li>
+</ul>
+<p>Exemple:<br>
+<code>switch(config)# ip unicast-routing<br>
+switch(config)# vlan 10<br>
+switch(config-vlan)# exit<br>
+switch(config)# vlan 20<br>
+switch(config-vlan)# exit<br>
+switch(config)# vlan 30<br>
+switch(config-vlan)# exit<br>
+switch(config)# vlan 40<br>
+switch(config-vlan)# exit<br>
+switch(config)# vlan 50<br>
+switch(config-vlan)# exit<br>
+switch(config)# vlan 60<br>
+switch(config-vlan)# exit<br>
+switch(config)# vlan 70<br>
+switch(config-vlan)# exit<br>
+switch(config)# interface vlan 10<br>
+switch(config-if)# ip address 192.168.10.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit<br>
+switch(config)# interface vlan 20<br>
+switch(config-if)# ip address 192.168.20.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit<br>
+switch(config)# interface vlan 30<br>
+switch(config-if)# ip address 192.168.30.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit<br>
+switch(config)# interface vlan 40<br>
+switch(config-if)# ip address 192.168.40.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit<br>
+switch(config)# interface vlan 50<br>
+switch(config-if)# ip address 192.168.50.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit<br>
+switch(config)# interface vlan 60<br>
+switch(config-if)# ip address 192.168.60.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit<br>
+switch(config)# interface vlan 70<br>
+switch(config-if)# ip address 192.168.70.1 255.255.255.0<br>
+switch(config-if)# no shutdown<br>
+switch(config-if)# exit</code></p>
+<p>Pour la routage inter-vlan c’est tout … le reste c’est de la config de base de switch (port d’accès, placer dans un vlan etc)…</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-942">
+				<div id="div-comment-942" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f6312e75ee42e60ed03b1de5051ca5-1" width="60" height="60">			<cite class="fn">Miyondre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-942">17 août 2013 à 14:13</a>		</div>
+
+		<p>Merci beaucoup STEVE pour cet exemple.  Cette config fonctionne correctement.<br>
+Mais j’ai encore un autre souci. Mon routeur de périphérique dont la 
+config ci-dessous NAT pour un pool d’@ ip publique  ne marche pas. 
+Qu’elle peut en être la cause ? </p>
+<p>ROUTER (PERIPHERIQUE)<br>
+!<br>
+interface FastEthernet0/0<br>
+ ip address 192.168.88.177 255.255.255.240<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1<br>
+ ip address 192.168.88.161 255.255.255.240<br>
+ ip helper-address 192.168.88.180<br>
+ ip nat inside<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1.10<br>
+ encapsulation dot1Q 10<br>
+ ip address 192.168.88.1 255.255.255.224<br>
+!<br>
+interface FastEthernet0/1.20<br>
+ encapsulation dot1Q 20<br>
+ ip address 192.168.88.33 255.255.255.224<br>
+!<br>
+interface FastEthernet0/1.30<br>
+ encapsulation dot1Q 30<br>
+ ip address 192.168.88.65 255.255.255.224<br>
+!<br>
+interface FastEthernet0/1.40<br>
+ encapsulation dot1Q 40<br>
+ ip address 192.168.88.97 255.255.255.224<br>
+!<br>
+interface FastEthernet0/1.88<br>
+ encapsulation dot1Q 88<br>
+ ip address 192.168.88.129 255.255.255.224<br>
+!<br>
+interface Serial0/0/0<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Serial0/1/0<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Serial0/2/0<br>
+ ip address 209.164.20.23 255.255.255.240<br>
+ ip nat outside<br>
+!<br>
+interface Serial0/3/0<br>
+ ip address 183.30.128.1 255.255.255.252<br>
+ encapsulation ppp<br>
+ ppp authentication chap<br>
+ ip nat inside<br>
+!<br>
+interface FastEthernet1/0<br>
+ ip address 192.168.89.1 255.255.255.0<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet1/1<br>
+ ip address 192.168.90.1 255.255.255.0<br>
+ ip nat inside<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+ip nat pool PERIPOOL 209.164.20.17 209.164.20.29 netmask 255.255.255.240<br>
+ip nat inside source list PERINAT pool PERIPOOL overload<br>
+ip nat inside source static 192.168.90.254 209.164.20.30<br>
+ip classless<br>
+ip route 192.168.88.192 255.255.255.224 Serial0/3/0<br>
+ip route 183.30.128.0 255.255.255.252 183.30.128.2<br>
+ip route 0.0.0.0 0.0.0.0 Serial0/2/0<br>
+ip route 192.168.90.0 255.255.255.0 FastEthernet1/1<br>
+!<br>
+!<br>
+ip access-list standard PERINAT<br>
+ permit 192.168.88.0 0.0.0.31<br>
+ permit 192.168.88.32 0.0.0.31<br>
+ permit 192.168.88.64 0.0.0.31<br>
+ permit 192.168.88.192 0.0.0.31</p>
+<p>ROUTER FAI</p>
+<p>!<br>
+interface Loopback1<br>
+ ip address 8.8.8.8 255.255.255.255<br>
+!<br>
+interface FastEthernet0/0<br>
+ ip address 207.210.200.1 255.255.255.224<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1<br>
+ ip address 202.163.208.1 255.255.255.240<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface Serial1/0<br>
+ ip address 205.211.200.1 255.255.255.252<br>
+ clock rate 64000<br>
+!<br>
+interface Serial1/1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Serial1/2<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Serial1/3<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+ip classless<br>
+ip route 207.210.200.0 255.255.255.224 FastEthernet0/0<br>
+ip route 209.164.20.16 255.255.255.240 Serial1/0</p>
+<p>SVP je suis impatient, et j’attends votre correction à ce sujet.<br>
+Merci d’avance.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-943">
+				<div id="div-comment-943" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-7" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-943">17 août 2013 à 17:19</a>		</div>
+
+		<p>A première vue je dirais qu’il manque «&nbsp;ip nat inside&nbsp;» 
+sur toutes les sub-interfaces Fa0/1.X. Ce sont les adresses sources de 
+ces réseaux là qui doivent être natées (définit dans l’ACL PERINAT). A 
+vérifier aussi si l’interface côté «&nbsp;publique&nbsp;» est bien en 
+«&nbsp;ip nat outside&nbsp;».</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-944">
+				<div id="div-comment-944" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f6312e75ee42e60ed03b1de5051ca5-2" width="60" height="60">			<cite class="fn">Miyondre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-944">17 août 2013 à 18:17</a>		</div>
+
+		<p>MERCI STEVE DE JONGH<br>
+Vous êtes magnifique. Mon Rx fonctionne correctement de bout en bout.<br>
+Laissez-moi vous poser encore une autre question. Je viens d’ajouter 
+tout de suite un autre routeur (comme étant une succursale) mais qui ne 
+sort pas à l’extérieur. Ce routeur est connecté au routeur de 
+périphérique dont la config ci-dessus, par le (S0/1 – S0/3/0)<br>
+ En voici la petite config.</p>
+<p>!<br>
+no ip domain-lookup<br>
+!<br>
+!<br>
+interface FastEthernet0/0<br>
+ no ip address<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/0.8<br>
+ encapsulation dot1Q 8<br>
+ ip address 192.168.88.193 255.255.255.240<br>
+ ip nat inside<br>
+!<br>
+interface FastEthernet0/0.9<br>
+ encapsulation dot1Q 9<br>
+ ip address 192.168.88.209 255.255.255.240<br>
+ ip nat inside<br>
+!<br>
+interface FastEthernet0/1<br>
+ no ip address<br>
+ duplex auto<br>
+ speed auto<br>
+ shutdown<br>
+!<br>
+interface Serial1/0<br>
+ ip address 183.30.128.2 255.255.255.252<br>
+ encapsulation ppp<br>
+ ppp authentication chap<br>
+ clock rate 64000<br>
+!<br>
+interface Serial1/1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Serial1/2<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Serial1/3<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+ip classless<br>
+ip route 183.30.128.0 255.255.255.252 183.30.128.1<br>
+ip route 192.168.89.0 255.255.255.0 183.30.128.1<br>
+ip route 192.168.90.0 255.255.255.0 183.30.128.1<br>
+ip route 209.164.20.16 255.255.255.240 183.30.128.1<br>
+ip route 192.168.88.0 255.255.255.0 Serial1/0</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-945">
+				<div id="div-comment-945" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-8" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-945">17 août 2013 à 18:21</a>		</div>
+
+		<p>Il manque juste la question <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg"></p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-946">
+				<div id="div-comment-946" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f6312e75ee42e60ed03b1de5051ca5-3" width="60" height="60">			<cite class="fn">Miyondre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-946">17 août 2013 à 19:26</a>		</div>
+
+		<p>Laquelle?</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-947">
+				<div id="div-comment-947" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-9" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-947">17 août 2013 à 19:28</a>		</div>
+
+		<p>Par rapport à la dernière config … tu me dis «&nbsp;Laissez-moi 
+vous poser encore une autre question&nbsp;» … tu copie la config en 
+question, mais tu ne me dis pas ce qui ne va pas <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg"></p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-948">
+				<div id="div-comment-948" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f6312e75ee42e60ed03b1de5051ca5-4" width="60" height="60">			<cite class="fn">Miyondre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-948">17 août 2013 à 20:09</a>		</div>
+
+		<p>Ahhhh! ok d’accord. Qu’est ce que je dois ajouter comme config pour
+ que mon routeur (celui de mon succurssale) puisse aller sur le NET?</p>
+<p>Voici la question STEVE.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-949">
+				<div id="div-comment-949" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-10" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-949">18 août 2013 à 02:16</a>		</div>
+
+		<p>Il manque une route par défaut:</p>
+<p>ip route 0.0.0.0 0.0.0.0 183.30.128.1</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-950">
+				<div id="div-comment-950" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f6312e75ee42e60ed03b1de5051ca5.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f6312e75ee42e60ed03b1de5051ca5-5" width="60" height="60">			<cite class="fn">Miyondre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-950">19 août 2013 à 12:42</a>		</div>
+
+		<p>STEVE DE JONGH</p>
+<p>Merci merci bcp pour tout !<br>
+Mon Rx que je viens de concevoir fonctionne maintenant parfaitement.<br>
+Soyez-en sûr, je reviendrais vers vous chaque fois que j’aurais un problème, pour que vous puissiez m’aider à le résoudre. </p>
+<p>Cordialement</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-951">
+				<div id="div-comment-951" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/d81a66409eb1570e058cf4abce70a104.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/d81a66409eb1570e058cf4abce70a104_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-d81a66409eb1570e058cf4abce70a104-0" width="60" height="60">			<cite class="fn">Sidney DEBACK</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-951">22 août 2013 à 14:39</a>		</div>
+
+		<p>Merci Steve De Jongh votre article est une formation pour nous les débutants en administration réseau</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-977">
+				<div id="div-comment-977" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/e9f7a0f03a2b9bdfdb964af79f3ffcbd.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/e9f7a0f03a2b9bdfdb964af79f3ffcbd_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-e9f7a0f03a2b9bdfdb964af79f3ffcbd-0" width="60" height="60">			<cite class="fn">MatiZ</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-977">20 septembre 2013 à 10:50</a>		</div>
+
+		<p>Super ton article! Clair, net et concis, ça va droit au but avec 
+schémas et conf à l’appui. Le top du top! C’est sympa en tout cas de 
+consacrer du temps aux autres (oui car j’imagine que tu fais cela pour 
+partager tes connaissances).<br>
+Continu comme ça et merci encore! <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg"></p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-1013">
+				<div id="div-comment-1013" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/7728f27651c79a82e72733d66e41f9f1.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/7728f27651c79a82e72733d66e41f9f1_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-7728f27651c79a82e72733d66e41f9f1-0" width="60" height="60">			<cite class="fn">attia</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1013">4 octobre 2013 à 18:20</a>		</div>
+
+		<p>Bonjour,</p>
+<p>merci pour cet excellent lab tres clair et tres complet<br>
+Cdt</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-1031">
+				<div id="div-comment-1031" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/b98ab9254e49e46e12382035a4595bde.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/b98ab9254e49e46e12382035a4595bde_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-b98ab9254e49e46e12382035a4595bde-0" width="60" height="60">			<cite class="fn">Nico</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1031">14 octobre 2013 à 20:59</a>		</div>
+
+		<p>Bonjour,<br>
+J’ai le même type de configuration qui fonctionne très bien. Je dois y 
+apporter une modification qui ne m’inspire aucune solution….<br>
+Pour reprendre ta config, une autre interface fa0/2 de R1 est connectée à
+ un routeur R2 puis un lan est connecté de l’autre coté de R2. Une 
+adresse IP publique (exemple 201.49.10.20) doit être définie sur 
+l’interface de R2 qui va vers R1.  Ceci afin de monter un tunnel VPN à 
+partir de R2 vers un routeur distant à travers internet. Or on ne peut 
+pas definir d’adressage privée entre R1 et R2. Dans l’idéal R1 serait 
+configuré en bridge mais dans ce cas ta configuration actuelle ne 
+fonctionne plus. Et tous les flux ip doivent passer par S0/0 de R1. 
+As-tu une piste stp? Cordialement,</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1033">
+				<div id="div-comment-1033" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-11" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1033">14 octobre 2013 à 22:22</a>		</div>
+
+		<p>Sans schéma de topologie je ne suis pas sur de bien comprendre la 
+situation, toutefois, dans le cas ou R1 et R2 seraient directement 
+connectés par le réseau ethernet auquel ils sont branchés, il suffit 
+juste de définir une route par défait sur R2 pointant vers R1 (ce qui 
+redirigera le trafic du LAN de R2 vers le net par la liaison entre R1 et
+ R2), s’assurer que l’ACL utilisée pour le NAT sur R1 autorise les 
+adresses des machines du lan de R2 et surtout ne pas oublier une route 
+de retour sur R1 pointant vers le LAN de R2.</p>
+<p>Dans le cas où les deux routeurs ne partageraient pas un réseau 
+commun (plusieurs routeurs entre eux), là il faut à mon avis par une 
+solution plus délicate, à savoir configurer un tunnel (GRE par exemple) 
+entre R1 et R2 et router le traffic du lan de R2 par le tunnel.</p>
+<p>En tout cas, dans un cas comme dans l’autre, l’interface de R1 qui 
+mène à R2 n’est pas à inclure dans la config du NAT et R2 ne devrait pas
+ avoir besoin de faire du nat non plus.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-1040">
+				<div id="div-comment-1040" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/68528596ca33447fe6f7a4d83e0f2341.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/68528596ca33447fe6f7a4d83e0f2341_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-68528596ca33447fe6f7a4d83e0f2341-0" width="60" height="60">			<cite class="fn">Julien</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1040">25 octobre 2013 à 23:08</a>		</div>
+
+		<p>Bonjour Steve merci pour ce tuto. utilisant vmware workstation je 
+rencontre un souci pour pouvoir «&nbsp;pinger&nbsp;» ma passerelle. 
+Après avoir bien configurer mon routeur ainsi que mon ordinateur final 
+j’ai un request time out .. (Client vers R1) et entre r1 est isp aucun 
+souci. FW désactivé sur mon client … </p>
+<p>Ai-je rater une étape ? </p>
+<p>Merci</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1041">
+				<div id="div-comment-1041" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-12" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1041">26 octobre 2013 à 00:30</a>		</div>
+
+		<p>Difficile de répondre comme ça. Comment VMWKS vient-il se greffer 
+là dedans ? A quoi ressemble la topologie ? Comment sont agencés les 
+réseaux et leurs adresses ? etc. Sans ça difficile d’en dire plus.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-1058">
+				<div id="div-comment-1058" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/84628273_176159830277856_972693363922829312_n.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/b61defcffb80804224359451e32fabfa.jpg 2x" class="avatar avatar-60 photo" loading="lazy" width="60" height="60">			<cite class="fn"><a href="https://www.facebook.com/mahmoud.dieng.5" rel="external nofollow ugc" class="url">Mahmoud Dieng</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1058">2 décembre 2013 à 11:18</a>		</div>
+
+		<p>Bonjour Steve dans  L’entreprise où je travaille l’architecture se 
+présente comme suit  17 sites(1 routeur par site) ,dont chaque site est 
+composé de 6 vlan ou plus.Je voulais simuler ceci sur packet tracer  
+mais les ping sont bloqués au dernier routeur       avant le poste pingé
+ voici l’architecture et  la config que j’ai fait</p>
+<p>PC1 (VLAN1), PC2(VLAN2)—–router1+++++router2—–PC3(VLAN1),PC2(VLAN2) </p>
+<p>Router 1</p>
+<p>interface FastEthernet0/0.1<br>
+ no ip address<br>
+!<br>
+interface FastEthernet0/0.10<br>
+ encapsulation dot1Q 10<br>
+ ip address 172.168.10.1 255.255.255.0<br>
+!<br>
+interface FastEthernet0/0.20<br>
+ encapsulation dot1Q 20<br>
+ ip address 172.168.20.1 255.255.255.0<br>
+!<br>
+interface FastEthernet0/1<br>
+ no ip address<br>
+ duplex auto<br>
+ speed auto<br>
+ shutdown<br>
+!<br>
+interface Serial0/1/0<br>
+ ip address 192.168.10.1 255.255.255.252<br>
+ clock rate 2000000<br>
+!<br>
+interface Serial0/1/1<br>
+ no ip address<br>
+ clock rate 2000000<br>
+ shutdown<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+router ospf 1<br>
+ log-adjacency-changes<br>
+ network 172.168.10.0 0.0.0.255 area 0<br>
+ network 172.168.20.0 0.0.0.255 area 0<br>
+ network 192.168.10.0 0.0.0.3 area 0<br>
+ network 192.168.10.0 0.0.0.255 area 0<br>
+!<br>
+ip classless<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+line con 0<br>
+line vty 0 4<br>
+ login</p>
+<p>Router2</p>
+<p> speed auto<br>
+!<br>
+interface FastEthernet0/0.10<br>
+ encapsulation dot1Q 10<br>
+ ip address 172.168.10.1 255.255.255.0<br>
+!<br>
+interface FastEthernet0/0.20<br>
+ encapsulation dot1Q 20<br>
+ ip address 172.168.20.1 255.255.255.0<br>
+!<br>
+interface FastEthernet0/1<br>
+ no ip address<br>
+ duplex auto<br>
+ speed auto<br>
+ shutdown<br>
+!<br>
+interface Serial0/1/0<br>
+ ip address 192.168.10.1 255.255.255.252<br>
+!<br>
+interface Serial0/1/1<br>
+ no ip address<br>
+ clock rate 2000000<br>
+ shutdown<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+ shutdown<br>
+!<br>
+router ospf 1<br>
+ log-adjacency-changes<br>
+ network 192.168.10.0 0.0.0.3 area 0<br>
+ network 172.168.10.0 0.0.0.255 area 0<br>
+ network 172.168.20.0 0.0.0.255 area 0<br>
+ network 172.168.10.0 0.0.0.3 area 0<br>
+ network 172.168.20.0 0.0.0.3 area 0<br>
+ network 172.168.30.0 0.0.0.255 area 0<br>
+!<br>
+ip classless<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+!<br>
+line con 0<br>
+line vty 0 4<br>
+ login<br>
+!</p>
+<p>Switch 1 et switch 2<br>
+interface FastEthernet0/1<br>
+ switchport trunk native vlan 99<br>
+ switchport mode trunk<br>
+!<br>
+interface FastEthernet0/2<br>
+!<br>
+interface FastEthernet0/3<br>
+!<br>
+interface FastEthernet0/4<br>
+ switchport access vlan 10<br>
+ switchport mode access<br>
+!<br>
+interface FastEthernet0/5<br>
+ switchport access vlan 10<br>
+ switchport mode access<br>
+!<br>
+interface FastEthernet0/6<br>
+ switchport access vlan 20<br>
+ switchport mode access</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1059">
+				<div id="div-comment-1059" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-13" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1059">3 décembre 2013 à 00:44</a>		</div>
+
+		<p>En effet ça ne peut pas fonctionner ainsi.<br>
+Les VLANS 10 et 20 … des deux sites … ont les mêmes adresses de subnet …
+ hors il y a un routeur entre eux. Il y a donc conflit d’adressage IP 
+entre les deux sites, ce qui ne peut bien entendu pas fonctionner.<br>
+Solution: modifier l’adressage pour les VLANS 10 et 20 dans un des deux sites, adapter la config d’ospf etc..</p>
+<p>Remarque: il serait préférable de poster ce genre de message dans les
+ forums. D’autant plus qu’il n’y a aucun rapport avec l’article présent.</p>
+<p>Bonne chance pour la config.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-1064">
+				<div id="div-comment-1064" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/2010f9d29d871e9d455789fb47050482.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/2010f9d29d871e9d455789fb47050482_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-2010f9d29d871e9d455789fb47050482-0" width="60" height="60">			<cite class="fn">Dimi</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1064">9 décembre 2013 à 12:48</a>		</div>
+
+		<p>Bonjour,</p>
+<p>Je souhaite savoir si l’adresse IP WAN du routeur R1 peut être pingable depuis Internet?</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1066">
+				<div id="div-comment-1066" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-14" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1066">9 décembre 2013 à 19:09</a>		</div>
+
+		<p>Normalement oui, c’est le propre d’une adresse publique … être 
+accessible depuis Internet, en opposition aux adresses dites privées qui
+ ne le sont pas.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-1071">
+				<div id="div-comment-1071" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/2010f9d29d871e9d455789fb47050482.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/2010f9d29d871e9d455789fb47050482_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-2010f9d29d871e9d455789fb47050482-1" width="60" height="60">			<cite class="fn">Khéops</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1071">11 décembre 2013 à 17:09</a>		</div>
+
+		<p>Bonjour,</p>
+<p>Dans le cadre d’un projet je dois fournir une adresse IP publique en /32 pour mes clients fibre.<br>
+J’administre le routeur coeur et les routeurs clients. Le LAN entre les routeurs clients et le coeur est IPv4 privé.</p>
+<p>Les confs ci-dessous fonctionnent très bien. Cependant l’adresse 90.0.0.1/32 n’est pas pingable depuis le routeur FAI.<br>
+Comment faire? L’adresse publique en soit n’existe pas !</p>
+<p>————————————<br>
+hostname Routeur_Client<br>
+!<br>
+interface FastEthernet0/0<br>
+ description LAN_client<br>
+ ip address 192.168.10.254 255.255.255.0<br>
+ ip nat inside<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1<br>
+ description vers_RouteurCoeur<br>
+ ip address 192.168.254.10 255.255.255.0<br>
+ ip nat outside<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+ip nat pool LAN-POOL 90.0.0.1 90.0.0.1 netmask 255.255.255.255<br>
+ip nat inside source list 101 pool LAN-POOL overload<br>
+ip classless<br>
+ip route 0.0.0.0 0.0.0.0 192.168.254.254<br>
+!<br>
+access-list 101 permit ip 192.168.10.0 0.0.0.255 any<br>
+access-list 101 deny ip any any<br>
+————————————<br>
+hostname Router-Coeur<br>
+!<br>
+interface FastEthernet0/0<br>
+ description CollecteDesClients<br>
+ ip address 192.168.254.254 255.255.255.0<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1<br>
+ description coteFAI<br>
+ ip address 200.0.0.1 255.255.255.0<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+ip classless<br>
+ip route 90.0.0.0 255.255.255.0 FastEthernet0/0<br>
+ip route 0.0.0.0 0.0.0.0 FastEthernet0/1<br>
+————————————<br>
+hostname Router_FAI<br>
+!<br>
+interface FastEthernet0/0<br>
+ ip address 200.0.0.2 255.255.255.252<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1<br>
+ description Internet<br>
+ no ip address<br>
+ duplex auto<br>
+ speed auto<br>
+ shutdown<br>
+!<br>
+ip classless<br>
+ip route 90.0.0.0 255.255.255.240 FastEthernet0/0<br>
+ip route 0.0.0.0 0.0.0.0 FastEthernet0/1<br>
+————————————</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1073">
+				<div id="div-comment-1073" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-15" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1073">11 décembre 2013 à 18:57</a>		</div>
+
+		<p>Il y a un souci avec les routes statiques. Dans une route statique 
+on peut indiquer à la place du next-hop l’interface de sortie … si et 
+seulement si cette information est suffisante … c’est par exemple le cas
+ sur une liaison point-à-point comme en PPP/HDLC ou Frame-Relay 
+point-à-point. Sur un réseau Ethernet (donc multipoint) le routeur doit 
+pouvoir déterminer l’adresse MAC du next-hop il a dés lors besoin de son
+ adresse ip.</p>
+<p>Donc sur le Routeur coeur:<br>
+<code>ip route 0.0.0.0 0.0.0.0 200.0.0.2<br>
+ip route 90.0.0.1 255.255.255.255 192.168.254.10<br>
+<idem pour="" chacun="" des="" clients=""></idem></code></p>
+<p>Sur le routeur FAI:<br>
+<code>ip route 0.0.0.0 0.0.0.0 <ip-du-next-hop si="" c'est="" du="" fa=""><br>
+ip route 90.0.0.0 255.255.255.240 200.0.0.1</ip-du-next-hop></code></p>
+<p>Pas le choix sur de l’ethernet, l’ip du next-hop doit être donnée 
+sans quoi le routeur ne peut pas résoudre l’adresse MAC à l’aide d’une 
+requête ARP.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1072">
+				<div id="div-comment-1072" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/2010f9d29d871e9d455789fb47050482.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/2010f9d29d871e9d455789fb47050482_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-2010f9d29d871e9d455789fb47050482-2" width="60" height="60">			<cite class="fn">Khéops</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1072">11 décembre 2013 à 17:12</a>		</div>
+
+		<p>Erreur dans le copier coller. Il s’agit bien d’un réseau 200.0.0.0/30 entre le routeur FAI et routeur coeur.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-ibinda odd alt thread-odd thread-alt depth-1" id="comment-1089">
+				<div id="div-comment-1089" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-6444b601eefd9725d391bc86e198e948-2" width="60" height="60">			<cite class="fn">ibinda</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1089">28 décembre 2013 à 00:55</a>		</div>
+
+		<p>Bonsoir,</p>
+<p>je vous remercie,<br>
+je vais essayer de remplacer le cloud par un routeur ISP pour faire la simulation,<br>
+je pense que ça ira,</p>
+<p>je vous remercie encore,<br>
+Bonne soirée,</p>
+<p>Cdt,</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1113">
+				<div id="div-comment-1113" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/ebb33b4fea8c1b4bc856185589ad82aa.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/ebb33b4fea8c1b4bc856185589ad82aa_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-ebb33b4fea8c1b4bc856185589ad82aa-0" width="60" height="60">			<cite class="fn"><a href="http://gravatar.com/polakk6" rel="external nofollow ugc" class="url">polakk6</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1113">17 janvier 2014 à 18:01</a>		</div>
+
+		<p>Bonjour,</p>
+<p>Voila j’ai mis en place un réseau sur ciso, cependant je coince un peu sur certains points ..</p>
+<p>Je dispose de 3 vlan connecté en mode trunk sur mon ROUTEUR1, celui ci est connecté au ROUTEUR2. </p>
+<p>J’ai configurer le NAT sur mon ROUTEUR2, cependant tous mes vlan 
+peuvent sortir quand meme… Cela fais 3 jours que je cherche desperement 
+la solution mais je n’y arrive pas:/ si quelqu’un voudrait bien 
+m’eclairer je suis preneur <img draggable="false" role="img" class="emoji" alt="🙂" src="configuration-du-nat-sur-un-routeur-cisco_files/1f642.svg"></p>
+<p><strong>===&gt; Message déplacé dans le forum &lt;===</strong></p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1171">
+				<div id="div-comment-1171" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/514887f40b3059de8da7c053c80f39dc_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/514887f40b3059de8da7c053c80f39dc.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-514887f40b3059de8da7c053c80f39dc-0" width="60" height="60">			<cite class="fn">phil</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1171">15 mars 2014 à 20:07</a>		</div>
+
+		<p>merci Steve pour ce tuto</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1196">
+				<div id="div-comment-1196" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/d00dcaaaac114922de3bcd10649d71f1.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/d00dcaaaac114922de3bcd10649d71f1_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-d00dcaaaac114922de3bcd10649d71f1-0" width="60" height="60">			<cite class="fn">Stephanoia</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1196">23 avril 2014 à 12:32</a>		</div>
+
+		<p>Bonjour Steve, c’est tout simplement remarquable, le travail que tu
+ abats, j’apprécie vraiment ton Blog et tout ce qui s’y trouve, je suis 
+étudiant au programme CCIE sécurité en Inde, et je compte bcp pratiquer 
+avec tes tuto ! </p>
+<p>Vraiment remarquable !<br>
+une dernière chose pense aussi a te pencher sur l’édition d’un livre, si  ce n’est pas déjà chose faite !</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-1226">
+				<div id="div-comment-1226" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/7b7d78faa3489c709104f2f0a57c8399.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/7b7d78faa3489c709104f2f0a57c8399_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-7b7d78faa3489c709104f2f0a57c8399-0" width="60" height="60">			<cite class="fn">Sylvia</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1226">16 mai 2014 à 17:27</a>		</div>
+
+		<p>Merci pour ce tuto. Et si je veux faire de nat static sur des ports
+ donnés. comme par exemple autorisé juste les ports du mail. Donc dans 
+le cas de la machine  c3, je suppose que c’est un serveur mail et que 
+toutes requêtes concernant le port 25 par exemple à destination de mon 
+adresse publique doivent être rediriger vers la machine c3 sur ce port. 
+Merci d’avance</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-1227">
+				<div id="div-comment-1227" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-16" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1227">16 mai 2014 à 19:11</a>		</div>
+
+		<p>Pour une translation statique de «&nbsp;port à port&nbsp;» on utilisera une config du genre:</p>
+<p>R1(config)#ip nat inside source static tcp 192.168.1.100 25 201.49.10.30 25</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-1231">
+				<div id="div-comment-1231" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/ee53a6aeba49fd7b3fefc5d4a485f709_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/ee53a6aeba49fd7b3fefc5d4a485f709.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-ee53a6aeba49fd7b3fefc5d4a485f709-0" width="60" height="60">			<cite class="fn">Nes ADM</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1231">26 mai 2014 à 00:19</a>		</div>
+
+		<p>bonjour, votre article est superbe est très bien expliqué. Cependant j’aurais quelques questions :<br>
+j’ai un réseau local avec le pool d’adresse 10.10.10.0/24 relié à un 
+autre réseau avec un pool d’adresse 172.26.0.0/16 ( non routable aussi) 
+qui lui est connecté à Internet.<br>
+Ma question est donc : Est ce que je dois configurer un NAT dans ce cas 
+pour mon réseau local ( 10.10.10.0/24) pour qu’il puisse communiquer 
+avec l’autre réseau alors qu’il a un pool d’adresses non routables 
+aussi?<br>
+ Ma deuxième question est : pour le pool d’adresse ou le NAT va prendre 
+les adresses pour la translation : n y aurait t il pas de conflit 
+d’adresse IP si on suppose que les adresse dans le pool du NAT sont déja
+ utilisées par d’autres utilisateurs dans le réseau 172.26.0.0/16. Et 
+comment faut il faire pour choisir la bonne plage.<br>
+Je vous remercie d’avance pour d’éventuelles réponses.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-1232">
+				<div id="div-comment-1232" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-17" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1232">26 mai 2014 à 19:27</a>		</div>
+
+		<p>Il est envisageable de configurer du NAT entre le réseau 
+10.10.10.0/24 et le réseau 172.26.0.0/24. Ce qui aurait pour effet de 
+masque l’existence du premier. On pourrait imaginer là avoir du NAT 
+dynamique avec surcharge, de telle sorte que toutes les machines 10… 
+soient perçues comme était une machine 172.26…</p>
+<p>Ceci dit, cela aurait pour effet d’empêcher les machines du 172.26 
+d’initier des communications vers le réseau 10. Sans parker du fait que 
+le trafic provenant d’une machine du réseau 10 passerait 2x à travers du
+ NAT … bonjour la latence.</p>
+<p>Le plus logique serait donc de configurer le routeur qui relier le 
+réseau 172.26 à internet pour qu’il «&nbsp;NATte&nbsp;» les adressed u 
+réseau 10. Il faudra bien entendu que ce routeur ait une route vers le 
+réseau 10, au même titre que le routeur entre le réseau 10 et le 172.26 
+doit avoir une route par défaut.</p>
+<p>Concernant le pool NAT, en principe on parle d’adresses publiques, 
+routables sur Internet et qui dés lors sont attribuées par un provider. 
+Dés lors il est impossible d’avoir les mêmes adresses à deux endroits. 
+C’est le provider qui définira la plge d’adresse publique que le client a
+ le droit d’utiliser … et pour laquelle il devra payer bien entendu.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-1233">
+				<div id="div-comment-1233" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/ee53a6aeba49fd7b3fefc5d4a485f709_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/ee53a6aeba49fd7b3fefc5d4a485f709.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-ee53a6aeba49fd7b3fefc5d4a485f709-1" width="60" height="60">			<cite class="fn">Nes ADM</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1233">26 mai 2014 à 20:58</a>		</div>
+
+		<p>Je vous remercie infiniment pour vos réponses , ça m’est d’une grande aide !</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-1304">
+				<div id="div-comment-1304" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/74d9bd9643b5af50b9dc6df6e18325e6_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/74d9bd9643b5af50b9dc6df6e18325e6.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-74d9bd9643b5af50b9dc6df6e18325e6-0" width="60" height="60">			<cite class="fn">Yohan Courbe</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1304">13 juillet 2014 à 23:16</a>		</div>
+
+		<p>Salut Steve,</p>
+<p>C’est toujours aussi classe de rechercher «&nbsp;cisco nat&nbsp;» sur google et tomber sur ton blog en premier lien <img draggable="false" role="img" class="emoji" alt="🙂" src="configuration-du-nat-sur-un-routeur-cisco_files/1f642.svg"> Félicitation !</p>
+<p>Par rapport à l’article, il pourrait être intéressant de rajouter un 
+petit brin d’explication sur la nomenclature Cisco: inside/outside et 
+local/global. Personnellement ces notions m’ont toujours perturbées.</p>
+<p>A bientôt !</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1305">
+				<div id="div-comment-1305" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-18" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1305">14 juillet 2014 à 12:09</a>		</div>
+
+		<p>Salut Yohan <img draggable="false" role="img" class="emoji" alt="😉" src="configuration-du-nat-sur-un-routeur-cisco_files/1f609.svg">
+ Content que ça serve en tout cas… C’est en effet une bonne idée 
+d’amélioration pour l’article. Je devrais avoir un peu de temps à y 
+consacrer dans les jours à venir.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-1412">
+				<div id="div-comment-1412" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/1d57e2c09a922626909c6d8339f03852_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/1d57e2c09a922626909c6d8339f03852.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-1d57e2c09a922626909c6d8339f03852-0" width="60" height="60">			<cite class="fn"><a href="https://plus.google.com/105934570454755087892" rel="external nofollow ugc" class="url">benyahia oussama</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1412">3 septembre 2014 à 17:49</a>		</div>
+
+		<p>Bonjour,<br>
+Très intéressant comme article , je pense qu’il y a une erreur dans la 
+première configuration de Nat , J’arrive pas de faire le ping sur 
+8.8.8.8 avec votre configuration , j’ai ajouté une configue et sa marche
+ :</p>
+<p>J’ai configurer en plus comme vous avez fait un NAT de co^té outside :</p>
+<p>si la destination est 201.49.10.30 faire une translation vers 192.168.1.100.</p>
+<p>Merci.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1415">
+				<div id="div-comment-1415" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-19" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1415">3 septembre 2014 à 21:42</a>		</div>
+
+		<p>C’est le but recherché par l’exercice… Résoudre étape par étape les
+ problèmes. Chaque partie apporte une solution. Pour que tout fonctionne
+ comme prévu il faut effectuer la totalité de la configuration… Pas 
+juste un morceau</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-1482">
+				<div id="div-comment-1482" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/05f553111dcc0f033313b3f42cee6e73.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/05f553111dcc0f033313b3f42cee6e73_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-05f553111dcc0f033313b3f42cee6e73-0" width="60" height="60">			<cite class="fn">Seydina O. DIAGNE</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1482">20 septembre 2014 à 10:58</a>		</div>
+
+		<p>Bonjour Steve,<br>
+je vous remercie pour votre merveilleux article.<br>
+j’aimerai savoir s’il est possible de configurer deux LAN sur un routeur
+ et que le premier(la direction) puisse accéder au deuxième(les 
+employés) sans que le deuxième(les employés) ne puisse accéder au 
+premier (la direction).<br>
+Merci d’avance</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-1766">
+				<div id="div-comment-1766" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/c5fc8dc6772b0f3729cd9813baf8deda_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/c5fc8dc6772b0f3729cd9813baf8deda.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-c5fc8dc6772b0f3729cd9813baf8deda-0" width="60" height="60">			<cite class="fn">Jumpin</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-1766">14 octobre 2014 à 12:49</a>		</div>
+
+		<p>Bon boulot, Merci <img draggable="false" role="img" class="emoji" alt="🙂" src="configuration-du-nat-sur-un-routeur-cisco_files/1f642.svg"></p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-2193">
+				<div id="div-comment-2193" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/f8987d15dab1e963a4bfbea4a24b4f49.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/f8987d15dab1e963a4bfbea4a24b4f49_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-f8987d15dab1e963a4bfbea4a24b4f49-0" width="60" height="60">			<cite class="fn">Jérémie</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2193">26 novembre 2014 à 18:14</a>		</div>
+
+		<p>Bonjour,</p>
+<p>Merci pour ce tuto !</p>
+<p>Pourquoi les adresses publiques achetées n’ont pas besoin d’être dans le même réseau qu’entre R1 et l’ISP ?</p>
+<p>Merci pour votre réponse</p>
+<p>Cordialement,</p>
+<p>Jérémie</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-2200">
+				<div id="div-comment-2200" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-20" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2200">27 novembre 2014 à 13:43</a>		</div>
+
+		<p>Simplement parce que du point de vue du provider il ne s’agit que 
+d’indiquer une route vers ces adresses publiques. Il redirige le trafic 
+destiné à ces adresses vers le routeur du client, simplement.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-2391">
+				<div id="div-comment-2391" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/5fbdf7522f09113fe5e3f8e7d1bd6230_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/5fbdf7522f09113fe5e3f8e7d1bd6230.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-5fbdf7522f09113fe5e3f8e7d1bd6230-0" width="60" height="60">			<cite class="fn">ratmalgre</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2391">8 février 2015 à 19:29</a>		</div>
+
+		<p>Bonjour<br>
+J’essaie de configurer une route statique mais j’y arrive pas. C’est sur
+ un routeur cisco avec cisco packet tracer. Le problème est que les 
+routes statistiques ne s’affichent pas quand je fais sh ip route. Mais 
+quand je fais sh run je les vois!<br>
+Besoin d’aide svp!</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-2397">
+				<div id="div-comment-2397" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-21" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2397">11 février 2015 à 20:52</a>		</div>
+
+		<p>Dans ce cas cela veut dire que la route statique n’est pas valide, 
+soit le next-hop n’est pas joignable, soit l’interface de sortie est 
+down.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-2410">
+				<div id="div-comment-2410" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/2242764da8a2a29af1b32ec5e166cb31.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/2242764da8a2a29af1b32ec5e166cb31_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-2242764da8a2a29af1b32ec5e166cb31-0" width="60" height="60">			<cite class="fn">Lolo</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2410">6 mars 2015 à 12:19</a>		</div>
+
+		<p>Merci pour ce tutoriel bien fait avec parfaite simplicité.<br>
+Je viens de comprendre une théorie qui m’échape tous les jours sur la meilleure facon de configurer le NAT. Chapeau Steve.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-2548">
+				<div id="div-comment-2548" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/175bb783048ae435419bc729fac0eb52_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/175bb783048ae435419bc729fac0eb52.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-175bb783048ae435419bc729fac0eb52-0" width="60" height="60">			<cite class="fn">Jeremie Bongisa</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2548">28 juin 2015 à 10:20</a>		</div>
+
+		<p>C’est magnifique ce forum pour nous les débutants en Administrations réseaux.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-2734">
+				<div id="div-comment-2734" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/e46631c99556012bc6c31ae5eb6df54b.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/e46631c99556012bc6c31ae5eb6df54b_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-e46631c99556012bc6c31ae5eb6df54b-0" width="60" height="60">			<cite class="fn">bokito</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2734">11 novembre 2015 à 20:21</a>		</div>
+
+		<p>Bonsoir ,<br>
+Est-il possible de combiner le nat statique et le NAT overload? je 
+m’explique un peu mon lab. J’ai des réseaux sur des sites différents qui
+ se chevauchent , j’ai donc attribué des adresses «&nbsp;Natté&nbsp;» ip
+ nat inside source static adresse-reelle adresse-translaté , avec cette 
+configuration les VPN marchent bien.<br>
+Le souci est au niveau de l’accès Internet avec le NAT overload &nbsp;» 
+ip nat inside source list 105 interface FastEthernet0/0 overload&nbsp;» 
+ les machines n’ont pas internet.<br>
+j’ai configure l’acl 105 avec les adresse-translaté.</p>
+<p>ip nat inside source static 10.200.15.1 172.30.22.1<br>
+ip nat inside source static 10.200.15.2 172.30.22.2</p>
+<p>ip nat inside source list 105 interface FastEthernet0/0 overload</p>
+<p>access-list 105 permit ip 172.30.22.0 0.0.0.255 any</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-2789">
+				<div id="div-comment-2789" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/72d47efa86bab6669146d596ce22b9fe_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/72d47efa86bab6669146d596ce22b9fe.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-72d47efa86bab6669146d596ce22b9fe-0" width="60" height="60">			<cite class="fn">Ulrich benoit DIEME</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2789">5 janvier 2016 à 11:02</a>		</div>
+
+		<p>Merci pour la clarification sur la config du NAT…………………………..</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-ibinda even thread-odd thread-alt depth-1" id="comment-2861">
+				<div id="div-comment-2861" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/6444b601eefd9725d391bc86e198e948_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-6444b601eefd9725d391bc86e198e948-3" width="60" height="60">			<cite class="fn">ibinda</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2861">23 mars 2016 à 12:44</a>		</div>
+
+		<p>Bonjour,<br>
+J’ai un souci avec une maquette similaire avec en sortie un Cloud.depuis
+ chaque pc,je ping l’interface de sortie qui pointe vers le Cloud mais 
+ce ping ne passe.</p>
+<p>Configuration du routeur R1(routeur de sortie vers le Cloud):</p>
+<p>PROVIDER-ISP#<br>
+Building configuration…</p>
+<p>Current configuration : 1243 bytes<br>
+!<br>
+version 12.4<br>
+service timestamps debug datetime msec<br>
+service timestamps log datetime msec<br>
+no service password-encryption<br>
+!<br>
+hostname PROVIDER-ISP<br>
+!<br>
+boot-start-marker<br>
+boot-end-marker<br>
+!<br>
+!<br>
+no aaa new-model<br>
+!<br>
+resource policy<br>
+!<br>
+ip subnet-zero<br>
+no ip icmp rate-limit unreachable<br>
+ip cef<br>
+ip tcp synwait-time 5<br>
+!<br>
+!<br>
+no ip dhcp use vrf connected<br>
+!<br>
+!<br>
+no ip ips deny-action ips-interface<br>
+!</p>
+<p>!<br>
+!<br>
+interface FastEthernet0/0<br>
+ ip address dhcp<br>
+ duplex half<br>
+!<br>
+interface Serial1/0<br>
+ ip address 80.79.100.1 255.255.255.252<br>
+ serial restart-delay 0<br>
+!<br>
+interface Serial1/1<br>
+ no ip address<br>
+ shutdown<br>
+ serial restart-delay 0<br>
+!<br>
+interface Serial1/2<br>
+ no ip address<br>
+ shutdown<br>
+ serial restart-delay 0<br>
+!<br>
+interface Serial1/3<br>
+ no ip address<br>
+ shutdown<br>
+ serial restart-delay 0<br>
+!<br>
+ip classless<br>
+ip route 0.0.0.0 0.0.0.0 192.168.137.1<br>
+ip route 201.49.10.16 255.255.255.240 80.79.100.2<br>
+no ip http server<br>
+no ip http secure-server<br>
+!<br>
+ip dns server<br>
+!<br>
+!</p>
+<p>no cdp log mismatch duplex<br>
+!</p>
+<p>!<br>
+control-plane<br>
+!</p>
+<p>!<br>
+gatekeeper<br>
+ shutdown<br>
+!<br>
+!<br>
+line con 0<br>
+ exec-timeout 0 0<br>
+ privilege level 15<br>
+ logging synchronous<br>
+ stopbits 1<br>
+line aux 0<br>
+ exec-timeout 0 0<br>
+ privilege level 15<br>
+ logging synchronous<br>
+ stopbits 1<br>
+line vty 0 4<br>
+ login<br>
+!<br>
+!<br>
+end</p>
+<p>PROVIDER-ISP#</p>
+<p>L’autre routeur PRIVATE Network n’a aucun souci.<br>
+Dans ma topologie,j’ai plusieurs PC pour ma simulation mais depuis 
+chaque PC,je ne ping pas mon Cloud pourtant j’ai annoncé une route par 
+défaut pointant vers mon Cloud.</p>
+<p>Pouvez-vous m’aider????</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-2945">
+				<div id="div-comment-2945" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/df31f52856e724e637f3110060472575_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/df31f52856e724e637f3110060472575.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-df31f52856e724e637f3110060472575-0" width="60" height="60">			<cite class="fn">Bruno</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2945">4 mai 2016 à 23:11</a>		</div>
+
+		<p>Bonjour Steve,</p>
+<p>Déjà, encore un grand merci pour toute cette information.</p>
+<p>J’aurais voulu savoir ce qu’il faudrait implémenter si on a deux ISP,
+ du NAT et que l’on souhaite publier un serveur WEB en interne.</p>
+<p>Si on publie le serveur WEB sur une interface et que celle-ci ne soit
+ plus accessible, comment faire pour que le serveur soit accessible 
+depuis l’autre path (interface). </p>
+<p>Quelle serait la meilleure méthode pour répondre à ce besoin.</p>
+<p>Merci pour ton aide.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-2948">
+				<div id="div-comment-2948" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-22" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2948">5 mai 2016 à 11:11</a>		</div>
+
+		<p>Bonjour,<br>
+Alors tout d’abord l’idéal serait de ne pas placer le serveur Web 
+derrière le NAT, mais bien entendu ça implique d’utiliser une plage 
+d’adresse publique, et ça … ça a un coût aussi.</p>
+<p>Sinon, dans l’hypothèse pour le serveur Web serait placé derrière le 
+NAT, il suffit normalement de configurer le NAT statique qui redirige 
+vers le serveur Web pour chacune des interfaces qui mène à un ISP.<br>
+Là ou il faut être prudent c’est la gestion du routage. Dans un cas 
+pareil, les deux accès à Internet ne peuvent pas être identiques, 
+j’entends par là placés simultanément dans la table de routage, sinon, 
+le résultat du NAT sera assez chaotique et non fonctionnel.<br>
+Une manière de gérer ça est d’avoir des routes par défaut avec soit une 
+métrique, soit une AD différente. Pour avoir une route principale et une
+ secondaire. Il es possible de les rendre plus ou moins réactive à 
+l’aide de fonctionnalités comme le Tracking et le SLA qui permettent par
+ exemple d’effecteur un test de connectivité (ping ou autre) vers une 
+adresse, quand ça fonctionne, la route est maintenue dans la table de 
+routage, si ça ne passe pas, la route est retirée jusqu’à ce que ça 
+refonctionne.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-2951">
+				<div id="div-comment-2951" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/df31f52856e724e637f3110060472575_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/df31f52856e724e637f3110060472575.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-df31f52856e724e637f3110060472575-1" width="60" height="60">			<cite class="fn">Bruno</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2951">5 mai 2016 à 16:06</a>		</div>
+
+		<p>Bonjour Steve et merci pour ton retour.</p>
+<p>Avec l’utilisation d’une adresse IP publique, ce serait effectivement
+ plus simple, mais au-delà des coûts, il y a parfois des idées reçues 
+(fausse de mon point de vue) qui ont du mal à s’effacer. «Mettre un 
+Windows avec une adresse IP publique sur Internet.. Vous n’y pensez 
+pas.» Il faut qu’il soit protégé. Bref, un autre sujet…</p>
+<p>Donc, nous avons mis en place un tracking afin de gérer la partie 
+routage qui est pleinement fonctionnelle. Nous avons nos deux entrées 
+NAT, une pour chaque interface, ce qui fait que maintenant, notre 
+serveur peut être accessible par les deux pattes externes. </p>
+<p>Ma question était de savoir s’il y avait un mécanisme ou protocole 
+Cisco qui nous permettrait d’utiliser qu’une entrée NAT à la fois, un 
+peu comme le tracking pour des routes ou la mise en place VIP/MAC de 
+HRSP/VRRP.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-3143">
+				<div id="div-comment-3143" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/78e8b2635b22db84d11e129a8d7e6e30.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/78e8b2635b22db84d11e129a8d7e6e30_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-78e8b2635b22db84d11e129a8d7e6e30-0" width="60" height="60">			<cite class="fn">Baz</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3143">19 juillet 2016 à 16:13</a>		</div>
+
+		<p>Merci, cela m’a vraiment beaucoup aidé.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-3145">
+				<div id="div-comment-3145" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/8340ac3e8d989e7543403768dda90ccb.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/8340ac3e8d989e7543403768dda90ccb_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-8340ac3e8d989e7543403768dda90ccb-0" width="60" height="60">			<cite class="fn">adaptable</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3145">20 juillet 2016 à 16:20</a>		</div>
+
+		<p>en tout cas bravo pour l’article clair , concis et accessible a tous, bonne continuation sur cette base .<br>
+Ensuite et je pense que même si certains le font ,on en a jamais assez, 
+merci d’avoir répondu a toutes les questions posé dans les commentaire 
+(même si certains auraient du être poster dans le forum, même si 
+certains ont posé plusieurs questions d’affilé,….etc) et tout ça en 
+restant calme ,et patient avec tous .</p>
+<p>bravo et encore merci pour nous .</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-3229">
+				<div id="div-comment-3229" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/ae606dfd15ccd91046213e0fb3be9256_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/ae606dfd15ccd91046213e0fb3be9256.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-ae606dfd15ccd91046213e0fb3be9256-0" width="60" height="60">			<cite class="fn">warner</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3229">11 décembre 2016 à 01:56</a>		</div>
+
+		<p>Bonsoir, j’ai un routeur c2800 dont je souhaite configurer du nat et il ne fonctionne en faisant «&nbsp;sh ip nat trans&nbsp;»</p>
+<p>Current configuration : 1624 bytes<br>
+!<br>
+version 12.4<br>
+service timestamps debug datetime msec<br>
+service timestamps log datetime msec<br>
+no service password-encryption<br>
+!<br>
+hostname Router<br>
+!<br>
+boot-start-marker<br>
+boot-end-marker<br>
+!<br>
+! card type command needed for slot/vwic-slot 0/2<br>
+logging message-counter syslog<br>
+!<br>
+no aaa new-model<br>
+!<br>
+dot11 syslog<br>
+ip source-route<br>
+!<br>
+!<br>
+ip cef<br>
+ip dhcp excluded-address 192.168.147.1<br>
+!<br>
+ip dhcp pool Lan<br>
+   network 192.168.147.0 255.255.255.0<br>
+   default-router 192.168.147.1<br>
+!<br>
+!<br>
+no ipv6 cef<br>
+!<br>
+!<br>
+interface FastEthernet0/0<br>
+ description «&nbsp;cote reseau Internet&nbsp;»<br>
+ ip address 41.159.144.26 255.255.255.248<br>
+ ip nat outside<br>
+ ip virtual-reassembly<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1<br>
+ description «&nbsp;cote reseau local&nbsp;»<br>
+ ip address 192.168.147.1 255.255.255.0<br>
+ ip nat inside<br>
+ ip virtual-reassembly<br>
+ duplex auto<br>
+ speed auto<br>
+!<br>
+interface FastEthernet0/1/0<br>
+!<br>
+interface FastEthernet0/1/1<br>
+!<br>
+interface FastEthernet0/1/2<br>
+!<br>
+interface FastEthernet0/1/3<br>
+!<br>
+interface Vlan1<br>
+ no ip address<br>
+!<br>
+router rip<br>
+ version 2<br>
+ network 192.168.147.0<br>
+ default-information originate<br>
+!<br>
+ip forward-protocol nd<br>
+ip route 0.0.0.0 0.0.0.0 41.159.144.25</p>
+<p>!<br>
+ip nat pool natWANLan 41.159.144.25 41.159.144.31 netmask 255.255.255.248<br>
+ip nat inside source list 1 pool natWANLan<br>
+!<br>
+access-list 1 permit 192.168.147.0 0.0.0.255<br>
+!<br>
+!</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-3231">
+				<div id="div-comment-3231" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-23" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3231">11 décembre 2016 à 11:50</a>		</div>
+
+		<p>Tel que c’est configuré, seules 6 machines auront la possibilités 
+d’utiliser le NAT en même temps. Il manque le mot clé 
+«&nbsp;overload&nbsp;» à la fin de la règle nat: «&nbsp;ip nat inside 
+source list 1 pool natWANLan overload&nbsp;»</p>
+<p>Pour le reste la config me semble correcte… si l’ACL1 est correcte. 
+Je vois qu’il y a du RIP configuré ce qui me laisse penser qu’il y a 
+plus d’un subnet dans le réseau. Si c’est le cas, il faut les rajouter 
+dans l’ACL1.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-3324">
+				<div id="div-comment-3324" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/41197bf7a4edf747685d132e9b588351.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/41197bf7a4edf747685d132e9b588351_002.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-41197bf7a4edf747685d132e9b588351-0" width="60" height="60">			<cite class="fn">Den</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3324">15 février 2017 à 02:07</a>		</div>
+
+		<p>Mille BRAVO et Mille MERCI pour ce site de QUALITÉ!<br>
+Très bon Lab de NAT mixte.</p>
+<p>Petite question! Est-ce possible ou est-ce une erreur,<br>
+l’adresse ip  201.49.10.30 est configuré en static pour un poste,<br>
+et aussi utilisé dans le pool POOL-NAT-LAN2 ?<br>
+Peut-elle être réutilisé pendant que le poste C3 ne ne l’utilise pas?<br>
+ Encore Merci!</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-3344">
+				<div id="div-comment-3344" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/7bbadba5ff384f4fd0e7bb7bbab0207c_002.jpg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/7bbadba5ff384f4fd0e7bb7bbab0207c.jpg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-7bbadba5ff384f4fd0e7bb7bbab0207c-0" width="60" height="60">			<cite class="fn">sambe mouhamadou</cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3344">10 mars 2017 à 15:53</a>		</div>
+
+		<p>c’est magnifique. et merci à vous du fait que vous preniez votre temps pour répondre aux questions</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-3487">
+				<div id="div-comment-3487" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/ed754c28f7c5348f1e9457b2f40585d3.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/ed754c28f7c5348f1e9457b2f40585d3_002.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-ed754c28f7c5348f1e9457b2f40585d3-0" width="60" height="60">			<cite class="fn"><a href="http://gravatar.com/cisman7" rel="external nofollow ugc" class="url">cisman74</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3487">30 décembre 2017 à 15:16</a>		</div>
+
+		<p>J’ai suivit les étapes pour le NAT dynamique. mais j’ai de l’OSPF 
+sur mes autres routeurs qui tourne, comment leur faire savoir qu’il 
+doivent prendre la route static pour aller sur internet.</p>
+
+		
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-3499">
+				<div id="div-comment-3499" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc_003.jpeg" srcset="configuration-du-nat-sur-un-routeur-cisco_files/4f4777074b947546c0fa0f177d967edc.jpeg 2x" class="avatar avatar-60 photo grav-hashed grav-hijack" loading="lazy" id="grav-4f4777074b947546c0fa0f177d967edc-24" width="60" height="60">			<cite class="fn"><a href="http://www.ciscomadesimple.be/" rel="external nofollow ugc" class="url">Steve De Jongh</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-3499">12 février 2018 à 11:43</a>		</div>
+
+		<p>Sur le routeur d’accès internet (donc celui qui a la route statique
+ par défaut), il faut redistribuer cette route dans OSPF. Deux méthodes 
+sont possibles:<br>
+1) router(config-router)# redistribute static subnets<br>
+2) router(config-router)# default-information originate</p>
+<p>La deuxième solution est la plus propre à mon sens.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+
+	
+
+
+	<h6 id="pings">2 Pings/Trackback pour  "Configuration du NAT sur un routeur Cisco"</h6>
+
+	<ol class="commentlist">
+				<li class="pingback even thread-even depth-1" id="comment-2223">
+				<div id="div-comment-2223" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.pearltrees.com/gloiseau/cisco/id13157019/item131356845" rel="external nofollow ugc" class="url">Cisco | Pearltrees</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2223">1 décembre 2014 à 21:19</a>		</div>
+
+		<p>[…] Configuration du NAT sur un routeur Cisco | CISCOMADESIMPLE.BE.
+ Quand il s’agit d’interconnecter un réseau privé (que ce soit 
+d’entreprise ou particulier), en IPv4, il est pratiquement impossible de
+ se passer du NAT. […]</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-2295">
+				<div id="div-comment-2295" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.pearltrees.com/cehem1/reseau/id13279257/item133293430" rel="external nofollow ugc" class="url">Reseau | Pearltrees</a></cite> <span class="says">dit&nbsp;:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/#comment-2295">26 décembre 2014 à 11:50</a>		</div>
+
+		<p>[…] Configuration du NAT sur un routeur Cisco | CISCOMADESIMPLE.BE.
+ Quand il s’agit d’interconnecter un réseau privé (que ce soit 
+d’entreprise ou particulier), en IPv4, il est pratiquement impossible de
+ se passer du NAT. […]</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+	</ol>
+
+
+
+			
+		
+</div><!-- end of #content -->
+
+
+	<div id="widgets" class="grid col-300 fit">
+		
+		<div id="acx-social-icons-widget-3" class="widget-wrapper acx-smw-social-icon-desc"><style>
+.widget-acx-social-icons-widget-3-widget img 
+{
+width:48px; 
+ } 
+</style><div id="acurax_si_widget_simple" class="acx_smw_float_fix widget-acx-social-icons-widget-3-widget" style="text-align:center;"><a href="https://www.facebook.com/pages/CiscoMadeSimplebe/106518046037040" target="_blank" title="Visit Us On Facebook"><img src="configuration-du-nat-sur-un-routeur-cisco_files/facebook.png" style="border:0px;" alt="Visit Us On Facebook"></a><a href="http://www.twitter.com/cmsbe" target="_blank" title="Visit Us On Twitter"><img src="configuration-du-nat-sur-un-routeur-cisco_files/twitter.png" style="border:0px;" alt="Visit Us On Twitter"></a><a href="http://www.ciscomadesimple.be/feed/" target="_blank" title="Check Our Feed"><img src="configuration-du-nat-sur-un-routeur-cisco_files/feed.png" style="border:0px;" alt="Check Our Feed"></a><a href="http://be.linkedin.com/in/sdejongh/" target="_blank" title="Visit Us On Linkedin"><img src="configuration-du-nat-sur-un-routeur-cisco_files/linkedin.png" style="border:0px;" alt="Visit Us On Linkedin"></a><a href="http://www.youtube.com/playlist?list=PL54FE9D0D8EA99D39" target="_blank" title="Visit Us On Youtube"><img src="configuration-du-nat-sur-un-routeur-cisco_files/youtube.png" style="border:0px;" alt="Visit Us On Youtube"></a></div></div><div id="search-3" class="widget-wrapper widget_search"><div class="widget-title"><h3>Recherche</h3></div><form method="get" id="searchform" action="https://www.ciscomadesimple.be/">
+	<label class="screen-reader-text" for="s">Recherche pour:</label>
+	<input type="text" class="field" name="s" id="s" placeholder="chercher ici …">
+	<input type="submit" class="submit" name="submit" id="searchsubmit" value="C'est parti">
+</form></div><div id="twitter_timeline-2" class="widget-wrapper widget_twitter_timeline"><div class="widget-title"><h3>@cmsbe</h3></div><iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: absolute; visibility: hidden; display: block; width: 0px; height: 0px; padding: 0px; border: medium none;" frameborder="0"></iframe><a class="twitter-timeline twitter-timeline-error" data-width="225" data-height="300" data-theme="light" data-border-color="#e8e8e8" data-tweet-limit="5" data-lang="FR" data-partner="jetpack" data-chrome="noheader nofooter noborders transparent" data-widget-id="424288296835903488" href="https://twitter.com/424288296835903488" data-twitter-extracted-i1660229035612576615="true">Mes Tweets</a></div>
+		<div id="recent-posts-3" class="widget-wrapper widget_recent_entries">
+		<div class="widget-title"><h3>Articles récents</h3></div>
+		<ul>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2016/05/25/ppp-multilink-agregation-de-liaisons-serielles-ppp/">PPP Multilink : Agrégation de liaisons sérielles PPP</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/07/28/vlan-access-list-vacl/">VLAN Access-List (VACL)</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/07/25/authentification-802-1x-sur-un-reseau-ethernet-port-based-authentication-ws-c2950-vs-ws-c3750/">Authentification 802.1X sur un réseau Ethernet (Port-Based Authentication) – WS-C2950 vs WS-C3750</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/07/22/sntp-synchronisation-dhorloge-et-configuration-de-lheure-dete/">(S)NTP – Synchronisation d’horloge et configuration de l’heure d’été</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/04/24/diagnostic-du-cablage-depuis-un-switch-cisco/">Diagnostic du câblage depuis un switch Cisco</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/03/29/forumule-calcul-dun-masque-en-fonction-dun-nombre-de-machines/">Formule de calcul d’un masque réseau en fonction d’un nombre de machines</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/11/08/protocole-ipv4-les-bases/">Protocole IPv4 : Les bases</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/08/07/ciscomadesimple-be-en-https/">CiscoMadeSimple.be en HTTPS…</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/07/30/lldp-link-layer-discovery-protocol/">LLDP (Link Layer Discovery Protocol)</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/07/30/combinaison-des-examens-pour-la-nouvelle-ccnp/">Combinaison des examens pour la nouvelle CCNP</a>
+									</li>
+					</ul>
+
+		</div><div id="categories-4" class="widget-wrapper widget_categories"><div class="widget-title"><h3>Catégories</h3></div>
+			<ul>
+					<li class="cat-item cat-item-447"><a href="https://www.ciscomadesimple.be/category/certifications/">Certifications</a>
+<ul class="children">
+	<li class="cat-item cat-item-448"><a href="https://www.ciscomadesimple.be/category/certifications/ccent_icnd1/">CCENT – ICND1</a>
+</li>
+	<li class="cat-item cat-item-449"><a href="https://www.ciscomadesimple.be/category/certifications/ccna_icnd2/">CCNA – ICND2</a>
+</li>
+	<li class="cat-item cat-item-450"><a href="https://www.ciscomadesimple.be/category/certifications/ccnp_rs/">CCNP R&amp;S</a>
+	<ul class="children">
+	<li class="cat-item cat-item-452"><a href="https://www.ciscomadesimple.be/category/certifications/ccnp_rs/ccnp_r/">CCNP Routing</a>
+</li>
+	<li class="cat-item cat-item-451"><a href="https://www.ciscomadesimple.be/category/certifications/ccnp_rs/ccnp_s/">CCNP Switch</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-43"><a href="https://www.ciscomadesimple.be/category/cisco/">Cisco</a>
+<ul class="children">
+	<li class="cat-item cat-item-239"><a href="https://www.ciscomadesimple.be/category/cisco/fiches-recapitulatives/">Fiches récapitulatives</a>
+</li>
+	<li class="cat-item cat-item-108"><a href="https://www.ciscomadesimple.be/category/cisco/cisco_practice/">La pratique</a>
+</li>
+	<li class="cat-item cat-item-107"><a href="https://www.ciscomadesimple.be/category/cisco/cisco_theory/">La théorie</a>
+</li>
+	<li class="cat-item cat-item-411"><a href="https://www.ciscomadesimple.be/category/cisco/routing-cisco/">Routing</a>
+</li>
+	<li class="cat-item cat-item-410"><a href="https://www.ciscomadesimple.be/category/cisco/switching/">Switching</a>
+</li>
+	<li class="cat-item cat-item-290"><a href="https://www.ciscomadesimple.be/category/cisco/cisco_videos/">Vidéos</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-112"><a href="https://www.ciscomadesimple.be/category/divers/">Divers</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="https://www.ciscomadesimple.be/category/gns3/">GNS3</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="https://www.ciscomadesimple.be/category/networks/">Les réseaux</a>
+<ul class="children">
+	<li class="cat-item cat-item-111"><a href="https://www.ciscomadesimple.be/category/networks/net_practice/">La pratique</a>
+</li>
+	<li class="cat-item cat-item-110"><a href="https://www.ciscomadesimple.be/category/networks/net_theory/">La théorie</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.ciscomadesimple.be/category/non-classe/">Non classé</a>
+</li>
+			</ul>
+
+			</div><div id="archives-3" class="widget-wrapper widget_archive"><div class="widget-title"><h3>Archives</h3></div>		<label class="screen-reader-text" for="archives-dropdown-3">Archives</label>
+		<select id="archives-dropdown-3" name="archive-dropdown">
+			
+			<option value="" selected="selected">Sélectionner un mois</option>
+				<option value="https://www.ciscomadesimple.be/2016/05/"> mai 2016 </option>
+	<option value="https://www.ciscomadesimple.be/2015/07/"> juillet 2015 </option>
+	<option value="https://www.ciscomadesimple.be/2015/04/"> avril 2015 </option>
+	<option value="https://www.ciscomadesimple.be/2015/03/"> mars 2015 </option>
+	<option value="https://www.ciscomadesimple.be/2014/11/"> novembre 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/08/"> août 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/07/"> juillet 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/06/"> juin 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/05/"> mai 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/03/"> mars 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/02/"> février 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/01/"> janvier 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2013/12/"> décembre 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/11/"> novembre 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/10/"> octobre 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/08/"> août 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/07/"> juillet 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/06/"> juin 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/05/"> mai 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/04/"> avril 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/03/"> mars 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/02/"> février 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/01/"> janvier 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2012/08/"> août 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2012/06/"> juin 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2012/05/"> mai 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2012/03/"> mars 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2011/12/"> décembre 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/11/"> novembre 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/10/"> octobre 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/06/"> juin 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/04/"> avril 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/03/"> mars 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/02/"> février 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/01/"> janvier 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2010/12/"> décembre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/11/"> novembre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/10/"> octobre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/09/"> septembre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/07/"> juillet 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/06/"> juin 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/04/"> avril 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/03/"> mars 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/01/"> janvier 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2009/11/"> novembre 2009 </option>
+	<option value="https://www.ciscomadesimple.be/2009/09/"> septembre 2009 </option>
+	<option value="https://www.ciscomadesimple.be/2009/08/"> août 2009 </option>
+	<option value="https://www.ciscomadesimple.be/2009/07/"> juillet 2009 </option>
+
+		</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-3" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+/* ]]> */
+</script>
+			</div><div id="meta_enhanced-4" class="widget-wrapper meta_enhanced"><div class="widget-title"><h3>Connexion</h3></div><ul>      <li><a href="https://www.ciscomadesimple.be/wp-login.php?redirect_to=%2F2013%2F04%2F06%2Fconfiguration-du-nat-sur-un-routeur-cisco%2F">Connexion</a></li>      <li><a href="https://www.ciscomadesimple.be/feed/" title="S'inscrire au flux RSS 2.0">Actualités <abbr title="Really Simple Syndication">RSS</abbr></a></li>      <li><a href="https://www.ciscomadesimple.be/comments/feed/" title="Les derniers commentaires de chaque actualité en RSS">Commentaires <abbr title="Really Simple Syndication">RSS</abbr></a></li></ul></div><div id="search-3" class="widget-wrapper widget_search"><div class="widget-title"><h3>Recherche</h3></div><form method="get" id="searchform" action="https://www.ciscomadesimple.be/">
+	<label class="screen-reader-text" for="s">Recherche pour:</label>
+	<input type="text" class="field" name="s" id="s" placeholder="chercher ici …">
+	<input type="submit" class="submit" name="submit" id="searchsubmit" value="C'est parti">
+</form></div><div id="twitter_timeline-2" class="widget-wrapper widget_twitter_timeline"><div class="widget-title"><h3>@cmsbe</h3></div><iframe id="twitter-widget-1" scrolling="no" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: absolute; visibility: hidden; display: block; width: 0px; height: 0px; padding: 0px; border: medium none;" frameborder="0"></iframe><a class="twitter-timeline twitter-timeline-error" data-width="225" data-height="300" data-theme="light" data-border-color="#e8e8e8" data-tweet-limit="5" data-lang="FR" data-partner="jetpack" data-chrome="noheader nofooter noborders transparent" data-widget-id="424288296835903488" href="https://twitter.com/424288296835903488" data-twitter-extracted-i1660229035612576615="true">Mes Tweets</a></div>
+		<div id="recent-posts-3" class="widget-wrapper widget_recent_entries">
+		<div class="widget-title"><h3>Articles récents</h3></div>
+		<ul>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2016/05/25/ppp-multilink-agregation-de-liaisons-serielles-ppp/">PPP Multilink : Agrégation de liaisons sérielles PPP</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/07/28/vlan-access-list-vacl/">VLAN Access-List (VACL)</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/07/25/authentification-802-1x-sur-un-reseau-ethernet-port-based-authentication-ws-c2950-vs-ws-c3750/">Authentification 802.1X sur un réseau Ethernet (Port-Based Authentication) – WS-C2950 vs WS-C3750</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/07/22/sntp-synchronisation-dhorloge-et-configuration-de-lheure-dete/">(S)NTP – Synchronisation d’horloge et configuration de l’heure d’été</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/04/24/diagnostic-du-cablage-depuis-un-switch-cisco/">Diagnostic du câblage depuis un switch Cisco</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2015/03/29/forumule-calcul-dun-masque-en-fonction-dun-nombre-de-machines/">Formule de calcul d’un masque réseau en fonction d’un nombre de machines</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/11/08/protocole-ipv4-les-bases/">Protocole IPv4 : Les bases</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/08/07/ciscomadesimple-be-en-https/">CiscoMadeSimple.be en HTTPS…</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/07/30/lldp-link-layer-discovery-protocol/">LLDP (Link Layer Discovery Protocol)</a>
+									</li>
+											<li>
+					<a href="https://www.ciscomadesimple.be/2014/07/30/combinaison-des-examens-pour-la-nouvelle-ccnp/">Combinaison des examens pour la nouvelle CCNP</a>
+									</li>
+					</ul>
+
+		</div><div id="categories-4" class="widget-wrapper widget_categories"><div class="widget-title"><h3>Catégories</h3></div>
+			<ul>
+					<li class="cat-item cat-item-447"><a href="https://www.ciscomadesimple.be/category/certifications/">Certifications</a>
+<ul class="children">
+	<li class="cat-item cat-item-448"><a href="https://www.ciscomadesimple.be/category/certifications/ccent_icnd1/">CCENT – ICND1</a>
+</li>
+	<li class="cat-item cat-item-449"><a href="https://www.ciscomadesimple.be/category/certifications/ccna_icnd2/">CCNA – ICND2</a>
+</li>
+	<li class="cat-item cat-item-450"><a href="https://www.ciscomadesimple.be/category/certifications/ccnp_rs/">CCNP R&amp;S</a>
+	<ul class="children">
+	<li class="cat-item cat-item-452"><a href="https://www.ciscomadesimple.be/category/certifications/ccnp_rs/ccnp_r/">CCNP Routing</a>
+</li>
+	<li class="cat-item cat-item-451"><a href="https://www.ciscomadesimple.be/category/certifications/ccnp_rs/ccnp_s/">CCNP Switch</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-43"><a href="https://www.ciscomadesimple.be/category/cisco/">Cisco</a>
+<ul class="children">
+	<li class="cat-item cat-item-239"><a href="https://www.ciscomadesimple.be/category/cisco/fiches-recapitulatives/">Fiches récapitulatives</a>
+</li>
+	<li class="cat-item cat-item-108"><a href="https://www.ciscomadesimple.be/category/cisco/cisco_practice/">La pratique</a>
+</li>
+	<li class="cat-item cat-item-107"><a href="https://www.ciscomadesimple.be/category/cisco/cisco_theory/">La théorie</a>
+</li>
+	<li class="cat-item cat-item-411"><a href="https://www.ciscomadesimple.be/category/cisco/routing-cisco/">Routing</a>
+</li>
+	<li class="cat-item cat-item-410"><a href="https://www.ciscomadesimple.be/category/cisco/switching/">Switching</a>
+</li>
+	<li class="cat-item cat-item-290"><a href="https://www.ciscomadesimple.be/category/cisco/cisco_videos/">Vidéos</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-112"><a href="https://www.ciscomadesimple.be/category/divers/">Divers</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="https://www.ciscomadesimple.be/category/gns3/">GNS3</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="https://www.ciscomadesimple.be/category/networks/">Les réseaux</a>
+<ul class="children">
+	<li class="cat-item cat-item-111"><a href="https://www.ciscomadesimple.be/category/networks/net_practice/">La pratique</a>
+</li>
+	<li class="cat-item cat-item-110"><a href="https://www.ciscomadesimple.be/category/networks/net_theory/">La théorie</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://www.ciscomadesimple.be/category/non-classe/">Non classé</a>
+</li>
+			</ul>
+
+			</div><div id="archives-3" class="widget-wrapper widget_archive"><div class="widget-title"><h3>Archives</h3></div>		<label class="screen-reader-text" for="archives-dropdown-3">Archives</label>
+		<select id="archives-dropdown-3" name="archive-dropdown">
+			
+			<option value="" selected="selected">Sélectionner un mois</option>
+				<option value="https://www.ciscomadesimple.be/2016/05/"> mai 2016 </option>
+	<option value="https://www.ciscomadesimple.be/2015/07/"> juillet 2015 </option>
+	<option value="https://www.ciscomadesimple.be/2015/04/"> avril 2015 </option>
+	<option value="https://www.ciscomadesimple.be/2015/03/"> mars 2015 </option>
+	<option value="https://www.ciscomadesimple.be/2014/11/"> novembre 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/08/"> août 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/07/"> juillet 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/06/"> juin 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/05/"> mai 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/03/"> mars 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/02/"> février 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2014/01/"> janvier 2014 </option>
+	<option value="https://www.ciscomadesimple.be/2013/12/"> décembre 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/11/"> novembre 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/10/"> octobre 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/08/"> août 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/07/"> juillet 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/06/"> juin 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/05/"> mai 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/04/"> avril 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/03/"> mars 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/02/"> février 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2013/01/"> janvier 2013 </option>
+	<option value="https://www.ciscomadesimple.be/2012/08/"> août 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2012/06/"> juin 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2012/05/"> mai 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2012/03/"> mars 2012 </option>
+	<option value="https://www.ciscomadesimple.be/2011/12/"> décembre 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/11/"> novembre 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/10/"> octobre 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/06/"> juin 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/04/"> avril 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/03/"> mars 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/02/"> février 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2011/01/"> janvier 2011 </option>
+	<option value="https://www.ciscomadesimple.be/2010/12/"> décembre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/11/"> novembre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/10/"> octobre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/09/"> septembre 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/07/"> juillet 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/06/"> juin 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/04/"> avril 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/03/"> mars 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2010/01/"> janvier 2010 </option>
+	<option value="https://www.ciscomadesimple.be/2009/11/"> novembre 2009 </option>
+	<option value="https://www.ciscomadesimple.be/2009/09/"> septembre 2009 </option>
+	<option value="https://www.ciscomadesimple.be/2009/08/"> août 2009 </option>
+	<option value="https://www.ciscomadesimple.be/2009/07/"> juillet 2009 </option>
+
+		</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-3" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+/* ]]> */
+</script>
+			</div>
+			</div><!-- end of #widgets -->
+</div><!-- end of #wrapper -->
+</div><!-- end of #container -->
+
+<div id="footer" class="clearfix">
+	
+	<div id="footer-wrapper">
+
+		
+		<div class="grid col-940">
+
+			<div class="grid col-540">
+							</div>
+			<!-- end of col-540 -->
+
+			<div class="grid col-380 fit">
+				<ul class="social-icons"><li class="twitter-icon"><a href="https://twitter.com/cmsbe"><img src="configuration-du-nat-sur-un-routeur-cisco_files/twitter-icon.png" alt="Twitter" width="24" height="24"></a></li><li class="facebook-icon"><a href="https://www.facebook.com/pages/CiscoMadeSimplebe/106518046037040"><img src="configuration-du-nat-sur-un-routeur-cisco_files/facebook-icon.png" alt="Facebook" width="24" height="24"></a></li><li class="youtube-icon"><a href="http://www.youtube.com/playlist?list=PL54FE9D0D8EA99D39"><img src="configuration-du-nat-sur-un-routeur-cisco_files/youtube-icon.png" alt="YouTube" width="24" height="24"></a></li><li class="googleplus-icon"><a href="https://plus.google.com/+CiscomadesimpleBe/"><img src="configuration-du-nat-sur-un-routeur-cisco_files/googleplus-icon.png" alt="Google+" width="24" height="24"></a></li></ul><!-- .social-icons -->			</div>
+			<!-- end of col-380 fit -->
+
+		</div>
+		<!-- end of col-940 -->
+		
+		<div class="grid col-300 copyright">
+			© 2022<a id="copyright_link" href="https://www.ciscomadesimple.be/" title="CISCOMADESIMPLE.BE"> Default copyright text</a>
+		</div>
+		<!-- end of .copyright -->
+
+		<div class="grid col-300 scroll-top"><a href="#scroll-top" title="retour en haut">↑</a></div>
+
+		<div class="grid col-300 fit powered" style="display: none;">
+			<a href="http://cyberchimps.com/responsive-theme/" title="Responsive Theme" rel="noindex, nofollow">
+				Responsive Theme</a>
+			Fièrement propulsé par <a href="http://wordpress.org/" title="WordPress">
+				WordPress</a>
+		</div>
+		<!-- end .powered -->
+
+	</div>
+	<!-- end #footer-wrapper -->
+
+	</div><!-- end #footer -->
+
+
+<a href="https://getclef.com/?utm_source=badge" class="clef-badge " target="_blank">Connexion à WordPress protégée par Clef</a>
+<style>
+.clef-badge {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin: 10px auto;
+}
+.clef-badge * {
+    box-sizing: border-box;
+}
+.clef-badge.pretty {
+    display: block;
+    overflow: hidden;
+    text-indent: -579px;
+    height: 50px;
+    width: 140px;
+    background: url("https://bit.ly/clef-wordpress-badge");
+    background-size: 100% 100%;
+    opacity: .8;
+}
+.clef-badge:hover {
+    opacity: 1;
+}
+</style>
+	<div style="display:none">
+			<div class="grofile-hash-map-4f4777074b947546c0fa0f177d967edc">
+		</div>
+		<div class="grofile-hash-map-5c4b0236dde5f3359c45da87b64e4a30">
+		</div>
+		<div class="grofile-hash-map-accab6b025e77a65fc05dd5a7a85cb41">
+		</div>
+		<div class="grofile-hash-map-6444b601eefd9725d391bc86e198e948">
+		</div>
+		<div class="grofile-hash-map-4bcf5881eff891f688f3f58a43be71c8">
+		</div>
+		<div class="grofile-hash-map-4efc21b79d851fc0a1466a35b6780c74">
+		</div>
+		<div class="grofile-hash-map-05f6312e75ee42e60ed03b1de5051ca5">
+		</div>
+		<div class="grofile-hash-map-d81a66409eb1570e058cf4abce70a104">
+		</div>
+		<div class="grofile-hash-map-e9f7a0f03a2b9bdfdb964af79f3ffcbd">
+		</div>
+		<div class="grofile-hash-map-7728f27651c79a82e72733d66e41f9f1">
+		</div>
+		<div class="grofile-hash-map-b98ab9254e49e46e12382035a4595bde">
+		</div>
+		<div class="grofile-hash-map-68528596ca33447fe6f7a4d83e0f2341">
+		</div>
+		<div class="grofile-hash-map-b61defcffb80804224359451e32fabfa">
+		</div>
+		<div class="grofile-hash-map-2010f9d29d871e9d455789fb47050482">
+		</div>
+		<div class="grofile-hash-map-ebb33b4fea8c1b4bc856185589ad82aa">
+		</div>
+		<div class="grofile-hash-map-514887f40b3059de8da7c053c80f39dc">
+		</div>
+		<div class="grofile-hash-map-d00dcaaaac114922de3bcd10649d71f1">
+		</div>
+		<div class="grofile-hash-map-7b7d78faa3489c709104f2f0a57c8399">
+		</div>
+		<div class="grofile-hash-map-594c0b8db9c0fe59c6d25568a7fd6dcf">
+		</div>
+		<div class="grofile-hash-map-74d9bd9643b5af50b9dc6df6e18325e6">
+		</div>
+		<div class="grofile-hash-map-1d57e2c09a922626909c6d8339f03852">
+		</div>
+		<div class="grofile-hash-map-05f553111dcc0f033313b3f42cee6e73">
+		</div>
+		<div class="grofile-hash-map-c5fc8dc6772b0f3729cd9813baf8deda">
+		</div>
+		<div class="grofile-hash-map-f8987d15dab1e963a4bfbea4a24b4f49">
+		</div>
+		<div class="grofile-hash-map-5fbdf7522f09113fe5e3f8e7d1bd6230">
+		</div>
+		<div class="grofile-hash-map-2242764da8a2a29af1b32ec5e166cb31">
+		</div>
+		<div class="grofile-hash-map-175bb783048ae435419bc729fac0eb52">
+		</div>
+		<div class="grofile-hash-map-e46631c99556012bc6c31ae5eb6df54b">
+		</div>
+		<div class="grofile-hash-map-72d47efa86bab6669146d596ce22b9fe">
+		</div>
+		<div class="grofile-hash-map-df31f52856e724e637f3110060472575">
+		</div>
+		<div class="grofile-hash-map-78e8b2635b22db84d11e129a8d7e6e30">
+		</div>
+		<div class="grofile-hash-map-8340ac3e8d989e7543403768dda90ccb">
+		</div>
+		<div class="grofile-hash-map-ae606dfd15ccd91046213e0fb3be9256">
+		</div>
+		<div class="grofile-hash-map-41197bf7a4edf747685d132e9b588351">
+		</div>
+		<div class="grofile-hash-map-7bbadba5ff384f4fd0e7bb7bbab0207c">
+		</div>
+		<div class="grofile-hash-map-ed754c28f7c5348f1e9457b2f40585d3">
+		</div>
+		</div>
+		     <script type="text/javascript" id="pf_script">
+                      var pfHeaderImgUrl = '';
+          var pfHeaderTagline = '';
+          var pfdisableClickToDel = '0';
+          var pfImagesSize = 'full-size';
+          var pfImageDisplayStyle = 'right';
+          var pfEncodeImages = '0';
+          var pfShowHiddenContent  = '0';
+          var pfDisableEmail = '0';
+          var pfDisablePDF = '0';
+          var pfDisablePrint = '0';
+          var pfCustomCSS = '';
+        var pfPlatform = 'WordPress';
+
+        (function($){
+            $(document).ready(function(){
+                if($('.pf-button-content').length === 0){
+                    $('style#pf-excerpt-styles').remove();
+                }
+            });
+        })(jQuery);
+        </script>
+      <script async="" src="configuration-du-nat-sur-un-routeur-cisco_files/printfriendly.js"></script>
+            
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/www.ciscomadesimple.be\/2013\/04\/06\/configuration-du-nat-sur-un-routeur-cisco\/":866};
+	</script>
+				<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/gprofiles.js" id="grofiles-cards-js"></script>
+<script type="text/javascript" id="wpgroho-js-extra">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/wpgroho.js" id="wpgroho-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/responsive-scripts.min.js" id="responsive-scripts-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/jquery.placeholder.min.js" id="jquery-placeholder-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/twitter-timeline.min.js" id="jetpack-twitter-timeline-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/wp-embed.min.js" id="wp-embed-js"></script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/queuehandler.min.js" id="jetpack_likes_queuehandler-js"></script>
+<script type="text/javascript" id="sharing-js-js-extra">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="configuration-du-nat-sur-un-routeur-cisco_files/sharing.min.js" id="sharing-js-js"></script>
+<script type="text/javascript" id="sharing-js-js-after">
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-linkedin' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-linkedin' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+						return false;
+					}
+				} );
+			} )();
+</script>
+	<iframe src="configuration-du-nat-sur-un-routeur-cisco_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+	<div id="likes-other-gravatars" style="display: none;"><div class="likes-text"><span>%d</span> blogueurs aiment cette page :</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+	<script src="configuration-du-nat-sur-un-routeur-cisco_files/e-202232.js" defer="defer"></script>
+<script>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:10.9',blog:'8863290',post:'866',tz:'2',srv:'www.ciscomadesimple.be'} ]);
+	_stq.push([ 'clickTrackerInit', '8863290', '866' ]);
+</script>
+
+
+<img src="configuration-du-nat-sur-un-routeur-cisco_files/g.gif" alt="" id="wpstats" width="6" height="5"><iframe scrolling="no" allowtransparency="true" src="configuration-du-nat-sur-un-routeur-cisco_files/widget_iframe.html" title="Twitter settings iframe" style="display: none;" frameborder="0"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe></body></html>
