@@ -425,11 +425,13 @@ This, in turn, forces the response to return to the client node through the BIG-
 
 See diagram in page!
 
-Here we do DNAT but also change source address before routing to internal.
+Here we do DNAT ([case NI DST]). Meaning as reminder also reverse traffic is actually doing  [case NI SRC]).
+So also change source address before routing to internal.
 
-We are doing ip nat outside source [case NO SRC]!
+We are also doing ip nat outside source [case NO SRC]! (and reverse traffic [case NO DST]).
+<!-- consider this OK YES-->
 
-Another example where gateway does not require source ip packet change: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
+Another example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
 
 --- **SNATs for server-initiated (outbound) connections**
 
@@ -442,7 +444,7 @@ Another example where gateway does not require source ip packet change: https://
 
 Here they mention use-case of DNS request: From https://support.f5.com/csp/article/K7820
 
-This is S(ource) NAT [case NI SRC]
+This is S(ource) NAT [case NI SRC], but reverse traffic is actually doing  [case NI DST]
 
 
 **Warning**: SNAT in F5 means "secure" (`S` is confusing can mean Source, Static and Secure....)
@@ -462,12 +464,65 @@ I completed algo from https://support.f5.com/csp/article/K7820 with NAT
 Forked [here](media/f5-k7820/f5-k7820.html).
 
 1. The BIG-IP system receives a request directly from a client or from virtual server traffic
-2. If  virtual server and ` Source Address Translation property` defined  in virtual server n BIG-IP system translates the source IP address to the translation address defined
+2. If  virtual server and ` Source Address Translation property` defined  in virtual server in BIG-IP system translates the source IP address to the translation address defined
 3. Else BIG IP verifies whether that source IP address is defined in the origin address list for NAT or S(ecured)NAT (NAT has higher precedence: https://support.f5.com/csp/article/K9038).
-4. If the client's IP address is defined in the origin address list for the NAT/S(ecured)NAT, the BIG-IP system translates the source IP address to the translation address defined in NAT/S(ecured)NAT object
-   (after the traffic has already matched a virtual server (if virtual server allow SNAT should be set to true) / NAT / S(ecured) NAT
-5. The BIG-IP system then sends the client request to the pool member or other destination (egress)
+4. If the client's IP address is defined in the origin address list for the NAT/S(ecured)NAT, 
+the BIG-IP system translates the source IP address to the translation address defined in NAT/S(ecured)NAT object
+(after the traffic has already matched a virtual server if virtual server (and if virtual server's pool allow SNAT set to true): https://clouddocs.f5.com/cli/tmsh-reference/v14/modules/ltm/ltm_pool.html
+5. The BIG-IP system then sends the client request to the pool member or other destination (egress) being inbound or outbound (see above, DNS in section SNATs for server-initiated (outbound) connections)
+
+<!-- match also --- **SNATs for server-initiated (outbound) connections** -->
 
 Note SNAT avoids to define `Source Address Translation property` in each virtual server.
 
-<!-- clear concluded OK YES STOP-->
+<!-- clear concluded OK YES STOP, restop OK-->
+
+See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual.html:
+`source-address-translation` property (replacing `snat`, `snatpool`).
+To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
+
+<!-- NAT box is opening a new TCP connection (p483) it even modifies the packet,
+Router does not go to TCP layer -->
+
+<!-- p472
+Un réseau correspond a un bloc contigu d’espace d’adressage IP.
+C'est ce que on appelle un préfixe,
+Les adresses IP sont écrites en notation décimale pointée
+Dans cette forme un des 4 octets est représenté par un nombre décimal compris entre 0 et 255.
+Dans l'exemple, l'adresse hexadécimale sur 32 bits 80D00297 equivaut  a 128.208.2.15 en notation décimale pointée.
+On écrit les préfixed en indiquant l'adress IP la plus basse dans le bloc et la taille du bloc.
+Cette taille est déterminde par le nombre de bit dans la partie réseau ;
+les bits restants dans la partie hote sont variables
+Autrement dit, la taille doit etre une puissance de 2.
+Par convention, elle est notée a la suite de l'adresse IP du préfixe par une barre oblique (slash)
+suivie par la bongueur en bits de la partie reseay
+Dans notre exemple, si le préfixe content 2^8 adressse, ce qui laisse 24 bits pour la partie réseau, 
+on |’écrit 128.208.0.0/24.
+Comme on ne peut pas deduire,la longueur du préfixe uniquement a partir de Tadresse IP, 
+les protocoles de routage doivent rarismettre les préfixes aux routeurs. 
+Les préfixes sont parfois decrits simplement par leur longueur, comme « /16 » (slash 16).
+La longueur du prefixe correpond a un Masque binaire de 1 dans la partie réseau. 
+Ecrit sous cette forme.il se nommede sous-réseau.
+On peut l’associer avec l’adresse IP au moven d'une operation booleane AND, ou ET logique, pour obtenir la partie reseau seulement
+Dans notre exemple, le masque de sous-réseau est 255.255.255.0. La figure 5.48 montre
+un prefixe et un masque de sous-réseau. 
+
+p474
+routeur reqarde adresse, applique chaque masque de sous reseau (donc garde la partie reseau)
+si un reseau match sait ou router !
+
+https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#wol---how-does-it-work
+Bottom of page 
+
+We see 192.168.1.255 as broadcast IP
+Which means than network mask is 255.255.255.0
+
+And it matches setup we can see in DENON
+IP:192.168.1.33
+Subnet mask:255.255.255.0
+Gateway: 192.168.1.1
+DNS:192.168.1.1 => then fwd to SFR DNS (details in mydns)
+
+-->
+
+<-- reconcluded -->
