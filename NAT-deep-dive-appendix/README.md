@@ -99,7 +99,9 @@ Ethernet II, Src: LiteonTe_c5:99:c1 (20:68:9d:c5:99:c1), Dst: Sfr_62:df:48 (e4:5
     # Ethernet Layer, we target the BOX IP
     # See https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#reminder-on-arp
     # Case where Ethernet address is not in LAN and accumulation with NAT
-    # We have DNS query, ARP request and NAT table updated, then TLS (client hello) and OCSP (https://github.com/scoulomb/misc-notes/tree/master/tls)
+    # We have DNS query, ARP request and NAT table updated, then TLS (client hello) and OCSP (https://github.com/scoulomb/misc-notes/tree/master/tls) via NAT betwen box and github endpoint 
+    # Github endpoint can have load lancer with fw in front, and router in between (with intermediate NAT).
+    # see Link with private_script/tree/main/Links-mig-auto-cloud - stop diving
     
     Source: LiteonTe_c5:99:c1 (20:68:9d:c5:99:c1)   
     
@@ -520,7 +522,7 @@ Which means than network mask is 255.255.255.0
 And it matches setup we can see in DENON
 IP:192.168.1.33
 Subnet mask:255.255.255.0
-Gateway: 192.168.1.1
+Gateway: 192.168.1.1 => addresse la plus basse, coherent p499 *in bold*
 DNS:192.168.1.1 => then fwd to SFR DNS (details in mydns)
 
 -->
