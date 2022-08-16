@@ -13,7 +13,7 @@ Each subsequent layer contains the diff (what was added/removed).
 See [investigation](./docker-image-deep-dive.md)
 
 Add: file is added in the correct path;
-Remove: TODO
+Remove: see `.wh` extension
 
 Limitation: a given image contains binaries, and therefore only works for a
 specific CPU architecture (see metadata).
@@ -132,3 +132,10 @@ Openshift takes Kubernetes, and makes it a Paas: https://access.redhat.com/docum
 Kubernetes is tool that you can run to offer a PaaS to someone else.
 
 The list of features that defines a PaaS is a moving target.
+
+<!-- for multiarchi, see also
+
+- https://itnext.io/building-multi-cpu-architecture-docker-images-for-arm-and-x86-1-the-basics-2fa97869a99b
+- https://docs.docker.com/desktop/multi-arch/ 
+
+--> 

@@ -525,6 +525,7 @@ Subnet mask:255.255.255.0
 Gateway: 192.168.1.1 => addresse la plus basse, coherent p499 *in bold*
 DNS:192.168.1.1 => then fwd to SFR DNS (details in mydns)
 
+vs usually inbound but could be outbound, think compatible stop here
 -->
 
 <-- reconcluded -->
