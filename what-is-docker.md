@@ -1,5 +1,9 @@
 ## Image
 
+Related to Docker images under the hood
+  - [Docker image deep dive](./docker-image-deep-dive.md)
+  - [Extended lab with Jupyter](./docker-image-deep-dive-extended-lab-with-jupyter/image-format-explo.ipynb) [setup](https://github.com/scoulomb/misc-notes/tree/master/Jupyter)
+
 ### Definition
 It's a tarball containing:
 
@@ -61,6 +65,8 @@ Image fix all the environment: _all_ files (including dynamic libraries),
 _all_ env. variables, etc.
 
 ## Container
+
+Related to [Container-under-the-hood-link-snat-dnat](container-under-the-hood-link-snat-dnat.md)
 
 ### Definition
 It's filesystem running in a namespace (isolation: filesystem, network, time, etc.)
@@ -139,3 +145,70 @@ The list of features that defines a PaaS is a moving target.
 - https://docs.docker.com/desktop/multi-arch/ 
 
 --> 
+
+## Other definition 
+
+<!-- readme container puis image, in summary here image then container, makes more sense, wikipedia same order as readme, docker website as summary -->
+
+### Docker website itself
+
+https://www.docker.com/resources/what-container/
+
+> A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
+
+#### [website:Image](#image) 
+
+> A **Docker container image** is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
+
+#### [website:Container](#container)
+
+> **Container images** become **containers at runtime** and in the case of Docker containers – **images become containers when they run on Docker Engine.**
+
+> Available for both Linux and Windows-based applications, containerized software will always run the same, regardless of the infrastructure. Containers isolate software from its environment and ensure that it works uniformly despite differences for instance between development and staging.
+
+#### [website:Docker](#docker)
+
+> Docker containers that run on Docker Engine:
+
+> - Standard: Docker created the industry standard for containers, so they could be portable anywhere
+> - Lightweight: Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs
+> - Secure: Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry
+
+
+#### [website:Container vs VM?](#container-vs-vm)
+
+
+**CONTAINERS**
+
+> Containers(*) are an abstraction at the app layer that packages code and dependencies together. Multiple containers can run on the same machine and share the OS kernel with other containers, each running as isolated processes in user space. Containers take up less space than VMs (container images are typically tens of MBs in size), can handle more applications and require fewer VMs and Operating systems.
+
+(*) here whole ecosystem image + container
+
+**VIRTUAL MACHINES**
+
+> Virtual machines (VMs) are an abstraction of physical hardware turning one server into many servers. The hypervisor allows multiple VMs to run on a single machine. Each VM includes a full copy of an operating system, the application, necessary binaries and libraries – taking up tens of GBs. VMs can also be slow to boot.
+
+> **Containers and VMs used together provide a great deal of flexibility in deploying and managing app**
+
+### Wikipedia (and completed)
+
+https://en.wikipedia.org/wiki/Docker_(software)
+
+#### [Wiki:Image](#image)
+
+> A Docker image is a read-only template used to build containers. Images are used to store and ship applications.
+
+It enables to package an application with dependencies.
+
+<!-- do not confuse with Dockerfile -->
+
+#### [Wiki:Container](#container)
+
+> A Docker container is a standardized, encapsulated environment that runs applications. A container is managed using the Docker API or CLI.
+
+It is using namespace and cgroup to perfrom encaspulation. A **Container images** become **containers at runtime**.
+
+## Key take-away
+
+- [Completed Wikipedia docker defintion](#wikipedia-and-completed) definition 
+- [Docker website container vs VM](#websitecontainer-vs-vmcontainer-vs-vm)
