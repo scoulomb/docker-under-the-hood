@@ -350,8 +350,8 @@ From
 I judge this article confusing (ignore) https://networkinterview.com/nat-configuration-nat-types-palo-alto/
 
 Note
-- When we do S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
-- When we do D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
+- When we do standard S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
+- When we do standard D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
 
 
 Above in [source NAT static](#source-nat-static-nat-one-to-one), we actually saw it was working for DNAT too.
@@ -383,11 +383,11 @@ Forked [here](./media/tmos-routing-administration-11-6-0/AskF5%20_%20Manual%20Ch
 
 ##### Section `About NATs`
 
-- Without NAT (use virtual server) => This is [case NI SRC] DNAT
+- Without NAT (use virtual server) => This is a kind of [case NI SRC] DNAT
 - With a NAT
   - NAT for inbound connection    => This is  [case NI DST] DNAT
   - NAT for outbound connection   => This is  [case NI SRC] SNAT 
-So ip NAT inside only/
+So ip NAT inside only
     
 From: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html
 
@@ -427,13 +427,13 @@ This, in turn, forces the response to return to the client node through the BIG-
 
 See diagram in page!
 
-Here we do DNAT ([case NI DST]). Meaning as reminder also reverse traffic is actually doing  [case NI SRC]).
-So also change source address before routing to internal.
+ Here we have a kind of standard DNAT at virtual server.
+**And S(ource)NAT between F5 and gateway/server/esb etc...**. This is still standard S(ource) NAT.
 
-We are also doing ip nat outside source [case NO SRC]! (and reverse traffic [case NO DST]).
-<!-- consider this OK YES-->
+This is convenient when F5 are in different network than server (ex. POP/Azure) to ensure reverse traffic come back to F5 (usually SNAT pool attached to vs, see below). 
+<!--LIC::cloudification::SNAT, loss of proximity-->
 
-Another example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
+Example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
 
 --- **SNATs for server-initiated (outbound) connections**
 
@@ -451,14 +451,14 @@ This is S(ource) NAT [case NI SRC], but reverse traffic is actually doing  [case
 
 **Warning**: SNAT in F5 means "secure" (`S` is confusing can mean Source, Static and Secure....)
 
---- **Types of SNATs**
+--- **Types of S(ecured)NATs**
 
-- Standard SNAT: 
+- Standard SNAT object: 
   - specific translation address (one to one)
   - Automap SNAT: many to many
   - SNAT pools: many to many (https://support.f5.com/csp/article/K47945399)
 - SNAT pool assinged to virtual server
-- intelligent SNAT
+- intelligent SNAT (irule)
 
 #### Virtual server + NAT + SNATs
 
@@ -475,13 +475,28 @@ the BIG-IP system translates the source IP address to the translation address de
 
 <!-- match also --- **SNATs for server-initiated (outbound) connections** -->
 
-Note SNAT avoids to define `Source Address Translation property` in each virtual server.
+Note SNAT at vs level avoids to define `Source Address Translation property` in each virtual server.
 
-<!-- clear concluded OK YES STOP, restop OK-->
 
 See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual.html:
 `source-address-translation` property (replacing `snat`, `snatpool`).
 To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
+
+#### Pellicular case for outbound 
+
+We can use virtual server for outbound connection (SNAT pool assigned to virtual server) to perform SNAT when sending traffic to external provider
+
+- Standard virtual server (explicit SNAT)
+- Using forwarding virtual server: https://support.f5.com/csp/article/K7595
+
+See https://support.f5.com/csp/article/K93100324#link_07_01
+
+Same mechansm used as in **SNAT between F5 and gateway/server/esb etc...**.
+<!--LIC::cloudification::explicit SNAT removal -->
+<!--LIC::migration::case outbound on prem, replaced by fw in cloud -->
+<!--LIC::migration:: for inbound/outbound farm, no big bang, can renat own DC to POP to use same IP in different loc -->
+
+
 
 <!-- NAT box is opening a new TCP connection (p483) it even modifies the packet,
 Router does not go to TCP layer -->
@@ -528,4 +543,25 @@ DNS:192.168.1.1 => then fwd to SFR DNS (details in mydns)
 vs usually inbound but could be outbound, think compatible stop here
 -->
 
-<-- reconcluded -->
+See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!-- clear ok -->
+
+## Google router and double NAT
+
+Also at home with Google wifi
+
+````
+Google WIFI network <=> Box network <=> internet
+````
+
+If NAS on box network via ethernet, we can access NAS from device in google wifi network (SNAT)
+But if home assistant is on the NAS, to access smart speaker on Google WIFI network need to configure DNAT (in google home app) and use router WAN IP
+So that it targets speaker, port to use is 1255 (from heos cli pdf sepc). It  will see the 2 speaker (home 150, avr)
+
+With this configuration we also have issue for UPNP when on different network (media server on NAS and remote control app: https://github.com/open-denon-heos/heospy/blob/main/heospy/ssdp.py#L38)
+
+Better to connect NAS to ethernet port
+https://support.google.com/googlenest/answer/6277579?hl=fr
+
+<!-- ok -->
+
+<!-- reconcluded 30.12.22 -->
