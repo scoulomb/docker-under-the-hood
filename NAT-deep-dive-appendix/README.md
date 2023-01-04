@@ -491,7 +491,7 @@ We can use virtual server for outbound connection (SNAT pool assigned to virtual
 
 See https://support.f5.com/csp/article/K93100324#link_07_01
 
-Same mechansm used as in **SNAT between F5 and gateway/server/esb etc...**.
+Same mechanism used as in **SNAT between F5 and gateway/server/esb etc...**.
 <!--LIC::cloudification::explicit SNAT removal -->
 <!--LIC::migration::case outbound on prem, replaced by fw in cloud -->
 <!--LIC::migration:: for inbound/outbound farm, no big bang, can renat own DC to POP to use same IP in different loc -->
@@ -543,7 +543,8 @@ DNS:192.168.1.1 => then fwd to SFR DNS (details in mydns)
 vs usually inbound but could be outbound, think compatible stop here
 -->
 
-See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!-- clear ok -->
+See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!-- clear ok ! -->
+
 
 ## Google router and double NAT
 
