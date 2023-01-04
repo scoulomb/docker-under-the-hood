@@ -562,6 +562,34 @@ With this configuration we also have issue for UPNP when on different network (m
 Better to connect NAS to ethernet port
 https://support.google.com/googlenest/answer/6277579?hl=fr
 
-<!-- ok -->
+## SNAT and Azure
 
-<!-- reconcluded 30.12.22 -->
+- Azure SNAT overview:  https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections
+    - The following methods are Azure's most commonly used methods to enable outbound connectivity:
+
+    | # | Method | Type of port allocation | Production-grade? | Rating |
+    | ------------ | ------------ | ------ | ------------ | ------------ |
+    | 1 | Use the frontend IP address(es) of a load balancer for outbound via outbound rules | Static, explicit | Yes, but not at scale | OK | 
+    | 2 | Associate a NAT gateway to the subnet | Dynamic, explicit | Yes | Best | 
+    | 3 | Assign a public IP to the virtual machine | Static, explicit | Yes | OK | 
+    | 4 | [Default outbound access](../virtual-network/ip-services/default-outbound-access.md) use | Implicit | No | Worst |
+
+    - Port exhaustion 
+        - Every connection to the **same destination IP and destination port will use a SNAT port**. This connection maintains a distinct traffic flow from the backend instance or client to a server. This process gives the server a distinct port on which to address traffic. Without this process, the client machine is unaware of which flow a packet is part of.
+        - Without different destination ports for the return traffic (the SNAT port used to establish the connection), the client will have no way to separate one query result from another
+        - Outbound connections can burst. A backend instance can be allocated insufficient ports. Use connection reuse functionality within your application. Without connection reuse, the risk of SNAT port exhaustion is increased.
+        - ==> SNAT port reuse is possible only if destination IP and/or destination Port i
+
+
+- Load balancer SNAT: Load balancer can do SNAT but better to use SNAT gateway
+    - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal
+    - https://learn.microsoft.com/en-us/azure/load-balancer/outbound-rules (similar to forwarding vs)
+
+- SNAT gateway
+    - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-gateway-resource?source=recommendations#source-network-address-translation (SNAT port reuse wrong, https://github.com/MicrosoftDocs/azure-docs/pull/103407, consider OK)
+    - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/quickstart-create-nat-gateway-portal
+
+<!-- above SNAT F5-GW outbound POP->AZ, here outbound AZ -> External world, stop here, DNAT stop -->
+<!-- ok -->
+<!-- reconcluded 30.12.22 + 4.01.23 with Azure -->
+
