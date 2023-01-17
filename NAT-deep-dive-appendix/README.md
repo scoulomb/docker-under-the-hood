@@ -494,9 +494,10 @@ See https://support.f5.com/csp/article/K93100324#link_07_01
 Same mechanism used as in **SNAT between F5 and gateway/server/esb etc...**.
 <!--LIC::cloudification::explicit SNAT removal -->
 <!--LIC::migration::case outbound on prem, replaced by fw in cloud -->
-<!--LIC::migration:: for inbound/outbound farm, no big bang, can renat own DC to POP to use same IP in different loc -->
-
-
+<!--LIC::migration:: for inbound/outbound farm/traffic (same IP used in inbound and outbound), to avoid big bang (see pv-sc-workdoc)
+Can 
+- renat outbound traffic from own DC to POP in order to use same IP on prem and POP (via POP fw)
+- for inbound F5 POP doing ["kind of DNAT"](#section-about-nats) -->
 
 <!-- NAT box is opening a new TCP connection (p483) it even modifies the packet,
 Router does not go to TCP layer -->
