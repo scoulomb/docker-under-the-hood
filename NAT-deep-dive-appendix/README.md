@@ -427,11 +427,10 @@ This, in turn, forces the response to return to the client node through the BIG-
 
 See diagram in page!
 
- Here we have a kind of standard DNAT at virtual server.
+ Here we have a [kind of standard DNAT](#section-about-nats) at virtual server.
 **And S(ource)NAT between F5 and gateway/server/esb etc...**. This is still standard S(ource) NAT.
 
 This is convenient when F5 are in different network than server (ex. POP/Azure) to ensure reverse traffic come back to F5 (usually SNAT pool attached to vs, see below). 
-<!--LIC::cloudification::SNAT, loss of proximity-->
 
 Example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
 
@@ -492,12 +491,6 @@ We can use virtual server for outbound connection (SNAT pool assigned to virtual
 See https://support.f5.com/csp/article/K93100324#link_07_01
 
 Same mechanism used as in **SNAT between F5 and gateway/server/esb etc...**.
-<!--LIC::cloudification::explicit SNAT removal -->
-<!--LIC::migration::case outbound on prem, replaced by fw in cloud -->
-<!--LIC::migration:: for inbound/outbound farm/traffic (same IP used in inbound and outbound), to avoid big bang (see pv-sc-workdoc)
-Can 
-- renat outbound traffic from own DC to POP in order to use same IP on prem and POP (via POP fw)
-- for inbound F5 POP doing ["kind of DNAT"](#section-about-nats) -->
 
 <!-- NAT box is opening a new TCP connection (p483) it even modifies the packet,
 Router does not go to TCP layer -->
