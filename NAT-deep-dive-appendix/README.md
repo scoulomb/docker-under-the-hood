@@ -54,15 +54,14 @@ ils passent par un dispositif NAT qui leur applique l’adresse IP du FAI.**
 
 
 
-## Comments
+Let's go further
 
-### Prereq
+## Prereq and TCP/UDP Source port
 
 Read https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md
 And all section marked as 
 `[From Tanenbaum, Reseau 5eme edition] chapitre 5, La couche reseau, section 5.6: Couche reseau dans l'Internet (p465)....`
 
-### Source port
 
 Note that source port (used by NAT) is usually randomly chosen by OS but can enforce it
 From  
@@ -178,7 +177,7 @@ private_script/tree/main/Links-mig-auto-cloud, for migration prefix and BGP, do 
 
 -->
 
-### Type of SNAT
+## Type of S(ource)NAT
 
 ![NAT](media/Reseau-5ed-Figure5-55-nat-20220808_162654.jpg)
 
@@ -200,7 +199,7 @@ We will see same pattern is working it can also be applied to
 - All kind of SNAT
 - DNAT
 
-#### Source NAT: Static NAT (one to one)
+### Source NAT: Static NAT (one to one)
 
 Quoting  https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/ (forked [here](media/configuration-du-nat-sur-un-routeur-cisco/configuration-du-nat-sur-un-routeur-cisco.htm))
 
@@ -232,9 +231,9 @@ ip nat inside source static {tcp | udp} {local-ip local-port global-ip global-po
 ````
 
 
-#### Source NAT: NAT with pool of address (many to many)
+### Source NAT: NAT with pool of address (many to many)
 
-##### Simple 
+#### Simple 
 
 Quoting  https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/
 
@@ -266,7 +265,7 @@ ip nat inside source {list {access-list-number | access-list-name} | route-map n
 Where `pool name` is used 
 
 
-##### Overload - PAT
+#### Overload - PAT
 
 
 Quoting  https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/
@@ -283,7 +282,7 @@ R1(config)#ip nat inside source list 1 pool POOL-NAT-LAN2 overload
 
 This is the nominal case of Tanenbaum.
 
-#### Configuration du NAT dynamique avec surcharge (sans pool) (many to one)
+#### Configuration du NAT dynamique avec surcharge (sans pool) (many to one) with Overload - PAT
 
 Quoting  https://www.ciscomadesimple.be/2013/04/06/configuration-du-nat-sur-un-routeur-cisco/
 
@@ -311,33 +310,14 @@ In [Cisco doc](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr/command/
 
 This is also the nominal case of Tanenbaum.
 
-### What about D(estination) NAT
-
-#### Use `static` D(estination) NAT
-
-We should use same command as static [S(ource)NAT](#source-nat-static-nat-one-to-one)
-Quoting this post https://community.cisco.com/t5/routing/destination-nat/td-p/2528980
-
-> What you are looking for is in reality a static source NAT. I know that you intend to rewrite the destination of the packets coming from internet to your router so that they can reach your internal server at 10.0.0.4. However, the names "source NAT" and "destination NAT" apply to the traffic that flows from the inside to the outside interface, i.e. from your internal LAN going off to the internet. It is only natural that in the return traffic, the opposite addresses are rewritten, i.e. if the source NAT rewrites the source IP in the traffic going from inside to outside, it will also rewrite the destination IP in the traffic going from outside to inside.
-
-> So simply look for a typical static source NAT configuration. While I do not know what ASR you are running (if it is IOS-XE or IOS-XR), on plain IOS, this would be very simple:
-
-> `ip nat inside source static 10.0.0.4 12.34.56.78`
-> or, with port forwarding:
-
-> `ip nat inside source static tcp 10.0.0.4 80 12.34.56.78 80`.
-
-So we can use static: `ip nat inside source static`.
-
-#### ip nat outside
-
-We should not confuse with `ip nat outside source`
+## What about D(estination) NAT
 
 From
-- https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13772-12.html#topic12
-- https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13773-2.html
-
+- https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13772-12.html#topic12 (ip nat inside) ([local-copy](./media/13772-12.pdf))
+- https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13773-2.html (ip nat outside) ([local-copy](./media/13773-2.pdf))
 <!-- order switch inside/outside between the 2 docs -->
+
+### Cisco NAT classification
 
 - ip nat inside source	
     - Translates the source of IP packets that are traveling inside to outside. [case NI SRC]
@@ -347,41 +327,64 @@ From
     - Translates the source of the IP packets that are traveling outside to inside.  [case NO SRC]
     - Translates the destination of the IP packets that are traveling inside to outside. [case NO DST]
 
-I judge this article confusing (ignore) https://networkinterview.com/nat-configuration-nat-types-palo-alto/
 
 Note
-- When we do standard S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
-- When we do standard D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
+- [@home](#snat-at-home): When we do standard S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
+    - wwich is the case  [Configuration du NAT dynamique avec surcharge (sans pool) (many to one)](#configuration-du-nat-dynamique-avec-surcharge-sans-pool-many-to-one)
+- [@home](#dnat-at-home): When we do standard D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
+    - which is the case [Use `static` D(estination) NAT](#use-static-destination-nat).
+
+So equivalent `@home usage` is always using `ip nat inside source`
 
 
-Above in [source NAT static](#source-nat-static-nat-one-to-one), we actually saw it was working for DNAT too.
+### Thus DNAT commands
 
-#### Use `ip nat inside destination` 
+DNAT example is this doc https://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/13772-12.html#topic12?
+
+`1. Allow Internal Users to Access the Internet` => SNAT
+`3. Redirect TCP Traffic to Another TCP Port or Address` -> Similar to DNAT but just port change
 
 
-In case we have 
-> To enable the Network Address Translation ( NAT) of a globally unique outside host address to multiple inside host addresses, use the ip nat inside destination command in global configuration mode. This command is primarily used to implement TCP load balancing by performing destination address rotary translation. To remove the dynamic association to a pool, use the no form of this command.
+````
+ip nat inside source static tcp 172.16.10.8 8080 172.16.10.8 80
+````
+And quoting the doc
+
+````
+Note: The configuration description for the static NAT command indicates any packet received in the inside interface with a source address of 172.16.10.8:8080 is translated to 172.16.10.8:80. This also implies that any packet received on the outside interface with a destination address of 172.16.10.8:80 has the destination translated to 172.16.10.8:8080.
+````
+
+Thus we deduce DNAT command
+
+````
+ip nat inside source static tcp private_ip private_port (eg .8080) public_ip public_port (eg. 80)
+````
+`
+This is confirmed by https://networklessons.com/cisco/ccie-routing-switching/ip-nat-inside-source-vs-ip-nat-outside-source
+
+We also `ip nat inside destination` (from https://feryjunaedi.files.wordpress.com/2008/02/nat-command.pdf p10 [/also in media ](./media/nat-command.pdf))
 
 ````
 ip nat inside destination list {access-list-number | name} pool name [redundancy redundancy-id mapping-id map-id] `
 ````
-
-### SFR Box
-
-It does
-- Implicit S(ource) NAT which is the case  [Configuration du NAT dynamique avec surcharge (sans pool) (many to one)](#configuration-du-nat-dynamique-avec-surcharge-sans-pool-many-to-one)
-- DNAT at http://192.168.1.1/network/nat, which is the case [Use `static` D(estination) NAT](#use-static-destination-nat).
+I consider it is sugar synthax to `ip nat inside source`.
 
 
-### See also F5 SNAT:
+### When do we use `ip nat outside source`?	
+
+Less frequent usage.
+We change the original source IP of incoming packet. Nothing to do with SNAT [@home](#snat-at-home)
 
 
-#### F5 NATS and SNATs
+## See also F5 SNAT:
+
+
+### F5 NATS and SNATs
 
 From: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html
 Forked [here](./media/tmos-routing-administration-11-6-0/AskF5%20_%20Manual%20Chapter_%20NATS%20and%20SNATs.html).
 
-##### Section `About NATs`
+### Section `About NATs`
 
 - Without NAT (use virtual server) => This is a kind of [case NI SRC] DNAT
 - With a NAT
@@ -391,7 +394,7 @@ So ip NAT inside only
     
 From: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html
 
-##### Section `About SNATs`
+### Section `About S(ecure)NATs`
 
 > A secure network address translation (SNAT) is a BIG-IP Local Traffic Manager feature that translates the source IP address within a connection to a BIG-IP system IP address that you define. 
 > The destination node then uses that new source address as its destination address when responding to the request.
@@ -404,7 +407,7 @@ From: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-
 > For outbound connections, that is, connections initiated by a server node, SNATs ensure that the internal IP address of the server node remains hidden to an external host when the server initiates a connection to that host.
 
 
---- **Inbound connection**
+#### --- **Inbound connection**
 
 > In the most common client-server network configuration, 
 the Local Traffic Manager standard address translation mechanism ensures that server responses return to the client through the BIG-IP system, 
@@ -427,14 +430,17 @@ This, in turn, forces the response to return to the client node through the BIG-
 
 See diagram in page!
 
- Here we have a [kind of standard DNAT](#section-about-nats) at virtual server.
-**And S(ource)NAT between F5 and gateway/server/esb etc...**. This is still standard S(ource) NAT.
+**This is not same SNAT as @home.**
+It is  [case NO SRC](#ip-nat-outside). And reverse traffic doing [case NO DST].
+It shows an exmple where we would use [`ip nat outside source`](#when-do-we-use-ip-nat-outside-source).
 
 This is convenient when F5 are in different network than server (ex. POP/Azure) to ensure reverse traffic come back to F5 (usually SNAT pool attached to vs, see below). 
 
+Any virtual server is similar to  [DNAT](#section-about-nats) (client to F5 server). Here we add **S(ource)NAT between F5 client and gateway/server/esb etc...** for return traffic.
+
 Example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
 
---- **SNATs for server-initiated (outbound) connections**
+#### --- **SNATs for server-initiated (outbound) connections**
 
 > When an internal server initiates a connection to an external host, a SNAT can translate the private, source IP addresses of one or more servers within the outgoing connection to a single, publicly-routable address. The external destination host can then use this public address as a destination address when sending the response. In this way, the private class IP addresses of the internal nodes remain hidden from the external host.
 > More specifically, a SNAT for an outgoing connection works in the following way:
@@ -450,7 +456,7 @@ This is S(ource) NAT [case NI SRC], but reverse traffic is actually doing  [case
 
 **Warning**: SNAT in F5 means "secure" (`S` is confusing can mean Source, Static and Secure....)
 
---- **Types of S(ecured)NATs**
+#### --- **Types of S(ecured)NATs**
 
 - Standard SNAT object: 
   - specific translation address (one to one)
@@ -459,7 +465,7 @@ This is S(ource) NAT [case NI SRC], but reverse traffic is actually doing  [case
 - SNAT pool assinged to virtual server
 - intelligent SNAT (irule)
 
-#### Virtual server + NAT + SNATs
+### Virtual server + NAT + SNATs
 
 I completed algo from https://support.f5.com/csp/article/K7820 with NAT
 Forked [here](media/f5-k7820/f5-k7820.html).
@@ -481,7 +487,7 @@ See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual
 `source-address-translation` property (replacing `snat`, `snatpool`).
 To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
 
-#### Pellicular case for outbound 
+### Pellicular case for outbound 
 
 We can use virtual server for outbound connection (SNAT pool assigned to virtual server) to perform SNAT when sending traffic to external provider
 
@@ -490,7 +496,9 @@ We can use virtual server for outbound connection (SNAT pool assigned to virtual
 
 See https://support.f5.com/csp/article/K93100324#link_07_01
 
-Same mechanism used as in **SNAT between F5 and gateway/server/esb etc...**.
+Same mechanism used as in **SNAT between F5 and gateway/server/esb etc...** in [case](#inbound-connection) "`--- **Inbound connection**`"
+
+But here we are equivalent SNAT [`@home usage`](#cisco-nat-classification) (ip nat inside case as using virtual server the other way around/reversed)
 
 <!-- NAT box is opening a new TCP connection (p483) it even modifies the packet,
 Router does not go to TCP layer -->
@@ -540,23 +548,6 @@ vs usually inbound but could be outbound, think compatible stop here
 See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!-- clear ok ! -->
 
 
-## Google router and double NAT
-
-Also at home with Google wifi
-
-````
-Google WIFI network <=> Box network <=> internet
-````
-
-If NAS on box network via ethernet, we can access NAS from device in google wifi network (SNAT)
-But if home assistant is on the NAS, to access smart speaker on Google WIFI network need to configure DNAT (in google home app) and use router WAN IP
-So that it targets speaker, port to use is 1255 (from heos cli pdf sepc). It  will see the 2 speaker (home 150, avr)
-
-With this configuration we also have issue for UPNP when on different network (media server on NAS and remote control app: https://github.com/open-denon-heos/heospy/blob/main/heospy/ssdp.py#L38)
-
-Better to connect NAS to ethernet port
-https://support.google.com/googlenest/answer/6277579?hl=fr
-
 ## SNAT and Azure
 
 - Azure SNAT overview:  https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections
@@ -588,3 +579,114 @@ https://support.google.com/googlenest/answer/6277579?hl=fr
 <!-- ok -->
 <!-- reconcluded 30.12.22 + 4.01.23 with Azure -->
 
+## NAT @home
+
+See [classisication](#cisco-nat-classification).
+
+### SNAT at home
+
+Assume Laptop/Device private IP is `192.168.1.32` 
+Making HTTP Call to `External IP:External Port` (`google.fr:443`)
+
+Where WAN IP/outbound facade/SNAT/WAN IP is `109.29.148.109`.
+
+TCP connection is 
+
+`[Laptop IP, original source Port (OS randomly chosen)] -> [External IP, external Port]`
+
+But we have NAT in between 
+
+`[Laptop IP, original source Port (OS randomly chosen)] -> [SFR: WAN IP, source Port (NAT)] --Internet--> [External IP, external Port]`
+
+Thus NAT table 
+
+| Input                                | Output                    |
+|--------------------------------------|---------------------------|
+| Laptop IP, original source Port (OS) | WAN IP, Source Port (NAT) |
+
+To determine which devices originated the traffic
+
+If we have double (S)NAT we apply this 2 times (we have box router WAN IP + google Home WAN IP). 
+Double NAT is acheievd when we have 2 routers.
+
+`[Laptop IP, original source Port (OS randomly chosen)] --Google Nest LAN--> [Google Nest: WAN IP, source Port (NAT1)] --SFR LAN--> [SFR: WAN IP, source Port (NAT2)]  --Internet--> [External IP, external Port]`
+
+When we use several ports with one IP it is called many to one NAT: https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix#configuration-du-nat-dynamique-avec-surcharge-sans-pool-many-to-one
+
+This is the the case at home
+
+Best is to use many IP with port re-usage.
+
+
+### DNAT at home 
+
+`[Client Source IP, Source Port] --Internet--> [SFR WAN IP, DNAT Port] --SFR LAN--> [Laptop/Device IP, Laptop/Device Port]`
+
+Note the client is most likely exposing himself a Source NATTED IP as done [above](#snat-at-home).
+
+So we have a NAT table
+
+
+| Input                                | Output                    |
+|--------------------------------------|---------------------------|
+| client IP (not in config), NAT Port  | Laptop IP, Laptop Port    |
+
+Port can be a range
+
+If we have double NAT we apply this several times (port managment in google app)
+
+````
+[Client Source IP, Source Port] --Internet--> [SFR: WAN IP, WAN/DNAT Port] --SFR LAN-->  [Google Nest: WAN IP, WAN/NAT Port] --Google Nest LAN-->  [Laptop/Device IP, Laptop/Device Port]
+````
+
+Note `Google Nest` is a router, `SFR box` is modem+router. 
+
+We can have device in SFR LAN and Google Nest LAN at same time.
+
+In router it is confugred in http://192.168.1.1/network/nat
+
+In NAT table we can have the protocol (TCP,UDP, both)
+
+### HOME AUTOMATION
+
+**See [S/DNAT and Home Automation](https://github.com/scoulomb/home-assistant#note-on-network)**
+
+
+## NAT @corpo
+
+### Inboubd con 
+
+see private_script 
+
+<!-- Links-mig-auto-cloud/README.md#migration-and-snatdnat /  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / Inbound IP -->
+
+### Outbound con 
+
+see private_script 
+
+<!-- Links-mig-auto-cloud/README.md#migration-and-snatdnat /  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / outbound case -->
+
+S(ource)NAT is usually done on LB (standard virtual server or forwarding virtual server/transparent SNAT, see [pellicular case for outbound](#pellicular-case-for-outbound)) or via Firewall. 
+<-- ERD/POP -->
+
+
+We can have SNAT pool exhaustion 
+<!-- /my conflu space/Interesting+Problems --> 
+ 
+Pool is exhausted when for all IP in pool, all source port are used
+To avoid pool exhaustion we could increase the pool of IP
+But impact on customer as source IP would change , so customer has to open more firewall 
+
+To release pool ip faster client 
+<!-- (esb view con) --> 
+
+- Can reduce Connection inactivity timeout
+- Not close on reply
+- Enure we do http 1.1 and persistent mode (https://en.wikipedia.org/wiki/HTTP_persistent_connection)
+
+<!-- doubt and yet very clear do not come bacl -->
+<!-- it is concluded and full review with, brain seems overload but actually well done and clear
+Links-mig-auto-cloud/README.md#migration-and-snatdnat
+https://github.com/scoulomb/docker-under-the-hood/blob/main/NAT-deep-dive-appendix/README.md#nat-deep-dive
+https://github.com/scoulomb/home-assistant/blob/main/README.md#note-on-network
+ -->
