@@ -690,3 +690,8 @@ Links-mig-auto-cloud/README.md#migration-and-snatdnat
 https://github.com/scoulomb/docker-under-the-hood/blob/main/NAT-deep-dive-appendix/README.md#nat-deep-dive
 https://github.com/scoulomb/home-assistant/blob/main/README.md#note-on-network
  -->
+
+ ## Other links
+
+- Links-mig-auto-cloud/README.md#migration-and-snatdnat
+- https://github.com/scoulomb/home-assistant/blob/main/README.md#note-on-network
