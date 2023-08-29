@@ -320,18 +320,18 @@ From
 ### Cisco NAT classification
 
 - ip nat inside source	
-    - Translates the source of IP packets that are traveling inside to outside. [case NI SRC]
-    - Translates the destination of the IP packets that are traveling outside to inside.  [case NI DST]
+    - Translates the source of IP packets that are traveling inside to outside. [case NI SRC] (SNAT)
+    - Translates the destination of the IP packets that are traveling outside to inside.  [case NI DST] (DNAT)
 
 - ip nat outside source	
-    - Translates the source of the IP packets that are traveling outside to inside.  [case NO SRC]
-    - Translates the destination of the IP packets that are traveling inside to outside. [case NO DST]
+    - Translates the source of the IP packets that are traveling outside to inside.  [case NO SRC] (SNAT)
+    - Translates the destination of the IP packets that are traveling inside to outside. [case NO DST] (DNAT)
 
-
+<!-- fixed: https://github.com/scoulomb/home-assistant/commit/ef7ba4bd7ebdae1af27a0ab66b21bb4e4ff34650#commitcomment-125601669 -->
 Note
-- [@home](#snat-at-home): When we do standard S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
+- [SNAT@home (standard)](#snat-at-home): When we do standard S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
     - wwich is the case  [Configuration du NAT dynamique avec surcharge (sans pool) (many to one)](#configuration-du-nat-dynamique-avec-surcharge-sans-pool-many-to-one)
-- [@home](#dnat-at-home): When we do standard D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
+- [DNAT@home (standard)](#dnat-at-home): When we do standard D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
     - which is the case [Use `static` D(estination) NAT](#use-static-destination-nat).
 
 So equivalent `@home usage` is always using `ip nat inside source`
@@ -386,12 +386,15 @@ Forked [here](./media/tmos-routing-administration-11-6-0/AskF5%20_%20Manual%20Ch
 
 ### Section `About NATs`
 
-- Without NAT (use virtual server) => This is a kind of [case NI SRC] DNAT
-- With a NAT
-  - NAT for inbound connection    => This is  [case NI DST] DNAT
-  - NAT for outbound connection   => This is  [case NI SRC] SNAT 
+- Without NAT (use virtual server) => This is a kind of  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) (inbound from F5 perspective)
+- With a NAT (no virtual server involved here)
+  - NAT for inbound connection    => This is  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) - Not similar to SNAT [Inbound](#inbound-connection), but similar to a simple virtual server (with [Secured SNAT or not](#inbound-connection))
+  - NAT for outbound connection   => This is  [case NI SRC](#cisco-nat-classification) SNAT <=> [SNAT@home](#snat-at-home) - Similar to SNAT with [server initiated outbound connection](#snats-for-server-initiated-outbound-connections)
+
 So ip NAT inside only
-    
+Note we can not translate the port: see https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_nat.html
+
+
 From: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html
 
 ### Section `About S(ecure)NATs`
@@ -430,8 +433,9 @@ This, in turn, forces the response to return to the client node through the BIG-
 
 See diagram in page!
 
-**This is not same SNAT as @home.**
-It is  [case NO SRC](#ip-nat-outside). And reverse traffic doing [case NO DST].
+**This is not same SNAT as @home.**. It is SNAT between F5 and application (gateway).
+
+It is  [case NO SRC](#ip-nat-outside). And reverse traffic doing [case NO DST](#cisco-nat-classification).
 It shows an exmple where we would use [`ip nat outside source`](#when-do-we-use-ip-nat-outside-source).
 
 This is convenient when F5 are in different network than server (ex. POP/Azure) to ensure reverse traffic come back to F5 (usually SNAT pool attached to vs, see below). 
@@ -439,6 +443,15 @@ This is convenient when F5 are in different network than server (ex. POP/Azure) 
 Any virtual server is similar to  [DNAT](#section-about-nats) (client to F5 server). Here we add **S(ource)NAT between F5 client and gateway/server/esb etc...** for return traffic.
 
 Example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
+
+
+NAT table is (see [SNAT@home](#snat-at-home) or [DNAT@home](to compare))
+
+| Input                                | Output                    |
+|--------------------------------------|---------------------------|
+| client IP, NAT Port*                 | Gateway IP, Port          |
+
+* Dynamic port (which they try to preserve, from https://my.f5.com/manage/s/article/K7820)
 
 #### --- **SNATs for server-initiated (outbound) connections**
 
@@ -451,48 +464,76 @@ Example where default gateway on the route does not require source ip packet cha
 
 Here they mention use-case of DNS request: From https://support.f5.com/csp/article/K7820
 
-This is S(ource) NAT [case NI SRC], but reverse traffic is actually doing  [case NI DST]
+This is S(ource) NAT [case NI SRC](#cisco-nat-classification), but reverse traffic is actually doing  [case NI DST] 
+<=>  [SNAT@home (standard)](#snat-at-home)
 
 
 **Warning**: SNAT in F5 means "secure" (`S` is confusing can mean Source, Static and Secure....)
 
 #### --- **Types of S(ecured)NATs**
 
-- Standard SNAT object: 
-  - specific translation address (one to one)
-  - Automap SNAT: many to many
-  - SNAT pools: many to many (https://support.f5.com/csp/article/K47945399)
-- SNAT pool assinged to virtual server
-- intelligent SNAT (irule)
+The 3 types of translation adress we can use are
+- a specific translation IP address,
+- SNAT pool
+- SNAT automap pool
+Note we also have LSN for Large Scale Nat pool 
 
-### Virtual server + NAT + SNATs
+S(ecured)NAT objects we have 
+
+- Standard SNAT object: (for [**Inbound connection**](#inbound-connection) and [**outbound connection**](#snats-for-server-initiated-outbound-connections) (see https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html/ Creating a SNAT) with
+  - specific translation IP ddress (one to one)
+  - Automap SNAT (pool): many to many (use self ip adress: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-tmos-routing-administration-14-0-0/06.html)
+  - SNAT pools: many to many (https://support.f5.com/csp/article/K47945399)
+  - ==> referend in doc https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_nat.html as `transation` | `automap` | `snatpool`. 
+- SNAT pool assinged to virtual server (only for [**Inbound connection**](#inbound-connection), but can reverse the F5, and use it to target provider, so connectity is outbound (F5 do socket establisment to service provider) but it is inbound from F5 perspective) (see https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html / Creating a SNAT pool). 
+    - We can only have SNAT pool, automap or LSN
+    - See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual.html: `source-address-translation` property (replacing `snat`, `snatpool`).
+    - To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
+- intelligent SNAT (irule) (only for [**Inbound connection**](#inbound-connection) if iRule attached to virtual server): https://serverfault.com/questions/1019723/can-we-have-multiple-snat-pools-configured-under-a-single-vip
+    - Should be able to reuse any kind of translation address
+
+
+### Virtual server + NAT + S(ecured) NATs 
+
+We consider [**Inbound connection**](#inbound-connection) only
+
+Multiple Source listener we have are
+- [NATs (Origin address)](#section-about-nats)  - apply i/o (inbound and outbound)
+- [SNATs (Origin)](#types-of-securednats) - Standard SNAT object - apply i/o
+- Virtual server - Looks like [DNAT](#section-about-nats) + [S(ecured) Source NAT](#types-of-securednats) - apply i 
+    - SNAT pool assinged to virtual server
+    - intelligent SNAT (irule)
+
+Precedence rule applies see https://my.f5.com/manage/s/article/K9038 (saved [here](./media/the))
+
+Note that one
+> NAT and virtual server (without a SNAT pool)
+> If a request originating from the NAT's origin IP address also matches a virtual server without a SNAT pool, the virtual server will process the connection and apply the NAT translation address to the outgoing packet.
+
+-> meaning reply is considered as [server initiated outbound connection](#snats-for-server-initiated-outbound-connections).
+
+
+Multiple Source listener and Destination listener we have are
+- virtual servers (many)
+
+Precedence rule applies see https://my.f5.com/manage/s/article/K9038 (saved [here](./media/The%20order%20of%20precedence%20for%20local%20traffic%20object%20listeners.pdf))
+
 
 I completed algo from https://support.f5.com/csp/article/K7820 with NAT
 Forked [here](media/f5-k7820/f5-k7820.html).
 
-1. The BIG-IP system receives a request directly from a client or from virtual server traffic
-2. If  virtual server and ` Source Address Translation property` defined  in virtual server in BIG-IP system translates the source IP address to the translation address defined
-3. Else BIG IP verifies whether that source IP address is defined in the origin address list for NAT or S(ecured)NAT (NAT has higher precedence: https://support.f5.com/csp/article/K9038).
-4. If the client's IP address is defined in the origin address list for the NAT/S(ecured)NAT, 
-the BIG-IP system translates the source IP address to the translation address defined in NAT/S(ecured)NAT object
-(after the traffic has already matched a virtual server if virtual server (and if virtual server's pool allow SNAT set to true): https://clouddocs.f5.com/cli/tmsh-reference/v14/modules/ltm/ltm_pool.html
-5. The BIG-IP system then sends the client request to the pool member or other destination (egress) being inbound or outbound (see above, DNS in section SNATs for server-initiated (outbound) connections)
 
-<!-- match also --- **SNATs for server-initiated (outbound) connections** -->
-
-Note SNAT at vs level avoids to define `Source Address Translation property` in each virtual server.
-
-
-See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual.html:
-`source-address-translation` property (replacing `snat`, `snatpool`).
-To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
+Note SNAT aobject level avoids to define `Source Address Translation property` in each virtual server.
 
 ### Pellicular case for outbound 
 
-We can use virtual server for outbound connection (SNAT pool assigned to virtual server) to perform SNAT when sending traffic to external provider
+We can use virtual server for outbound connection (SNAT pool or intelligent SNAT rule assigned to virtual server) to perform SNAT when sending traffic to external provider.
+Meaning internal client is doing socket establishment to F5, F5 sends traffic to external provider.
+So we are inbound from F5 persepcive but processed traffic is outbound. 
+Note we can use 
 
 - Standard virtual server (explicit SNAT)
-- Using forwarding virtual server: https://support.f5.com/csp/article/K7595
+- but also Using forwarding virtual server: https://support.f5.com/csp/article/K7595 (transparent SNAT)
 
 See https://support.f5.com/csp/article/K93100324#link_07_01
 
@@ -602,7 +643,9 @@ Thus NAT table
 
 | Input                                | Output                    |
 |--------------------------------------|---------------------------|
-| Laptop IP, original source Port (OS) | WAN IP, Source Port (NAT) |
+| Laptop IP, original source Port (OS) | WAN IP, Source Port (NAT)*| 
+
+* Dynamic port
 
 To determine which devices originated the traffic
 
@@ -669,9 +712,11 @@ see private_script
 S(ource)NAT is usually done on LB (standard virtual server or forwarding virtual server/transparent SNAT, see [pellicular case for outbound](#pellicular-case-for-outbound)) or via Firewall. 
 <-- ERD/POP -->
 
-
-We can have SNAT pool exhaustion 
+### We can have SNAT pool exhaustion.  
 <!-- /my conflu space/Interesting+Problems --> 
+
+See https://my.f5.com/manage/s/article/K7820
+For instance [between F5 and gateway](#inbound-connection) 
  
 Pool is exhausted when for all IP in pool, all source port are used
 To avoid pool exhaustion we could increase the pool of IP
@@ -693,5 +738,5 @@ https://github.com/scoulomb/home-assistant/blob/main/README.md#note-on-network
 
  ## Other links
 
-- Links-mig-auto-cloud/README.md#migration-and-snatdnat
+- Links-mig-auto-cloud/README.md#migration-and-snatdnat 
 - https://github.com/scoulomb/home-assistant/blob/main/README.md#note-on-network
