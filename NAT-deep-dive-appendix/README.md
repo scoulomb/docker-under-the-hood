@@ -541,6 +541,21 @@ Same mechanism used as in **SNAT between F5 and gateway/server/esb etc...** in [
 
 But here we are equivalent SNAT [`@home usage`](#cisco-nat-classification) (ip nat inside case as using virtual server the other way around/reversed)
 
+Note that
+- a standard virtual server will still do a [kind of DNAT](#Section-About-NATs) (But here not same as [DNAT](#section-about-nats) [`@home usage`] (#cisco-nat-classification) as using virtual server the other way around/reversed)
+- But a forwarding will not (https://my.f5.com/manage/s/article/K7595)
+
+Reason why when targeting
+- std vs: we target vs vip
+- fw vs: we target remote ip directly
+
+Quoting https://my.f5.com/manage/s/article/K7595
+
+> An IP forwarding virtual server accepts traffic that matches the virtual server address and forwards it to the destination IP address that is specified in the request rather than load balancing the traffic to a pool.
+> Address translation* is disabled when you create an IP forwarding virtual server, leaving the destination address in the packet unchanged. When creating an IP forwarding virtual server, as with all virtual servers, you can create either a host IP forwarding virtual server, which forwards traffic for a single host address, or a network IP forwarding virtual server, which forwards traffic for a subnet.
+
+* It refers to destination IP unchanged 
+
 <!-- NAT box is opening a new TCP connection (p483) it even modifies the packet,
 Router does not go to TCP layer -->
 
