@@ -386,7 +386,7 @@ Forked [here](./media/tmos-routing-administration-11-6-0/AskF5%20_%20Manual%20Ch
 
 ### Section `About NATs`
 
-- Without NAT (use virtual server) => This is a kind of  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) (inbound from F5 perspective)
+- Without NAT (use **standard (not fw)** virtual server) => This is a kind of  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) (inbound from F5 perspective)
 - With a NAT (no virtual server involved here)
   - NAT for inbound connection    => This is  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) - Not similar to SNAT [Inbound](#inbound-connection), but similar to a simple virtual server (with [Secured SNAT or not](#inbound-connection))
   - NAT for outbound connection   => This is  [case NI SRC](#cisco-nat-classification) SNAT <=> [SNAT@home](#snat-at-home) - Similar to SNAT with [server initiated outbound connection](#snats-for-server-initiated-outbound-connections)
@@ -436,22 +436,25 @@ See diagram in page!
 **This is not same SNAT as @home.**. It is SNAT between F5 and application (gateway).
 
 It is  [case NO SRC](#ip-nat-outside). And reverse traffic doing [case NO DST](#cisco-nat-classification).
-It shows an exmple where we would use [`ip nat outside source`](#when-do-we-use-ip-nat-outside-source).
+It shows an example where we would use [`ip nat outside source`](#when-do-we-use-ip-nat-outside-source).
 
 This is convenient when F5 are in different network than server (ex. POP/Azure) to ensure reverse traffic come back to F5 (usually SNAT pool attached to vs, see below). 
 
-Any virtual server is similar to  [DNAT](#section-about-nats) (client to F5 server). Here we add **S(ource)NAT between F5 client and gateway/server/esb etc...** for return traffic.
+Any standard virtual (not fwd, but both are possible) server is similar to  [DNAT](#section-about-nats) (client to F5 server). Here we can add **S(ource)NAT between F5 client and gateway/server/esb etc...** for return traffic.
+
 
 Example where default gateway on the route does not require source ip packet change as here: https://github.com/scoulomb/misc-notes/blob/master/NAS-setup/Wake-On-LAN.md#android-wow
 
 
 NAT table is (see [SNAT@home](#snat-at-home) or [DNAT@home](to compare))
 
-| Input                                | Output                    |
-|--------------------------------------|---------------------------|
-| client IP, NAT Port*                 | Gateway IP, Port          |
+| Input (WAN**)                        | Output (LAN**)                                   |
+|--------------------------------------|--------------------------------------------------|
+| client source IP, source NAT Port*   | Gateway (==targetted app) source IP, source Port |
+
 
 * Dynamic port (which they try to preserve, from https://my.f5.com/manage/s/article/K7820)
+** Reverse if [pellicular case for outbound](#pellicular-case-for-outbound). And in that case it is SNAT@home equivalent.
 
 #### --- **SNATs for server-initiated (outbound) connections**
 
@@ -485,7 +488,7 @@ S(ecured)NAT objects we have
   - Automap SNAT (pool): many to many (use self ip adress: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-tmos-routing-administration-14-0-0/06.html)
   - SNAT pools: many to many (https://support.f5.com/csp/article/K47945399)
   - ==> referend in doc https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_nat.html as `transation` | `automap` | `snatpool`. 
-- SNAT pool assinged to virtual server (only for [**Inbound connection**](#inbound-connection), but can reverse the F5, and use it to target provider, so connectity is outbound (F5 do socket establisment to service provider) but it is inbound from F5 perspective) (see https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html / Creating a SNAT pool). 
+- SNAT pool assinged to virtual server (forwaring or not) (only for [**Inbound connection**](#inbound-connection), but can reverse the F5, and use it to target provider (see [pellicular case for outbound](#pellicular-case-for-outbound)), so connectity is outbound (F5 do socket establisment to service provider) but it is inbound from F5 perspective) (see https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html / Creating a SNAT pool). 
     - We can only have SNAT pool, automap or LSN
     - See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual.html: `source-address-translation` property (replacing `snat`, `snatpool`).
     - To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
@@ -606,8 +609,11 @@ See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!--
 
 ## SNAT and Azure
 
+Here `S` is for Source.
+We can assume an AZ LB is also doing a kind of DNAT. As for [F5](#section-about-nats) 
+
 - Azure SNAT overview:  https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections
-    - The following methods are Azure's most commonly used methods to enable outbound connectivity:
+    - > The following methods are Azure's most commonly used methods to enable outbound connectivity:
 
     | # | Method | Type of port allocation | Production-grade? | Rating |
     | ------------ | ------------ | ------ | ------------ | ------------ |
@@ -615,13 +621,33 @@ See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!--
     | 2 | Associate a NAT gateway to the subnet | Dynamic, explicit | Yes | Best | 
     | 3 | Assign a public IP to the virtual machine | Static, explicit | Yes | OK | 
     | 4 | [Default outbound access](../virtual-network/ip-services/default-outbound-access.md) use | Implicit | No | Worst |
+    
+    - NAT table is similar to [SNAT @home](#snat-at-home)
 
-    - Port exhaustion 
-        - Every connection to the **same destination IP and destination port will use a SNAT port**. This connection maintains a distinct traffic flow from the backend instance or client to a server. This process gives the server a distinct port on which to address traffic. Without this process, the client machine is unaware of which flow a packet is part of.
-        - Without different destination ports for the return traffic (the SNAT port used to establish the connection), the client will have no way to separate one query result from another
-        - Outbound connections can burst. A backend instance can be allocated insufficient ports. Use connection reuse functionality within your application. Without connection reuse, the risk of SNAT port exhaustion is increased.
-        - ==> SNAT port reuse is possible only if destination IP and/or destination Port i
+        | Input (LAN)                                  | Output (WAN)                     |
+        |----------------------------------------------|----------------------------------|
+        | AZ internal IP, original source Port (OS)    | Source WAN IP, Source Port (NAT)*| 
 
+
+    - Port exhaustion: https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections 
+        - > Every **connection** to the **same destination IP and destination port will use a SNAT port**. This connection maintains a distinct traffic flow from the backend instance or client to a server. This process gives the server a distinct port on which to address traffic. Without this process, the client machine is unaware of which flow a packet is part of.
+        - > Without different destination ports for the return traffic (the SNAT port used to establish the connection), the client will have no way to separate one query result from another
+        - > Outbound connections can burst. A backend instance can be allocated insufficient ports. Use connection reuse functionality within your application. Without connection reuse, the risk of SNAT port exhaustion is increased.
+        - > Rephrased https://azure.microsoft.com/en-us/blog/dive-deep-into-nat-gateway-s-snat-port-behavior/. Store locally [here](./media/Dive%20deep%20into%20NAT%20gateway’s%20SNAT%20port%20behavior%20|%20Azure%20Blog%20|%20Microsoft%20Azure.pdf).
+            - > With each new connection to the same destination IP and port, **a new source port is used.**
+            - > A new source port is necessary so that each connection can be distinguished from one another
+        - ==> SNAT port consumed for each (connection, destination IP, destination Port) 
+            - if we have a new connection targetting same destination ip and port, we will require a new SNAT port
+            - If we need a new source Port (NAT) targeting same destination (ip and port) for a new connection as a freshly released SNAT port,  Azure puts in place a reuse cooldown timer to reuse this port  after a given time (see https://learn.microsoft.com/en-us/azure/nat-gateway/nat-gateway-resource#port-reuse-timers)
+            - Reason why we should use a much as possible connection reusage with persistent connection (https://en.wikipedia.org/wiki/HTTP_persistent_connection) 
+            - When all SNAT ports are in use, NAT gateway can reuse a SNAT port to connect outbound so long as the port actively in use goes to a different destination endpoint. -> Endpoint is (ip, port)
+
+- Why 64,512 port per IP? From https://cloud.google.com/nat/docs/ports-and-addresses
+    > Each NAT IP address on a Cloud NAT gateway (both Public NAT and Private NAT) offers 64,512 TCP source ports and 64,512 UDP source ports. TCP and UDP each support 65,536 ports per IP address, but Cloud NAT doesn't use the first 1,024 well-known (privileged) ports.
+
+- Azure NAT GW has up to 16 pub adress so 1,032,192 SNAT port
+
+- This article show table: https://azure.microsoft.com/en-us/blog/dive-deep-into-nat-gateway-s-snat-port-behavior/ but our represntation are more accurate, see https://azure.microsoft.com/en-us/blog/dive-deep-into-nat-gateway-s-snat-port-behavior/
 
 - Load balancer SNAT: Load balancer can do SNAT but better to use SNAT gateway
     - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal
@@ -656,9 +682,9 @@ But we have NAT in between
 
 Thus NAT table 
 
-| Input                                | Output                    |
-|--------------------------------------|---------------------------|
-| Laptop IP, original source Port (OS) | WAN IP, Source Port (NAT)*| 
+| Input (LAN)                                  | Output (WAN)                     |
+|----------------------------------------------|----------------------------------|
+| Laptop source IP, original source Port (OS)  | Source WAN IP, Source Port (NAT)*| 
 
 * Dynamic port
 
@@ -685,9 +711,9 @@ Note the client is most likely exposing himself a Source NATTED IP as done [abov
 So we have a NAT table
 
 
-| Input                                | Output                    |
-|--------------------------------------|---------------------------|
-| client IP (not in config), NAT Port  | Laptop IP, Laptop Port    |
+| Input (WAN)                                             | Output (LAN)                             |
+|---------------------------------------------------------|------------------------------------------|
+| client source IP (not in config), Destination NAT Port  | Laptop destination IP, destination Port  |
 
 Port can be a range
 
@@ -733,17 +759,15 @@ S(ource)NAT is usually done on LB (standard virtual server or forwarding virtual
 See https://my.f5.com/manage/s/article/K7820
 For instance [between F5 and gateway](#inbound-connection) 
  
-Pool is exhausted when for all IP in pool, all source port are used
-To avoid pool exhaustion we could increase the pool of IP
-But impact on customer as source IP would change , so customer has to open more firewall 
-
-To release pool ip faster client 
-<!-- (esb view con) --> 
-
-- Can reduce Connection inactivity timeout
-- Not close on reply
-- Enure we do http 1.1 and persistent mode (https://en.wikipedia.org/wiki/HTTP_persistent_connection)
-
+Pool is exhausted when for all IP in pool, all source port are used (same as [Azure](#snat-and-azure)
+To avoid pool exhaustion we can
+- Increase the pool of IP: but it impacts customer as source IP would change, so customer has to open more firewall 
+- Or we avoid to comsume a new SNAT port usage by maximizing connection reuse. To achieve this we have to 
+    <!-- (esb view con) --> 
+    - Reducing Connection inactivity timeout
+    - Not close on reply
+    - Ensure we do `http 1.1 and persistent mode (https://en.wikipedia.org/wiki/HTTP_persistent_connection)
+<!-- we go for second option -->
 <!-- doubt and yet very clear do not come bacl -->
 <!-- it is concluded and full review with, brain seems overload but actually well done and clear
 Links-mig-auto-cloud/README.md#migration-and-snatdnat
