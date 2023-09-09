@@ -641,6 +641,17 @@ We can assume an AZ LB is also doing a kind of DNAT. As for [F5](#section-about-
             - If we need a new source Port (NAT) targeting same destination (ip and port) for a new connection as a freshly released SNAT port,  Azure puts in place a reuse cooldown timer to reuse this port  after a given time (see https://learn.microsoft.com/en-us/azure/nat-gateway/nat-gateway-resource#port-reuse-timers)
             - Reason why we should use a much as possible connection reusage with persistent connection (https://en.wikipedia.org/wiki/HTTP_persistent_connection) 
             - When all SNAT ports are in use, NAT gateway can reuse a SNAT port to connect outbound so long as the port actively in use goes to a different destination endpoint. -> Endpoint is (ip, port)
+            - [Current understand OK] Actually more precsion. "when all SNAT port in use": https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections#port-exhaustion
+                - > For TCP connections, the load balancer uses a single SNAT port for every destination IP and port. This multiuse enables multiple connections to the same destination IP with the same SNAT port. This multiuse is limited if the connection isn't to different destination ports. {meaning we can reuse a SNAT port on same machine/ip if targetted port is different, also possible on another and with same port or not }
+                - > For UDP connections, the load balancer uses a port-restricted cone NAT algorithm, which consumes one SNAT port per destination IP whatever the destination port. {meaning we can not reuse a SNAT port on same ip even if targetted port is different, also possible on another and with same port or not }
+                - > A port is reused for an unlimited number of connections. The port is only reused if the destination IP or port is different.
+                <!-- ok clear -->
+                - More details on Full Cone NAT
+                    - https://www.lri.fr/~fmartignon/documenti/reseauxavances/NAT-Netkit.pdf. Stored [here](./media/NAT-Netkit.pdf).
+                    - I assume TCP is symetric NAT (so only answers)
+                    - Observe that SNAT@home return taffic is DNAT@home abnd vice-versa: https://github.com/scoulomb/docker-under-the-hood/blob/main/NAT-deep-dive-appendix/README.md#cisco-nat-classification
+                    - So here we talk SNAT and DNAT and restriction, not different facade IP for each destination IP when symetric  
+
 
 - Why 64,512 port per IP? From https://cloud.google.com/nat/docs/ports-and-addresses
     > Each NAT IP address on a Cloud NAT gateway (both Public NAT and Private NAT) offers 64,512 TCP source ports and 64,512 UDP source ports. TCP and UDP each support 65,536 ports per IP address, but Cloud NAT doesn't use the first 1,024 well-known (privileged) ports.
@@ -657,6 +668,7 @@ We can assume an AZ LB is also doing a kind of DNAT. As for [F5](#section-about-
     - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-gateway-resource?source=recommendations#source-network-address-translation (SNAT port reuse wrong, https://github.com/MicrosoftDocs/azure-docs/pull/103407, consider OK)
     - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/quickstart-create-nat-gateway-portal
 
+- Voir private script --> aks-istio-and-azure-nat.md
 <!-- above SNAT F5-GW outbound POP->AZ, here outbound AZ -> External world, stop here, DNAT stop -->
 <!-- ok -->
 <!-- reconcluded 30.12.22 + 4.01.23 with Azure -->
