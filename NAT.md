@@ -66,7 +66,7 @@ To allow application or particular domain
 
 <!-- az900, p213, Azure firewall concluded -->
 
-### SNAT 
+### SNAT
 
 Quoting doc about SNAT private IP address ranges: https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/firewall/snat-private-range.md
 
@@ -112,15 +112,14 @@ Sometimes those proxy makes also certificate shaddowing.
 
 <!-- not sfr box dnat rule in ipv4 become firewall in ipv6 ! -->
 
-<!-- See private_script: Links-mig-auto-cloud/README.md#outbound-links [Link 2]: ~~ SNAT 1A ~~ [Certificate] --> 
-
+<!-- See private_script: [](../private_script/Links-mig-auto-cloud/listing-use-cases/listing-use-cases-appendix-1-mdw-links-si-mq-adds-details.md#outbound-links) [Link 2]: ~~ SNAT 1A ~~ [Certificate] --> 
 
 ### SNAT without a firewall
 
 See https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections.
 
 Also this doc confirms port are used to do SNAT.This is port we would see here in proxy protoccol in receiver: https://cloud.google.com/load-balancing/docs/tcp/setting-up-tcp?hl=fr
-<!-- See private_script: Links-mig-auto-cloud/README.md#proxy-protocol-activation-for-inbound-links -->
+<!-- See private_script: [](../private_script/Links-mig-auto-cloud/listing-use-cases/listing-use-cases-appendix-1-mdw-links-si-mq-adds-details.md#proxy-protocol-activation-for-inbound-links) -->
 
 ### In IPV6 how can I add my internal IPs?
 

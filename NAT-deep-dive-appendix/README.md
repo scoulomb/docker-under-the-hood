@@ -330,7 +330,7 @@ From
 <!-- fixed: https://github.com/scoulomb/home-assistant/commit/ef7ba4bd7ebdae1af27a0ab66b21bb4e4ff34650#commitcomment-125601669 -->
 Note
 - [SNAT@home (standard)](#snat-at-home): When we do standard S(ource) NAT we configure [case NI SRC], but reverse traffic is actually doing  [case NI DST]
-    - wwich is the case  [Configuration du NAT dynamique avec surcharge (sans pool) (many to one)](#configuration-du-nat-dynamique-avec-surcharge-sans-pool-many-to-one)
+    - which is the case  [Configuration du NAT dynamique avec surcharge (sans pool) (many to one)](#configuration-du-nat-dynamique-avec-surcharge-sans-pool-many-to-one)
 - [DNAT@home (standard)](#dnat-at-home): When we do standard D(estination) NAT we configure [case NI DST], but reverse traffic is actually doing  [case NI SRC]
     - which is the case [Use `static` D(estination) NAT](#use-static-destination-nat).
 
@@ -387,6 +387,7 @@ Forked [here](./media/tmos-routing-administration-11-6-0/AskF5%20_%20Manual%20Ch
 ### Section `About NATs`
 
 - Without NAT (use **standard (not fw)** virtual server) => This is a kind of  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) (inbound from F5 perspective)
+  - More details at https://github.com/scoulomb/http-headers/blob/main/README.md#dnat-discussion <!-- link with private PPT / @PrezNewGen/note on F5 vs type OK with current understanding (ESB OK, MQADDS can change but no impact here) 15nov24 - optional to complete OK CCL STOP -->
 - With a NAT (no virtual server involved here)
   - NAT for inbound connection    => This is  [case NI DST](#cisco-nat-classification) DNAT <=> [DNAT@home](#dnat-at-home) - Not similar to SNAT [Inbound](#inbound-connection), but similar to a simple virtual server (with [Secured SNAT or not](#inbound-connection))
   - NAT for outbound connection   => This is  [case NI SRC](#cisco-nat-classification) SNAT <=> [SNAT@home](#snat-at-home) - Similar to SNAT with [server initiated outbound connection](#snats-for-server-initiated-outbound-connections)
@@ -754,13 +755,13 @@ In NAT table we can have the protocol (TCP,UDP, both)
 
 see private_script 
 
-<!-- Links-mig-auto-cloud/README.md#migration-and-snatdnat /  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / Inbound IP -->
+<!-- [](../../private_script/Links-mig-auto-cloud/natting/README.md#migration-and-snatdnat)/  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / Inbound IP -->
 
 ### Outbound con 
 
 see private_script 
 
-<!-- Links-mig-auto-cloud/README.md#migration-and-snatdnat /  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / outbound case -->
+<!-- [](../../private_script/Links-mig-auto-cloud/natting/README.md#migration-and-snatdnat) /  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / outbound case -->
 
 S(ource)NAT is usually done on LB (standard virtual server or forwarding virtual server/transparent SNAT, see [pellicular case for outbound](#pellicular-case-for-outbound)) or via Firewall. 
 <-- ERD/POP -->
@@ -782,7 +783,7 @@ To avoid pool exhaustion we can
 <!-- we go for second option -->
 <!-- doubt and yet very clear do not come bacl -->
 <!-- it is concluded and full review with, brain seems overload but actually well done and clear
-Links-mig-auto-cloud/README.md#migration-and-snatdnat
+[](../../private_script/Links-mig-auto-cloud/natting/README.md#migration-and-snatdnat)
 https://github.com/scoulomb/docker-under-the-hood/blob/main/NAT-deep-dive-appendix/README.md#nat-deep-dive
 https://github.com/scoulomb/home-assistant/blob/main/README.md#note-on-network
  -->
