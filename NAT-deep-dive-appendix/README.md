@@ -489,7 +489,7 @@ S(ecured)NAT objects we have
   - Automap SNAT (pool): many to many (use self ip adress: https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-tmos-routing-administration-14-0-0/06.html)
   - SNAT pools: many to many (https://support.f5.com/csp/article/K47945399)
   - ==> referend in doc https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_nat.html as `transation` | `automap` | `snatpool`. 
-- SNAT pool assinged to virtual server (forwaring or not) (only for [**Inbound connection**](#inbound-connection), but can reverse the F5, and use it to target provider (see [pellicular case for outbound](#pellicular-case-for-outbound)), so connectity is outbound (F5 do socket establisment to service provider) but it is inbound from F5 perspective) (see https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html / Creating a SNAT pool). 
+- SNAT pool assigned to virtual server (standard or forwarding IP) (only for [**Inbound connection**](#inbound-connection), but can reverse the F5, and use it to target provider (see [pellicular case for outbound](#pellicular-case-for-outbound)), so connectity is outbound (F5 do socket establisment to service provider) but it is inbound from F5 perspective) (see https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/tmos-routing-administration-11-6-0/7.html / Creating a SNAT pool). 
     - We can only have SNAT pool, automap or LSN
     - See here https://clouddocs.f5.com/cli/tmsh-reference/v15/modules/ltm/ltm_virtual.html: `source-address-translation` property (replacing `snat`, `snatpool`).
     - To not confuse with `source` which specifies an IP address or network from which the virtual server will accept traffic.
@@ -537,7 +537,7 @@ So we are inbound from F5 persepcive but processed traffic is outbound.
 Note we can use 
 
 - Standard virtual server (explicit SNAT)
-- but also Using forwarding virtual server: https://support.f5.com/csp/article/K7595 (transparent SNAT)
+- but also Using forwarding IP virtual server: https://support.f5.com/csp/article/K7595 (transparent SNAT)
 
 See https://support.f5.com/csp/article/K93100324#link_07_01
 
@@ -547,7 +547,7 @@ But here we are equivalent SNAT [`@home usage`](#cisco-nat-classification) (ip n
 
 Note that
 - a standard virtual server will still do a [kind of DNAT](#Section-About-NATs) (But here not same as [DNAT](#section-about-nats) [`@home usage`] (#cisco-nat-classification) as using virtual server the other way around/reversed)
-- But a forwarding will not (https://my.f5.com/manage/s/article/K7595)
+- But a forwarding IP will not (https://my.f5.com/manage/s/article/K7595)
 
 Reason why when targeting
 - std vs: we target vs vip
@@ -608,6 +608,9 @@ vs usually inbound but could be outbound, think compatible stop here
 See links to private_script/blob/main/Links-mig-auto-cloud/README.md#topics <!-- clear ok ! -->
 
 
+**We alyways consider forwarding IP virtual server (https://github.com/scoulomb/http-headers/blob/main/README.md#f5-types-of-virtual-server), but a forwarding layer 2 virtual server can also have SNAT: https://my.f5.com/manage/s/article/K10371011**.
+We say `forwarding IP virtual server` (cf hyperlink above)  or `IP forwarding virtual` (cf. quote in this doc)
+
 ## SNAT and Azure
 
 Here `S` is for Source.
@@ -663,7 +666,7 @@ We can assume an AZ LB is also doing a kind of DNAT. As for [F5](#section-about-
 
 - Load balancer SNAT: Load balancer can do SNAT but better to use SNAT gateway
     - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-public-portal
-    - https://learn.microsoft.com/en-us/azure/load-balancer/outbound-rules (similar to forwarding vs)
+    - https://learn.microsoft.com/en-us/azure/load-balancer/outbound-rules (similar to forwarding IP vs)
 
 - SNAT gateway
     - https://learn.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-gateway-resource?source=recommendations#source-network-address-translation (SNAT port reuse wrong, https://github.com/MicrosoftDocs/azure-docs/pull/103407, consider OK)
@@ -763,7 +766,7 @@ see private_script
 
 <!-- [](../../private_script/Links-mig-auto-cloud/natting/README.md#migration-and-snatdnat) /  https://github.com/scoulomb/docker-under-the-hood/tree/main/NAT-deep-dive-appendix / outbound case -->
 
-S(ource)NAT is usually done on LB (standard virtual server or forwarding virtual server/transparent SNAT, see [pellicular case for outbound](#pellicular-case-for-outbound)) or via Firewall. 
+S(ource)NAT is usually done on LB (standard virtual server or forwarding IP virtual server/transparent SNAT, see [pellicular case for outbound](#pellicular-case-for-outbound)) or via Firewall. 
 <-- ERD/POP -->
 
 ### We can have SNAT pool exhaustion.  
